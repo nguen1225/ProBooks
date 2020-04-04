@@ -1,24 +1,36 @@
-# README
+# ProBooks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概容
+- プログラミング書籍検索、レビューサイト
+- 探しやすさを追求するため、書籍にタグとカテゴリーをつけて、より具体的に検索できるようにしています。
+カテゴリー別検索では、言語やフレームワークごと書籍を検索することができ、
+タグ検索での検索方法は２種類あり、一つは検索ワードからタグと部分一致する書籍を見つけ出すことができ、
+もう一つは、既存のタグを選択してもらい、そのタグと完全一致する書籍を見つけることができます。
 
-Things you may want to cover:
+## サイトテーマ
+- 自分の学びたい内容のプログラミング書籍をみつけることができる。
+- 信頼度の高いレビューを参考に、自分のレベルにあった書籍を見つけることができる。
 
-* Ruby version
+### テーマを選んだ理由
+プログラミング書籍で学習するのが好きで、よく書籍を使って学習をしていたのですが、
+プログラミングに関する知識の浅さから、自分が学びたい内容でなかったり、自分のレベルにあってないものを購入してしまった経験が多々あります。
+そういった経験から、あまりプログラミングの知識が少ない初学者や自分のために「検索のしやすさ」と「その書籍でどんな内容が学べるか」
+がわかるサービスが欲しいと考えていたので作成することにしました。
 
-* System dependencies
+既存の書籍検索サイトは、登録されている書籍が多く、何を選べばいいのか分からなかったり、
+ネットショップのレビューをみても信頼できるレビューかどうか見分けるのは難しいと思ってます。
+そういった問題点をこのサービスで解消していけたらいいなと考えています。
 
-* Configuration
+### ターゲットユーザー
+- 書籍の購入を検討しているプログラミング初学者（自分含め）
 
-* Database creation
+### 主な利用シーン
+- プログラミング書籍の購入を検討時
 
-* Database initialization
+## 設計書
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1HuIg7pLMXl5IcsuYqOy9CNmTUf6uta6L1528xJ72y1w/edit#gid=0
 
-* Deployment instructions
-
-* ...
+>>>>>>> origin/master
