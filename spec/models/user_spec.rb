@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   it '全項目が正しく入力されていれば有効な状態' do
     user = User.new(
-      name: "テスト",
-      email: "test@example.com",
-      introduction: "テストです",
+      name: 'テスト',
+      email: 'test@example.com',
+      introduction: 'テストです',
       admin: 1,
       status: 1,
       password: 'hogehoge',
