@@ -65,9 +65,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'materialize-sass'
+gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'carrierwave', '~> 1.0'
 gem 'enumerize'
+
 
