@@ -23,5 +23,12 @@
 #
 FactoryBot.define do
   factory :user do
+    name { 'テスト' }
+    email { 'test@example.com' }
+    status { 'engineer' }
+    introduction { 'テストユーザーの自己紹介' }
+    admin { true }
+    password { 'foobar' }
+    password_confirmation { 'foobar' }
   end
 end

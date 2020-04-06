@@ -19,5 +19,9 @@ class Book < ApplicationRecord
 	extend Enumerize
 	belongs_to :user
 
-	enumerize :category, in: %i(html javascript ruby php )
+	validates :title, presence: true
+	validates :category, presence: true
+	validates :user_id,  presence: true
+
+	enumerize :category, in: %i(html javascript ruby php)
 end

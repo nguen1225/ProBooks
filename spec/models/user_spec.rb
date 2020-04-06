@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
       email: 'test@example.com',
       introduction: 'テストです',
       admin: 1,
-      status: 1,
+      status: 'engineer',
       password: 'hogehoge',
       password_confirmation: 'hogehoge'
     )
