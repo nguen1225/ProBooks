@@ -12,7 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  status                 :integer          not null
+#  status                 :string           not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -26,6 +26,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  extend Enumerize
 
   validates :name, presence: true
   validates :email, presence: true
@@ -33,4 +34,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :status, presence: true
   validates :admin, presence: true
+
+  enumerize :status, in: [:engineer, :beginner]
+  has_many :books, dependent: :destroy
 end
