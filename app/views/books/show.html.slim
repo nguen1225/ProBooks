@@ -1,0 +1,5 @@
+p = @book.title
+
+
+= link_to '編集', edit_book_path(@book), class: "btn"
+= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn"

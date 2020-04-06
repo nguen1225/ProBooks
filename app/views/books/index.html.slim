@@ -1,0 +1,7 @@
+p 一覧
+
+
+- @books.each do |book|
+	= link_to book.title, book_path(book)
+	= book.content
+	= link_to '編集', edit_book_path(book), class: 'btn'

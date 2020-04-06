@@ -3,7 +3,7 @@ html
   head
     title
       = yield(:title)
-      | ProBooks
+      | |ProBooks
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -11,5 +11,6 @@ html
   body
     = render 'shared/header'
     = render 'shared/flash_messages'
-    = yield
+    .container
+      = yield
     = render 'shared/footer'
