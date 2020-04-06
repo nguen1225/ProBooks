@@ -18,5 +18,32 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it '全項目が正しく入力されていれば有効な状態' do
+    user = FactoryBot.create(:user)
+    book = Book.new(
+      title: 'テストを学ぼう',
+      content: 'ホゲホゲホゲホゲホゲ',
+      category: 'html',
+      user_id: user.id,
+    )
+    expect(book).to be_valid
+  end
+
+  it 'タイトルが未入力であれば無効' do
+    book = Book.new(title: nil)
+    book.valid?
+    expect(book.errors[:title]).to include("can't be blank")
+  end
+
+  it 'カテゴリーが未入力であれば無効' do
+    book = Book.new(category: nil)
+    book.valid?
+    expect(book.errors[:category]).to include("can't be blank")
+  end
+
+  it 'ユーザーIDが未入力であれば無効' do
+    book = Book.new(user_id: nil)
+    book.valid?
+    expect(book.errors[:user_id]).to include("can't be blank")
+  end
 end
