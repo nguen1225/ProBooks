@@ -17,8 +17,9 @@
 #
 FactoryBot.define do
   factory :book do
-    title { '' }
-    content { 'MyString' }
-    image { 'MyString' }
+    title { 'テスト' }
+    content { 'テストコンテント' }
+    category { 'テストカテゴリ' }
+    user
   end
 end
