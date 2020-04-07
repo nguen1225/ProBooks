@@ -3,5 +3,6 @@
 		= f.input :content
 		= f.label  :category
 		= f.select :category, Book.category.options
+		= f.input :tag_list
 		= f.hidden_field :user_id, :value => current_user.id
 		= f.button :submit, class: "btn btn-primary"
