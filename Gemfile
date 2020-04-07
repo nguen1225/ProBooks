@@ -34,13 +34,13 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 
   gem 'annotate'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 group :test do
@@ -55,8 +55,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'enumerize'
 gem 'html2slim'
+gem 'jquery-rails'
 gem 'material_icons'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'slim-rails'
-gem 'simple_form'
-gem 'jquery-rails'
