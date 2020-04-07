@@ -8,11 +8,13 @@ RSpec.feature 'Session', type: :feature do
     fill_in  'パスワード', with: 'foobar'
     click_on 'Log In'
   end
+
   describe '機能' do
     it 'ログインできる' do
       expect(page).to have_content 'Signed in successfully'
     end
   end
+
   describe 'レイアウト' do
     it 'ログイン後ヘッダーレイアウトが変更' do
       expect(current_path).to eq root_path

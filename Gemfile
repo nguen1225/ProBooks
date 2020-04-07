@@ -47,6 +47,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'launchy', '~> 2.4.3'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -59,3 +60,4 @@ gem 'jquery-rails'
 gem 'material_icons'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'slim-rails'
+gem 'simple_form'

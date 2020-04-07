@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require materialize
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
 $(document).ready(function(){
