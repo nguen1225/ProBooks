@@ -1,4 +1,7 @@
 p = @book.title
+p = @book.content
+p = @book.category
+p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
 
 = link_to '編集', edit_book_path(@book), class: "btn"

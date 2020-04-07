@@ -17,11 +17,14 @@
 #
 class Book < ApplicationRecord
   extend Enumerize
+
   belongs_to :user
 
-  validates :title, presence: true
-  validates :category, presence: true
-  validates :user_id,  presence: true
+  validates  :title,     presence: true
+  validates  :category,  presence: true
+  validates  :user_id,   presence: true
 
-  enumerize :category, in: %i[html javascript ruby php]
+  acts_as_taggable
+
+  enumerize :category, in: %i(html javascript ruby php)
 end

@@ -2,7 +2,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit destroy]
 
   def index
-    @books = Book.all
+    if params[:tag]
+      @books = Book.tagged_with(params[:tag])
+    else
+      @books = Book.all
+    end
   end
 
   def new
@@ -39,7 +43,8 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title,
                                  :content,
                                  :category,
-                                 :user_id)
+                                 :user_id,
+                                 :tag_list)
   end
 
   def set_book

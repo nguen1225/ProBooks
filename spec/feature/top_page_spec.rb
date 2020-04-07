@@ -9,4 +9,9 @@ RSpec.describe 'TopPage', type: :feature do
     click_link 'Sign Up'
     expect(current_path).to eq new_user_registration_path
   end
+
+  it 'ログインリンクをクリックするとログインページ遷移' do
+    click_link 'Log in'
+    expect(current_path).to eq new_user_session_path
+  end
 end
