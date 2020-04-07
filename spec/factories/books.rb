@@ -17,8 +17,8 @@
 #
 FactoryBot.define do
   factory :book do
-    title { "" }
-    content { "MyString" }
-    image { "MyString" }
+    title { '' }
+    content { 'MyString' }
+    image { 'MyString' }
   end
 end

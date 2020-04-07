@@ -1,6 +1,14 @@
-= simple_form_for book, local: true do |f|
-	= f.input :title
-	= f.input :content
-	= f.select :category, Book.category.options, include_blank: false
+= form_with model: book, local: true do |f|
+	.field
+		= f.label :title
+		= f.text_field :title
+
+	.field
+		= f.label :content
+		= f.text_area :content
+
+	.field
+		= f.label :category
+		= f.select :category, Book.category.options, include_blank: false
 	= f.hidden_field :user_id, :value => current_user.id
 	= f.button :submit, class: "btn btn-primary"

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: %i[show edit destroy]
+
   def index
     @books = Book.all
   end
@@ -11,17 +12,20 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = "登録しました"
+      flash[:notice] = '登録しました'
       redirect_to book_path(@book)
     else
       render :new
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
-  def show
+  def update
   end
 
   def destroy

@@ -24,7 +24,7 @@ RSpec.describe Book, type: :model do
       title: 'テストを学ぼう',
       content: 'ホゲホゲホゲホゲホゲ',
       category: 'html',
-      user_id: user.id,
+      user_id: user.id
     )
     expect(book).to be_valid
   end

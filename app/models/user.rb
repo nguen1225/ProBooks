@@ -34,6 +34,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :status, presence: true
 
-  enumerize :status, in: [:engineer, :beginner]
+  enumerize :status, in: %i[engineer beginner]
   has_many :books, dependent: :destroy
 end
