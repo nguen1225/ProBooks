@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  admin                  :boolean          default(FALSE), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  image                  :string
@@ -13,7 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  status                 :string           not null
+#  status                 :string
 #  uid                    :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -33,11 +32,10 @@ class User < ApplicationRecord
 
   extend Enumerize
 
-  validates :name, presence: true
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
-  validates :status, presence: true
+  # validates :name, presence: true
+  # validates :email, presence: true
+  # validates :password, presence: true
+  # validates :password_confirmation, presence: true
 
   enumerize :status, in: %i[engineer beginner]
   has_many :books, dependent: :destroy
