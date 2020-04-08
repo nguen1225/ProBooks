@@ -29,7 +29,6 @@ FactoryBot.define do
     email { 'test@example.com' }
     status { 'engineer' }
     introduction { 'テストユーザーの自己紹介' }
-    admin { true }
     password { 'foobar' }
     password_confirmation { 'foobar' }
   end

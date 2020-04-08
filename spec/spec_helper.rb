@@ -19,17 +19,17 @@ RSpec.configure do |config|
   # end
 
   # database_cleaner
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :truncation
+  # end
 
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

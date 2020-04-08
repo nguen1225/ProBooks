@@ -28,7 +28,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i(github)
+         :omniauthable, omniauth_providers: %i[github]
 
   extend Enumerize
 
@@ -45,17 +45,14 @@ class User < ApplicationRecord
     SecureRandom.uuid
   end
 
-  def self.find_for_github_oauth(auth, signed_in_resource=nil)
+  def self.find_for_github_oauth(auth, _signed_in_resource = nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
 
-    unless user
-      user = User.new(provider: auth.provider,
-                      uid:      auth.uid,
-                      name:     auth.info.name,
-                      email:    User.dummy_email(auth),
-                      password: Devise.friendly_token[0, 20]
-      )
-    end
+    user ||= User.new(provider: auth.provider,
+                      uid: auth.uid,
+                      name: auth.info.name,
+                      email: User.dummy_email(auth),
+                      password: Devise.friendly_token[0, 20])
     user.save
     user
   end

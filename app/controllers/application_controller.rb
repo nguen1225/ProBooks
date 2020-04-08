@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
                                                          email
                                                          password
                                                          password_confirmation
-                                                         status
-                                                         admin])
+                                                         ])
   end
 end

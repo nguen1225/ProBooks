@@ -19,7 +19,7 @@ FactoryBot.define do
   factory :book do
     title { 'テスト' }
     content { 'テストコンテント' }
-    category { 'テストカテゴリ' }
+    category { 'html' }
     user
   end
 end
