@@ -18,13 +18,13 @@ p レビュー一覧
 p レビューを書く
 
 = form_with model: @review, url: book_reviews_path(@book), local: true do |f|
-	= f.label :title
+	= f.label :title, 'タイトル'
 	= f.text_field :title
 
-	= f.label :body
+	= f.label :body, '内容'
 	= f.text_area :body
 
-	= f.label :rate
+	= f.label :rate, '評価'
 	= f.text_field :rate
 
 	= f.hidden_field :user_id, value: current_user.id

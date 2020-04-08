@@ -2,11 +2,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit destroy]
 
   def index
-    if params[:tag]
-      @books = Book.tagged_with(params[:tag])
-    else
-      @books = Book.all
-    end
+    @books = if params[:tag]
+               Book.tagged_with(params[:tag])
+             else
+               Book.all
+             end
   end
 
   def new
@@ -28,11 +28,9 @@ class BooksController < ApplicationController
     @reviews = Review.where(params[:book_id])
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @book.destroy

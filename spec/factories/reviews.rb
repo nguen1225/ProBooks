@@ -18,8 +18,8 @@
 #
 FactoryBot.define do
   factory :review do
-    title { "MyString" }
-    body { "MyText" }
+    title { 'MyString' }
+    body { 'MyText' }
     rate { 1.5 }
     user_id { nil }
     book_id { nil }
