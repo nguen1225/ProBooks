@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   enumerize :status, in: %i[engineer beginner]
   has_many :books, dependent: :destroy
-
+  has_many :reviews, dependent: :destroy
 
   def self.create_unique_string
     SecureRandom.uuid
