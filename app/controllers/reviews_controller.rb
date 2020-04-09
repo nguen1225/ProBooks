@@ -5,7 +5,10 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to book_path(@book), notice: '投稿しました'
     else
-      redirect_back(fallback_location: root_path)
+      @clap = Clap.new
+      @review = Review.new(review_params)
+      @reviews = Review.where(params[:book_id])
+      render template: 'books/show'
     end
   end
 

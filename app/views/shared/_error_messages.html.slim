@@ -1,0 +1,8 @@
+- if model.errors.any?
+	#error_explanation
+		h2 = model.errors.count
+	ul
+		- model.errors.full_messages.each do |message|
+			li = message
+
+

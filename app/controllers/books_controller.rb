@@ -33,7 +33,7 @@ class BooksController < ApplicationController
 
   def update
     @book.update(book_params)
-    redirect_to book_path(@book), notice: "更新しました"
+    redirect_to book_path(@book), notice: '更新しました'
   end
 
   def destroy
