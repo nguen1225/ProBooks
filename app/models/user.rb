@@ -38,9 +38,11 @@ class User < ApplicationRecord
   # validates :password_confirmation, presence: true
 
   enumerize :status, in: %i[engineer beginner]
-  has_many :books, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  has_many  :books,   dependent: :destroy
+  has_many  :reviews, dependent: :destroy
+  has_many  :claps,   dependent: :destroy
 
+  # GitHub認証メソッド
   def self.create_unique_string
     SecureRandom.uuid
   end
