@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[show edit destroy]
+  before_action :set_book, only: %i[show edit destroy update]
 
   def index
     @books = if params[:tag]
@@ -30,7 +30,10 @@ class BooksController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    @book.update(book_params)
+    redirect_to book_path(@book), notice: "更新しました"
+  end
 
   def destroy
     @book.destroy
