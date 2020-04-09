@@ -21,7 +21,7 @@ RSpec.feature '書籍CRUD', type: :feature do
   end
 
   scenario '書籍の編集ができる' do
-    #書籍の登録
+    # 書籍の登録
     visit new_book_path
     fill_in 'Title', with: 'テスト'
     fill_in 'Content', with: 'テスト'
@@ -30,7 +30,7 @@ RSpec.feature '書籍CRUD', type: :feature do
 
     expect(page).to have_link '編集'
     click_link '編集'
-    #編集項目入力
+    # 編集項目入力
     fill_in 'Title', with: '変更'
     fill_in 'Content', with: '変更しました'
     select 'Ruby', from: 'Category'
