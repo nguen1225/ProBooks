@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require rails-ujs
 //= require jquery_ujs
 //= require materialize
 //= require activestorage
 //= require_tree .
+
 
 $(document).ready(function(){
 	$('select').formSelect();
