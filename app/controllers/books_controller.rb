@@ -24,6 +24,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @clap = Clap.new
     @review = Review.new
     @reviews = Review.where(params[:book_id])
   end

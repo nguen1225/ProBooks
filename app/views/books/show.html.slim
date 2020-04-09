@@ -15,6 +15,16 @@ p レビュー一覧
 	p = review.title
 	p = review.body
 	p id="star-rate-#{review.id}"
+	/　いいね
+	- if current_user.claps.find_by(review_id: review.id)
+		- review.claps.each do |clap|
+			= link_to '取り消す', book_review_clap_path(@book, review, clap), method: :delete, class: "btn"
+	- else
+		= link_to '参考になった', book_review_claps_path(@book, review),method: :post, class: "btn"
+	= review.claps.count
+	- if current_user == review.user
+		p = link_to '削除する', book_review_path(@book, review), method: :deletpe, class: "btn"
+	/ スターの表示
 	javascript:
 		$('#star-rate-#{review.id}').raty({
 			size: 36,
@@ -26,8 +36,6 @@ p レビュー一覧
 			readOnly: true,
 			score: "#{review.rate}"
 		});
-	- if current_user == review.user
-		p = link_to '削除する', book_review_path(@book, review), method: :delete
 
 
 p レビューを書く
