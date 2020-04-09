@@ -1,6 +1,8 @@
 p = @book.title
 p = @book.content
 p = @book.category
+p 評価平均
+span id="star-avg"
 p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
 
@@ -12,22 +14,55 @@ p レビュー一覧
 - @reviews.each do |review|
 	p = review.title
 	p = review.body
+	p id="star-rate-#{review.id}"
+	javascript:
+		$('#star-rate-#{review.id}').raty({
+			size: 36,
+			starOff: "#{asset_path('star-off.png')}",
+			starOn: "#{asset_path('star-on.png')}",
+			starHalf: "#{asset_path('star-half.png')}",
+			scoreName: 'review[rate]',
+			half: true,
+			readOnly: true,
+			score: "#{review.rate}"
+		});
 	- if current_user == review.user
 		p = link_to '削除する', book_review_path(@book, review), method: :delete
 
+
 p レビューを書く
-
 = form_with model: @review, url: book_reviews_path(@book), local: true do |f|
-	= f.label :title, 'タイトル'
-	= f.text_field :title
-
-	= f.label :body, '内容'
-	= f.text_area :body
-
-	= f.label :rate, '評価'
-	= f.text_field :rate
+	.field
+		= f.label :title, 'タイトル'
+		= f.text_field :title
+	.field
+		= f.label :body, '内容'
+		= f.text_area :body
+	.field#star
+		= f.label :rate, '評価'
+		= f.hidden_field :rate, id: :review_star
 
 	= f.hidden_field :user_id, value: current_user.id
 	= f.hidden_field :book_id, value: @book.id
 
 	= f.submit '評価する', class: "btn"
+
+javascript:
+	$('#star').raty({
+		size: 36,
+		starOff: "#{asset_path('star-off.png')}",
+		starOn: "#{asset_path('star-on.png')}",
+		starHalf: "#{asset_path('star-half.png')}",
+		scoreName: 'review[rate]',
+		half: true
+	});
+	$('#star-avg').raty({
+		size: 36,
+		starOff: "#{asset_path('star-off.png')}",
+		starOn: "#{asset_path('star-on.png')}",
+		starHalf: "#{asset_path('star-half.png')}",
+		scoreName: 'review[rate]',
+		half: true,
+		readOnly: true,
+		score: "#{@book.reviews.average(:rate).to_f.round(1)}",
+	});
