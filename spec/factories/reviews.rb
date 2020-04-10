@@ -18,10 +18,10 @@
 #
 FactoryBot.define do
   factory :review do
-    title { 'MyString' }
-    body { 'MyText' }
+    title { 'テストレビュー' }
+    body { 'レビューしました' }
     rate { 1.5 }
-    user_id { nil }
-    book_id { nil }
+    user
+    book
   end
 end
