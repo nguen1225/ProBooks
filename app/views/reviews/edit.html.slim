@@ -1,0 +1,6 @@
+- provide(:title, 'レビュー編集')
+
+p　レビューの編集
+= form_with model: @review, url: book_review_path(@book), local: true do |f|
+	= render 'shared/review_fields', { f: f, review: @review, book: @book }
+	= f.submit '評価する', class: "btn"

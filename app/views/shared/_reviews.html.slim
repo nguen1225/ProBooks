@@ -8,6 +8,7 @@ p レビュー一覧
 	= render 'shared/claps', { review: review, book: book }
 
 	- if current_user == review.user
+		p = link_to '編集する', edit_book_review_path(book, review), class: "btn"
 		p = link_to '削除する', book_review_path(book, review), method: :deletpe, class: "btn"
 	/ スターの表示
 	javascript:

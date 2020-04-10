@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :books do
-    resources :reviews, only: %i(create destroy) do
+    resources :reviews, only: %i(edit update create destroy) do
         resources :claps, only: %i(create destroy)
     end
   end
