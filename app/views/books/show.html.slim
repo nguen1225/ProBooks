@@ -12,6 +12,7 @@ p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
 / レビュー一覧テンプレート
 = render 'shared/reviews', {reviews: @reviews, book: @book}
+
 / レビュー投稿フォーム
 p レビューを書く
 = form_with model: @review, url: book_reviews_path(@book), local: true do |f|
