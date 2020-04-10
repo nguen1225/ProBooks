@@ -13,7 +13,10 @@ p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 / レビュー一覧テンプレート
 = render 'shared/reviews', {reviews: @reviews, book: @book}
 / レビュー投稿フォーム
-= render 'shared/review_form', { review: @review, book: @book }
+p レビューを書く
+= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
+	= render 'shared/review_fields', { f: f, review: @review, book: @book}
+	= f.submit '評価する', class: "btn"
 
 / 評価平均の表示
 javascript:
