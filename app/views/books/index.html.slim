@@ -1,5 +1,22 @@
-p 一覧
+p 検索
+= search_form_for @q do |f|
+	= f.label :category, 'カテゴリ'
+	= f.select :category_eq, ['html','ruby', 'javascript', 'php'],
+							 {include_blank: "カテゴリ選択してください"}
+	= f.label :title
+	= f.search_field :title_cont
 
+	= f.submit '検索', class: "btn"
+
+// タグクラウド実装したい
+/ - @books.each do |book|
+/ 	- book.tags.each do |tag|
+/ 		= link_to tag, { :action => :index, :name => tag.name }
+
+/ / - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+/ / 	= link_to tag.name, { action: :index, name: tag.name }, :class => css_class
+
+p 一覧
 
 - @books.each do |book|
 	= link_to book.title, book_path(book)
