@@ -2,8 +2,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit destroy update]
 
   def index
+    @q = Book.ransack(params[:q])
     @books = if params[:tag]
                Book.tagged_with(params[:tag])
+             elsif @q
+               @q.result(distinct: true)
              else
                Book.all
              end
@@ -26,7 +29,7 @@ class BooksController < ApplicationController
   def show
     @clap = Clap.new
     @review = Review.new
-    @reviews = Review.where(params[:book_id])
+    @reviews = Review.where(book_id: params[:id])
   end
 
   def edit; end
@@ -40,6 +43,19 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path, notice: '削除しました'
   end
+
+  # def search
+  #   @search_category = params[:option]
+  #   if @search_category == 1
+  #     @search_books = Book.where(book_id: 1)
+  #   elsif @search_category == 2
+  #     @search_books = Book.where(category: "php")
+  #   elsif @search_category == 3
+  #     @search_books = Book.where(category: "ruby")
+  #   elsif @search_category == 4
+  #     @search_books = Book.where(category: "javascript")
+  #   end
+  # end
 
   private
 

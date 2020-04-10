@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.11'
@@ -64,5 +65,6 @@ gem 'material_icons'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'ransack'
 gem 'simple_form'
 gem 'slim-rails'

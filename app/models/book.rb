@@ -26,5 +26,5 @@ class Book < ApplicationRecord
   validates  :category,  presence: true
   validates  :user_id,   presence: true
 
-  enumerize :category, in: %i[html javascript ruby php]
+  enumerize :category, in: %i[html javascript ruby php css]
 end

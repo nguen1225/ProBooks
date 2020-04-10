@@ -69,6 +69,9 @@ GEM
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.1)
     capybara (3.32.0)
       addressable
@@ -187,6 +190,8 @@ GEM
     parallel (1.19.1)
     parser (2.7.1.0)
       ast (~> 2.4.0)
+    polyamorous (2.3.2)
+      activerecord (>= 5.2.1)
     pry (0.13.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -224,6 +229,11 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (13.0.1)
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+      polyamorous (= 2.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -314,6 +324,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.7.0)
+    uniform_notifier (1.13.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -340,6 +351,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
+  bullet
   byebug
   capybara (>= 2.15)
   carrierwave (~> 1.0)
@@ -362,6 +374,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.2)
+  ransack
   rspec-rails (~> 3.7)
   rubocop
   rubocop-rails

@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :sett_book,  only: [:edit, :update, :create]
+  before_action :set_review, only: %i[edit update destroy]
+  before_action :set_book, only: %i[edit update create]
   def create
     @book = Book.find(params[:book_id])
     @review = Review.new(review_params)
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   def update
     @book = Book.find(params[:book_id])
     if @review.update(review_params)
-      redirect_to book_path(@book), notice: "更新しました"
+      redirect_to book_path(@book), notice: '更新しました'
     else
       render :edit
     end
