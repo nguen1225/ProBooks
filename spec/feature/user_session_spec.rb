@@ -11,7 +11,7 @@ RSpec.feature 'Session', type: :feature do
 
   describe '機能' do
     it 'ログインできる' do
-      expect(page).to have_content 'Signed in successfully'
+     p expect(page).to have_content 'Signed in successfully'
     end
   end
 
