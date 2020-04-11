@@ -14,6 +14,14 @@ p 検索
 	.action
 		= f.submit '検索', class: "btn"
 
+= form_with url: books_path, method: :get, local: true do |f|
+	.field
+		= f.label :change, '並び替え'
+		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],['新しい順', 'created_at desc']],
+					include_blank: ('並び替えて検索')
+	.action
+		= f.submit '並べ替え', class: 'btn'
+
 
 // タグクラウド実装したい
 / - @books.each do |book|

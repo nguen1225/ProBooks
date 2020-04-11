@@ -7,6 +7,8 @@ class BooksController < ApplicationController
                Book.tagged_with(params[:tag])
              elsif params[:search]
                Book.search(@search_params).includes(:user)
+             elsif params[:change]
+               Book.order(params[:change]).includes(:reviews)
              else
                Book.all
              end
