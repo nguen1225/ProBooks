@@ -3,6 +3,8 @@
 p = @book.title
 p = @book.content
 p = @book.category
+- if @book.image.present?
+	= image_tag @book.image.url, size: "100x100"
 p 評価平均
 span id="star-avg"
 p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
