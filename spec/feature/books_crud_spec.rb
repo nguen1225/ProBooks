@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.feature '書籍CRUD', type: :feature do
   include LoginSupport
 
+  # let(:image_path) { File.join(Rails.root, 'spec/fixtures/default.jpg') }
+  # let(:image) { Rack::Test::Uploaded.new(image_path)}
+
   background do
     user = FactoryBot.create(:user)
     sign_in_as user
@@ -12,11 +15,13 @@ RSpec.feature '書籍CRUD', type: :feature do
     visit new_book_path
     fill_in 'Title', with: 'テスト'
     fill_in 'Content', with: 'テストしました'
+    attach_file 'book[image]', 'app/assets/images/rails.png'
     select 'Html', from: 'Category'
     click_on 'Create Book'
 
     expect(page).to have_content 'テスト'
     expect(page).to have_content 'テストしました'
+    expect(page).to have_selector("img[src$='rails.png']")
     expect(page).to have_content 'html'
   end
 
@@ -25,6 +30,7 @@ RSpec.feature '書籍CRUD', type: :feature do
     visit new_book_path
     fill_in 'Title', with: 'テスト'
     fill_in 'Content', with: 'テスト'
+    attach_file 'book[image]', 'app/assets/images/rails.png'
     select 'Html', from: 'Category'
     click_on 'Create Book'
 
@@ -33,11 +39,13 @@ RSpec.feature '書籍CRUD', type: :feature do
     # 編集項目入力
     fill_in 'Title', with: '変更'
     fill_in 'Content', with: '変更しました'
+    attach_file 'book[image]', 'app/assets/images/forest.jpg'
     select 'Ruby', from: 'Category'
     click_on 'Update Book'
 
     expect(page).to have_content '変更'
     expect(page).to have_content '変更しました'
+    expect(page).to have_selector("img[src$='forest.jpg']")
     expect(page).to have_content 'ruby'
   end
 
@@ -45,6 +53,7 @@ RSpec.feature '書籍CRUD', type: :feature do
     visit new_book_path
     fill_in 'Title', with: 'テスト'
     fill_in 'Content', with: 'テスト'
+    attach_file 'book[image]', 'app/assets/images/rails.png'
     select 'Html', from: 'Category'
     click_on 'Create Book'
 
@@ -53,4 +62,5 @@ RSpec.feature '書籍CRUD', type: :feature do
 
     expect(page).to have_content('削除しました')
   end
+
 end
