@@ -28,4 +28,15 @@ class Book < ApplicationRecord
 
   mount_uploader :image, ImagesUploader
   enumerize :category, in: %i[html javascript ruby php css]
+
+  scope :search, -> (search_params) do
+    return if search_params.blank?
+
+    title_like(search_params[:title])
+      .category_is(search_params[:category])
+      .user_id_is(search_params[:user_id])
+  end
+  scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
+  scope :category_is, -> (category) {where(category: category) if category.present? }
+  scope :user_id_is, -> (user_id) {where(user_id: user_id) if user_id.present? }
 end
