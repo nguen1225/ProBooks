@@ -18,12 +18,16 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
+  let(:image_path) { File.join(Rails.root, 'app/assets/images/rails.png') }
+  let(:image) { Rack::Test::UploadedFile.new(image_path) }
+
   it '全項目が正しく入力されていれば有効な状態' do
     user = FactoryBot.create(:user)
     book = Book.new(
       title: 'テストを学ぼう',
       content: 'ホゲホゲホゲホゲホゲ',
       category: 'html',
+      image: image,
       user_id: user.id
     )
     expect(book).to be_valid
