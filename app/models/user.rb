@@ -31,13 +31,12 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[github]
 
   extend Enumerize
-
+  enumerize :status, in: %i[engineer beginner]
+  mount_uploader :image, ImagesUploader
   # validates :name, presence: true
   # validates :email, presence: true
   # validates :password, presence: true
   # validates :password_confirmation, presence: true
-
-  enumerize :status, in: %i[engineer beginner]
   has_many  :books,   dependent: :destroy
   has_many  :reviews, dependent: :destroy
   has_many  :claps,   dependent: :destroy

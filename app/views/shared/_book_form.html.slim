@@ -1,8 +1,29 @@
-= simple_form_for book, local: true do |f|
-		= f.input :title
-		= f.input :content
-		= f.label  :category
-		= f.select :category, Book.category.options
-		= f.input :tag_list
-		= f.hidden_field :user_id, :value => current_user.id
-		= f.button :submit, class: "btn btn-primary"
+= simple_form_for book do |f|
+	= f.input :title
+	= f.input :content
+	= f.label  :category
+	= f.select :category, Book.category.options
+	= f.input :tag_list
+	= f.input :image, as: :file, id: :book_img
+	- if book.image.present?
+		= image_tag book.image.url, id: :book_prev, size: '100x100'
+	- else
+		= image_tag 'default.jpg', id: :book_prev, size: '100x100'
+	= f.hidden_field :user_id, :value => current_user.id
+	= f.button :submit, class: "btn btn-primary"
+
+javascript:
+	$(function() {
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+		$('#book_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#book_image").change(function(){
+			readURL(this);
+		});
+	});

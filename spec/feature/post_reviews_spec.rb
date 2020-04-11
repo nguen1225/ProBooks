@@ -41,7 +41,7 @@ RSpec.feature 'レビュー機能', type: :feature do
                                uid: 'hogehoeg')
     # ログイン（一人目）
     sign_in_as @user_a
-    # レビューの投稿
+    # レビューの投稿 -> レビューカウントが増える
     visit book_path(@book)
     expect do
       fill_in 'タイトル', with: '評価１'

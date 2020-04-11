@@ -26,5 +26,6 @@ class Book < ApplicationRecord
   validates  :category,  presence: true
   validates  :user_id,   presence: true
 
+  mount_uploader :image, ImagesUploader
   enumerize :category, in: %i[html javascript ruby php css]
 end

@@ -44,25 +44,13 @@ class BooksController < ApplicationController
     redirect_to books_path, notice: '削除しました'
   end
 
-  # def search
-  #   @search_category = params[:option]
-  #   if @search_category == 1
-  #     @search_books = Book.where(book_id: 1)
-  #   elsif @search_category == 2
-  #     @search_books = Book.where(category: "php")
-  #   elsif @search_category == 3
-  #     @search_books = Book.where(category: "ruby")
-  #   elsif @search_category == 4
-  #     @search_books = Book.where(category: "javascript")
-  #   end
-  # end
-
   private
 
   def book_params
     params.require(:book).permit(:title,
                                  :content,
                                  :category,
+                                 :image,
                                  :user_id,
                                  :tag_list)
   end
