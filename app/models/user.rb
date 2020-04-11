@@ -31,7 +31,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[github]
 
   extend Enumerize
-  enumerize :status, in: %i[engineer beginner]
+  enumerize :status, in: %i[engineer begineer]
   mount_uploader :image, ImagesUploader
   # validates :name, presence: true
   # validates :email, presence: true
