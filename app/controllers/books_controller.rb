@@ -2,11 +2,11 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit destroy update]
 
   def index
-    @q = Book.ransack(params[:q])
+    @search_params = book_search_params
     @books = if params[:tag]
                Book.tagged_with(params[:tag])
-             elsif @q
-               @q.result(distinct: true)
+             elsif params[:search]
+               Book.search(@search_params).includes(:user)
              else
                Book.all
              end
@@ -53,6 +53,12 @@ class BooksController < ApplicationController
                                  :image,
                                  :user_id,
                                  :tag_list)
+  end
+
+  def book_search_params
+    params.fetch(:search, {}).permit(:title,
+                                     :category,
+                                     :user_id)
   end
 
   def set_book

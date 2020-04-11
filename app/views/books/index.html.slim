@@ -1,12 +1,19 @@
 p 検索
-= search_form_for @q do |f|
-	= f.label :category, 'カテゴリ'
-	= f.select :category_eq, ['html','ruby', 'javascript', 'php'],
-							 {include_blank: "カテゴリ選択してください"}
-	= f.label :title
-	= f.search_field :title_cont
 
-	= f.submit '検索', class: "btn"
+= form_with scope: :search, url: books_path, method: :get, local: true do |f|
+	.field
+		= f.label :title
+		= f.text_field :title, value: @search_params[:title]
+	.field
+		= f.label :category
+		= f.select :category, ['html', 'ruby', 'javascript', 'php'], include_blank: ('選択してください'),
+				   :selected => @search_params[:category]
+	.field
+		= f.label :user_id, '投稿したユーザ'
+		= f.collection_select(:user_id, User.all, :id, :name, include_blank: ('全てのユーザ'))
+	.action
+		= f.submit '検索', class: "btn"
+
 
 // タグクラウド実装したい
 / - @books.each do |book|
