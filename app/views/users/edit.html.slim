@@ -1,0 +1,29 @@
+p ユーザー編集
+
+= simple_form_for @user do |f|
+	= f.input :name
+	= f.input :email
+	= f.input :introduction
+	= f.select :status, User.status.options
+	= f.input :image, as: :file, id: :user_image
+	- if @user.image.present?
+		= image_tag @user.image.url, id: :user_prev, size: '100x100'
+	- else
+		= image_tag 'default.jpg', id: :user_prev, size: '100x100'
+	= f.submit '更新', class: 'btn'
+
+javascript:
+	$(function() {
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+		$('#user_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#user_image").change(function(){
+			readURL(this);
+		});
+	});
