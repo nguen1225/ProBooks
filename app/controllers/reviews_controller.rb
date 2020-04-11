@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[edit update destroy]
   before_action :set_book, only: %i[edit update create]
+
   def create
     @book = Book.find(params[:book_id])
     @review = Review.new(review_params)
@@ -8,7 +9,6 @@ class ReviewsController < ApplicationController
       redirect_to book_path(@book), notice: '投稿しました'
     else
       @clap = Clap.new
-      @review = Review.new(review_params)
       @reviews = Review.where(params[:book_id])
       render template: 'books/show'
     end

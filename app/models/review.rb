@@ -17,8 +17,8 @@
 #  index_reviews_on_user_id  (user_id)
 #
 class Review < ApplicationRecord
-  validates :title,   presence: true, length: { maximum: 55 }
-  validates :body,    presence: true, length: { maximum: 255 }
+  validates :title,   presence: true, length: { maximum: 55 }, ng_word: true
+  validates :body,    presence: true, length: { maximum: 255 }, ng_word: true
   validates :rate,    presence: true
   validates :user_id, presence: true
   validates :book_id, presence: true

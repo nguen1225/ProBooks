@@ -12,6 +12,8 @@ module ProBooks
 
     #carrirewave
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+    #ng_words_validatiton
+    config.autoload_paths += %W(#{config.root}/app/validators)
 
     config.generators do |g|
       g.test_framework :rspec,
