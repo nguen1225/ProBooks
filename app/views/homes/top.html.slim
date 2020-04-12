@@ -1,17 +1,116 @@
 - provide(:title, 'Top')
 
-.main-wrapper
-	.authenticate-area
-		= link_to 'Sign Up', new_user_registration_path
-		= link_to 'Log In', new_user_session_path
-		hr
-		= link_to 'Githubアカウントで登録', user_github_omniauth_authorize_path
-.about-sec
-	.section-title
-		h3 About
-.flow-sec
-	.section-title
-		h3 Flow
-.contact-sec
-	.section-title
-		h3 Contact
+.top_main-sec
+	.authenticate-area.z-depth-3
+		.authenticate-link
+			p
+			  | 会員登録|ログイン
+		.authenticate-link
+			= link_to 'Sign Up', new_user_registration_path, class: 'btn signup-btn'
+		.authenticate-link
+			= link_to 'Log In', new_user_session_path, class: 'btn signin-btn'
+		.authenticate-link
+			= link_to 'Githubアカウントで登録', user_github_omniauth_authorize_path, class: 'btn github-btn'
+
+.top_tab-sec.container
+	/ タブ選択
+	ul.tabs
+		li.tab
+			a.active href="#tab_about"
+				| ABOUT
+		li.tab
+			a href="#tab_flow"
+				| FLOW
+		li.tab
+			a href="#tab_contact"
+				| CONTACT
+	/　各タブエリア
+	#tab_about
+		h3.top_section-title
+			| ABOUT
+		.top_about-box
+			p.about-image
+				= image_tag "default.jpg", class: 'materialboxed'
+			.about-content
+				h4
+					| 学びたい本がすぐ見つかる
+				p
+					| ホゲホゲホゲホゲホゲホゲ
+					| ホゲホゲホゲホゲホゲホゲ
+					| hogehogehogehoghoge
+				= link_to '書籍を探す', books_path, class: 'btn'
+		.top_about-box
+			.about-content
+				h4
+					| 学びたい本がすぐ見つかる
+				p
+					| ホゲホゲホゲホゲホゲホゲ
+					| ホゲホゲホゲホゲホゲホゲ
+					| hogehogehogehoghoge
+				= link_to '書籍を探す', books_path, class: 'btn'
+			p.about-image
+				= image_tag "default.jpg", class: 'materialboxed'
+	#tab_flow
+		h3.top_section-title
+			| FLOW
+		.top_flow-boxies
+			.flow-box
+				.flow-image
+					= image_tag 'default.jpg', class: 'circle', size: '100x100'
+				.flow-content
+					h4
+						| Search
+					p
+						| ホゲホゲホゲホゲ
+			i.material-icons arrow_forward
+			.flow-box
+				.flow-image
+					= image_tag 'default.jpg', class: 'circle', size: '100x100'
+				.flow-content
+					h4
+						| Search
+					p
+						| ホゲホゲホゲホゲ
+			i.material-icons arrow_forward
+			.flow-box
+				.flow-image
+					= image_tag 'default.jpg', class: 'circle', size: '100x100'
+				.flow-content
+					h4
+						| Search
+					p
+						| ホゲホゲホゲホゲ
+			i.material-icons arrow_forward
+			.flow-box
+				.flow-image
+					= image_tag 'default.jpg', class: 'circle', size: '100x100'
+				.flow-content
+					h4
+						| Search
+					p
+						| ホゲホゲホゲホゲ
+	#tab_contact
+		h3.top_section-title
+			| Contact
+		.top_contact-box
+			i.fab.fa-twitter
+			i.fab.fa-github
+			i.fab.fa-facebook-square
+
+
+
+
+
+/ .container
+/ 	.top_about-sec
+/ 		.section-title
+/ 			h3
+/ 			| About
+/ 	.top_flow-sec
+/ 		.section-title
+/ 			h3
+/ 			| Flow
+/ 	.top_contact-sec
+/ 		.section-title
+/ 			h3
+/ 			| Contact

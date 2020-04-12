@@ -33,7 +33,8 @@ class User < ApplicationRecord
   extend Enumerize
   enumerize :status, in: %i[engineer begineer]
   mount_uploader :image, ImagesUploader
-  # validates :name, presence: true
+  validates :name, ng_word: true
+  validates :introduction, ng_word:  true
   # validates :email, presence: true
   # validates :password, presence: true
   # validates :password_confirmation, presence: true

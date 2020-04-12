@@ -62,5 +62,4 @@ RSpec.feature '書籍CRUD', type: :feature do
 
     expect(page).to have_content('削除しました')
   end
-
 end

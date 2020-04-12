@@ -50,4 +50,16 @@ RSpec.describe Book, type: :model do
     book.valid?
     expect(book.errors[:user_id]).to include("can't be blank")
   end
+
+  it 'タイトルにNGワードが含まれている' do
+    book = Book.new(title: 'うんこ')
+    book.valid?
+    expect(book.errors[:title]).to include('のうんこはNGワードです')
+  end
+
+  it '内容にNGワードが含まれている' do
+    book = Book.new(content: 'うんこ')
+    book.valid?
+    expect(book.errors[:content]).to include('のうんこはNGワードです')
+  end
 end
