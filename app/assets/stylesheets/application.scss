@@ -15,4 +15,32 @@
  *= require_self
  */
 
- @import 'materialize';
+@import "materialize/components/color-variables";
+$primary-color: color("light-blue", "lighten-2") !default;
+$secondary-color: color("green", "lighten-2") !default;
+@import 'materialize';
+
+$base_white: #ffffff ;
+$text_color: #4e5665;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	font-family: 'Helvetica','Arial','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'sans-serif;
+	color: $text_color;
+}
+
+// header_nav
+nav {
+	text-align: center;
+	.bland-logo {
+		font-size: 24px;
+	}
+}
+
+// footer
+.page-footer {
+	height: 160px;
+}
+

@@ -16,23 +16,22 @@
 //= require activestorage
 //= require_tree .
 
-
+//simple_form select
 $(document).ready(function(){
 	$('select').formSelect();
 });
 
+// header_side_nav
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
 
-$(function() {
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function (e) {
-	$('#book_prev').attr('src', e.target.result);
-		}
-		reader.readAsDataURL(input.files[0]);
-		}
-	}
-	$("#book_img").change(function(){
-		readURL(this);
-	});
+//top_page tabs
+$(document).ready(function(){
+	$('.tabs').tabs();
+});
+
+// top_page image
+$(document).ready(function(){
+	$('.materialboxed').materialbox();
 });

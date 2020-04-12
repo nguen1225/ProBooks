@@ -97,5 +97,17 @@ RSpec.describe Review, type: :model do
       review.valid?
       expect(review.errors[:body]).to include('is too long (maximum is 255 characters)')
     end
+
+    it 'レビュータイトルNGワードが含まれている' do
+      review = Review.new(title: 'うんこ')
+      review.valid?
+      expect(review.errors[:title]).to include('のうんこはNGワードです')
+    end
+
+    it '投稿内容にNGワードが含まれている' do
+      review = Review.new(body: 'うんこ')
+      review.valid?
+      expect(review.errors[:body]).to include('のうんこはNGワードです')
+    end
   end
 end

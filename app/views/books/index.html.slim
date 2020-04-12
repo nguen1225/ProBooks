@@ -38,4 +38,3 @@ p 一覧
 	= book.content
 	- if book.image.present?
 		= image_tag book.image.url, size: "100x100"
-	= link_to '編集', edit_book_path(book), class: 'btn'

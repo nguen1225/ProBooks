@@ -1,3 +1,89 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'application';
+
+//top_page
+.top_main-sec {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background-image: url('main.jpg');
+	background-position: center;
+	background-size: cover;
+	height: 480px;
+	.authenticate-area {
+		width: 40%;
+		height: 80%;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-right: 5%;
+		background: $base_white;
+		opacity: 0.8;
+		.authenticate-link {
+			width: 100%;
+			opacity: 1;
+			text-align: center;
+		}
+	}
+}
+
+.top_tab-sec {
+	//タブ内共通css
+	.top_section-title {
+		text-align: center;
+	}
+	margin: 0 auto;
+	//各タブcss
+	#tab_about {
+		.top_about-box {
+			display: flex;
+			margin: 32px 0;
+			.about-image {
+				width: 50%;
+				img {
+					width: 100%;
+				}
+			}
+			.about-content {
+
+			}
+		}
+	}
+	#tab_flow {
+		.top_flow-boxies {
+			display: flex;
+			justify-content: space-between;
+			.flow-box {
+				.flow-image {
+
+				}
+				.flow-content {
+
+				}
+			}
+		}
+	}
+	#tab_contact {
+		.top_contact-box {
+			width: 50%;
+			margin: 0 auto;
+			text-align: center;
+			.fab{
+				font-size: 50px;
+				margin: 16px;
+			}
+			.fa-twitter {
+				color: #4fc3f7;
+			}
+			.fa-facebook-square {
+				color: #2979ff;
+			}
+			.fa-github {
+				color: #212121;
+			}
+		}
+	}
+}

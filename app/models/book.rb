@@ -22,7 +22,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
 
-  validates  :title,     presence: true
+  validates  :title,     presence: true, ng_word: true
+  validates  :content,   presence: true, ng_word: true
   validates  :category,  presence: true
   validates  :user_id,   presence: true
 

@@ -61,4 +61,16 @@ RSpec.describe User, type: :model do
   #   user.valid?
   #   expect(user.errors[:password_confirmation]).to include("can't be blank")
   # end
+
+  it '名前にNGワードが含まれていれば無効' do
+    user = User.new(name: 'うんこ')
+    user.valid?
+    expect(user.errors[:name]).to include('のうんこはNGワードです')
+  end
+
+  it '自己紹介文にNGワードが含まれている' do
+    user = User.new(introduction: 'うんこ')
+    user.valid?
+    expect(user.errors[:introduction]).to include('のうんこはNGワードです')
+  end
 end
