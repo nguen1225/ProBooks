@@ -1,53 +1,42 @@
-p 検索
+- provide(:title, '検索')
 
-= form_with scope: :search, url: books_path, method: :get, local: true do |f|
-	.field
-		= f.label :title
-		= f.text_field :title, value: @search_params[:title]
-	.field
-		= f.label :category
-		= f.select :category, ['html', 'ruby', 'javascript', 'php'], include_blank: ('選択してください'),
-				   :selected => @search_params[:category]
-	.field
-		= f.label :volume
-		= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
-				   :selected => @search_params[:volume]
-	.field
-		= f.label :lebel
-		= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
-				   :selected => @search_params[:level]
-	.action
-		= f.submit '検索', class: "btn"
+.container
+	.book_search-area
+		= render 'search'
+		/ = form_with url: books_path, method: :get, local: true do |f|
+		/ 	.field
+		/ 		= f.label :change, '並び替え'
+		/ 		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],
+		/ 							['新しい順', 'created_at desc'], ['古い順', 'created_at asc'],
+		/ 							['レビュー数が多い順', 'reviews desc']],
+		/ 					include_blank: ('並び替え')
+		/ 	.action
+		/ 		= f.submit '並べ替え', class: 'btn'
 
-= form_with url: books_path, method: :get, local: true do |f|
-	.field
-		= f.label :change, '並び替え'
-		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],
-							 ['新しい順', 'created_at desc'], ['古い順', 'created_at asc'],
-							 ['レビュー数が多い順', 'reviews desc']],
-					include_blank: ('並び替え')
-	.action
-		= f.submit '並べ替え', class: 'btn'
+	// タグクラウド実装したい
+	/ - @books.each do |book|
+	/ 	- book.tags.each do |tag|
+	/ 		= link_to tag, { :action => :index, :name => tag.name }
+
+	/ / - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+	/ / 	= link_to tag.name, { action: :index, name: tag.name }, :class => css_class
 
 
-/ .field
-/ 		= f.label :user_id, '投稿したユーザ'
-/ 		= f.collection_select(:user_id, User.all, :id, :name, include_blank: ('全てのユーザ'))
-
-// タグクラウド実装したい
-/ - @books.each do |book|
-/ 	- book.tags.each do |tag|
-/ 		= link_to tag, { :action => :index, :name => tag.name }
-
-/ / - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-/ / 	= link_to tag.name, { action: :index, name: tag.name }, :class => css_class
-
-p 一覧
-
-- @books.each do |book|
-	= link_to book.title, book_path(book)
-	= book.content
-	p 評価平均
-	= book.reviews.count
-	- if book.image.present?
-		= image_tag book.image.url, size: "100x100"
+	.book_stock-area
+		p.book_section-title
+			| 書籍一覧
+		.book_section-cards
+			- @books.each do |book|
+				.card
+					.card-image
+						- if book.image.present?
+							= image_tag book.image.url
+						- else
+							= image_tag 'default.jpg'
+						span.card-title = book.title
+						= link_to book_path(book), class: 'btn-floating halfway-fab waves-effect waves-light orange darken-1' do
+							i.material-icons add
+					.card-content
+						= book.content
+						p レビュー数
+						= book.reviews.count

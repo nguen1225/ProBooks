@@ -18,12 +18,12 @@
 @import "materialize/components/color-variables";
 $primary-color: color("light-blue", "lighten-2") !default;
 $secondary-color: color("green", "lighten-2") !default;
-@import 'materialize';
-
 $base_white: #ffffff ;
 $text_color: #4e5665;
+$paper_color: #fafafa;
+@import 'materialize';
 
-* {
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;

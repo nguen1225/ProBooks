@@ -14,29 +14,29 @@ ul.sidenav#side-out
 			= current_user.name
 			= current_user.email
 		li = link_to new_book_path do
-			i.material-icons art_track
+			i.material-icons content_paste
 			| 書籍の投稿
 		li = link_to books_path do
-			i.material-icons art_track
+			i.material-icons search
 			| 書籍を探す
 		li = link_to user_path(current_user) do
-			i.material-icons art_track
+			i.material-icons account_box
 			| マイページ
 		li = link_to users_path do
 			i.material-icons art_track
 			| 会員一覧
 		li = link_to destroy_user_session_path,method: :delete do
-			i.material-icons art_track
+			i.material-icons transfer_within_a_station
 			| ログアウト
 	- else
 		li = link_to new_user_registration_path do
-			i.material-icons art_track
+			i.material-icons person_add
 			| 新規登録
 		li = link_to new_user_session_path do
-			i.material-icons art_track
+			i.material-icons perm_identity
 			| ログイン
 		li = link_to '#' do
-			i.material-icons art_track
+			i.material-icons search
 			| 書籍を探す
 
 
