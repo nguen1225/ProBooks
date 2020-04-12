@@ -1,0 +1,19 @@
+p 検索
+= form_with scope: :search, url: books_path, method: :get, local: true do |f|
+	.field
+		= f.label :title
+		= f.text_field :title, value: @search_params[:title]
+	.field
+		= f.label :category
+		= f.select :category, ['html', 'ruby', 'javascript', 'php'], include_blank: ('選択してください'),
+				:selected => @search_params[:category]
+	.field
+		= f.label :volume
+		= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
+				:selected => @search_params[:volume]
+	.field
+		= f.label :lebel
+		= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
+				:selected => @search_params[:level]
+	.action
+		= f.submit '検索', class: "btn"

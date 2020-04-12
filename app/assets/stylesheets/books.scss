@@ -2,7 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'application';
 
 .emun-field {
 	margin: 16px;
+}
+
+//書籍一覧
+.book_stock-area {
+	.book_section-title {
+
+	}
+	.book_section-cards {
+		display: flex;
+		flex-wrap: wrap;
+		.card {
+			width: 250px;
+			margin-right: 10px;
+		}
+	}
 }

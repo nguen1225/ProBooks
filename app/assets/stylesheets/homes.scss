@@ -6,6 +6,7 @@
 
 //top_page
 .top_main-sec {
+	position: relative;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -14,30 +15,36 @@
 	background-size: cover;
 	height: 480px;
 	.authenticate-area {
-		width: 40%;
+		width: 30%;
 		height: 80%;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		margin-right: 5%;
-		background: $base_white;
-		opacity: 0.8;
+		background: rgba(255,255,255,0.8);
 		.authenticate-link {
 			width: 100%;
-			opacity: 1;
 			text-align: center;
+			.btn {
+				width: 50%;
+				opacity: 1.0;
+			}
+			.github-btn {
+				background: $text_color;
+				.fa-github {
+					margin-right: 5px;
+				}
+			}
 		}
 	}
 }
 
-.top_tab-sec {
-	//タブ内共通css
+.top_section {
 	.top_section-title {
 		text-align: center;
 	}
-	margin: 0 auto;
 	//各タブcss
-	#tab_about {
+	#top_about {
 		.top_about-box {
 			display: flex;
 			margin: 32px 0;
@@ -45,18 +52,47 @@
 				width: 50%;
 				img {
 					width: 100%;
+					height: 100%;
 				}
 			}
-			.about-content {
-
+			.content-title {
+				margin-top: 16px;
+				padding-left: 8px;
+				border-left: 16px solid $primary-color;
+			}
+			.about-content-ri {
+				margin-left: 16px;
+				position: relative;
+				.btn {
+					width: 40%;
+					position: absolute;
+					bottom: 0;
+					right: 0;
+				}
+			}
+			.about-content-le {
+				margin-right: 16px;
+				position: relative;
+				.btn {
+					width: 40%;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+				}
 			}
 		}
 	}
-	#tab_flow {
+	#top_flow {
+		background: $paper-color;
 		.top_flow-boxies {
 			display: flex;
+			align-items: center;
 			justify-content: space-between;
+			.material-icons {
+				font-size: 24px;
+			}
 			.flow-box {
+				text-align: center;
 				.flow-image {
 
 				}
@@ -66,7 +102,7 @@
 			}
 		}
 	}
-	#tab_contact {
+	#top_contact {
 		.top_contact-box {
 			width: 50%;
 			margin: 0 auto;
