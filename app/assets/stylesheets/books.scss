@@ -8,7 +8,7 @@
 	margin: 16px;
 }
 
-//書籍一覧
+//Book一覧
 .book_search-form {
 	background: $paper-color;
 	padding: 8px;
@@ -24,5 +24,19 @@
 			width: 250px;
 			margin-right: 10px;
 		}
+	}
+}
+
+//Book詳細
+
+.book_description_area {
+	display: flex;
+	.image_size {
+		width: 40%;
+		.book_image {
+		}
+	}
+	.book_description {
+
 	}
 }

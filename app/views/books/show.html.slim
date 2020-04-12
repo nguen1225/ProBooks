@@ -1,27 +1,36 @@
 - provide(:title, "#{@book.title}")
 
-p = @book.title
-p = @book.content
-p = @book.level
-p = @book.volume
-p = @book.category
-- if @book.image.present?
-	= image_tag @book.image.url, size: "100x100"
-p 評価平均
-span id="star-avg"
-p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
+.container
+	h3
+		= @book.title
+	.book_description_area
+		p.image_size
+			- if @book.image.present?
+				= image_tag @book.image.url, class: 'book_image', size: '300x360'
+			- else
+				= image_tag 'default.jpg', class: 'book_image', size: '300x360'
+		.book_description
+			p = @book.content
+			p = @book.level
+			p = @book.volume
+			p = @book.category
+			- if @book.image.present?
+				= image_tag @book.image.url, size: "100x100"
+			p 評価平均
+			span id="star-avg"
+			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
-= link_to '編集', edit_book_path(@book), class: "btn"
-= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn"
+			= link_to '編集', edit_book_path(@book), class: "btn"
+			= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn"
 
-/ レビュー一覧テンプレート
-= render 'shared/reviews', {reviews: @reviews, book: @book}
+	/ レビュー一覧テンプレート
+	= render 'shared/reviews', {reviews: @reviews, book: @book}
 
-/ レビュー投稿フォーム
-p レビューを書く
-= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
-	= render 'shared/review_fields', { f: f, review: @review, book: @book}
-	= f.submit '評価する', class: "btn"
+	/ レビュー投稿フォーム
+	p レビューを書く
+	= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
+		= render 'shared/review_fields', { f: f, review: @review, book: @book}
+		= f.submit '評価する', class: "btn"
 
 / 評価平均の表示
 javascript:
