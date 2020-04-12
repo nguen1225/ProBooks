@@ -8,7 +8,7 @@ class BooksController < ApplicationController
              elsif params[:search]
                Book.search(@search_params).includes(:user)
              elsif params[:change]
-               Book.order(params[:change]).includes(:reviews)
+               Book.order(params[:change]).includes(:reviws)
              else
                Book.all
              end
@@ -52,6 +52,8 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title,
                                  :content,
                                  :category,
+                                 :volume,
+                                 :level,
                                  :image,
                                  :user_id,
                                  :tag_list)

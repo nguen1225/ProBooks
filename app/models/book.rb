@@ -6,7 +6,9 @@
 #  category   :string           not null
 #  content    :text
 #  image      :string
+#  level      :string
 #  title      :string           not null
+#  volume     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer          not null
@@ -16,7 +18,6 @@
 #  index_books_on_user_id  (user_id)
 #
 class Book < ApplicationRecord
-  extend Enumerize
   acts_as_taggable
 
   belongs_to :user
@@ -28,16 +29,22 @@ class Book < ApplicationRecord
   validates  :user_id,   presence: true
 
   mount_uploader :image, ImagesUploader
+
+  extend Enumerize
   enumerize :category, in: %i[html javascript ruby php css]
+  enumerize :level, in: %i[easy normal hard]
+  enumerize :volume, in: %i[few medium many]
 
   scope :search, -> (search_params) do
     return if search_params.blank?
 
     title_like(search_params[:title])
       .category_is(search_params[:category])
-      .user_id_is(search_params[:user_id])
+      .level_is(search_params[:level])
+      .volume_is(search_params[:volume])
   end
   scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
   scope :category_is, -> (category) {where(category: category) if category.present? }
-  scope :user_id_is, -> (user_id) {where(user_id: user_id) if user_id.present? }
+  scope :level_is, -> (level) { where(level: level) if level.present? }
+  scope :volume_is, -> (volume) { where(volume: volume) if volume.present? }
 end
