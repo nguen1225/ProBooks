@@ -8,7 +8,7 @@ p = @book.category
 - if @book.image.present?
 	= image_tag @book.image.url, size: "100x100"
 p 評価平均
-span id="star-avg"	
+span id="star-avg"
 p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
 = link_to '編集', edit_book_path(@book), class: "btn"

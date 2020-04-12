@@ -1,8 +1,17 @@
 - provide(:title, '検索')
 
-.container
-	.book_search-area
+.book_index-area.container
+	ul.tabs
+		li.tab
+			a href="#search"
+				| 詳細検索
+		li.tab
+			a href="#tag_search"
+				| タグ検索
+	#search
 		= render 'search'
+	#tag_search
+		p タグクラウど
 		/ = form_with url: books_path, method: :get, local: true do |f|
 		/ 	.field
 		/ 		= f.label :change, '並び替え'
@@ -19,7 +28,7 @@
 	/ 		= link_to tag, { :action => :index, :name => tag.name }
 
 	/ / - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-	/ / 	= link_to tag.name, { action: :index, name: tag.name }, :class => css_class
+	/ / 	= link_to tag.name, { action: :index, name: tag.name }, :class => css_clas
 
 
 	.book_stock-area
@@ -27,7 +36,7 @@
 			| 書籍一覧
 		.book_section-cards
 			- @books.each do |book|
-				.card
+				.card.hoverable
 					.card-image
 						- if book.image.present?
 							= image_tag book.image.url
@@ -38,5 +47,23 @@
 							i.material-icons add
 					.card-content
 						= book.content
-						p レビュー数
-						= book.reviews.count
+						p
+							| みんなの評価
+						- if book.reviews.present?
+							span
+								| まだレビューがありません
+						- else
+							= book.reviews.count
+							p id="star-avg"
+				//評価平均
+				javascript:
+					$('#star-avg').raty({
+						size: 36,
+						starOff: "#{asset_path('star-off.png')}",
+						starOn: "#{asset_path('star-on.png')}",
+						starHalf: "#{asset_path('star-half.png')}",
+						scoreName: 'review[rate]',
+						half: true,
+						readOnly: true,
+						score: "#{book.reviews.average(:rate).to_f.round(1)}",
+					})
