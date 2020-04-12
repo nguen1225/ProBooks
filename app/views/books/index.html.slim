@@ -9,19 +9,30 @@ p 検索
 		= f.select :category, ['html', 'ruby', 'javascript', 'php'], include_blank: ('選択してください'),
 				   :selected => @search_params[:category]
 	.field
-		= f.label :user_id, '投稿したユーザ'
-		= f.collection_select(:user_id, User.all, :id, :name, include_blank: ('全てのユーザ'))
+		= f.label :volume
+		= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
+				   :selected => @search_params[:volume]
+	.field
+		= f.label :lebel
+		= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
+				   :selected => @search_params[:level]
 	.action
 		= f.submit '検索', class: "btn"
 
 = form_with url: books_path, method: :get, local: true do |f|
 	.field
 		= f.label :change, '並び替え'
-		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],['新しい順', 'created_at desc']],
-					include_blank: ('並び替えて検索')
+		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],
+							 ['新しい順', 'created_at desc'], ['古い順', 'created_at asc'],
+							 ['レビュー数が多い順', 'reviews desc']],
+					include_blank: ('並び替え')
 	.action
 		= f.submit '並べ替え', class: 'btn'
 
+
+/ .field
+/ 		= f.label :user_id, '投稿したユーザ'
+/ 		= f.collection_select(:user_id, User.all, :id, :name, include_blank: ('全てのユーザ'))
 
 // タグクラウド実装したい
 / - @books.each do |book|
@@ -36,5 +47,7 @@ p 一覧
 - @books.each do |book|
 	= link_to book.title, book_path(book)
 	= book.content
+	p 評価平均
+	= book.reviews.count
 	- if book.image.present?
 		= image_tag book.image.url, size: "100x100"

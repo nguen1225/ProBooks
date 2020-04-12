@@ -2,6 +2,8 @@
 
 p = @book.title
 p = @book.content
+p = @book.level
+p = @book.volume
 p = @book.category
 - if @book.image.present?
 	= image_tag @book.image.url, size: "100x100"
@@ -32,4 +34,4 @@ javascript:
 		half: true,
 		readOnly: true,
 		score: "#{@book.reviews.average(:rate).to_f.round(1)}",
-	});
+	})
