@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  review_id_claps  (review_id)
-#  user_id_claps    (user_id)
+#  index_claps_on_review_id  (review_id)
+#  index_claps_on_user_id    (user_id)
 #
 require 'rails_helper'
 
