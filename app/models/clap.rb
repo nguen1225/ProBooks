@@ -8,11 +8,6 @@
 #  review_id  :integer
 #  user_id    :integer
 #
-# Indexes
-#
-#  index_claps_on_review_id  (review_id)
-#  index_claps_on_user_id    (user_id)
-#
 class Clap < ApplicationRecord
   belongs_to :user
   belongs_to :review
