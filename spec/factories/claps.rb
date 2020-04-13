@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_claps_on_review_id  (review_id)
-#  index_claps_on_user_id    (user_id)
+#  review_id_claps  (review_id)
+#  user_id_claps    (user_id)
 #
 FactoryBot.define do
   factory :clap do
