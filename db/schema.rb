@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_04_12_062027) do
     t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_claps_on_review_id"
-    t.index ["user_id"], name: "index_claps_on_user_id"
+    # t.index ["review_id"], name: "index_claps_on_review_id"
+    # t.index ["user_id"], name: "index_claps_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
