@@ -52,6 +52,10 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
