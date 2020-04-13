@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
   # get 'tag/:tag_name', to: 'books#index'
   get 'tags/:tag', to: 'books#index', as: :tag
+  get 'tag/tag_name', to: 'books#index'
 end
