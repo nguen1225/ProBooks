@@ -6,6 +6,5 @@ class CreateClaps < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_foreign_key :user, :review
   end
 end
