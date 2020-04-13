@@ -3,6 +3,7 @@ class BooksController < ApplicationController
 
   def index
     @search_params = book_search_params
+    @tags = Book.tag_counts_on(:tags).order('count  DESC')
     @books = if params[:tag]
                Book.tagged_with(params[:tag])
              elsif params[:search]

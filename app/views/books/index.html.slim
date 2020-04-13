@@ -12,7 +12,10 @@
 		= render 'search'
 	#tag_search
 		p タグクラウど
-		/ = form_with url: books_path, method: :get, local: true do |f|
+	    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+	    	= link_to tag.name, tag_path(tag.name), :class => css_class
+
+/ = form_with url: books_path, method: :get, local: true do |f|
 		/ 	.field
 		/ 		= f.label :change, '並び替え'
 		/ 		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],
@@ -21,16 +24,6 @@
 		/ 					include_blank: ('並び替え')
 		/ 	.action
 		/ 		= f.submit '並べ替え', class: 'btn'
-
-	// タグクラウド実装したい
-	/ - @books.each do |book|
-	/ 	- book.tags.each do |tag|
-	/ 		= link_to tag, { :action => :index, :name => tag.name }
-
-	/ / - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-	/ / 	= link_to tag.name, { action: :index, name: tag.name }, :class => css_clas
-
-
 	.book_stock-area
 		p.book_section-title
 			| 書籍一覧

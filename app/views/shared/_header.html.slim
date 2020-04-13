@@ -10,7 +10,7 @@ ul.sidenav#side-out
 		li.user-view
 			.background
 				= image_tag 'default.jpg'
-			= image_tag current_user.image_url, class: 'circle'
+			= image_tag current_user.image.url, class: 'circle'
 			= current_user.name
 			= current_user.email
 		li = link_to new_book_path do
