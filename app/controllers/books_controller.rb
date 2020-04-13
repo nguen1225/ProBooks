@@ -32,6 +32,7 @@ class BooksController < ApplicationController
     @clap = Clap.new
     @review = Review.new
     @reviews = Review.where(book_id: params[:id])
+    @books = Book.where(category: params[:category])
   end
 
   def edit; end

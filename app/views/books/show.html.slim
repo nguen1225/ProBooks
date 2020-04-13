@@ -3,25 +3,50 @@
 .container
 	h3
 		= @book.title
-	.book_description_area
-		p.image_size
+	.book_description-area
+		p.image-size
 			- if @book.image.present?
 				= image_tag @book.image.url, class: 'book_image', size: '300x360'
 			- else
 				= image_tag 'default.jpg', class: 'book_image', size: '300x360'
 		.book_description
-			p = @book.content
-			p = @book.level
-			p = @book.volume
-			p = @book.category
-			- if @book.image.present?
-				= image_tag @book.image.url, size: "100x100"
-			p 評価平均
-			span id="star-avg"
-			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
-
+			table.book_table
+				tr
+					th
+						| 説明
+					td = @book.content
+				tr
+					th
+						| カテゴリ
+					td = @book.category
+				tr
+					th
+						| 本のボリューム
+					td = @book.volume
+				tr
+					th
+						| レベル
+					td = @book.level
+				tr
+					th
+						| 評価
+					td#star-avg
 			= link_to '編集', edit_book_path(@book), class: "btn"
 			= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn"
+
+			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
+
+	//関連書籍を出したい
+	p
+		| 関連書籍
+	.category-books
+		- @books.each do |book|
+			= book.title
+			- if @book.image.present?
+				= image_tag @book.image.url, class: 'book_image', size: '300x360'
+			- else
+				= image_tag 'default.jpg', class: 'book_image', size: '300x360'
+
 
 	/ レビュー一覧テンプレート
 	= render 'shared/reviews', {reviews: @reviews, book: @book}

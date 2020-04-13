@@ -29,14 +29,18 @@
 
 //Book詳細
 
-.book_description_area {
+.book_description-area {
 	display: flex;
-	.image_size {
+	.image-size {
 		width: 40%;
 		.book_image {
 		}
 	}
 	.book_description {
-
+		width: 100%;
+		.book_table {
+			width: 80%;
+			margin: 0 auto;
+		}
 	}
 }
