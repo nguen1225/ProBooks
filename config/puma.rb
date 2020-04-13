@@ -5,7 +5,7 @@
 # and maximum; this matches the default thread size of Active Record.
 #
 
-ind "unix://#{Rails.root}/tmp/sockets/puma.sock"
+bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 rails_root = Dir.pwd
 # 本番環境のみデーモン起動
 if Rails.env.production?
