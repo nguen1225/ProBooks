@@ -42,10 +42,10 @@
 	.category-books
 		- @books.each do |book|
 			= book.title
-			- if @book.image.present?
-				= image_tag @book.image.url, class: 'book_image', size: '300x360'
+			- if book.image.present?
+				= image_tag book.image.url, class: 'book_image', size: '100x100'
 			- else
-				= image_tag 'default.jpg', class: 'book_image', size: '300x360'
+				= image_tag 'default.jpg', class: 'book_image', size: '100x100'
 
 
 	/ レビュー一覧テンプレート

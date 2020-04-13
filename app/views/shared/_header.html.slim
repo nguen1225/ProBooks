@@ -25,6 +25,9 @@ ul.sidenav#side-out
 		li = link_to users_path do
 			i.material-icons art_track
 			| 会員一覧
+		li = link_to reviews_path do
+			i.material-icons art_track
+			| 最新レビュー
 		li = link_to destroy_user_session_path,method: :delete do
 			i.material-icons transfer_within_a_station
 			| ログアウト
