@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_062027) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_claps_on_review_id"
-    t.index ["user_id", "review_id"], name: "index_claps_on_user_id_and_review_id", unique: true
     t.index ["user_id"], name: "index_claps_on_user_id"
   end
 
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_062027) do
     t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
@@ -71,7 +69,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_062027) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
