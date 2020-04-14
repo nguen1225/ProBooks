@@ -29,18 +29,36 @@
 
 //Book詳細
 
-.book_description-area {
-	display: flex;
-	.image-size {
-		width: 40%;
-		.book_image {
+.book_show-page {
+	.book_description-area {
+		display: flex;
+		.image-size {
+			width: 40%;
+			.book_image {
+			}
+		}
+		.book_description {
+			width: 100%;
+			.book_table {
+				width: 80%;
+				margin: 0 auto;
+			}
 		}
 	}
-	.book_description {
-		width: 100%;
-		.book_table {
-			width: 80%;
-			margin: 0 auto;
+	.review_float-btn {
+		position: fixed;
+		bottom: -20px;
+		right: -20px;
+		padding: 48px;
+		background: $strong-color;
+		border-radius: 100%;
+		text-align: center;
+		// .float-btn-text {
+		// 	font-size: 8px;
+		// 	color: $text-color;
+		// }
+		.material-icons {
+			font-size: 40px;
 		}
 	}
 }

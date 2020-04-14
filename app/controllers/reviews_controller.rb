@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     else
       @clap = Clap.new
       @books = Book.where(category: params[:category])
-      @reviews = Review.where(params[:book_id])
+      @reviews = Review.where(book_id: params[:id]).page(params[:page])
       render template: 'books/show'
     end
   end
