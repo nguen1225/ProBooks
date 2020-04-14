@@ -34,7 +34,7 @@ class BooksController < ApplicationController
   def show
     @clap = Clap.new
     @review = Review.new
-    @reviews = Review.where(book_id: params[:id])
+    @reviews = Review.where(book_id: params[:id]).page(params[:page])
     @books = Book.where(category: @book.category)
   end
 

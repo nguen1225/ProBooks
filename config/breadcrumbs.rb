@@ -1,10 +1,6 @@
 crumb :root do
   link "トップページ", root_path
 end
-# crumb :issue do |issue|
-#   link issue.title, issue
-#   parent :issues
-# end
 
 #root~
 crumb :search do
@@ -24,13 +20,13 @@ end
 
 #root~
 crumb :my_page do |user|
-  link user.name, user_path(user)
+  link "#{user.name}", user_path(user)
   parent :root
 end
 
 crumb :user_edit do |user|
   link "ユーザー情報編集", edit_user_path(user)
-  parent :my_page
+  parent :my_page, user
 end
 
 #root~

@@ -1,3 +1,14 @@
 // Place all the styles related to the claps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'application';
+
+.not-clapping {
+	color: $strong-color;
+	font-size: 32px;
+}
+.clapping {
+	color: gray;
+	font-size: 32px;
+}

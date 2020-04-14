@@ -1,7 +1,7 @@
 - provide(:title, "#{@book.title}")
 - breadcrumb :book_page, @book
 
-.container
+.container.book_show-page
 	h3
 		= @book.title
 	.book_description-area
@@ -52,9 +52,9 @@
 	/ レビュー一覧テンプレート
 	= render 'shared/reviews', {reviews: @reviews, book: @book}
 
-	= link_to 'レビューする', '#modal1', class: "btn modal-trigger btn-floating btn-large waves-effect waves-light red"
+	= link_to '#modal1', class: "modal-trigger waves-effect review_float-btn" do
+		i.material-icons border_color
 
-	p レビューを書く
 	#modal1.modal.bottom-sheet
 		.modal-content
 			= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
