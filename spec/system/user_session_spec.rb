@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Session', type: :feature do
+RSpec.describe 'Session', type: :system do
   before do
     @user = FactoryBot.create(:user)
     visit new_user_session_path

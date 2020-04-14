@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'Book Tag UI', type: :feature do
-  background do
+RSpec.describe 'Book Tag UI', type: :system do
+  before do
     @user = FactoryBot.create(:user)
     visit new_user_session_path
     fill_in  'メールアドレス', with: 'test@example.com'
@@ -9,7 +9,7 @@ RSpec.feature 'Book Tag UI', type: :feature do
     click_on 'Log In'
   end
 
-  scenario '本にタグを紐付けることができる' do
+  it '本にタグを紐付けることができる' do
     # 書籍の登録
     visit new_book_path
     fill_in 'Title', with: 'タイトル'
@@ -29,7 +29,7 @@ RSpec.feature 'Book Tag UI', type: :feature do
     expect(page).to have_content 'タイトル'
   end
 
-  scenario '同じタグの書籍が複数表示される' do
+  it '同じタグの書籍が複数表示される' do
     # 書籍の登録(１冊目)
     visit new_book_path
     fill_in 'Title', with: 'first'

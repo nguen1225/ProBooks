@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.feature 'レビュー機能', type: :feature do
+RSpec.describe 'レビュー機能', type: :system do
   include LoginSupport
 
-  background do
+  before do
     @user_a = FactoryBot.create(:user, email: 'user_a@example.com')
     @book = FactoryBot.create(:book, user: @user_a)
   end
 
-  scenario 'レビューを投稿できる' do
+  it 'レビューを投稿できる' do
     # ログインしてレビューを投稿
     sign_in_as @user_a
     visit book_path(@book)
@@ -35,7 +35,7 @@ RSpec.feature 'レビュー機能', type: :feature do
     expect(page).to have_no_content 'テスト内容'
   end
 
-  scenario '自分の投稿したレビュー以外削除できない' do
+  it '自分の投稿したレビュー以外削除できない' do
     user_b = FactoryBot.create(:user,
                                email: 'user2@email.com',
                                uid: 'hogehoeg')

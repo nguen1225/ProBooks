@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.feature 'User', type: :feature do
+RSpec.describe 'User', type: :system do
   include LoginSupport
-  feature '機能' do
-    background do
+  describe '機能' do
+    before do
       visit root_path
     end
 
-    scenario '新規登録できる' do
+    it '新規登録できる' do
       click_on '新規登録'
       expect(current_path).to eq new_user_registration_path
 
@@ -20,13 +20,13 @@ RSpec.feature 'User', type: :feature do
       expect(page).to have_content 'Welcome!'
     end
 
-    feature 'ユーザ編集・詳細' do
-      background do
+    describe 'ユーザ編集・詳細' do
+      before do
         @user = FactoryBot.create(:user)
         sign_in_as @user
       end
 
-      scenario 'ユーザー情報を更新できる' do
+      it 'ユーザー情報を更新できる' do
         visit edit_user_path(@user)
         fill_in '名前',           with: '更新太郎'
         fill_in 'メールアドレス',   with: 'update@example.com'
@@ -41,7 +41,7 @@ RSpec.feature 'User', type: :feature do
         expect(page).to have_content 'engineer'
       end
 
-      scenario '他のユーザーの情報を更新できない' do
+      it '他のユーザーの情報を更新できない' do
         user_b = FactoryBot.create(:user,
                                    email: 'user2@email.com',
                                    uid: 'hogehoge')
@@ -55,7 +55,7 @@ RSpec.feature 'User', type: :feature do
         expect(page).to have_no_link '編集'
       end
 
-      scenario 'ユーザーの投稿したレビューが表示されている' do
+      it 'ユーザーの投稿したレビューが表示されている' do
         book = FactoryBot.create(:book,
                                   title: 'テストブック',
                                   user: @user)
@@ -71,12 +71,12 @@ RSpec.feature 'User', type: :feature do
 
   end
 
-  feature 'レイアウト' do
-    background do
+  describe 'レイアウト' do
+    before do
       visit new_user_registration_path
     end
 
-    scenario '新規登録後ヘッダー画面が変更' do
+    it '新規登録後ヘッダー画面が変更' do
       fill_in '名前',               with: 'テスト'
       fill_in  'メールアドレス',      with: 'test@example.com'
       fill_in  'パスワード',         with: 'foobar'

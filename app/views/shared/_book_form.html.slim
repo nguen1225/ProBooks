@@ -3,7 +3,7 @@
 	= f.input :content
 	.form
 		= f.label  :category
-		= f.select :category, Book.category.options
+		= f.select :category, Book.category.options, class: "category"
 	.form
 		= f.label  :level
 		= f.select :level, Book.level.options

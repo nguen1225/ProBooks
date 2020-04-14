@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'TopPage', type: :feature do
+RSpec.describe 'TopPage', type: :system do
   before do
     visit root_path
   end

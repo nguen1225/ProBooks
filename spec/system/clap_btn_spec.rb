@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature '参考になったボタン機能', type: :feature do
+RSpec.describe '参考になったボタン機能', type: :system do
   include LoginSupport
 
   before do
