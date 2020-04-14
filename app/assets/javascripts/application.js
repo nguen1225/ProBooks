@@ -35,3 +35,8 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('.materialboxed').materialbox();
 });
+
+//review modal
+$(document).ready(function(){
+    $('.modal').modal();
+});

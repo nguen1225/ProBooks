@@ -12,6 +12,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render 'shared/header'
+    .nav
+	    .nav-wrapper
+	      == breadcrumbs separator:" &rsaquo; ", class: "breadcrumb light-blue lighten-2"
     = render 'shared/flash_messages'
     = yield
     = render 'shared/footer'
