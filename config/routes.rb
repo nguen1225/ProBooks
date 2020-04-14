@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   resources :users, only: %i(index show edit update)
   resources :books do
+    resources :favorites, only: %i(create destroy)
     resources :reviews, only: %i(edit update create destroy) do
         resources :claps, only: %i(create destroy)
     end

@@ -23,6 +23,7 @@ class Book < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many :reviews,    dependent: :destroy
+  has_many :favorites,   dependent: :destroy
 
   validates  :title,     presence: true, ng_word: true
   validates  :content,   presence: true, ng_word: true
@@ -35,6 +36,12 @@ class Book < ApplicationRecord
   enumerize :level, in: %i[easy normal hard]
   enumerize :volume, in: %i[few medium many]
 
+  #お気にり機能(判定)
+  def favorite_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
+
+  #検索機能
   scope :search, -> (search_params) do
     return if search_params.blank?
 

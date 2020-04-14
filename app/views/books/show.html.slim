@@ -36,8 +36,11 @@
 			= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn"
 
 			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
+			//お気に入り
+			p id="book-favorite-#{@book.id}"
+				= render 'favorites/favorites', book: @book
 
-	//関連書籍を出したい
+	//関連書籍
 	p
 		| 関連書籍
 	.category-books
@@ -49,12 +52,13 @@
 				= image_tag 'default.jpg', class: 'book_image', size: '100x100'
 
 
-	/ レビュー一覧テンプレート
+	/ レビュー一覧
 	= render 'shared/reviews', {reviews: @reviews, book: @book}
 
 	= link_to '#modal1', class: "modal-trigger waves-effect review_float-btn" do
 		i.material-icons border_color
 
+	= link_to 'レビューを書く', '#modal1', class: "btn"
 	#modal1.modal.bottom-sheet
 		.modal-content
 			= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
