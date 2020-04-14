@@ -2,16 +2,16 @@
 #
 # Table name: books
 #
-#  id         :integer          not null, primary key
-#  category   :string           not null
-#  content    :text
-#  image      :string
-#  level      :string
-#  title      :string           not null
-#  volume     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer          not null
+#  id          :integer          not null, primary key
+#  content     :text
+#  image       :string
+#  level       :string
+#  title       :string           not null
+#  volume      :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#  user_id     :integer          not null
 #
 # Indexes
 #

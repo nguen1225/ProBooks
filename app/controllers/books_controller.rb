@@ -3,11 +3,12 @@ class BooksController < ApplicationController
 
   def index
     @search_params = book_search_params
+    @categories = Category.all
     @tags = Book.tag_counts_on(:tags).order('count  DESC')
     @books = if params[:tag]
                Book.tagged_with(params[:tag])
              elsif params[:search]
-               Book.search(@search_params).includes(:user)
+               Book.search(@search_params).includes(:category)
              elsif params[:change]
                Book.order(params[:change]).includes(:reviws)
              else
@@ -17,6 +18,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @categories = Category.all
   end
 
   def create
@@ -36,7 +38,9 @@ class BooksController < ApplicationController
     @books = Book.where(category: @book.category)
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+  end
 
   def update
     @book.update(book_params)
@@ -53,18 +57,19 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title,
                                  :content,
-                                 :category,
                                  :volume,
                                  :level,
                                  :image,
                                  :user_id,
+                                 :category_id,
                                  :tag_list)
   end
 
   def book_search_params
     params.fetch(:search, {}).permit(:title,
-                                     :category,
-                                     :user_id)
+                                     :category_id,
+                                     :few,
+                                     :volume)
   end
 
   def set_book

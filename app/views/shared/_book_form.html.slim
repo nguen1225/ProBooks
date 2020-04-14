@@ -2,8 +2,8 @@
 	= f.input :title
 	= f.input :content
 	.form
-		= f.label  :category
-		= f.select :category, Book.category.options, class: "category"
+		= f.label  :category_id
+		= f.collection_select :category_id, categories, :id, :name
 	.form
 		= f.label  :level
 		= f.select :level, Book.level.options

@@ -1,0 +1,1 @@
+$("#clap-<%= @review.id %>").html("<%= j(render partial: 'claps',locals: { review: @review, book: @review.book }) %>")

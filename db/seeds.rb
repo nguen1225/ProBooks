@@ -5,43 +5,52 @@
 # 	uid: "123456",
 # )
 
-10.times do |n|
-	name  = Faker::Name.name
-	email = "hogehoge-#{n+1}@example.org"
-	password = "password"
-	uid = "#{n+1}"
-	User.create!(name:  name,
-				 email: email,
-				 password:              password,
-				 password_confirmation: password,
-				 uid: uid)
-end
+# 10.times do |n|
+# 	name  = Faker::Name.name
+# 	email = "hogehoge-#{n+1}@example.org"
+# 	password = "password"
+# 	uid = "#{n+1}"
+# 	User.create!(name:  name,
+# 				 email: email,
+# 				 password:              password,
+# 				 password_confirmation: password,
+# 				 uid: uid)
+# end
+
+
+# #categoryデータ
+# Category.create!(
+# 	name: "HTML&CSS"
+# )
+# Category.create!(
+# 	name: "Javascript"
+# )
+# Category.create!(
+# 	name: "PHP"
+# )
+# Category.create!(
+# 	name: "Ruby"
+# )
+# Category.create!(
+# 	name: "AWS"
+# )
+# Category.create!(
+# 	name: "Phython"
+# )
+
+#Bookデータ
 
 Book.create!(
-	title: 'すごくわかるRuby',
-	content: 'ホゲホゲホゲホゲホゲほげ',
-	category: 'ruby',
-	user_id: 1,
-)
-Book.create!(
-	title: 'すごくわかるJavascript',
-	content: 'ホゲホゲホゲホゲホゲほげ',
-	category: 'javascript',
-	user_id: 1,
-)
-Book.create!(
-	title: 'すごくわかるPHP',
-	content: 'ホゲホゲホゲホゲホゲほげ',
-	category: 'php',
-	user_id: 1,
-)
-Book.create!(
-	title: 'すごくわかるHTML',
-	content: 'ホゲホゲホゲホゲホゲほげ',
-	category: 'html',
-	user_id: 1,
+	title: 'よくわかるruby',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 1,
+	user_id: 1
 )
 
+
+#レビューデータ
 10.times do |n|
 	title = "わかりやすい"
 	body = Faker::Lorem.sentence

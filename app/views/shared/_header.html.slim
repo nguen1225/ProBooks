@@ -2,17 +2,6 @@ nav.z-depth-1
 	.container
 		.nav-wrapper
 			= link_to 'ProBooks', root_path, class: 'bland-logo'
-			ul
-				- if current_user
-					li = link_to '本投稿', new_book_path
-					li = link_to '書籍を探す', books_path
-					li = link_to 'マイページ', user_path(current_user)
-					li = link_to '会員一覧', users_path
-					li = link_to 'ログアウト', destroy_user_session_path,method: :delete
-				- else
-					li = link_to '新規登録', new_user_registration_path
-					li = link_to 'ログイン', new_user_session_path
-					li = link_to '書籍を探す', '#'
 
 = link_to '#', data: { target: "side-out" }, class: 'sidenav-trigger' do
 				i.material-icons menu
