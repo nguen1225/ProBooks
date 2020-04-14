@@ -1,4 +1,5 @@
 - provide(:title, "#{@book.title}")
+- breadcrumb :book_page, @book
 
 .container
 	h3
@@ -51,11 +52,14 @@
 	/ レビュー一覧テンプレート
 	= render 'shared/reviews', {reviews: @reviews, book: @book}
 
-	/ レビュー投稿フォーム
+	= link_to 'レビューする', '#modal1', class: "btn modal-trigger btn-floating btn-large waves-effect waves-light red"
+
 	p レビューを書く
-	= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
-		= render 'shared/review_fields', { f: f, review: @review, book: @book}
-		= f.submit '評価する', class: "btn"
+	#modal1.modal.bottom-sheet
+		.modal-content
+			= form_with model: @review, url: book_reviews_path(@book), local: true do |f|
+				= render 'shared/review_fields', { f: f, review: @review, book: @book}
+				= f.submit '評価する', class: "btn"
 
 / 評価平均の表示
 javascript:
