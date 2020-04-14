@@ -7,6 +7,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Category < ApplicationRecord
-	has_many :books, dependent: :destroy
+FactoryBot.define do
+  factory :category do
+    name { "MyString" }
+  end
 end

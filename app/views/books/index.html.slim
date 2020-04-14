@@ -9,21 +9,13 @@
 			a href="#tag_search"
 				| キーワード検索
 	#search
-		= render 'search'
+		p　詳細検索
+		= render 'search', { search_params: @search_params, categories: @categories }
 	#tag_search
-		p タグクラウど
+		p キーワード検索
 	    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
 	    	= link_to tag.name, tag_path(tag.name), :class => css_class
 
-/ = form_with url: books_path, method: :get, local: true do |f|
-		/ 	.field
-		/ 		= f.label :change, '並び替え'
-		/ 		= f.select :change, [['評価の高い順','reviews.rate desc'], ['評価の低い順', 'reviews.rate asc'],
-		/ 							['新しい順', 'created_at desc'], ['古い順', 'created_at asc'],
-		/ 							['レビュー数が多い順', 'reviews desc']],
-		/ 					include_blank: ('並び替え')
-		/ 	.action
-		/ 		= f.submit '並べ替え', class: 'btn'
 	.book_stock-area
 		p.book_section-title
 			| 書籍一覧

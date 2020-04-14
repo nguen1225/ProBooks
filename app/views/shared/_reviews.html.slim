@@ -1,4 +1,3 @@
-p レビュー一覧
 - reviews.each do |review|
 	p = review.title
 	p = review.body
@@ -6,11 +5,12 @@ p レビュー一覧
 	p id="star-rate-#{review.id}"
 
 	/　いいねボタンフォーム
-	= render 'shared/claps', { review: review, book: book }
+	p id="clap-#{review.id}"
+		= render 'claps/claps', { review: review, book: review.book }
 
 	- if current_user == review.user
 		p = link_to '編集する', edit_book_review_path(book, review), class: "btn"
-		p = link_to '削除する', book_review_path(book, review), method: :deletpe, class: "btn"
+		p = link_to '削除する', book_review_path(book, review), method: :delete, class: "btn"
 	/ スターの表示
 	javascript:
 		$('#star-rate-#{review.id}').raty({
