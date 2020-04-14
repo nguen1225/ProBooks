@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+
   def edit
   end
 
@@ -12,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_reviews_count = @user.reviews.count
+    @user_craps_count = Clap.where(review_id: @user.reviews.ids).size
   end
 
   def index

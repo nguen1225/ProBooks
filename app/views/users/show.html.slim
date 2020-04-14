@@ -15,3 +15,15 @@
 - @user.reviews.each do |review|
 	= link_to review.book.title, book_path(review.book)
 	= review.title
+
+// ユーザーがお気に入りした本一覧
+
+
+.user_review-count
+	p
+		| レビューした回数
+	= @user_reviews_count
+.user_claps-count
+	p
+		| 拍手をもらった回数
+	= @user_craps_count
