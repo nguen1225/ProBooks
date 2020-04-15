@@ -1,6 +1,6 @@
 - if book.favorite_by?(current_user)
 	- book.favorites.each do |favorite|
-		= link_to book_favorite_path(favorite), method: :delete, class: "btn", remote: true do
+		= link_to book_favorite_path(favorite.book_id, favorite.id), method: :delete, class: "btn", remote: true do
 			span
 				| お気に入りから外す
 - else

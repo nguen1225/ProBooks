@@ -27,4 +27,9 @@ class Review < ApplicationRecord
   belongs_to :book
   has_many   :claps, dependent: :destroy
   paginates_per 5
+
+ #参考になった機能(判定)
+  def already_clap_by?(user)
+    claps.where(review_id: self.id).exists?
+  end
 end
