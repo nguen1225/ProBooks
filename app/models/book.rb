@@ -22,13 +22,13 @@ class Book < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  has_many :reviews,    dependent: :destroy
+  has_many :reviews,     dependent: :destroy
   has_many :favorites,   dependent: :destroy
 
-  validates  :title,     presence: true, ng_word: true
-  validates  :content,   presence: true, ng_word: true
+  validates  :title,        presence: true, ng_word: true
+  validates  :content,      presence: true, ng_word: true
   validates  :category_id,  presence: true
-  validates  :user_id,   presence: true
+  validates  :user_id,      presence: true
 
   mount_uploader :image, ImagesUploader
 
