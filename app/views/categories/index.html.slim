@@ -1,0 +1,16 @@
+- provide(:title, 'カテゴリー追加')
+
+- @categories.each do |category|
+	p
+		= category.name
+		= category.created_at
+		= category.updated_at
+
+
+p
+	| カテゴリーの追加
+= form_with model: @category, local: true do |f|
+	= f.label :name
+	= f.text_field :name
+
+	= f.submit '追加', class: 'btn'

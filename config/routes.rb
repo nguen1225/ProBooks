@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+  resources :categories, only: %i(index create destroy)
   resources :users, only: %i(index show edit update)
   resources :books do
     resources :favorites, only: %i(create destroy)
