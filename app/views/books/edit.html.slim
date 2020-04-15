@@ -1,6 +1,43 @@
 - provide(:title, '本の編集')
-- breadcrumb :edit_book, @book
+- breadcrumb :book_edit, @book
 
 p 編集
 
-= render 'shared/book_form', book: @book
+/ = render 'shared/book_form', book: @book, categories: @categories
+
+= simple_form_for @book do |f|
+	= f.input :title
+	= f.input :content
+	.form
+		= f.label  :category_id
+		= f.collection_select :category_id, @categories, :id, :name
+	.form
+		= f.label  :level
+		= f.select :level, Book.level.options
+	.form
+		= f.label  :volume
+		= f.select :volume, Book.volume.options
+	= f.input :tag_list
+	= f.input :image, as: :file, id: :book_img
+	- if @book.image.present?
+		= image_tag @book.image.url, id: :book_prev, size: '100x100'
+	- else
+		= image_tag 'default.jpg', id: :book_prev, size: '100x100'
+	= f.hidden_field :user_id, :value => current_user.id
+	= f.button :submit, class: "btn btn-primary"
+
+javascript:
+	$(function() {
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+		$('#book_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#book_image").change(function(){
+			readURL(this);
+		});
+	});

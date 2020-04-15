@@ -14,8 +14,8 @@ crumb :book_page do |book|
 end
 
 crumb :book_edit do |book|
-  link "#{book.title}編集", edit_book_path(book)
-  parent :book_page
+  link "#{book.title}の編集", edit_book_path(book)
+  parent :book_page, book
 end
 
 #root~
