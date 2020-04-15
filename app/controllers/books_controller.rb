@@ -12,7 +12,7 @@ class BooksController < ApplicationController
              elsif params[:change]
                Book.order(params[:change]).includes(:reviws)
              else
-               Book.all
+               Book.all.includes(:reviews)
              end
   end
 
