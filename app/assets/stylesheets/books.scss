@@ -72,13 +72,37 @@
 				width: 80%;
 				margin: 0 auto;
 			}
-			.edit-btn {
-				width: 50%;
-				background: $strong_color;
-			}
-			.delete-btn {
-				width: 50%;
-				background: #e57373;
+			.btn-wrap {
+				width: 90%;
+				margin: 8px auto;
+				.edit-btn {
+					display: inline-block;
+					width: 48%;
+					border: 1px solid $strong-color;
+					color: $strong-color;
+					border-radius: 16px;
+					text-align: center;
+					padding: 8px;
+					font-weight: bold;
+					&:hover {
+						background: $strong-color;
+						color: $base_white;
+					}
+				}
+				.delete-btn {
+					display: inline-block;
+					width: 48%;
+					border: 1px solid #e64a19;
+					color: #e64a19;
+					border-radius: 16px;
+					text-align: center;
+					padding: 8px;
+					font-weight: bold;
+					&:hover {
+						background: #e64a19;
+						color: $base_white;
+					}
+				}
 			}
 		}
 		.category-books {
@@ -92,9 +116,31 @@
 			}
 		}
 	}
-	.book_reveiws {
+	.book_reviews {
 		.book_review {
-			background: gray;
+			display: flex;
+			.review-user {
+			}
+			.review-content {
+				position: relative;
+				display: inline-block;
+				margin: 8px;
+				padding: 7px 10px;
+				min-width: 120px;
+				max-width: 100%;
+				color: #555;
+				font-size: 16px;
+				background: #e0edff;
+				&:before {
+					content: "";
+					position: absolute;
+					top: 50%;
+					right: -25px;
+					margin-top: -15px;
+					border: 15px solid transparent;
+					border-left: 15px solid #e0edff;
+				  }
+			  }
 		}
 	}
 	.review_float-btn {

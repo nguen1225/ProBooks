@@ -4,7 +4,7 @@
 .container.book_show-page
 	h3
 		= @book.title
-	.book_description-area
+	.book_description-area.z-depth-1
 		p.image-size
 			= image_tag(@book.image.to_s, :size => "300x360" || "default.jpg", :size => "300x360")
 		.book_description
@@ -30,8 +30,9 @@
 						| レベル
 					td = @book.level
 			- if current_user.id == @book.user_id
-				= link_to '編集', edit_book_path(@book), class: "btn edit-btn"
-				= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn delete-btn"
+				.btn-wrap
+					= link_to '編集', edit_book_path(@book), class: "edit-btn"
+					= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "delete-btn"
 
 			//お気に入り
 			p id="book-favorite-#{@book.id}"
@@ -40,9 +41,9 @@
 			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
 	//関連書籍
-	p
-		| 関連書籍
-	.category-books
+	.category-books.z-depth-1
+		p
+			| 関連書籍
 		- @books.each do |book|
 			p.inner-image
 				= image_tag(book.image.to_s, :size => "200x200" || "default.jpg", :size => "200x200")
@@ -53,18 +54,21 @@
 	.book_reviews
 		- @reviews.each do |review|
 			.book_review
-				p = review.title
-				p = review.body
-				p = link_to review.user.name, user_path(review.user)
-				p id="star-rate-#{review.id}"
+				.review-content.z-depth-1
+					p = review.title
+					p = review.body
+					p id="star-rate-#{review.id}"
 
-				/　いいねボタンフォーム
-				p id="clap-#{review.id}"
-					= render 'claps/claps', { review: review, book: review.book }
+					/　いいねボタンフォーム
+					p id="clap-#{review.id}"
+						= render 'claps/claps', { review: review, book: review.book }
 
-				- if current_user == review.user
-					p = link_to '編集する', edit_book_review_path(book, review), class: "btn"
-					p = link_to '削除する', book_review_path(book, review), method: :delete, class: "btn"
+					- if current_user == review.user
+						p = link_to '編集する', edit_book_review_path(book, review), class: "btn"
+						p = link_to '削除する', book_review_path(book, review), method: :delete, class: "btn"
+				.review-user
+					= image_tag(review.user.image.to_s, :size => '50x50' || 'default.jpg', :size => '50x50')
+					= link_to review.user.name, user_path(review.user)
 				/ スターの表示
 				javascript:
 					$('#star-rate-#{review.id}').raty({

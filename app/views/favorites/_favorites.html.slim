@@ -2,10 +2,10 @@
 	- book.favorites.each do |favorite|
 		span
 			| お気に入りに追加する
-		= link_to book_favorite_path(favorite.book_id, favorite.id), method: :delete, class: "btn btn-floating btn-large waves-effect waves-light orange", remote: true do
+		= link_to book_favorite_path(favorite.book_id, favorite.id), method: :delete, class: "btn btn-floating btn-large waves-effect waves-light orange lighten-2", remote: true do
 			i.material-icons add
 - else
 	span
 		| お気にりから外す
-	= link_to book_favorites_path(book), method: :post, class: "btn btn-floating btn-large waves-effect waves-light red", remote: true do
+	= link_to book_favorites_path(book), method: :post, class: "btn btn-floating btn-large waves-effect waves-light deep-orange lighten-2", remote: true do
 		i.material-icons remove
