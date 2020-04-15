@@ -1,11 +1,40 @@
-nav.z-depth-1
+nav
 	.container
 		.nav-wrapper
 			= link_to 'ProBooks', root_path, class: 'bland-logo'
-
-= link_to '#', data: { target: "side-out" }, class: 'sidenav-trigger' do
+			= link_to '#', data: { target: "mobile-demo" }, class: 'sidenav-trigger' do
 				i.material-icons menu
-ul.sidenav#side-out
+			ul.right.hide-on-med-and-down
+				- if current_user
+					li = link_to new_book_path do
+						i.tiny.material-icons content_paste
+						| 書籍の投稿
+					li = link_to books_path do
+						i.material-icons search
+						| 書籍を探す
+					li = link_to user_path(current_user) do
+						i.material-icons account_box
+						| マイページ
+					li = link_to reviews_path do
+						i.material-icons art_track
+						| 最新レビュー
+					li = link_to destroy_user_session_path,method: :delete do
+						i.material-icons transfer_within_a_station
+						| ログアウト
+				- else
+					li = link_to new_user_registration_path do
+						i.material-icons person_add
+						| 新規登録
+					li = link_to new_user_session_path do
+						i.material-icons perm_identity
+						| ログイン
+					li = link_to '#' do
+						i.material-icons search
+						| 書籍を探す
+
+
+
+ul.sidenav#mobile-demo
 	- if current_user
 		li.user-view
 			.background
@@ -41,16 +70,3 @@ ul.sidenav#side-out
 		li = link_to '#' do
 			i.material-icons search
 			| 書籍を探す
-
-
-/ ul.sidenav
-			/ 	- if current_user
-			/ 		li = link_to '本投稿', new_book_path
-			/ 		li = link_to '書籍を探す', books_path
-			/ 		li = link_to 'マイページ', user_path(current_user)
-			/ 		li = link_to '会員一覧', users_path
-			/ 		li = link_to 'ログアウト', destroy_user_session_path,method: :delete
-			/ 	- else
-			/ 		li = link_to '新規登録', new_user_registration_path
-			/ 		li = link_to 'ログイン', new_user_session_path
-			/ 		li = link_to '書籍を探す', '#'

@@ -18,6 +18,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @books = Book.all
     @categories = Category.all
   end
 
@@ -39,6 +40,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @books = Book.all
     @categories = Category.all
   end
 

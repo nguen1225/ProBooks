@@ -8,6 +8,27 @@
 	margin: 16px;
 }
 
+//Book登録ページ
+.book_new-page {
+	display: flex;
+	width: 90%;
+	margin: 16px auto;
+	.side-book-image {
+		width: 20%;
+		height: 50%;
+		.book-image {
+		}
+		.exist-book {
+			margin: 10px auto;
+		}
+	}
+	.book-form {
+		width: 70%;
+		margin: 0 auto;
+		padding: 16px;
+	}
+}
+
 //Book一覧
 .book_search-form {
 	background: $paper-color;

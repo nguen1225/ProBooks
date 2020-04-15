@@ -18,6 +18,7 @@
 #  index_books_on_user_id  (user_id)
 #
 class Book < ApplicationRecord
+  include Hashid::Rails
   acts_as_taggable
 
   belongs_to :user

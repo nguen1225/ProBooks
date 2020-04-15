@@ -1,23 +1,34 @@
-= simple_form_for book do |f|
-	= f.input :title
-	= f.input :content
-	.form
-		= f.label  :category_id
-		= f.collection_select :category_id, categories, :id, :name
-	.form
-		= f.label  :level
-		= f.select :level, Book.level.options
-	.form
-		= f.label  :volume
-		= f.select :volume, Book.volume.options
-	= f.input :tag_list
-	= f.input :image, as: :file, id: :book_img
-	- if book.image.present?
-		= image_tag book.image.url, id: :book_prev, size: '100x100'
-	- else
-		= image_tag 'default.jpg', id: :book_prev, size: '100x100'
-	= f.hidden_field :user_id, :value => current_user.id
-	= f.button :submit, class: "btn btn-primary"
+.book_new-page
+	.side-book-image
+		- if book.image.present?
+			p.book-image = image_tag book.image.url, id: :book_prev, size: '100x100'
+		- else
+			p.book-image = image_tag 'default.jpg', id: :book_prev, size: '100x100'
+	.book-form.z-depth-1
+		= form_with model: book, local: true do |f|
+			.form
+				= f.label :title
+				= f.text_field :title
+			.form
+				= f.label :content
+				= f.text_field :content
+			.form
+				= f.label  :category_id
+				= f.collection_select :category_id, categories, :id, :name
+			.form
+				= f.label  :level
+				= f.select :level, Book.level.options
+			.form
+				= f.label  :volume
+				= f.select :volume, Book.volume.options
+			.form
+				= f.label :tag_list
+				= f.text_field :tag_list
+			.form
+				= f.label :image
+				= f.file_field :image, id: :book_image
+			= f.hidden_field :user_id, :value => current_user.id
+			= f.button :submit, class: "btn"
 
 javascript:
 	$(function() {
