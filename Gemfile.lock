@@ -127,6 +127,10 @@ GEM
       activesupport (>= 4.2.0)
     gretel (3.0.9)
       rails (>= 3.1.0)
+    hashid-rails (1.4.0)
+      activerecord (>= 4.0)
+      hashids (~> 1.0)
+    hashids (1.0.5)
     hashie (4.1.0)
     hpricot (0.8.6)
     html2slim (0.2.0)
@@ -175,6 +179,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     mimemagic (0.3.4)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
@@ -371,6 +376,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.11)
   faker
   gretel
+  hashid-rails (~> 1.0)
   html2slim
   jbuilder (~> 2.5)
   jquery-rails
@@ -379,6 +385,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   material_icons
   materialize-sass (~> 1.0.0)
+  mini_magick
   mysql2
   omniauth
   omniauth-github

@@ -8,6 +8,11 @@ crumb :search do
   parent :root
 end
 
+crumb :new_book do
+  link '書籍の登録', new_book_path
+  parent :root
+end
+
 crumb :book_page do |book|
   link book.title, book_path(book)
   parent :search

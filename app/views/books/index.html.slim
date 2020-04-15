@@ -24,13 +24,8 @@
 			- @books.each do |book|
 				.card.hoverable
 					.card-image
-						- if book.image.present?
-							= image_tag book.image.url
-						- else
-							= image_tag 'default.jpg'
+						= image_tag(book.image.to_s || 'default.jpg')
 						span.card-title = book.title
-						= link_to book_path(book), class: 'btn-floating halfway-fab waves-effect waves-light orange darken-1' do
-							i.material-icons add
 					.card-content
 						= book.content
 						p
@@ -41,6 +36,8 @@
 						- else
 							= book.reviews.count
 							p id="star-avg"
+						.inner-btn
+							= link_to '詳細をみる', book_path(book), class: 'btn orange darken-1'
 				//評価平均
 				javascript:
 					$('#star-avg').raty({

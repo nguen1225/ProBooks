@@ -41,6 +41,11 @@ class Book < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  #サムネイルサイズ
+  def thumbnail
+    return self.image.variant(resize: '50x50')
+  end
+
   #検索機能
   scope :search, -> (search_params) do
     return if search_params.blank?

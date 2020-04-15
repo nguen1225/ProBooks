@@ -6,16 +6,17 @@
 		= @book.title
 	.book_description-area
 		p.image-size
-			- if @book.image.present?
-				= image_tag @book.image.url, class: 'book_image', size: '300x360'
-			- else
-				= image_tag 'default.jpg', class: 'book_image', size: '300x360'
+			= image_tag(@book.image.to_s, :size => "300x360" || "default.jpg", :size => "300x360")
 		.book_description
 			table.book_table
 				tr
 					th
+						| 評価
+					td#star-avg
+				tr
+					th
 						| 説明
-					td = @book.content
+					td = simple_format(@book.content)
 				tr
 					th
 						| カテゴリ
@@ -28,37 +29,60 @@
 					th
 						| レベル
 					td = @book.level
-				tr
-					th
-						| 評価
-					td#star-avg
-			= link_to '編集', edit_book_path(@book), class: "btn"
-			= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn"
+			- if current_user.id == @book.user_id
+				= link_to '編集', edit_book_path(@book), class: "btn edit-btn"
+				= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "btn delete-btn"
 
-			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 			//お気に入り
 			p id="book-favorite-#{@book.id}"
 				= render 'favorites/favorites', book: @book
+
+			p = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
 	//関連書籍
 	p
 		| 関連書籍
 	.category-books
 		- @books.each do |book|
+			p.inner-image
+				= image_tag(book.image.to_s, :size => "200x200" || "default.jpg", :size => "200x200")
 			= book.title
-			- if book.image.present?
-				= image_tag book.image.url, class: 'book_image', size: '100x100'
-			- else
-				= image_tag 'default.jpg', class: 'book_image', size: '100x100'
 
 
 	/ レビュー一覧
-	= render 'shared/reviews', {reviews: @reviews, book: @book}
+	.book_reviews
+		- @reviews.each do |review|
+			.book_review
+				p = review.title
+				p = review.body
+				p = link_to review.user.name, user_path(review.user)
+				p id="star-rate-#{review.id}"
+
+				/　いいねボタンフォーム
+				p id="clap-#{review.id}"
+					= render 'claps/claps', { review: review, book: review.book }
+
+				- if current_user == review.user
+					p = link_to '編集する', edit_book_review_path(book, review), class: "btn"
+					p = link_to '削除する', book_review_path(book, review), method: :delete, class: "btn"
+				/ スターの表示
+				javascript:
+					$('#star-rate-#{review.id}').raty({
+						size: 36,
+						starOff: "#{asset_path('star-off.png')}",
+						starOn: "#{asset_path('star-on.png')}",
+						starHalf: "#{asset_path('star-half.png')}",
+						scoreName: 'review[rate]',
+						half: true,
+						readOnly: true,
+						score: "#{review.rate}"
+					});
+		= paginate @reviews
+
 
 	= link_to '#modal1', class: "modal-trigger waves-effect review_float-btn" do
 		i.material-icons border_color
 
-	= link_to 'レビューを書く', '#modal1', class: "btn"
 	#modal1.modal.bottom-sheet
 		.modal-content
 			= form_with model: @review, url: book_reviews_path(@book), local: true do |f|

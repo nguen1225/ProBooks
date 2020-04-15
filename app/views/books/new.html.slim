@@ -1,5 +1,8 @@
 - provide(:title, "書籍の登録")
+- breadcrumb :new_book
 
-p 本の投稿
+.page_title
+	h4 技術書の登録
 
-= render 'shared/book_form',  { book: @book, categories: @categories }
+= render 'shared/book_form',  { book: @book,
+								categories: @categories}
