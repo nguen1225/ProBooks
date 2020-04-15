@@ -1,9 +1,9 @@
 .book_new-page
 	.side-book-image
 		- if book.image.present?
-			p.book-image = image_tag book.image.url, id: :book_prev, size: '100x100'
+			= image_tag book.image.url, id: :book_prev, size: '200x200'
 		- else
-			p.book-image = image_tag 'default.jpg', id: :book_prev, size: '100x100'
+			= image_tag 'default.jpg', id: :book_prev, size: '200x200'
 	.book-form.z-depth-1
 		= form_with model: book, local: true do |f|
 			.form

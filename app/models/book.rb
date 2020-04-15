@@ -18,7 +18,6 @@
 #  index_books_on_user_id  (user_id)
 #
 class Book < ApplicationRecord
-  include Hashid::Rails
   acts_as_taggable
 
   belongs_to :user
@@ -40,6 +39,11 @@ class Book < ApplicationRecord
   #お気にり機能(判定)
   def favorite_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  #サムネイルサイズ
+  def thumbnail
+    return self.image.variant(resize: '50x50')
   end
 
   #検索機能
