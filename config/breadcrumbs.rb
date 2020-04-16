@@ -29,6 +29,11 @@ crumb :my_page do |user|
   parent :root
 end
 
+crumb :notifications do
+    link "通知", notifications_path
+    parent :root
+end
+
 crumb :user_edit do |user|
   link "ユーザー情報編集", edit_user_path(user)
   parent :my_page, user
