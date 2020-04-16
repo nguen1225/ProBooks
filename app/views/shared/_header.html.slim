@@ -4,8 +4,14 @@ header
 			= link_to 'ProBooks', root_path, class: 'bland-logo'
 		ul.header-right
 			- if current_user
+				li.header-search
+					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
+						.field
+							= f.text_field :title, class: "search_field", placeholder: "検索"
+							= button_tag type: 'submit' do
+  								i.fa.fa-search
 				li = link_to new_book_path do
-					i.tiny.material-icons content_paste
+					i.material-icons content_paste
 					| 書籍の投稿
 				li = link_to books_path do
 					i.material-icons search
@@ -29,6 +35,3 @@ header
 				li = link_to '#' do
 					i.material-icons search
 					| 書籍を探す
-
-
-
