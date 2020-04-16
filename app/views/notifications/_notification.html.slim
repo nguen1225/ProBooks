@@ -1,0 +1,25 @@
+- visitor = notification.visitor
+- visited = notification.visited
+
+.notification-line
+	span
+		= link_to user_path(visitor) do
+			= image_tag visitor.image.to_s, size: '50x50'
+			strong
+				= visitor.name
+		| さんが
+		- case notification.action
+		- when 'review' then
+			- if notification.book.user_id == visited.id
+				= link_to 'あなたの登録した技術書', notification.book
+			- else
+				span
+					= link_to book_path(notification.book.id) do
+						= image_tag notification.book.user.image.to_s, class: "icon_mini"
+						strong
+							= notification.book.user.name
+							| さんの投稿
+			| にレビューしました
+		- when 'clap' then
+			= link_to 'あなたのレビュー', notification.book
+			| に拍手しました

@@ -3,6 +3,7 @@ class ClapsController < ApplicationController
     @review = Review.find(params[:review_id])
     @book = Book.find(params[:book_id])
     @clap = current_user.claps.create(clap_params)
+    @review.create_notification_clap!(current_user)
   end
 
   def destroy
