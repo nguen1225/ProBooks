@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module ProBooks
   class Application < Rails::Application
     config.load_defaults 5.2
+    config.i18n.default_locale = :ja
 
     #carrirewave
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]

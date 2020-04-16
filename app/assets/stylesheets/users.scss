@@ -41,3 +41,39 @@
 		}
 	}
 }
+
+//ユーザー編集画面
+.user_edit-page {
+	form {
+		display: flex;
+		width: 100%;
+		.user-avater {
+			width: 32%;
+			height: 50%;
+			text-align: center;
+			.input-file {
+				font-size: 8px;
+			}
+		}
+		.user-info {
+			width: 68%;
+			border: 2px solid $primary-color;
+			padding: 16px;
+			margin: 0 0 24px 0;
+			.success_btn {
+				display: inline-block;
+				width: 100%;
+				background: $strong_color;
+				color: $base_white;
+				border-radius: 15px;
+				text-align: center;
+				padding: 8px;
+				font-weight: bold;
+				&:hover {
+					background: $base_white;
+					color: $strong_color;
+				}
+			}
+		}
+	}
+}
