@@ -51,6 +51,18 @@
 	background: $paper-color;
 	padding: 8px;
 }
+.book_category-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	.language-wrap {
+		width: 25%;
+		margin: 8px;
+		background: #ef5350;
+		color: $base_white;
+		font-size: 24px;
+	}
+}
 .book_stock-area {
 	.book_section-title {
 

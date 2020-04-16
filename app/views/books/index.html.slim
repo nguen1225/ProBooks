@@ -1,7 +1,7 @@
 - provide(:title, '検索')
 - breadcrumb :search
 
-.book_index-area.container
+.book_index-area
 	ul.tabs
 		li.tab
 			a href="#search"
@@ -16,6 +16,12 @@
 		p キーワード検索
 	    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
 	    	= link_to tag.name, tag_path(tag.name), :class => css_class
+
+	.book_category-wrap
+		= link_to controller: "books", action: 'index', category_id: 1 do
+			.language-wrap.z-depth-1
+				p
+					| Ruby
 
 	.book_stock-area
 		p.book_section-title
