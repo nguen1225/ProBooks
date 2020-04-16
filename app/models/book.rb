@@ -18,6 +18,7 @@
 #  index_books_on_user_id  (user_id)
 #
 class Book < ApplicationRecord
+  # include Hashid::Rails
   acts_as_taggable
 
   belongs_to :user
@@ -35,6 +36,21 @@ class Book < ApplicationRecord
   extend Enumerize
   enumerize :level, in: %i[easy normal hard]
   enumerize :volume, in: %i[few medium many]
+
+  #出力する属性、順番を定義
+  def self.csv_attributes
+    ['title', 'content', 'category', 'created_at', 'updated_at']
+  end
+
+  #csvエクスポート
+  def self.generate_csv
+    CSV.generate(headers: true) do |csv|
+      csv << csv_attributes
+      all.each do |book|
+        csv << csv_attributes.map{ |attr| book.send(attr)}
+      end
+    end
+  end
 
   #お気にり機能(判定)
   def favorite_by?(user)

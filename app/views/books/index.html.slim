@@ -27,7 +27,6 @@
 						= image_tag(book.image.to_s || 'default.jpg')
 						span.card-title = book.title
 					.card-content
-						= book.content
 						p
 							| みんなの評価
 						- if book.reviews.present?
@@ -50,3 +49,4 @@
 						readOnly: true,
 						score: "#{book.reviews.average(:rate).to_f.round(1)}",
 					})
+= link_to 'エクスポート', books_path(format: :csv), class: 'export-btn'
