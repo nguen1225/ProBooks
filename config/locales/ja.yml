@@ -8,6 +8,8 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user:
+      book:
+      category:
     attributes:
         user:
           name: "名前"
@@ -16,6 +18,15 @@ ja:
           password_confirmation: 'パスワード（確認用）'
           status: 'ステータス'
           introduction: '自己紹介'
+        book:
+            title: "タイトル"
+            content: "内容"
+            level: "難易度"
+            category: "カテゴリ"
+            volume: "ボリューム"
+            tag_list: "タグ"
+        category:
+            category: "カテゴリ"
   date:
     abbr_day_names:
     - 日

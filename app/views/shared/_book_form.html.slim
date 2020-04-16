@@ -1,34 +1,39 @@
-.book_new-page
-	.side-book-image
-		- if book.image.present?
-			= image_tag book.image.url, id: :book_prev, size: '200x200'
-		- else
-			= image_tag 'default.jpg', id: :book_prev, size: '200x200'
-	.book-form.z-depth-1
-		= form_with model: book, local: true do |f|
-			.form
-				= f.label :title
-				= f.text_field :title
-			.form
-				= f.label :content
-				= f.text_field :content
-			.form
-				= f.label  :category_id
-				= f.collection_select :category_id, categories, :id, :name
-			.form
-				= f.label  :level
-				= f.select :level, Book.level.options
-			.form
-				= f.label  :volume
-				= f.select :volume, Book.volume.options
-			.form
-				= f.label :tag_list
-				= f.text_field :tag_list
-			.form
+.book_new_edit-page.z-depth-1
+	= form_with model: book, local: true do |f|
+		.side-image-field
+			- if book.image.present?
+				= image_tag book.image.url, id: :book_prev, size: '200x200'
+			- else
+				= image_tag 'default.jpg', id: :book_prev, size: '200x200'
+			.image-label
 				= f.label :image
+				br
 				= f.file_field :image, id: :book_image
-			= f.hidden_field :user_id, :value => current_user.id
-			= f.button :submit, class: "btn"
+		.input-text.z-depth-1
+				.input-field
+					= f.label :title
+					= f.text_field :title
+				.input-field
+					= f.label :content
+					= f.text_area :content
+				.input-field
+					= f.label  :category_id
+					br
+					= f.collection_select :category_id, categories, :id, :name
+				.input-field
+					= f.label  :level
+					br
+					= f.select :level, Book.level.options
+				.input-field
+					= f.label  :volume
+					br
+					= f.select :volume, Book.volume.options
+				.input-field
+					= f.label :tag_list
+					= f.text_field :tag_list
+				= f.hidden_field :user_id, :value => current_user.id
+				.action
+					= f.button :submit, class: "success_btn"
 
 javascript:
 	$(function() {

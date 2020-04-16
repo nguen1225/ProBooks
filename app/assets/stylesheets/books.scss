@@ -9,23 +9,40 @@
 }
 
 //Book登録ページ
-.book_new-page {
-	display: flex;
+.book_new_edit-page {
 	width: 90%;
-	margin: 16px auto;
-	.side-book-image {
-		width: 20%;
-		height: 50%;
-		.book-image {
+	margin: 24px auto;
+	form {
+		width: 100%;
+		display: flex;
+		.side-image-field {
+			width: 30%;
+			height: 50%;
+			margin: 16px;
+			text-align: center;
+			.image-label {
+			}
 		}
-		.exist-book {
-			margin: 10px auto;
+		.input-text {
+			width: 70%;
+			margin: 16px;
+			padding: 16px;
+			.success_btn {
+				display: inline-block;
+				width: 100%;
+				color: $base_white;
+				background: $strong_color;
+				border-radius: 16px;
+				text-align: center;
+				padding: 8px;
+				font-weight: bold;
+				&:hover {
+					background: $base_white;
+					color: $strong_color;
+					border: 1px solid #e64a19;
+				}
+			}
 		}
-	}
-	.book-form {
-		width: 70%;
-		margin: 0 auto;
-		padding: 16px;
 	}
 }
 
@@ -60,6 +77,7 @@
 	margin: 0 auto;
 	.book_description-area {
 		padding: 8px;
+		margin: 16px;
 		display: flex;
 		background: $paper-color;
 		.image-size {
@@ -75,16 +93,18 @@
 				margin: 0 auto;
 			}
 			.btn-wrap {
+				display: flex;
+				justify-content: space-around;
 				width: 90%;
-				margin: 8px auto;
+				margin: 16px auto;
 				.edit-btn {
 					display: inline-block;
-					width: 48%;
+					width: 40%;
+					padding: 8px;
 					border: 1px solid $strong-color;
 					color: $strong-color;
 					border-radius: 16px;
 					text-align: center;
-					padding: 8px;
 					font-weight: bold;
 					&:hover {
 						background: $strong-color;
@@ -93,16 +113,27 @@
 				}
 				.delete-btn {
 					display: inline-block;
-					width: 48%;
+					width: 40%;
+					padding: 8px;
 					border: 1px solid #e64a19;
 					color: #e64a19;
 					border-radius: 16px;
 					text-align: center;
-					padding: 8px;
 					font-weight: bold;
 					&:hover {
 						background: #e64a19;
 						color: $base_white;
+					}
+				}
+			}
+			.favorite-wrap {
+				p {
+					text-align: end;
+					.favorite-inner-text {
+						display: inline-block;
+						margin-right: 16px;
+						font-size: 24px;
+						font-weight: bold;
 					}
 				}
 			}
