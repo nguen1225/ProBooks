@@ -42,6 +42,55 @@
 	}
 }
 
+//ユーザー詳細画面
+.user_profile-page {
+	display: flex;
+	.user-profile {
+		width: 30%;
+		border: 2px solid $primary-color;
+		margin: 0 0 24px 0;
+		.user-image {
+			width: 100%;
+		}
+		.user-info {
+			width: 100%;
+			.success_btn {
+				display: inline-block;
+				width: 90%;
+				margin: 8px auto;
+				padding: 8px;
+				background: $strong_color;
+				color: $base_white;
+				border-radius: 5px;
+				text-align: center;
+				&:hover {
+					border: 2px solid $strong_color;
+					background: $base_white;
+					color: $strong_color;
+				}
+			}
+		}
+	}
+	.user-left {
+		width: 70%;
+		.table-header {
+			background: #e1f5fe;
+		}
+		.user-activity {
+			width: 100%;
+			border: 2px solid $primary-color;
+			margin:0 0 8px 8px;
+		}
+		.user-bookmark {
+			width: 100%;
+			border: 2px solid $primary-color;
+			margin: 0 0 24px 8px;
+			.bookmark-books {
+			}
+		}
+	}
+}
+
 //ユーザー編集画面
 .user_edit-page {
 	form {
@@ -68,7 +117,6 @@
 				border-radius: 15px;
 				text-align: center;
 				padding: 8px;
-				font-weight: bold;
 				&:hover {
 					background: $base_white;
 					color: $strong_color;

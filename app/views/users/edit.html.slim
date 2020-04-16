@@ -22,12 +22,12 @@
 					= f.label :email
 					= f.email_field :email
 				.input-field
-					= f.label :introduction
-					= f.text_area :introduction
-				.input-field
 					= f.label :status
 					br
 					= f.select :status, User.status.options
+				.input-field
+					= f.label :introduction
+					= f.text_area :introduction
 				.action
 					= f.submit '更新', class: 'success_btn'
 
