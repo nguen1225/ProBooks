@@ -1,5 +1,26 @@
-p ユーザー一覧
+- provide(:title, '会員一覧')
 
-- @users.each do |user|
-	= user.name
-	= user.status
+.container
+	h4
+		| ユーザー一覧
+	.all-users
+		table.table
+			thead.table-header
+				tr
+					th
+						| ユーザー名
+					th
+						| メールアドレス
+					th
+						| 詳細
+					th
+						| 削除
+			tbody
+				- @users.each do |user|
+					tr
+						td = user.name
+						td = user.email
+						td.btn-wrap
+							= link_to '詳細', user_path(user), class: "success_btn"
+						td.btn-wrap
+							= link_to '削除', '#', class: "danger_btn"
