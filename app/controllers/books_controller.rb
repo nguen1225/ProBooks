@@ -8,12 +8,15 @@ class BooksController < ApplicationController
     @books = if params[:tag]
                Book.tagged_with(params[:tag])
              elsif params[:search]
-               Book.search(@search_params).includes(:category)
-             elsif params[:change]
-               Book.order(params[:change]).includes(:reviws)
+               Book.search(@search_params)
              else
-               Book.all.includes(:reviews)
+               Book.all
              end
+    respond_to do |format|
+      format.html
+      format.csv{ send_data @books.generate_csv,
+                  filename: "books-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    end
   end
 
   def new
@@ -35,7 +38,7 @@ class BooksController < ApplicationController
   def show
     @clap = Clap.new
     @review = Review.new
-    @reviews = Review.includes(:book).where(book_id: params[:id]).page(params[:page]).includes(:user, :claps)
+    @reviews = Review.includes(:book).where(book_id: params[:id]).includes(:user, :claps).page(params[:page]).order(created_at: :desc)
     @books = Book.where(category: @book.category)
   end
 
