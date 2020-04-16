@@ -31,8 +31,8 @@
 					td = @book.level
 			- if current_user.id == @book.user_id
 				.btn-wrap
-					= link_to '編集', edit_book_path(@book), class: "edit-btn"
-					= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "delete-btn"
+					= link_to '編集', edit_book_path(@book), class: "edit-btn z-depth-1"
+					= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当？" },class: "delete-btn z-depth-1"
 
 			//お気に入り
 			p id="book-favorite-#{@book.id}"
@@ -60,7 +60,7 @@
 	//評価投稿フォーム
 	#modal1.modal.bottom-sheet
 		.modal-content
-			= form_with model: @review, url: book_reviews_path(@book), remote: true do |f|
+			= form_with model: @review, url: book_reviews_path(@book),local: true do |f|
 				= render 'shared/error_messages', model: @review
 				.field
 					= f.label :title, 'タイトル'

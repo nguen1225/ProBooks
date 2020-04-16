@@ -29,7 +29,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
-  include Hashid::Rails
+  # include Hashid::Rails
   extend Enumerize
   enumerize :status, in: %i[engineer begineer]
   mount_uploader :image, ImagesUploader
@@ -42,6 +42,10 @@ class User < ApplicationRecord
   has_many  :reviews, dependent: :destroy
   has_many  :claps,   dependent: :destroy
   has_many  :favorites, dependent: :destroy
+  has_many  :active_notifications, class_name: 'Notification',
+                                   foreign_key: 'visitor_id', dependent: :destroy
+  has_many  :passive_notifications,class_name: 'Notification',
+                                   foreign_key: 'visited_id', dependent: :destroy
 
   # GitHub認証メソッド
   def self.create_unique_string

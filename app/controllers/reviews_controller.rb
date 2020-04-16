@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       redirect_to book_path(@book), notice: '投稿しました'
+      @book.create_notification_review!(current_user, @review.id)
     else
       @clap = Clap.new
       @books = Book.where(category: params[:category])

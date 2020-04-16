@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         resources :claps, only: %i(create destroy)
     end
   end
-  # get 'tag/:tag_name', to: 'books#index'
+  resources :notifications, only: %i(index)
   get 'tags/:tag', to: 'books#index', as: :tag
   get 'tag/tag_name', to: 'books#index'
   get 'reviews', to: 'reviews#index'
