@@ -1,29 +1,49 @@
 - provide(:title, "#{@user.name}")
 - breadcrumb :my_page, @user
 
-= @user.name
-= @user.introduction
-= @user.status
-- if @user.image.present?
-	= image_tag @user.image.url, size: '200x200'
+.container
+	.user_profile-page
+		.user-profile.z-depth-1
+			.user-image
+				= image_tag(@user.image.url.to_s, :size => '100x100' || 'default.jpg', :size => '100x100')
+			.user-info
+				p
+					= @user.name
+					span
+						pre
+						= @user.status
+				p
+					= simple_format(@user.introduction)
+				- if current_user == @user
+					= link_to '編集', edit_user_path(@user), class: "success_btn"
+		.user-left
+			.user-activity.z-depth-1
+				table.table
+					thead.table-header
+						tr
+							th
+								| 登録書籍の数
+							th
+								| 拍手をもらった回数
+							th
+								| 拍手を送った回数
+							th
+								| レビューした回数
+					tbody
+						tr
+							td まだありません
+							td = @user_craps_count
+							td = @user_reviews_count
+							td まだありません
+			.user-bookmark.z-depth-1
+				h6
+					| #{@user.name}さんがお気に入りに追加した技術書
+				.bookmark-books
+					- @user.favorites.each do |favorite|
+						= favorite.book.title
 
-- if current_user == @user
-	= link_to '編集', edit_user_path(@user), class: "btn"
 
-
-// 投稿したレビューした書籍一覧
-- @user.reviews.each do |review|
-	= link_to review.book.title, book_path(review.book)
-	= review.title
-
-// ユーザーがお気に入りした本一覧
-
-
-.user_review-count
-	p
-		| レビューした回数
-	= @user_reviews_count
-.user_claps-count
-	p
-		| 拍手をもらった回数
-	= @user_craps_count
+/ // 投稿したレビューした書籍一覧
+/ - @user.reviews.each do |review|
+/ 	= link_to review.book.title, book_path(review.book)
+/ 	= review.title

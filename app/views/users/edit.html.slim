@@ -1,20 +1,35 @@
 - provide(:title, 'ユーザー情報編集')
 - breadcrumb :user_edit, @user
 
-p ユーザー編集
-
-= simple_form_for @user do |f|
-	= f.input :name, label: '名前'
-	= f.input :email, label: 'メールアドレス'
-	= f.input :introduction, label: '自己紹介'
-	= f.label :status, 'ステータス'
-	= f.select :status, User.status.options
-	= f.input :image, as: :file, id: :user_image, label: 'プロフィール画像'
-	- if @user.image.present?
-		= image_tag @user.image.url, id: :user_prev, size: '100x100'
-	- else
-		= image_tag 'default.jpg', id: :user_prev, size: '100x100'
-	= f.submit '更新', class: 'btn'
+.container
+	p 会員情報編集
+	.user_edit-page
+		= form_with model: @user, local: true do |f|
+			.user-avater
+				- if @user.image.present?
+					= image_tag @user.image.url, id: :user_prev, size: '100x100'
+				- else
+					= image_tag 'default.jpg', id: :user_prev, size: '100x100'
+				br
+				= f.label :image, 'プロフィール画像'
+				br
+				= f.file_field :image, id: :user_image, class: "input-file"
+			.user-info.z-depth-1
+				.input-field
+					= f.label :name
+					= f.text_field :name
+				.input-field
+					= f.label :email
+					= f.email_field :email
+				.input-field
+					= f.label :status
+					br
+					= f.select :status, User.status.options
+				.input-field
+					= f.label :introduction
+					= f.text_area :introduction
+				.action
+					= f.submit '更新', class: 'success_btn'
 
 javascript:
 	$(function() {

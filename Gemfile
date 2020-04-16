@@ -43,6 +43,7 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rack-mini-profiler', require: false
 end
 
 group :test do
@@ -76,3 +77,5 @@ gem 'kaminari'
 gem 'hashid-rails', '~> 1.0'
 gem 'mini_magick'
 gem 'csv'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

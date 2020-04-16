@@ -13,9 +13,9 @@ header
 				li = link_to user_path(current_user) do
 					i.material-icons account_box
 					| マイページ
-				li = link_to reviews_path do
+				li = link_to notifications_path do
 					i.material-icons art_track
-					| 最新レビュー
+					| 通知
 				li = link_to destroy_user_session_path,method: :delete do
 					i.material-icons transfer_within_a_station
 					| ログアウト
