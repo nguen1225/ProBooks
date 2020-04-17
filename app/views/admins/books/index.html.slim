@@ -1,0 +1,43 @@
+- provide(:title, '登録書籍の管理')
+
+.all-books
+	= link_to 'エクスポート', books_path(format: :csv), class: 'btn'
+	h4
+		| 登録書籍一覧
+	table.books-table.z-depth-1
+		thead.table-header
+			tr
+				th
+					| ID
+				th
+					| タイトル
+				th
+					| 詳細
+				th
+					| カテゴリ
+				th
+					| 難易度
+				th
+					| ボリューム
+				th
+					| 登録日時
+				th
+					| 更新日時
+				th
+				th
+		tbody
+			- @books.each do |book|
+				tr
+					td = book.id
+					td = book.title
+					td = simple_format(book.content)
+					td = book.category.name
+					td = book.level
+					td = book.volume
+					td = l(book.created_at)
+					td = l(book.updated_at)
+					td.btn-wrap
+						= link_to '詳細', book_path(book), class: "success_btn"
+					td.btn-wrap
+						= link_to '削除', book_path(book),method: :delete,
+										　　　　confirm: { data: "本当に削除しますか？" }, class: "danger_btn"

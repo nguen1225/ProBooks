@@ -12,13 +12,6 @@ class BooksController < ApplicationController
              else
                Book.all
              end
-    respond_to do |format|
-      format.html
-      format.csv do
-        send_data @books.generate_csv,
-                  filename: "books-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
-      end
-    end
   end
 
   def new
