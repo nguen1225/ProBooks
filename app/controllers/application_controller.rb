@@ -1,8 +1,19 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(_resource)
-    root_path
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User)
+      root_path
+    elsif resource.is_a(Admin)
+      admins_root_path
+    end
+  end
+
+  #管理者権限
+  def admin_user
+    unless current_user.admin == true
+      redirect_to root_path, notice: "権限がありません"
+    end
   end
 
   protected
