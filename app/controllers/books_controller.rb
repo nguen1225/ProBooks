@@ -14,8 +14,10 @@ class BooksController < ApplicationController
              end
     respond_to do |format|
       format.html
-      format.csv{ send_data @books.generate_csv,
-                  filename: "books-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+      format.csv do
+        send_data @books.generate_csv,
+                  filename: "books-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
+      end
     end
   end
 

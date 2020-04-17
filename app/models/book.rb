@@ -38,34 +38,35 @@ class Book < ApplicationRecord
   enumerize :level, in: %i[easy normal hard]
   enumerize :volume, in: %i[few medium many]
 
-  #出力する属性、順番を定義
+  # 出力する属性、順番を定義
   def self.csv_attributes
-    ['title', 'content', 'category', 'created_at', 'updated_at']
+    %w[title content category_id created_at updated_at]
   end
 
-  #csvエクスポート
+  # csvエクスポート
   def self.generate_csv
     CSV.generate(headers: true) do |csv|
       csv << csv_attributes
-      all.each do |book|
-        csv << csv_attributes.map{ |attr| book.send(attr)}
+      all.find_each do |book|
+        csv << csv_attributes.map { |attr| book.send(attr) }
       end
     end
   end
 
-  #お気にり機能(判定)
-  def favorite_by?(user)
-    favorites.where(user_id: user.id).exists?
-  end
-
-  #レビュー投稿通知作成メソッド
+  # レビュー投稿通知作成メソッド
   def create_notification_review!(current_user, review_id)
     temp_ids = Review.select(:user_id).where(book_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_review!(current_user, review_id, temp_id['user_id'])
     end
-    save_notification_review!(current_user, review_id, user_id) if temp_ids.blank?
+    if temp_ids.blank?
+      save_notification_review!(current_user, review_id, user_id)
+    end
   end
+
+  def favorite_by?(user)
+		favorites.where(user_id: user.id).exists?
+	end
 
   def save_notification_review!(current_user, review_id, visited_id)
     notification = current_user.active_notifications.new(
@@ -80,18 +81,21 @@ class Book < ApplicationRecord
     notification.save if notification.valid?
   end
 
-
-  #検索機能
-  scope :search, -> (search_params) do
+  # 検索機能
+  scope :search, lambda { |search_params|
     return if search_params.blank?
 
     title_like(search_params[:title])
       .category_id_is(search_params[:category_id])
       .level_is(search_params[:level])
       .volume_is(search_params[:volume])
-  end
-  scope :title_like, -> (title) { where('title LIKE ?', "%#{title}%") if title.present? }
-  scope :category_id_is, -> (category) {where(category_id: category) if category.present? }
-  scope :level_is, -> (level) { where(level: level) if level.present? }
-  scope :volume_is, -> (volume) { where(volume: volume) if volume.present? }
+  }
+  scope :title_like, lambda { |title|
+                       where('title LIKE ?', "%#{title}%") if title.present?
+                     }
+  scope :category_id_is, lambda { |category|
+                           where(category_id: category) if category.present?
+                         }
+  scope :level_is, ->(level) { where(level: level) if level.present? }
+  scope :volume_is, ->(volume) { where(volume: volume) if volume.present? }
 end

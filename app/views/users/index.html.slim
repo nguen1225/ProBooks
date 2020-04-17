@@ -1,6 +1,12 @@
 - provide(:title, '会員一覧')
 
+/ 一時避難　（管理者権限）
+/ - if current_user
+/ 	- admin_flag?(current_user)
+/ 		= link_to 'エクスポート', books_path(format: :csv), class: 'export-btn'
+
 .container
+	= link_to 'エクスポート', users_path(format: :csv), class: 'btn'
 	h4
 		| ユーザー一覧
 	.all-users

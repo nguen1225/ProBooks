@@ -90,4 +90,3 @@
 						readOnly: true,
 						score: "#{book.reviews.average(:rate).to_f.round(1)}",
 					})
-= link_to 'エクスポート', books_path(format: :csv), class: 'export-btn'

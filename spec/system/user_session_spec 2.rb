@@ -11,7 +11,7 @@ RSpec.describe 'Session', type: :system do
 
   describe '機能' do
     it 'ログインできる' do
-     p expect(page).to have_content 'Signed in successfully'
+      p expect(page).to have_content 'Signed in successfully'
     end
   end
 

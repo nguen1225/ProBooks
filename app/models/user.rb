@@ -44,8 +44,23 @@ class User < ApplicationRecord
   has_many  :favorites, dependent: :destroy
   has_many  :active_notifications, class_name: 'Notification',
                                    foreign_key: 'visitor_id', dependent: :destroy
-  has_many  :passive_notifications,class_name: 'Notification',
-                                   foreign_key: 'visited_id', dependent: :destroy
+  has_many  :passive_notifications, class_name: 'Notification',
+                                    foreign_key: 'visited_id', dependent: :destroy
+
+  def self.csv_attributes
+    %w[id name email introduction status
+       uid provider created_at updated_at]
+  end
+
+  # csvエクスポート
+  def self.generate_csv
+    CSV.generate(headers: true) do |csv|
+      csv << csv_attributes
+      all.find_each do |user|
+        csv << csv_attributes.map { |attr| user.send(attr) }
+      end
+    end
+  end
 
   # GitHub認証メソッド
   def self.create_unique_string
