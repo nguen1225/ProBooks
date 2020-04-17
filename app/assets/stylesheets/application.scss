@@ -101,38 +101,110 @@ header {
 
 //admin権限
 .all-users {
+	width: 90%;
+	margin: 8px auto;
+	.users-table {
+		padding: 16px;
+		.table-header {
+			background: #e1f5fe;
+		}
+		.success_btn {
+			display: inline-block;
+			width: 100%;
+			border: 1px solid #e64a19;
+			color: $strong_color;
+			border-radius: 16px;
+			text-align: center;
+			padding: 8px;
+			font-weight: bold;
+			&:hover {
+				background: $strong_color;
+				color: $base_white;
+			}
+		}
+		.danger_btn {
+			display: inline-block;
+			width: 100%;
+			border: 1px solid $danger_color;
+			color: $danger_color;
+			border-radius: 16px;
+			text-align: center;
+			padding: 8px;
+			font-weight: bold;
+			&:hover {
+				background: $danger_color;
+				color: $base_white;
+			}
+		}
+	}
+}
+//管理者書籍
+.all-books {
+	width: 90%;
+	margin: 8px auto;
+	.books-table {
+		padding: 16px;
+		.table-header {
+			background: #e1f5fe;
+		}
+		.success_btn {
+			display: inline-block;
+			width: 100%;
+			border: 1px solid #e64a19;
+			color: $strong_color;
+			border-radius: 16px;
+			text-align: center;
+			padding: 8px;
+			font-weight: bold;
+			&:hover {
+				background: $strong_color;
+				color: $base_white;
+			}
+		}
+		.danger_btn {
+			display: inline-block;
+			width: 100%;
+			border: 1px solid $danger_color;
+			color: $danger_color;
+			border-radius: 16px;
+			text-align: center;
+			padding: 8px;
+			font-weight: bold;
+			&:hover {
+				background: $danger_color;
+				color: $base_white;
+			}
+		}
+	}
+}
+//ダッシュボード
+.activity {
 	width: 100%;
-	margin: 0 auto;
-	padding: 8px;
-	.table-header {
-		background: #e1f5fe;
+	display: flex;
+	.dashboard {
+		width: 30%;
+		height: 600px;
+		background: red;
 	}
-	.success_btn {
-		display: inline-block;
-		width: 100%;
-		border: 1px solid #e64a19;
-		color: $strong_color;
-		border-radius: 16px;
-		text-align: center;
-		padding: 8px;
-		font-weight: bold;
-		&:hover {
-			background: $strong_color;
-			color: $base_white;
+	.graph-wrap {
+		width: 70%;
+		flex-direction: column;
+		.users-graph {
+			width: 100%;
+			background: blue;
+		}
+		.under-wrap {
+			display: flex;
+			width: 100%;
+			.books-graph {
+				width: 50%;
+				background: pink;
+			}
+			.reviews-graph {
+				width: 50%;
+				background: peru;
+			}
 		}
 	}
-	.danger_btn {
-		display: inline-block;
-		width: 100%;
-		border: 1px solid $danger_color;
-		color: $danger_color;
-		border-radius: 16px;
-		text-align: center;
-		padding: 8px;
-		font-weight: bold;
-		&:hover {
-			background: $danger_color;
-			color: $base_white;
-		}
-	}
+	
 }

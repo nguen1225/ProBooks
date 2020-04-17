@@ -1,32 +1,37 @@
 - provide(:title, '会員一覧')
 
-/ 一時避難　（管理者権限）
-/ - if current_user
-/ 	- admin_flag?(current_user)
-/ 		= link_to 'エクスポート', books_path(format: :csv), class: 'export-btn'
 
-.container
+.all-users
 	= link_to 'エクスポート', users_path(format: :csv), class: 'btn'
 	h4
 		| ユーザー一覧
-	.all-users
-		table.table
-			thead.table-header
+	table.users-table.z-depth-1
+		thead.table-header
+			tr
+				th
+					| ID
+				th
+					| ユーザー名
+				th
+					| メールアドレス
+				th
+					| 自己紹介
+				th
+					| 登録日時
+				th
+					| 更新日時
+				th
+				th
+		tbody
+			- @users.each do |user|
 				tr
-					th
-						| ユーザー名
-					th
-						| メールアドレス
-					th
-						| 詳細
-					th
-						| 削除
-			tbody
-				- @users.each do |user|
-					tr
-						td = user.name
-						td = user.email
-						td.btn-wrap
-							= link_to '詳細', user_path(user), class: "success_btn"
-						td.btn-wrap
-							= link_to '削除', '#', class: "danger_btn"
+					td = user.id
+					td = user.name
+					td = user.email
+					td = simple_format(user.introduction)
+					td = l(user.created_at)
+					td = l(user.updated_at)
+					td.btn-wrap
+						= link_to '詳細', user_path(user), class: "success_btn"
+					td.btn-wrap
+						= link_to '削除', '#', class: "danger_btn"
