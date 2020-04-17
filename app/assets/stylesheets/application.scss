@@ -182,27 +182,26 @@ header {
 	width: 100%;
 	display: flex;
 	.dashboard {
-		width: 30%;
+		width: 20%;
 		height: 600px;
-		background: red;
 	}
 	.graph-wrap {
-		width: 70%;
+		width: 80%;
 		flex-direction: column;
 		.users-graph {
 			width: 100%;
-			background: blue;
+			padding: 24px;
 		}
 		.under-wrap {
 			display: flex;
 			width: 100%;
 			.books-graph {
 				width: 50%;
-				background: pink;
+				padding: 24px;
 			}
 			.reviews-graph {
 				width: 50%;
-				background: peru;
+				padding: 24px;
 			}
 		}
 	}

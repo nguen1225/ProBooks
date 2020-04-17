@@ -12,26 +12,17 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require chartkick
+//= require Chart.bundle
 //= require materialize
 //= require activestorage
 //= require_tree .
 
 //simple_form select
+
 $(document).ready(function(){
 	$('select').formSelect();
-});
-
-//top_page tabs
-$(document).ready(function(){
 	$('.tabs').tabs();
-});
-
-// top_page image
-$(document).ready(function(){
 	$('.materialboxed').materialbox();
-});
-
-//review modal
-$(document).ready(function(){
-    $('.modal').modal();
+	$('.modal').modal();
 });
