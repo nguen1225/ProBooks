@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_book, only: %i[edit update create]
 
   def index
-      @reviews = Review.all
+    @reviews = Review.all
   end
 
   def create

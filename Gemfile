@@ -38,12 +38,12 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-byebug'
+  gem 'rack-mini-profiler', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rack-mini-profiler', require: false
 end
 
 group :test do
@@ -61,21 +61,21 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'carrierwave', '~> 1.0'
+gem 'csv'
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'dotenv-rails'
 gem 'enumerize'
+gem 'gretel'
+gem 'hashid-rails', '~> 1.0'
 gem 'html2slim'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'material_icons'
 gem 'materialize-sass', '~> 1.0.0'
+gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'gretel'
-gem 'kaminari'
-gem 'hashid-rails', '~> 1.0'
-gem 'mini_magick'
-gem 'csv'
-gem 'devise-i18n'
-gem 'devise-i18n-views'

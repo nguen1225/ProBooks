@@ -14,6 +14,7 @@ class ClapsController < ApplicationController
   end
 
   private
+
   def clap_params
     params.permit(:review_id)
   end

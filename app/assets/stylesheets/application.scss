@@ -73,14 +73,30 @@ header {
 .page-footer {
 	height: 160px;
 }
-
 //通知ページ
-.nofification-wrap {
+.notification-wrap {
+	padding: 16px 44px;
+	.notification-paginate{
+		text-align: center;
+	}
 	.head-title {
 		text-align: center;
 	}
 	.notification-line {
-		text-align: center;
-		margin: 8px 0;
+		display: flex;
+		align-items: center;
+		margin: 8px auto;
+		width: 80%;
+		border-bottom: 1px solid $text_color;
+		.visitor-notification {
+		}
+		.visited-notification {
+			margin-left: 16px;
+		}
+		.notification-time {
+			margin-left: 16px;
+		}
 	}
 }
+
+//admin権限

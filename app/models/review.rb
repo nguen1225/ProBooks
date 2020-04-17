@@ -29,23 +29,23 @@ class Review < ApplicationRecord
   has_many   :notifications, dependent: :destroy
   paginates_per 5
 
- #参考になった機能(判定)
+  # 参考になった機能(判定)
   def already_clap_by?(user)
-    claps.where(review_id: self.id).exists?
+    claps.where(user_id: user.id).exists?
   end
 
-  #通知作成メソッド
+  # 通知作成メソッド
   def create_notification_clap!(current_user)
-    #いいねの検索
+    # いいねの検索
     temp = Notification.where(['visitor_id = ? and visited_id = ? and review_id = ? and action = ?', current_user.id, user_id, id, 'clap'])
-    #いいねされていない場合,通知レコードを作成
+    # いいねされていない場合,通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
         review_id: id,
         visited_id: user_id,
         action: 'clap'
       )
-      #通知を送ったユーザと送られたユーザーが一緒ならチェック
+      # 通知を送ったユーザと送られたユーザーが一緒ならチェック
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end

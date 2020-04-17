@@ -2,18 +2,21 @@
 - visited = notification.visited
 
 .notification-line
-	span
+	.visitor-notification
 		= link_to user_path(visitor) do
 			= image_tag visitor.image.to_s, size: '50x50', class: "circle"
-			strong
-				= visitor.name
-		| さんが
+	.visited-notification
+		strong
+			= visitor.name
+			| さんが
 		- case notification.action
 		- when 'review' then
 			- if notification.book.user_id == visited.id
 				= link_to 'あなたの登録した技術書', notification.book
-			hr
+				| にレビューしました
 		- when 'clap' then
 			= link_to 'あなたのレビュー', notification.book
 			| に拍手しました
-			hr
+	.notification-time
+		 = time_ago_in_words(notification.created_at).upcase
+		 | 前
