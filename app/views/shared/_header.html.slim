@@ -3,7 +3,7 @@ header
 		.header-left
 			= link_to 'ProBooks', root_path, class: 'bland-logo'
 		ul.header-right
-			- if current_user
+			- if current_user.present?
 				li.header-search
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
 						.field
@@ -21,9 +21,20 @@ header
 					| マイページ
 				li = link_to notifications_path do
 					i.material-icons art_track
+					| 通知
 				li = link_to destroy_user_session_path,method: :delete do
 					i.material-icons transfer_within_a_station
 					| ログアウト
+			- elsif current_admin.present?
+				li = link_to admins_users_path do
+					i.material-icons transfer_within_a_station
+					| 会員一覧
+				li = link_to admins_root_path do
+					i.material-icons transfer_within_a_station
+					| ダッシュボード
+				li = link_to destroy_admin_session_path,method: :delete do
+					i.material-icons transfer_within_a_station
+					| ログアウト（管理者）
 			- else
 				li = link_to new_user_registration_path do
 					i.material-icons person_add

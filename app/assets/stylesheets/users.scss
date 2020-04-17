@@ -4,44 +4,6 @@
 
 @import 'application';
 
-//ユーザー一覧
-.all-users {
-	width: 100%;
-	margin: 0 auto;
-	padding: 8px;
-	.table-header {
-		background: #e1f5fe;
-	}
-	.success_btn {
-		display: inline-block;
-		width: 100%;
-		border: 1px solid #e64a19;
-		color: $strong_color;
-		border-radius: 16px;
-		text-align: center;
-		padding: 8px;
-		font-weight: bold;
-		&:hover {
-			background: $strong_color;
-			color: $base_white;
-		}
-	}
-	.danger_btn {
-		display: inline-block;
-		width: 100%;
-		border: 1px solid $danger_color;
-		color: $danger_color;
-		border-radius: 16px;
-		text-align: center;
-		padding: 8px;
-		font-weight: bold;
-		&:hover {
-			background: $danger_color;
-			color: $base_white;
-		}
-	}
-}
-
 //ユーザー詳細画面
 .user_profile-page {
 	display: flex;
