@@ -2,26 +2,61 @@
 - breadcrumb :search
 
 .book_index-area
-	ul.tabs
-		li.tab
-			a href="#search"
-				| 詳細検索
-		li.tab
-			a href="#tag_search"
-				| キーワード検索
-	#search
-		p　詳細検索
-		= render 'search', { search_params: @search_params, categories: @categories }
-	#tag_search
-		p キーワード検索
-	    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-	    	= link_to tag.name, tag_path(tag.name), :class => css_class
+	.search-wrap
+		.description-search
+			ul.tabs
+				li.tab
+					a href="#search"
+						| 詳細検索
+				li.tab
+					a href="#tag_search"
+						| キーワード検索
+			#search
+				p　詳細検索
+				.book_search-form.z-depth-1
+					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
+						.field
+							= f.label :title
+							= f.text_field :title, value: @search_params[:title]
+						.field
+							= f.label :category_id
+							= f.collection_select :category_id, @categories, :id, :name,
+									include_blank: ('選択してください'),
+									:selected => @search_params[:category]
+						.field
+							= f.label :volume
+							= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
+									:selected => @search_params[:volume]
+						.field
+							= f.label :lebel
+							= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
+									:selected => @search_params[:level]
+						.action
+							= f.submit '検索', class: "success_btn"
 
-	.book_category-wrap
-		= link_to controller: "books", action: 'index', category_id: 1 do
-			.language-wrap.z-depth-1
-				p
+			#tag_search
+				p キーワード検索
+				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+					= link_to tag.name, tag_path(tag.name), :class => css_class
+		.category-search
+			.languages.lang-markup.z-depth-1
+				strong.language-text
+					| HTML&CSS
+			.languages.lang-javascript.z-depth-1
+				strong.language-text
+					| Javascript
+			.languages.lang-ruby.z-depth-1
+				strong.language-text
 					| Ruby
+			.languages.lang-php.z-depth-1
+				strong.language-text
+					| PHP
+			.languages.lang-aws.z-depth-1
+				strong.language-text
+					| AWS
+			.languages.lang-git.z-depth-1
+				strong.language-text
+					| Git/GitHub
 
 	.book_stock-area
 		p.book_section-title
