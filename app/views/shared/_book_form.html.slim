@@ -1,4 +1,4 @@
-.book_new_edit-page.z-depth-1
+.book_new_edit-page
 	= form_with model: book, local: true do |f|
 		.side-image-field
 			- if book.image.present?
@@ -9,7 +9,7 @@
 				= f.label :image
 				br
 				= f.file_field :image, id: :book_image
-		.input-text.z-depth-1
+		.input-text.z-depth-2
 				.input-field
 					= f.label :title
 					= f.text_field :title
@@ -33,7 +33,7 @@
 					= f.text_field :tag_list
 				= f.hidden_field :user_id, :value => current_user.id
 				.action
-					= f.button :submit, class: "success_btn"
+					= f.button :submit, class: "success_btn z-depth-3"
 
 javascript:
 	$(function() {

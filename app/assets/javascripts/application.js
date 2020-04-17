@@ -11,20 +11,16 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require rails-ujs
 //= require materialize
 //= require activestorage
+//= require turbolinks
 //= require_tree .
 
 //simple_form select
 $(document).ready(function(){
 	$('select').formSelect();
 });
-
-// header_side_nav
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
 
 //top_page tabs
 $(document).ready(function(){
@@ -40,7 +36,3 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.modal').modal();
 });
-
-// $(document).ready(function() {
-//     $('input#input_text, textarea#textarea2').characterCounter();
-// });
