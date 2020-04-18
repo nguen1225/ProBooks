@@ -10,10 +10,9 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background: linear-gradient(#05FBFF, #1D62F0 ) fixed;
-	// background-image: image-url('main.jpg');
-	// background-position: center;
-	// background-size: cover;
+	background-image: image-url('main.jpg');
+	background-position: center;
+	background-size: cover;
 	height: 480px;
 	.authenticate-area {
 		width: 30%;

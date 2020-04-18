@@ -55,3 +55,19 @@ crumb :reviews do
   link "最新レビュー", reviews_path
   parent :root
 end
+
+#root~
+crumb :admins do
+  link "管理者ページ", admins_root_path
+  parent :root
+end
+
+crumb :admin_users do
+  link "ユーザー管理"
+  parent :root
+end
+
+crumb :admin_books do
+  link "書籍管理"
+  parent :root
+end

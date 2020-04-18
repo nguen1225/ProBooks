@@ -13,8 +13,10 @@ html
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"
   body
     = render 'shared/header'
-    .breadcrumbs
+    main
+      - if flash.present?
+        = render 'shared/flash_messages'
+      .breadcrumbs
 	      == breadcrumbs separator:" &rsaquo; ", class: "breadcrumb"
-    = render 'shared/flash_messages'
-    = yield
+      = yield
     = render 'shared/footer'

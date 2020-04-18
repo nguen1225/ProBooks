@@ -2,7 +2,25 @@
 
 
 .all-users
-	= link_to 'エクスポート', users_path(format: :csv), class: 'btn'
+	= form_with scope: :search, url: admins_users_path, method: :get, local: true do |f|
+		.field
+			= f.label :name, '会員氏名'
+			= f.text_field :name, value: @search_params[:name]
+		.field
+			= f.label :status, '会員ステータス'
+			= f.select :status, ['engineer', 'begineer'], include_blank: ('選択してください'),
+					   :selected => @search_params[:status]
+		.field
+			 = f.label :created_at, '登録日'
+     		 = f.date_field :created_at_from, type: "text", format: :string, class: "datepicker",
+			  				value: @search_params[:created_at_from]
+			 | 〜
+			 = f.date_field :created_at_to, type: "text", class: "datepicker",
+			 				value: @search_params[:created_at_to]
+		.action
+			= f.submit '検索', class: "btn"
+		.action
+			= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
 	h4
 		| ユーザー一覧
 	table.users-table.z-depth-1
@@ -15,7 +33,9 @@
 				th
 					| メールアドレス
 				th
-					| 自己紹介
+					| ステータス
+				th
+					| プロバイダ
 				th
 					| 登録日時
 				th
@@ -28,7 +48,8 @@
 					td = user.id
 					td = user.name
 					td = user.email
-					td = simple_format(user.introduction)
+					td = user.status || "登録してません"
+					td = user.provider
 					td = l(user.created_at)
 					td = l(user.updated_at)
 					td.btn-wrap

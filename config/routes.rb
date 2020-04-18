@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   namespace :admins do
     root "dashboards#index"
     resources :users, only: %i(index)
-    resources :books, only: %i(index)
+    resources :books, only: %i(index) do
+    end
   end
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'books#index', as: :tag
   get 'tag/tag_name', to: 'books#index'
   get 'reviews', to: 'reviews#index'
+  get "csv_category_books", to: 'admins/books#csv_category_books'
 end

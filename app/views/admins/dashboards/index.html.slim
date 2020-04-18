@@ -1,18 +1,17 @@
 - provide(:title, "アクティビティ")
 
-.activity
-	.dashboard
-	.graph-wrap
-		.users-graph
+
+.graph-wrap
+	.users-graph
+		p
+			| 日別ユーザー登録者数遷移
+		= line_chart @users, download: true
+	.under-wrap
+		.books-graph
 			p
-				| 日別ユーザー登録者数遷移
-			= line_chart User.group_by_day(:created_at).count
-		.under-wrap
-			.books-graph
-				p
-					| カテゴリ別登録書籍
-				= pie_chart Book.group(:category_id).count
-			.reviews-graph
-				p
-					| 日別レビュー投稿数
-				= column_chart Review.group_by_day(:created_at).count
+				| カテゴリ別登録書籍
+			= pie_chart @books, download: true
+		.reviews-graph
+			p
+				| 日別レビュー投稿数
+			= column_chart @reviews, dowmload: true

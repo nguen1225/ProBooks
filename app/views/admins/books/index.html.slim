@@ -1,7 +1,27 @@
 - provide(:title, '登録書籍の管理')
 
 .all-books
-	= link_to 'エクスポート', books_path(format: :csv), class: 'btn'
+	= form_with scope: :search, url: admins_books_path, method: :get, local: true do |f|
+		.field
+			= f.label :title
+			= f.text_field :title, value: @search_params[:title]
+		.field
+			= f.label :category_id
+			= f.collection_select :category_id, @categories, :id, :name,
+					include_blank: ('選択してください'),
+					:selected => @search_params[:category]
+		.field
+			= f.label :volume
+			= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
+					:selected => @search_params[:volume]
+		.field
+			= f.label :lebel
+			= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
+					:selected => @search_params[:level]
+		.action
+			= f.submit '検索', class: "success_btn"
+		.action
+			= f.button 'csvエクスポート', class: 'success_btn', name: "export_csv"
 	h4
 		| 登録書籍一覧
 	table.books-table.z-depth-1

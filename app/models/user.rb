@@ -48,8 +48,7 @@ class User < ApplicationRecord
                                     foreign_key: 'visited_id', dependent: :destroy
 
   def self.csv_attributes
-    %w[id name email introduction status
-       uid provider created_at updated_at]
+    %w[id name email status created_at updated_at]
   end
 
   # csvエクスポート
@@ -82,4 +81,19 @@ class User < ApplicationRecord
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end
+
+  scope :search, lambda { |search_params|
+    return if search_params.blank?
+
+    name_like(search_params[:name])
+      .status_is(search_params[:status])
+      .created_at_from(search_params[:created_at_from])
+      .created_at_to(search_params[:created_at_to])
+  }
+  scope :name_like, lambda { |name|
+                       where('name LIKE ?', "%#{name}%") if name.present?
+                     }
+  scope :status_is, -> (status) { where(status: status) if status.present? }
+  scope :created_at_from, -> (from) { where('? <= created_at', from ) if from.present? }
+  scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present?  }
 end

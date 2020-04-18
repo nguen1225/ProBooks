@@ -18,6 +18,8 @@ ja:
           password_confirmation: 'パスワード（確認用）'
           status: 'ステータス'
           introduction: '自己紹介'
+          created_at: "登録日"
+          updated_at: "更新日"
         book:
             title: "タイトル"
             content: "内容"
@@ -25,6 +27,8 @@ ja:
             category: "カテゴリ"
             volume: "ボリューム"
             tag_list: "タグ"
+            created_at: "登録日"
+            updated_at: ”更新日"
         category:
             category: "カテゴリ"
   date:
