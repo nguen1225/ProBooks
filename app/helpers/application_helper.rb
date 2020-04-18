@@ -1,11 +1,12 @@
 module ApplicationHelper
-	#admin権限
-	def admin_flag?(user)
-		user.admin == true
+
+	def login_user
+		current_user || current_admin
 	end
 
 	#ユーザーの一致
 	def match_user?(user)
-		user == current_user
+		user == login_user
 	end
+
 end

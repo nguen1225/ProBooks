@@ -1,5 +1,6 @@
 - provide(:title, "#{@book.title}")
 - breadcrumb :book_page, @book
+- login_user = current_user || current_admin
 
 .book_show-page
 	h3
@@ -42,7 +43,7 @@
 			//お気に入り
 			.favorite-wrap
 				p id="book-favorite-#{@book.id}"
-					= render 'favorites/favorites', book: @book
+					= render 'favorites/favorites', book: @book, login_user: login_user
 
 	//関連書籍
 	.category-books
@@ -66,9 +67,9 @@
 
 					/　いいねボタンフォーム
 					p id="clap-#{review.id}"
-						= render 'claps/claps', { review: review, book: review.book }
+						= render 'claps/claps', { review: review, book: review.book, login_user: login_user }
 
-					- if current_user == review.user
+					- if login_user == review.user
 						.btn-wrap
 							= link_to '編集する', edit_book_review_path(@book, review), class: "success_btn z-depth-2"
 							= link_to '削除する', book_review_path(@book, review), method: :delete, class: "danger_btn z-depth-2"
@@ -109,7 +110,7 @@
 					= f.label :rate, '評価'
 					= f.hidden_field :rate, id: :review_star
 
-				= f.hidden_field :user_id, value: current_user.id
+				= f.hidden_field :user_id, value: login_user.id
 				= f.hidden_field :book_id, value: @book.id
 
 				= f.submit '評価する', class: "btn"
