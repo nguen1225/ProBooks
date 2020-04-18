@@ -1,12 +1,25 @@
 class Admins::BooksController < Admins::ApplicationController
 	def index
-		@books = Book.all
-		respond_to do |format|
-			format.html
-			format.csv do
-			  send_data @books.generate_csv,
+		@categories = Category.all
+		@search_params = book_search_params
+		@books = if params[:search]
+					Book.search(@search_params)
+				 else
+					Book.all
+				 end
+		if  params[:export_csv]
+				send_data @books.generate_csv,
 						filename: "books-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
-			end
+		else
+			render :index
 		end
 	end
+
+	private
+		def book_search_params
+			params.fetch(:search, {}).permit(:title,
+											 :category_id,
+											 :few,
+											 :volume)
+		end
 end

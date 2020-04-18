@@ -1,50 +1,61 @@
 header
-	.container
-		.header-left
-			= link_to 'ProBooks', root_path, class: 'bland-logo'
-		ul.header-right
-			- if current_user.present?
-				li.header-search
+	nav
+		.nav-wrapper
+			= link_to 'ProBooks', class: 'bland-logo'
+			ul#nav-mobile.right.hide-on-med-and-down
+			= link_to "#", class: "sidenav-trigger" ,data: { target: "side-out" } do
+				i.material-icons menu
+
+	ul#side-out.sidenav.sidenav-fixed
+		- if current_user.present?
+ 			li.search
+			 	.search-wrapper
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
 						.field
 							= f.text_field :title, class: "search_field", placeholder: "検索"
-							= button_tag type: 'submit' do
-  								i.fa.fa-search
-				li = link_to new_book_path do
-					i.material-icons content_paste
-					| 書籍の投稿
-				li = link_to books_path do
-					i.material-icons search
-					| 書籍を探す
-				li = link_to user_path(current_user) do
-					i.material-icons account_box
-					| マイページ
-				li = link_to notifications_path do
-					i.material-icons art_track
-					| 通知
-				li = link_to destroy_user_session_path,method: :delete do
-					i.material-icons transfer_within_a_station
-					| ログアウト
-			- elsif current_admin.present?
-				li = link_to admins_users_path do
-					i.material-icons transfer_within_a_station
-					| 会員一覧
-				li = link_to admins_books_path do
-					i.material-icons transfer_within_a_station
-					| 書籍一覧
-				li = link_to admins_root_path do
-					i.material-icons transfer_within_a_station
-					| ダッシュボード
-				li = link_to destroy_admin_session_path,method: :delete do
-					i.material-icons transfer_within_a_station
-					| ログアウト（管理者）
-			- else
-				li = link_to new_user_registration_path do
-					i.material-icons person_add
-					| 新規登録
-				li = link_to new_user_session_path do
-					i.material-icons perm_identity
-					| ログイン
-				li = link_to '#' do
-					i.material-icons search
-					| 書籍を探す
+							= button_tag type: 'submit', class: "search-icon" do
+								i.material-icons search
+ 			li = link_to new_book_path do
+ 				i.material-icons content_paste
+ 				| 書籍の投稿
+			li = link_to books_path do
+				i.material-icons search
+ 				| 書籍を探す
+ 			li = link_to user_path(current_user) do
+ 				i.material-icons account_box
+				| マイページ
+ 			li = link_to notifications_path do
+ 				i.material-icons art_track
+ 				| 通知
+ 			li = link_to destroy_user_session_path,method: :delete do
+ 				i.material-icons transfer_within_a_station
+ 				| ログアウト
+ 		- elsif current_admin.present?
+ 			li = link_to admins_users_path do
+ 				i.material-icons transfer_within_a_station
+ 				| 会員一覧
+ 			li = link_to admins_books_path do
+ 				i.material-icons transfer_within_a_station
+ 				| 書籍一覧
+ 			li = link_to admins_root_path do
+ 				i.material-icons transfer_within_a_station
+ 				| ダッシュボード
+			li = link_to new_book_path do
+ 				i.material-icons content_paste
+ 				| 書籍の投稿
+			li = link_to books_path do
+				i.material-icons search
+ 				| 書籍を探す
+ 			li = link_to destroy_admin_session_path,method: :delete do
+ 				i.material-icons transfer_within_a_station
+ 				| ログアウト
+ 		- else
+ 			li = link_to new_user_registration_path do
+ 				i.material-icons person_add
+ 				| 新規登録
+  			li = link_to new_user_session_path do
+ 				i.material-icons perm_identity
+ 				| ログイン
+ 			li = link_to '#' do
+ 				i.material-icons search
+ 				| 書籍を探す
