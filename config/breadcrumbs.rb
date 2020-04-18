@@ -62,6 +62,11 @@ crumb :admins do
   parent :root
 end
 
+crumb :admin_session do
+  link "管理者ログイン", admin_session_path
+  parent :root
+end
+
 crumb :admin_users do
   link "ユーザー管理"
   parent :root

@@ -1,4 +1,4 @@
-- if book.favorite_by?(current_user)
+- if book.favorite_by?(login_user)
 	- book.favorites.each do |favorite|
 		span.favorite-inner-text
 			| お気にりから外す

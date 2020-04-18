@@ -215,6 +215,8 @@ GEM
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
     parallel (1.19.1)
+    paranoia (2.4.2)
+      activerecord (>= 4.0, < 6.1)
     parser (2.7.1.0)
       ast (~> 2.4.0)
     pry (0.13.0)
@@ -403,6 +405,7 @@ DEPENDENCIES
   mysql2
   omniauth
   omniauth-github
+  paranoia
   pry-byebug
   puma (~> 3.11)
   rack-mini-profiler

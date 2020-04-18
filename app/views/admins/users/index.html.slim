@@ -1,4 +1,5 @@
 - provide(:title, '会員一覧')
+- breadcrumb :admin_users
 
 
 .all-users
@@ -41,6 +42,8 @@
 				th
 					| 更新日時
 				th
+					| 会員ステータス
+				th
 				th
 		tbody
 			- @users.each do |user|
@@ -52,7 +55,9 @@
 					td = user.provider
 					td = l(user.created_at)
 					td = l(user.updated_at)
+					td = user.deleted_at || "有効"
 					td.btn-wrap
 						= link_to '詳細', user_path(user), class: "success_btn"
 					td.btn-wrap
-						= link_to '削除', '#', class: "danger_btn"
+						= link_to '削除', admins_user_path(user), method: :delete,
+																 confirm: { data: "本当に削除しますか？" }, class: "danger_btn"

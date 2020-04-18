@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   }
   namespace :admins do
     root "dashboards#index"
-    resources :users, only: %i(index)
-    resources :books, only: %i(index) do
+    resources :users, only: %i(index destroy)
+    resources :books, only: %i(index destroy) do
     end
   end
   devise_for :users, controllers: {
