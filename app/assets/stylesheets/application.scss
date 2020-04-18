@@ -17,7 +17,7 @@
 
 @import "materialize/components/color-variables";
 $primary-color: color("light-blue", "lighten-2") !default;
-$secondary-color: color("green", "lighten-2") !default;
+$secondary-color: color("orange", "lighten-2") !default;
 $base_white: #ffffff ;
 $text_color: #4e5665;
 $paper_color: #fafafa;
@@ -42,16 +42,24 @@ header, main, footer {
 	  padding-left: 0;
 	}
 }
-
 header {
 	.sidenav {
 		width: 240px;
 		background: #e1f5fe;
+		.notification-inner-text {
+			padding-left: initial;
+		}
 		.search-icon {
 			position: absolute;
 			top: 12px;
 			right: 20px;
 			cursor: pointer;
+		}
+		.n-circle {
+			position: absolute;
+			padding-left: 1rem;
+			padding-top: 0rem;
+			color: #efa04c;
 		}
 	}
 	.nav-wrapper {
@@ -61,39 +69,47 @@ header {
 		}
 	}
 }
-
 //パンくずリスト
 .breadcrumbs {
 	.breadcrumb {
 		color: #808080;
 	}
 }
+//共通ページタイトル
+.page_title {
+	border-left: 8px solid $primary-color;
+}
+
 // footer
 .page-footer {
 	height: 160px;
 }
 //通知ページ
-.notification-wrap {
-	padding: 16px 44px;
-	.notification-paginate{
-		text-align: center;
-	}
-	.head-title {
-		text-align: center;
-	}
-	.notification-line {
-		display: flex;
-		align-items: center;
-		margin: 8px auto;
-		width: 80%;
-		border-bottom: 1px solid $text_color;
-		.visitor-notification {
+.notification-wrapper {
+	width: 60%;
+	margin: 24px auto;
+	.notification-wrap {
+		padding: 16px;
+		.notification-paginate{
+			text-align: center;
 		}
-		.visited-notification {
-			margin-left: 16px;
+		.head-title {
+			text-align: center;
 		}
-		.notification-time {
-			margin-left: 16px;
+		.notification-line {
+			display: flex;
+			align-items: center;
+			margin: 8px auto;
+			width: 80%;
+			border-bottom: 1px solid $text_color;
+			.visitor-notification {
+			}
+			.visited-notification {
+				margin-left: 16px;
+			}
+			.notification-time {
+				margin-left: 16px;
+			}
 		}
 	}
 }

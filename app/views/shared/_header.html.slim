@@ -1,7 +1,7 @@
 header
 	nav
 		.nav-wrapper
-			= link_to 'ProBooks', class: 'bland-logo'
+			= link_to 'ProBooks', root_path, class: 'bland-logo'
 			ul#nav-mobile.right.hide-on-med-and-down
 			= link_to "#", class: "sidenav-trigger" ,data: { target: "side-out" } do
 				i.material-icons menu
@@ -13,8 +13,16 @@ header
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
 						.field
 							= f.text_field :title, class: "search_field", placeholder: "検索"
-							= button_tag type: 'submit', class: "search-icon" do
+							= f.submit class: "search-icon" do
 								i.material-icons search
+			li
+				.user-view
+					.background
+					- if login_user.image
+						= image_tag login_user.image.to_s, class: "circle"
+					- else
+						= image_tag "default.jpg", class: "circle"
+					= login_user.email
  			li = link_to new_book_path do
  				i.material-icons content_paste
  				| 書籍の投稿
@@ -25,8 +33,16 @@ header
  				i.material-icons account_box
 				| マイページ
  			li = link_to notifications_path do
- 				i.material-icons art_track
- 				| 通知
+			 	- if unchecked_notifications.any?
+					span.fa-stack
+						i.far.fa-bell.fa-lg.fa-stack-2x style="font-size: 1.5em;"
+						i.fas.fa-circle.n-circle.fa-stack-1x
+					span.notification-inner-text
+						| 通知
+				- else
+					i.far.fa-bell.fa-lg style="font-size: 1.5em;"
+					span.notification-inner-text
+						| 通知
  			li = link_to destroy_user_session_path,method: :delete do
  				i.material-icons transfer_within_a_station
  				| ログアウト

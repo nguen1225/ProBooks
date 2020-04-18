@@ -1,9 +1,56 @@
 - provide(:title, '本の編集')
 - breadcrumb :book_edit, @book
 
-.container
-	h4
-		| 書籍情報編集
+.book_new_edit-page
+	h4.page_title 技術書の編集
+	= form_with model: @book, local: true do |f|
+		.side-image-field
+			- if @book.image.present?
+				= image_tag @book.image.url, id: :book_prev, size: '200x200'
+			- else
+				= image_tag 'default.jpg', id: :book_prev, size: '200x200'
+			.image-label
+				= f.label :image
+				br
+				= f.file_field :image, id: :book_image
+		.input-text.z-depth-2
+				.input-field
+					= f.label :title
+					= f.text_field :title
+				.input-field
+					= f.label :content
+					= f.text_area :content
+				.input-field
+					= f.label  :category_id
+					br
+					= f.collection_select :category_id, @categories, :id, :name
+				.input-field
+					= f.label  :level
+					br
+					= f.select :level, Book.level.options
+				.input-field
+					= f.label  :volume
+					br
+					= f.select :volume, Book.volume.options
+				.input-field
+					= f.label :tag_list
+					= f.text_field :tag_list
+				= f.hidden_field :user_id, :value => current_user.id
+				.action
+					= f.button :submit, class: "waves-effect waves-light btn success_btn"
 
-= render 'shared/book_form', book: @book, categories: @categories
-
+javascript:
+	$(function() {
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+		$('#book_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#book_image").change(function(){
+			readURL(this);
+		});
+	});

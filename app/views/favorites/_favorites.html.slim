@@ -1,11 +1,5 @@
 - if book.favorite_by?(login_user)
 	- book.favorites.each do |favorite|
-		span.favorite-inner-text
-			| お気にりから外す
-			= link_to book_favorite_path(favorite.book_id, favorite.id), method: :delete, class: "btn btn-floating btn-large waves-effect waves-light orange lighten-2", remote: true do
-				i.material-icons remove
+		= link_to 'お気に入りから外す', book_favorite_path(favorite.book_id, favorite.id), method: :delete, class: "waves-effect waves-teal btn-flat favorite_btn", remote: true
 - else
-	span.favorite-inner-text
-			| お気に入りに追加する
-			= link_to book_favorites_path(book), method: :post, class: "btn btn-floating btn-large waves-effect waves-light deep-orange lighten-2", remote: true do
-				i.material-icons add
+	= link_to 'お気に入りに追加', book_favorites_path(book), method: :post, class: "waves-effect waves-teal btn-flat favorite_btn", remote: true

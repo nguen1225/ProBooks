@@ -27,6 +27,7 @@ ja:
             category: "カテゴリ"
             volume: "ボリューム"
             tag_list: "タグ"
+            image: "画像"
             created_at: "登録日"
             updated_at: ”更新日"
         category:

@@ -1,46 +1,45 @@
 - provide(:title, "#{@user.name}")
 - breadcrumb :my_page, @user
 
-.container
-	.user_profile-page
-		.user-profile.z-depth-1
-			.user-image
-				= image_tag(@user.image.url.to_s, :size => '100x100' || 'default.jpg', :size => '100x100')
-			.user-info
-				p
-					= @user.name
-					span
-						pre
-						= @user.status
-				p
-					= simple_format(@user.introduction)
-				- if current_user == @user
-					= link_to '編集', edit_user_path(@user), class: "success_btn"
-		.user-left
-			.user-activity.z-depth-1
-				table.table
-					thead.table-header
-						tr
-							th
-								| 登録書籍の数
-							th
-								| 拍手をもらった回数
-							th
-								| 拍手を送った回数
-							th
-								| レビューした回数
-					tbody
-						tr
-							td まだありません
-							td = @user_craps_count
-							td = @user_reviews_count
-							td まだありません
-			.user-bookmark.z-depth-1
-				h6
-					| #{@user.name}さんがお気に入りに追加した技術書
-				.bookmark-books
-					- @user.favorites.each do |favorite|
-						= favorite.book.title
+.user_profile-page
+	.user-profile.z-depth-1
+		.user-image
+			= image_tag(@user.image.url.to_s, :size => '100x100' || 'default.jpg', :size => '100x100')
+		.user-info
+			p
+				= @user.name
+				span
+					pre
+					= @user.status
+			p
+				= simple_format(@user.introduction)
+			- if current_user == @user
+				= link_to '編集', edit_user_path(@user), class: "waves-effect waves-teal btn-flat success_btn"
+	.user-left
+		.user-activity.z-depth-1
+			table.table
+				thead.table-header
+					tr
+						th
+							| 登録書籍の数
+						th
+							| 拍手をもらった回数
+						th
+							| 拍手を送った回数
+						th
+							| レビューした回数
+				tbody
+					tr
+						td まだありません
+						td = @user_craps_count
+						td = @user_reviews_count
+						td まだありません
+		.user-bookmark.z-depth-1
+			h6
+				| #{@user.name}さんがお気に入りに追加した技術書
+			.bookmark-books
+				- @user.favorites.each do |favorite|
+					= favorite.book.title
 
 
 / // 投稿したレビューした書籍一覧

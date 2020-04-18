@@ -15,33 +15,25 @@
 	form {
 		width: 100%;
 		display: flex;
+		border-radius: 3px;
 		.side-image-field {
-			width: 30%;
-			height: 50%;
-			margin: 16px;
-			padding: 16px;
+			width: 100%;
+			height: 80%;
 			text-align: center;
-			.image-label {
+			.file_btn {
+				width: 70%;
+				margin: 0 auto;
 			}
 		}
 		.input-text {
-			width: 70%;
+			width: 100%;
 			margin: 16px;
 			padding: 16px;
 			.success_btn {
-				display: inline-block;
 				width: 100%;
-				color: $base_white;
-				background: $strong_color;
-				border-radius: 16px;
+				border-radius: 2px;
 				text-align: center;
-				padding: 8px;
 				font-weight: bold;
-				&:hover {
-					background: $base_white;
-					color: $strong_color;
-					border: 1px solid #e64a19;
-				}
 			}
 		}
 	}
@@ -139,8 +131,8 @@
 	margin: 0 auto;
 	.book_description-area {
 		padding: 8px;
-		margin: 16px;
 		display: flex;
+		border-radius: 3px;
 		background: $paper-color;
 		.image-size {
 			width: 40%;
@@ -165,13 +157,9 @@
 					padding: 8px;
 					border: 1px solid $strong-color;
 					color: $strong-color;
-					border-radius: 16px;
+					border-radius: 2px;
 					text-align: center;
 					font-weight: bold;
-					&:hover {
-						background: $strong-color;
-						color: $base_white;
-					}
 				}
 				.delete-btn {
 					display: inline-block;
@@ -179,22 +167,17 @@
 					padding: 8px;
 					border: 1px solid #e64a19;
 					color: #e64a19;
-					border-radius: 16px;
+					border-radius: 2px;
 					text-align: center;
 					font-weight: bold;
-					&:hover {
-						background: #e64a19;
-						color: $base_white;
-					}
 				}
 			}
 			.favorite-wrap {
 				p {
 					text-align: end;
-					.favorite-inner-text {
-						display: inline-block;
-						margin-right: 16px;
-						font-size: 24px;
+					.favorite_btn {
+						margin-right: 9%;
+						color: $strong_color;
 						font-weight: bold;
 					}
 				}
@@ -214,25 +197,31 @@
 	#reviews_area {
 		.book_review {
 			display: flex;
-			width: 80%;
+			width: 100%;
 			margin: 0 auto;
 			.review-users {
-				width: 30%;
-				display: inline-flex;
+				width: 16%;
+				padding-top: 8%;
 				align-items: center;
-				.circle {
-					margin: 16px;
+				.user_avater {
+					width: 100%;
+					text-align: center;
+				}
+				.user_name {
+					width: 100%;
+					text-align: center;
 				}
 			}
 			.review-content {
 				position: relative;
 				display: inline-block;
-				width: 70%;
-				margin: 8px;
-				padding: 7px 10px;
+				width: 86%;
+				margin: 8px 0;
+				padding: 8px;
 				color: #555;
 				font-size: 16px;
-				background: #e0edff;
+				border-radius: 3px;
+				background: #e1f5fe;
 				&:before {
 					content: "";
 					position: absolute;
@@ -243,26 +232,19 @@
 					border-left: 15px solid #e0edff;
 				}
 				.success_btn {
-					display: inline-block;
 					width: 40%;
-					padding: 8px;
 					margin: 8px;
-					background: $strong_color;
-					color: $base_white;
-					border-radius: 5px;
+					border-radius: 2px;
 					text-align: center;
 					font-weight: bold;
 				}
 				.danger_btn {
-					display: inline-block;
 					width: 40%;
-					padding: 8px;
 					margin: 8px;
-					background: $danger-color;
-					color: $base_white;
-					border-radius: 5px;
+					border-radius: 2px;
 					text-align: center;
 					font-weight: bold;
+					background: $danger_color;
 				}
 			}
 		}

@@ -4,32 +4,43 @@
 
 @import 'application';
 
+//新規登録及びログイン画面
+.authenticate-wrap {
+	width: 100%;
+	.form-wrap {
+		width: 60%;
+		margin: 0 auto;
+		padding: 24px;
+		.success_btn {
+			width: 100%;
+			color: $base_white;
+			font-weight: bold;
+		}
+	}
+}
+
 //ユーザー詳細画面
 .user_profile-page {
+	width: 80%;
+	margin: 0 auto;
 	display: flex;
 	.user-profile {
 		width: 30%;
-		border: 2px solid $primary-color;
 		margin: 0 0 24px 0;
 		.user-image {
 			width: 100%;
 		}
 		.user-info {
 			width: 100%;
+			padding:24px;
+			border-radius: 3px;
 			.success_btn {
-				display: inline-block;
-				width: 90%;
-				margin: 8px auto;
-				padding: 8px;
-				background: $strong_color;
-				color: $base_white;
-				border-radius: 5px;
+				width: 100%;
+				color: $strong_color;
+				border: 1px solid $strong_color;
+				border-radius: 2px;
+				font-weight: bold;
 				text-align: center;
-				&:hover {
-					border: 2px solid $strong_color;
-					background: $base_white;
-					color: $strong_color;
-				}
 			}
 		}
 	}
@@ -40,12 +51,10 @@
 		}
 		.user-activity {
 			width: 100%;
-			border: 2px solid $primary-color;
 			margin:0 0 8px 8px;
 		}
 		.user-bookmark {
 			width: 100%;
-			border: 2px solid $primary-color;
 			margin: 0 0 24px 8px;
 			.bookmark-books {
 			}
@@ -55,6 +64,8 @@
 
 //ユーザー編集画面
 .user_edit-page {
+	width: 80%;
+	margin: 0 auto;
 	form {
 		display: flex;
 		width: 100%;
@@ -68,21 +79,14 @@
 		}
 		.user-info {
 			width: 68%;
-			border: 2px solid $primary-color;
-			padding: 16px;
+			border-radius: 3px;
+			padding: 24px;
 			margin: 0 0 24px 0;
 			.success_btn {
-				display: inline-block;
 				width: 100%;
-				background: $strong_color;
-				color: $base_white;
-				border-radius: 15px;
 				text-align: center;
-				padding: 8px;
-				&:hover {
-					background: $base_white;
-					color: $strong_color;
-				}
+				font-weight: bold;
+				color: $base_white;
 			}
 		}
 	}

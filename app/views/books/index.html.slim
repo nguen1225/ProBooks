@@ -64,10 +64,21 @@
 		.book_section-cards
 			- @books.each do |book|
 				.card.hoverable
-					.card-image
-						= image_tag(book.image.to_s || 'default.jpg')
-						span.card-title = book.title
+					.card-image.waves-effect.waves-block.waves-light
+						- if book.image.present?
+							= image_tag book.image.url, class: "activator"
+						- else
+							= image_tag 'default.jpg', class: "activator"
 					.card-content
+						span.card-title.activator.grey-text.text-darken-4
+							= book.title
+								i.material-icons.right more_vert
+						p
+							= link_to '詳細へ', book_path(book)
+					.card-reveal
+						span.card-title.grey-text.text-darken-4
+							= book.title
+								i.material-icons.right close
 						p
 							| みんなの評価
 						- if book.reviews.present?
@@ -76,8 +87,6 @@
 						- else
 							= book.reviews.count
 							p id="star-avg"
-						.inner-btn
-							= link_to '詳細をみる', book_path(book), class: 'btn orange darken-1'
 				//評価平均
 				javascript:
 					$('#star-avg').raty({
