@@ -12,8 +12,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_reviews_count = @user.reviews.count
+    @user_reviews_count = Review.where(user_id: @user.id).size
+    #拍手をもらった回数
     @user_craps_count = Clap.where(review_id: @user.reviews.ids).size
+    @user_post_claps = Clap.where(user_id: @user.id).count
+    @user_post_books = @user.books.size
   end
 
 

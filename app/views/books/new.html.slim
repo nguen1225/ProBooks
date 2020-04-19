@@ -22,7 +22,7 @@
 					= f.label :content
 					= f.text_area :content
 				.input-field
-					= f.label  :category_id
+					= f.label :category_id
 					br
 					= f.collection_select :category_id, @categories, :id, :name
 				.input-field
