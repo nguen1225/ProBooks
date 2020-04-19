@@ -46,8 +46,21 @@ header {
 	.sidenav {
 		width: 240px;
 		background: #e1f5fe;
-		.notification-inner-text {
-			padding-left: initial;
+		.user-level {
+			text-align: center;
+			.level {
+				font-size: 24px;
+				font-weight: bold;
+				color: $strong_color;
+			}
+		}
+		.notification-header-line {
+			position: relative;
+			.notification-inner-text {
+				position: absolute;
+				top: -4px;
+    			left: 90px;
+			}
 		}
 		.search-icon {
 			position: absolute;

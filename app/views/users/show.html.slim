@@ -12,6 +12,9 @@
 					pre
 					= @user.status
 			p
+				| あなたの現在のレベルは
+				= @user.level
+			p
 				= simple_format(@user.introduction)
 			- if current_user == @user
 				= link_to '編集', edit_user_path(@user), class: "waves-effect waves-teal btn-flat success_btn"

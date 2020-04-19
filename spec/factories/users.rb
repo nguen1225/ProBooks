@@ -6,8 +6,10 @@
 #  deleted_at             :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  experience_point       :integer          default(0)
 #  image                  :string
 #  introduction           :text
+#  level                  :integer          default(1)
 #  name                   :string           not null
 #  provider               :string           default(""), not null
 #  remember_created_at    :datetime
