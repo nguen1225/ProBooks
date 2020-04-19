@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     @user_post_books = @user.books.size
   end
 
-
   private
 
   def user_params

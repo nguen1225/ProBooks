@@ -11,14 +11,17 @@ User table
 
 def levelUp
 	user = current_user
-	clap = ユーザーのレビューに拍手の総数をとってくる
+	clap_count = Clap.where(review_id: user.reviews.ids).size
 
 	totalExp = user.experience_point
-	#現在の経験値を代
-	totalExp += clap.size
+	#現在の経験値を代入
+	totalExp += clap_count
 	＃もらった拍手の総数を経験値に代入
 
+	＃必要ないのでは？
 	user.experience_point = totalExp
+
+	#代入した経験値をテーブルに保存、更新
 	user.update(experience_point: totalExp)
 	#更新処理する
 
