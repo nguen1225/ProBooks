@@ -92,15 +92,15 @@
 		.modal-content
 			= form_with model: @review, url: book_reviews_path(@book),local: true do |f|
 				= render 'shared/error_messages', model: @review
+				.field#star
+					= f.label :rate, '評価'
+					= f.hidden_field :rate, id: :review_star
 				.field
 					= f.label :title, 'タイトル'
 					= f.text_field :title
 				.field
 					= f.label :body, '内容'
 					= f.text_area :body
-				.field#star
-					= f.label :rate, '評価'
-					= f.hidden_field :rate, id: :review_star
 
 				= f.hidden_field :user_id, value: current_user.id
 				= f.hidden_field :book_id, value: @book.id
@@ -108,7 +108,7 @@
 				= f.submit '評価する', class: "btn"
 				javascript:
 					$('#star').raty({
-						size: 36,
+						size: 48,
 						starOff: "#{asset_path('star-off.png')}",
 						starOn: "#{asset_path('star-on.png')}",
 						starHalf: "#{asset_path('star-half.png')}",
@@ -119,7 +119,7 @@
 / 評価平均の表示
 javascript:
 	$('#star-avg').raty({
-		size: 36,
+		size: 40,
 		starOff: "#{asset_path('star-off.png')}",
 		starOn: "#{asset_path('star-on.png')}",
 		starHalf: "#{asset_path('star-half.png')}",

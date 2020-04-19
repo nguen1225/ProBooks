@@ -3,8 +3,8 @@
 
 .user_profile-page
 	.user-profile.z-depth-1
-		.user-image
-			= image_tag(@user.image.url.to_s, :size => '100x100' || 'default.jpg', :size => '100x100')
+		p.user-image
+			= image_tag(@user.image.url.to_s || 'human.jpg')
 		.user-info
 			p
 				= @user.name
@@ -30,10 +30,10 @@
 							| レビューした回数
 				tbody
 					tr
-						td まだありません
+						td = @user_post_books
 						td = @user_craps_count
+						td = @user_post_claps
 						td = @user_reviews_count
-						td まだありません
 		.user-bookmark.z-depth-1
 			h6
 				| #{@user.name}さんがお気に入りに追加した技術書
