@@ -4,6 +4,7 @@
 .book_new_edit-page
 	h4.page_title 技術書の登録
 	= form_with model: @book, local: true do |f|
+		= render 'shared/error_messages', model: @book
 		.side-image-field
 			- if @book.image.present?
 				= image_tag @book.image.url, id: :book_prev, size: '200x200'

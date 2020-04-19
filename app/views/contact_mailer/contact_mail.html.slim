@@ -1,0 +1,7 @@
+h1
+	| #{@contact.name}さま
+	| お問い合わせいただきありがとうございます
+h3
+	| お問い合わせ内容の確認
+p
+	= simple_format(@contact.body)

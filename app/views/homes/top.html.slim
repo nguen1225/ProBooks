@@ -86,3 +86,19 @@
 			i.fab.fa-twitter
 			i.fab.fa-github
 			i.fab.fa-facebook-square
+			.contact-form-wrap
+				= form_with model: @contact, local: true do |f|
+					= render 'shared/error_messages', model: @contact
+					.field
+						= f.label :name
+						= f.text_field :name
+					.field
+						= f.label :email
+						= f.text_field :email
+					.field
+						= f.label :body
+						= f.text_area :body
+					.action
+						= f.button class: "btn waves-effect waves-light send-btn", type: "submit" do
+							| 送信
+							i.material-icons send
