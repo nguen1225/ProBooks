@@ -1,18 +1,22 @@
 - provide(:title, "管理者ログイン")
 - breadcrumb :admin_session
 
-h2
-  | Log in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email,
-              required: false,
-              autofocus: true,
-              input_html: { autocomplete: "email" }
-    = f.input :password,
-              required: false,
-              input_html: { autocomplete: "current-password" }
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Log in"
-= render "admins/shared/links"
+.authenticate-wrap
+  .form-wrap
+    h2
+      | Log in
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }
+      .field
+        = f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" }
+        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .action
+        = f.submit "Log In", class: "waves-effect waves-light btn success_btn" do
+            i.material-icons done
+    = render "admins/shared/links"

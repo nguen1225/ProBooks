@@ -92,8 +92,7 @@
 		.reviews_pagination
 			= paginate @reviews
 
-
-	= link_to '#modal1', class: "modal-trigger waves-effect review_float-btn z-depth-3" do
+	= link_to '#modal1', data: { position:"top", tooltip: "レビューを書く" }, class: "modal-trigger waves-effect review_float-btn z-depth-3 tooltipped" do
 		i.material-icons border_color
 
 	//評価投稿フォーム

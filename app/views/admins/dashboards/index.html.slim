@@ -3,15 +3,15 @@
 
 .graph-wrap
 	.users-graph
-		p
+		p.graph-text
 			| 日別ユーザー登録者数遷移
 		= line_chart @users, download: true
 	.under-wrap
 		.books-graph
-			p
+			p.graph-text
 				| カテゴリ別登録書籍
 			= pie_chart @books, download: true
 		.reviews-graph
-			p
+			p.graph-text
 				| 日別レビュー投稿数
-			= column_chart @reviews, dowmload: true
+			= column_chart @reviews, download: true

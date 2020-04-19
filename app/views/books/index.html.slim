@@ -39,24 +39,30 @@
 				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
 					= link_to tag.name, tag_path(tag.name), :class => css_class
 		.category-search
-			.languages.lang-markup.z-depth-1
-				strong.language-text
-					| HTML&CSS
-			.languages.lang-javascript.z-depth-1
-				strong.language-text
-					| Javascript
-			.languages.lang-ruby.z-depth-1
-				strong.language-text
-					| Ruby
-			.languages.lang-php.z-depth-1
-				strong.language-text
-					| PHP
-			.languages.lang-aws.z-depth-1
-				strong.language-text
-					| AWS
-			.languages.lang-git.z-depth-1
-				strong.language-text
-					| Git/GitHub
+			.language-wrap.lang-markup.z-depth-1.hoverable
+				= link_to books_path(search:{category_id: 1}), class: "language-search-link" do
+					strong.language-text
+						| HTML&CSS
+			.language-wrap.lang-javascript.z-depth-1.hoverable
+				= link_to books_path(search:{category_id: 2}), class: "language-search-link" do
+					strong.language-text
+						| Javascript
+			.language-wrap.lang-ruby.z-depth-1.hoverable
+				= link_to books_path(search:{category_id: 3}), class: "language-search-link" do
+					strong.language-text
+						| Ruby
+			.language-wrap.lang-php.z-depth-1.hoverable
+				= link_to books_path(search:{category_id: 4}), class: "language-search-link" do
+					strong.language-text
+						| PHP
+			.language-wrap.lang-aws.z-depth-1.hoverable
+				= link_to books_path(search:{category_id: 5}), class: "language-search-link" do
+					strong.language-text
+						| AWS
+			.language-wrap.lang-git.z-depth-1.hoverable
+				= link_to books_path(search:{category_id: 6}), class: "language-search-link" do
+					strong.language-text
+						| Git/GitHub
 
 	.book_stock-area
 		p.book_section-title

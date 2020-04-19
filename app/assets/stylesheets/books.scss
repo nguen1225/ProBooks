@@ -71,16 +71,28 @@
 			width: 50%;
 			margin: 8px auto;
 			justify-content: space-around;
-			.languages {
+			.language-wrap {
 				width: 45%;
 				height: 80px;
 				margin: 8px;
-				border-radius: 10px;
+				border-radius: 3px;
 				text-align: center;
 				color: white;
+				position: relative;
+				&:hover {
+					opacity: 0.8;
+				}
+				.languagge-search-link {
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+				}
 				.language-text {
 					font-size: 24px;
 					line-height: 80px;
+					color: $base_white;
 				}
 			}
 			.lang-markup {

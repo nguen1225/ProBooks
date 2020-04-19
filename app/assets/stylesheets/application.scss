@@ -82,7 +82,12 @@ header {
 
 // footer
 .page-footer {
+	.footer-link-wrap {
+		width: 80%;
+		margin: 0 auto;
+	}
 	height: 160px;
+
 }
 //通知ページ
 .notification-wrapper {
@@ -196,6 +201,9 @@ header {
 .graph-wrap {
 	width: 100%;
 	flex-direction: column;
+	.graph-text {
+		font-weight: bold;
+	}
 	.users-graph {
 		width: 100%;
 		padding: 24px;
