@@ -1,16 +1,32 @@
 - provide(:title, 'カテゴリー追加')
 
-- @categories.each do |category|
+.category-wrap
+	table.category-table.z-depth-1
+		thead
+			tr
+				th
+					| ID
+				th
+					| 名前
+				th
+					| 作成日
+				th
+					| 更新日
+				th
+		- @categories.each do |category|
+			tbody
+				tr
+					td = category.name
+					td = l(category.created_at)
+					td = l(category.updated_at)
+					td = link_to "削除", category_path(category), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "danger_btn"
+
+
+
 	p
-		= category.name
-		= category.created_at
-		= category.updated_at
+		| カテゴリーの追加
+	= form_with model: @category, local: true do |f|
+		= f.label :name
+		= f.text_field :name
 
-
-p
-	| カテゴリーの追加
-= form_with model: @category, local: true do |f|
-	= f.label :name
-	= f.text_field :name
-
-	= f.submit '追加', class: 'btn'
+		= f.submit '追加', class: 'btn'
