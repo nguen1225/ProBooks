@@ -41,7 +41,7 @@
 				- @user.favorites.each do |favorite|
 					.bookmark-book
 						p.bookmark-book-image
-							= image_tag(favorite.book.image.to_s || 'default.jpg')
+							= image_tag(favorite.book.image.to_s || 'notebook.jpg')
 						.bookmark-book-title
 							= favorite.book.title
 						span.bookmark-link
