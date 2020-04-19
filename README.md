@@ -31,4 +31,7 @@
 
 
 ### 機能一覧
-https://docs.google.com/spreadsheets/d/1HuIg7pLMXl5IcsuYqOy9CNmTUf6uta6L1528xJ72y1w/edit#gid=0
+- ユーザーCRUD
+- 書籍CRUD
+- GitHub認証
+- レビュー投稿機能

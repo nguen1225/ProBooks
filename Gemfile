@@ -28,6 +28,10 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'rspec-rails', '~> 3.7'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
