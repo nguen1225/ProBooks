@@ -90,9 +90,12 @@
 		.top_contact-box
 			p
 				| 管理者へのお問い合わせはこちらから
-			i.fab.fa-twitter
-			i.fab.fa-github
-			i.fab.fa-facebook-square
+			= link_to("https://twitter.com/imaeda_hikaru") do
+				i.fab.fa-twitter
+			= link_to("https://github.com/hikaru9507") do
+				i.fab.fa-github
+			= link_to("https://www.facebook.com/profile.php?id=100007037743422") do
+				i.fab.fa-facebook-square
 			.contact-form-wrap
 				= form_with model: @contact, local: true do |f|
 					= render 'shared/error_messages', model: @contact

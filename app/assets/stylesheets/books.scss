@@ -125,6 +125,12 @@
 			.card {
 				width: 250px;
 				margin-right: 10px;
+				.card-content {
+					.success_btn {
+						color: $strong_color;
+						font-weight: bold;
+					}
+				}
 				.inner-btn {
 					.btn {
 						width: 100%;

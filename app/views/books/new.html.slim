@@ -9,7 +9,7 @@
 			- if @book.image.present?
 				= image_tag @book.image.url, id: :book_prev, size: '200x200'
 			- else
-				= image_tag 'default.jpg', id: :book_prev, size: '200x200'
+				= image_tag 'notebook.jpg', id: :book_prev, size: '200x200'
 			.image-label
 				= f.label :image
 				br
