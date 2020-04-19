@@ -1,3 +1,14 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "application";
+
+
+.category-wrap {
+	width: 80%;
+	margin: 24px auto;
+	.category-table {
+		padding: 16px;
+	}
+}

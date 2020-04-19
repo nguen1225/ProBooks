@@ -19,10 +19,11 @@
 			= f.label :lebel
 			= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
 					:selected => @search_params[:level]
-		.action
-			= f.submit '検索', class: "btn"
-		.action
-			= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
+		.search-btn-wrap
+			.action
+				= f.submit '検索', class: "btn"
+			.action
+				= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
 	h4
 		| 登録書籍一覧
 	table.books-table.z-depth-1
@@ -52,7 +53,7 @@
 					td = book.id
 					td = book.title
 					td = simple_format(book.content)
-					td = book.category.name
+					td = book.category_id
 					td = book.level
 					td = book.volume
 					td = l(book.created_at)
@@ -60,5 +61,4 @@
 					td.btn-wrap
 						= link_to '詳細', book_path(book), class: "success_btn"
 					td.btn-wrap
-						= link_to '削除', book_path(book), method: :delete,
-										　　　　           confirm: { data: "本当に削除しますか？" }, class: "danger_btn"
+						= link_to '削除', book_path(book), method: :delete, confirm: { data: "本当に削除しますか？" }, class: "danger_btn"

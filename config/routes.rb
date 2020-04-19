@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'books#index', as: :tag
   get 'tag/tag_name', to: 'books#index'
   get 'reviews', to: 'reviews#index'
-  get "csv_category_books", to: 'admins/books#csv_category_books'
+  post "csv_books_import", to: "admins/books#import"
 end

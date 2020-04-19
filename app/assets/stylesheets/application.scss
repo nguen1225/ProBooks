@@ -162,6 +162,12 @@ header {
 .all-books {
 	width: 90%;
 	margin: 8px auto;
+	.search-btn-wrap {
+		display: inline-flex;
+		.btn {
+			margin-right: 8px;
+		}
+	}
 	.books-table {
 		padding: 16px;
 		.table-header {
