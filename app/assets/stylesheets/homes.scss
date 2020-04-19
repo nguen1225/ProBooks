@@ -41,7 +41,10 @@
 
 .top_section {
 	.top_section-title {
+		width: 30%;
+		margin: 24px auto;
 		text-align: center;
+		border-bottom: 3px solid $primary-color;
 	}
 	//各タブcss
 	#top_about {
@@ -83,7 +86,7 @@
 		}
 	}
 	#top_flow {
-		background: $paper-color;
+		margin: 16px 0;
 		.top_flow-boxies {
 			display: flex;
 			align-items: center;
@@ -103,10 +106,24 @@
 		}
 	}
 	#top_contact {
+		margin: 16px 0;
 		.top_contact-box {
 			width: 50%;
-			margin: 0 auto;
+			margin:  auto;
 			text-align: center;
+			.contact-form-wrap {
+				.send-btn {
+					width: 100%;
+					margin-top: 8px;
+					color: $base_white;
+					position: relative;
+					.material-icons {
+						position: absolute;
+						top: 1px;
+						padding-left: inherit;
+					}
+				}
+			}
 			.fab{
 				font-size: 50px;
 				margin: 16px;

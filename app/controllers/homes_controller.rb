@@ -1,3 +1,5 @@
 class HomesController < ApplicationController
-  def top; end
+  def top
+    @contact = Contact.new
+  end
 end
