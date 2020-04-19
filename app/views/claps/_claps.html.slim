@@ -1,4 +1,4 @@
-- if review.already_clap_by?(login_user)
+- if review.already_clap_by?(current_user)
 		- review.claps.each do |clap|
 			= link_to book_review_clap_path(book, review, clap), method: :delete, remote: true do
 				i.fas.fa-sign-language.not-clapping

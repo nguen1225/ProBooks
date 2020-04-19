@@ -10,18 +10,18 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	background-image: image-url('top.jpg');
-	background-position: center;
-	background-size: cover;
+	background-image: image-url('book.jpg');
+	background-position: left;
+	background-repeat: no-repeat;
 	height: 480px;
 	.authenticate-area {
-		width: 30%;
+		width: 40%;
 		height: 80%;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		margin-right: 5%;
-		background: rgba(255,255,255,0.8);
+		background: rgba(255, 255, 255, 0.722);
 		.authenticate-link {
 			width: 100%;
 			text-align: center;
@@ -64,6 +64,7 @@
 				border-left: 16px solid $primary-color;
 			}
 			.about-content-ri {
+				width: 50%;
 				margin-left: 16px;
 				position: relative;
 				.btn {
@@ -74,6 +75,7 @@
 				}
 			}
 			.about-content-le {
+				width: 50%;
 				margin-right: 16px;
 				position: relative;
 				.btn {
@@ -100,7 +102,9 @@
 
 				}
 				.flow-content {
-
+					.flow-content-text {
+						font-size: 12px;
+					}
 				}
 			}
 		}
