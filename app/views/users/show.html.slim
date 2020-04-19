@@ -39,8 +39,13 @@
 				| #{@user.name}さんがお気に入りに追加した技術書
 			.bookmark-books
 				- @user.favorites.each do |favorite|
-					= favorite.book.title
-
+					.bookmark-book
+						p.bookmark-book-image
+							= image_tag(favorite.book.image.to_s || 'default.jpg')
+						.bookmark-book-title
+							= favorite.book.title
+						span.bookmark-link
+							= link_to "詳細へ", book_path(favorite.book), class: "waves-effect waves-teal btn-flat success_btn"
 
 / // 投稿したレビューした書籍一覧
 / - @user.reviews.each do |review|
