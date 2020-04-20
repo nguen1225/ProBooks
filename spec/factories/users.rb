@@ -29,11 +29,13 @@
 #
 FactoryBot.define do
   factory :user do
-    name { 'テスト' }
-    email { 'test@example.com' }
+    sequence(:name) { |n| "テスト#{n}ユーザ" }
+    sequence(:email) { |n| "tester#{n}@example.com" }
     status { 'engineer' }
     introduction { 'テストユーザーの自己紹介' }
     password { 'foobar' }
     password_confirmation { 'foobar' }
+    sequence(:uid) { |n| "#{n}12345" }
+    provider { 'github' }
   end
 end

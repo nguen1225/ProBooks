@@ -27,8 +27,8 @@ class Book < ApplicationRecord
   has_many :favorites,   dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates  :title,        presence: true, ng_word: true
-  validates  :content,      presence: true, ng_word: true
+  validates  :title,        presence: true, ng_word: true, length: { in: 2..30 }
+  validates  :content,      presence: true, ng_word: true, length: { maximum: 255 }
   validates  :category_id,  presence: true
   validates  :user_id,      presence: true
 

@@ -21,7 +21,5 @@ FactoryBot.define do
   factory :book do
     title { 'テスト' }
     content { 'テストコンテント' }
-    category { 'html' }
-    user
   end
 end
