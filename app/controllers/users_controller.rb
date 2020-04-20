@@ -1,15 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
-
-  def edit; end
-
-  def update
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: '更新しました'
-    else
-      render :edit
-    end
-  end
+  before_action :set_user, only: %i[show]
 
   def show
     @user_reviews_count = Review.where(user_id: @user.id).size

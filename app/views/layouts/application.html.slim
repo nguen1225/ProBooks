@@ -17,6 +17,6 @@ html
       - if flash.present?
         = render 'shared/flash_messages'
       .breadcrumbs
-	      == breadcrumbs separator:" &rsaquo; ", class: "breadcrumb"
+          == breadcrumbs separator:" &rsaquo; ", class: "breadcrumb"
       = yield
     = render 'shared/footer'

@@ -40,8 +40,8 @@ class User < ApplicationRecord
   has_many  :favorites, dependent: :destroy
   has_many  :active_notifications, class_name: 'Notification',
                                    foreign_key: 'visitor_id', dependent: :destroy
-  has_many  :passive_notifications, class_name: 'Notification',
-                                    foreign_key: 'visited_id', dependent: :destroy
+  has_many  :passive_notifications,class_name: 'Notification',
+                                   foreign_key: 'visited_id', dependent: :destroy
 
   def self.csv_attributes
     %w[id name email status created_at updated_at]
@@ -92,4 +92,18 @@ class User < ApplicationRecord
   scope :status_is, -> (status) { where(status: status) if status.present? }
   scope :created_at_from, -> (from) { where('? <= created_at', from ) if from.present? }
   scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present?  }
+
+  #ユーザー情報更新
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
 end
