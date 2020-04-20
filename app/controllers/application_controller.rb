@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       admins_root_path
     end
   end
-  
+
   def after_sign_up_path(resource)
     user_path(resource)
   end
@@ -27,5 +27,9 @@ class ApplicationController < ActionController::Base
                                                          email
                                                          password
                                                          password_confirmation])
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 end

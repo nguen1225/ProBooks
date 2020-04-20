@@ -29,8 +29,6 @@ class User < ApplicationRecord
   enumerize :status, in: %i[engineer begineer]
   mount_uploader :image, ImagesUploader
   validates :email,                 presence: true
-  validates :password,              presence: true
-  validates :password_confirmation, presence: true
   validates :name,                  presence: true, ng_word: true, length: { minimum: 2 }
   validates :introduction,                          ng_word:  true,length: { maximum: 255 }
 
