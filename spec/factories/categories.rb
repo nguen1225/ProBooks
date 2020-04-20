@@ -9,6 +9,7 @@
 #
 FactoryBot.define do
   factory :category do
-    name { 'MyString' }
+    name { 'html&css' }
+    book
   end
 end
