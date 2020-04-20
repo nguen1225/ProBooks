@@ -32,7 +32,7 @@
 							= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
 									:selected => @search_params[:level]
 						.action
-							= f.submit '検索', class: "success_btn"
+							= f.button '検索', type: "submit", class: "success_btn waves-effect waves-light btn-flat"
 
 			#tag_search
 				p キーワード検索

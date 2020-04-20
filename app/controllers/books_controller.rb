@@ -26,7 +26,7 @@ class BooksController < ApplicationController
       flash[:notice] = '登録しました'
       redirect_to book_path(@book)
     else
-      @categories = Categories.all
+      @categories = Category.all
       render :new
     end
   end

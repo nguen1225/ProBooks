@@ -1,29 +1,31 @@
 - provide(:title, 'レビュー編集')
 
-p　レビューの編集
-= form_with model: @review, url: book_review_path(@book), local: true do |f|
-	= render 'shared/error_messages', model: review
-	.field
-		= f.label :title, 'タイトル'
-		= f.text_field :title
-	.field
-		= f.label :body, '内容'
-		= f.text_area :body
-	.field#star
-		= f.label :rate, '評価'
-		= f.hidden_field :rate, id: :review_star
+.review_edit-page
+	h4.page_title　レビューの編集
+	.reveiw-form.z-depth-2
+		= form_with model: @review, url: book_review_path(@book), local: true do |f|
+			= render 'shared/error_messages', model: @review
+			.field#star
+				= f.label :rate, '評価'
+				= f.hidden_field :rate, id: :review_star
+			.field
+				= f.label :title, 'タイトル'
+				= f.text_field :title
+			.field
+				= f.label :body, '内容'
+				= f.text_area :body
 
-	= f.hidden_field :user_id, value: current_user.id
-	= f.hidden_field :book_id, value: book.id
-	= f.submit '評価する', class: "btn"
+			= f.hidden_field :user_id, value: current_user.id
+			= f.hidden_field :book_id, value: @book.id
+			= f.button '評価する', type: "submit", class: "btn-flat success_btn waves-effect waves-light"
 
 
-	javascript:
-		$('#star').raty({
-			size: 36,
-			starOff: "#{asset_path('star-off.png')}",
-			starOn: "#{asset_path('star-on.png')}",
-			starHalf: "#{asset_path('star-half.png')}",
-			scoreName: 'review[rate]',
-			half: true
-		});
+javascript:
+	$('#star').raty({
+		size: 48,
+		starOff: "#{asset_path('star-off.png')}",
+		starOn: "#{asset_path('star-on.png')}",
+		starHalf: "#{asset_path('star-half.png')}",
+		scoreName: 'review[rate]',
+		half: true
+	});
