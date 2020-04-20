@@ -32,6 +32,16 @@ body {
     box-sizing: border-box;
 	font-family: 'Helvetica Neue','Helvetica','Arial',sans-serif;
 	color: $text_color;
+	.notice {
+		background: #b2dfdb ;
+		padding: 8px;
+		margin: 0;
+	}
+	.alert {
+		background: #ff6e40;
+		padding: 8px;
+		margin: 0;
+	}
 }
 
 header, main, footer {

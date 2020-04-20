@@ -49,8 +49,3 @@
 							= favorite.book.title
 						span.bookmark-link
 							= link_to "詳細へ", book_path(favorite.book), class: "waves-effect waves-teal btn-flat success_btn"
-
-/ // 投稿したレビューした書籍一覧
-/ - @user.reviews.each do |review|
-/ 	= link_to review.book.title, book_path(review.book)
-/ 	= review.title

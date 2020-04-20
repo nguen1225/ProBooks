@@ -13,6 +13,7 @@
 	background-image: image-url('book.jpg');
 	background-position: left;
 	background-repeat: no-repeat;
+	background-size: contain;
 	height: 480px;
 	.authenticate-area {
 		width: 40%;
@@ -54,8 +55,9 @@
 			.about-image {
 				width: 50%;
 				img {
-					width: 50%;
-    				margin: 0 auto;
+					width: 100%;
+					margin: 0 auto;
+					height: 200px;
 				}
 			}
 			.content-title {
@@ -92,14 +94,17 @@
 		.top_flow-boxies {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
 			.material-icons {
 				font-size: 24px;
 			}
 			.flow-box {
 				text-align: center;
 				.flow-image {
-
+					width: 100px;
+					img {
+						width: 100px;
+						height: 100px;
+					}
 				}
 				.flow-content {
 					.flow-content-text {
