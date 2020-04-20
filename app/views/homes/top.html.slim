@@ -20,32 +20,32 @@
 			| ABOUT
 		.top_about-box
 			p.about-image
-				= image_tag "default.jpg", class: 'materialboxed'
+				= image_tag "default.jpg"
 			.about-content-ri
 				h5.content-title
-					| 学びたい本がすぐに見つかる
+					| 学びたい本がすぐに見つかる！
 				p
 					| キーワードやタグ、言語ごと検索することが
 			        | でき、目的にあった技術書を見つけることができます
 					| また豊富なレビューから書籍の情報を得ることができます
-				= link_to 'さっそく書籍を探す', books_path, class: 'btn'
+				= link_to '書籍を探してみる', books_path, class: 'btn'
 		.top_about-box
 			.about-content-le
 				h5.content-title
-					| 自分の投稿にレビューや拍手が送られると
+					| レビューを書いてレベルアップ！
 				p
-					| ホゲホゲホゲホゲホゲホゲ
-					| ホゲホゲホゲホゲホゲホゲ
-					| hogehogehogehoghoge
-				= link_to '書籍を探す', books_path, class: 'btn'
+					| 自分の書いたレビューに拍手が送られると
+					| 拍手の数によって自分のユーザーレベルが上がります
+					| 会員登録してたくさんレビューを書いてたくさんレベルをあげよう！
+				= link_to '登録してみる', new_user_registration_path, class: 'btn'
 			p.about-image
-				= image_tag "default.jpg", class: 'materialboxed'
+				= image_tag "default.jpg"
 	#top_flow
 		h3.top_section-title
 			| FLOW
 		.top_flow-boxies
 			.flow-box
-				.flow-image
+				p.flow-image
 					= image_tag 'signup.jpg', class: 'circle', size: '100x100'
 				.flow-content
 					h5
@@ -55,7 +55,7 @@
 						| この登録作業がエンジニアへの道の始まりです
 			i.material-icons arrow_forward
 			.flow-box
-				.flow-image
+				p.flow-image
 					= image_tag 'search.jpg', class: 'circle', size: '100x100'
 				.flow-content
 					h5
@@ -65,17 +65,17 @@
 						| きっとすぐにあなたの求めている技術書に出会えます。
 			i.material-icons arrow_forward
 			.flow-box
-				.flow-image
+				p.flow-image
 					= image_tag 'clap.jpg', class: 'circle', size: '100x100'
 				.flow-content
 					h5
 						|　Clap!
 					p.flow-content-text
 						| 参考になったレビューには拍手を送りましょう。
-						| きっとレビューをされた相手は大変喜ぶことでしょう。
+						| きっとレビューをされた相手は喜びます
 			i.material-icons arrow_forward
 			.flow-box
-				.flow-image
+				p.flow-image
 					= image_tag 'review.jpg', class: 'circle', size: '100x100'
 				.flow-content
 					h5
