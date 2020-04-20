@@ -93,22 +93,29 @@
 					font-size: 24px;
 					line-height: 80px;
 					color: $base_white;
+					position: relative;
+					margin-left: 24px;
+					i {
+						position: absolute;
+						top: 3px;
+						left: -30px;
+					}
 				}
 			}
 			.lang-markup {
-				background:#b2ff59;
+				background: #81c784 ;
 			}
 			.lang-javascript {
-				background:#80d8ff;
+				background: #90caf9;
 			}
 			.lang-ruby {
 				background:#ff5252;
 			}
 			.lang-php {
-				background:#fbc02d;
+				background:#ffee58;
 			}
 			.lang-aws {
-				background:#fb8c00;
+				background:#ffca28;
 			}
 			.lang-git {
 				background:#424242;
