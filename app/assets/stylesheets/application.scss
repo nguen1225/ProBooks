@@ -25,6 +25,17 @@ $strong_color: #ffb300;
 $danger_color: #e64a19;
 @import 'materialize';
 
+//共通コンポーネント
+//ボタン
+@mixin success_btn {
+	width: 100%;
+	border: 1px solid $strong_color;
+	border-radius: 2px;
+	color: $strong_color;
+	font-weight: bold;
+	text-align: center;
+}
+
 
 body {
     margin: 0;

@@ -39,12 +39,7 @@
 			padding: 0 24px 8px 24px;
 			border-radius: 3px;
 			.success_btn {
-				width: 100%;
-				color: $strong_color;
-				border: 1px solid $strong_color;
-				border-radius: 2px;
-				font-weight: bold;
-				text-align: center;
+				@include success_btn
 			}
 		}
 	}
@@ -60,6 +55,11 @@
 		.user-bookmark {
 			width: 100%;
 			margin: 0 0 24px 8px;
+			.bookmark-heading {
+				border-left: 16px solid #4fc3f7;
+				font-size: 16px;
+				padding: 8px;
+			}
 			.bookmark-books {
 				.bookmark-book {
 					width: 25%;
@@ -109,10 +109,7 @@
 			padding: 24px;
 			margin: 0 0 24px 0;
 			.success_btn {
-				width: 100%;
-				text-align: center;
-				font-weight: bold;
-				color: $base_white;
+				@include success_btn
 			}
 		}
 	}

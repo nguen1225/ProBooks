@@ -1,0 +1,50 @@
+- provide(:title, '会員情報編集')
+- breadcrumb :user_edit, @user
+
+.user_edit-page
+  h4.page_title
+    | 会員情報編集
+
+  = form_with model: @user, local: true do |f|
+    .user-avater
+      - if @user.image.present?
+        = image_tag @user.image.url, id: :user_prev, size: '100x100', class: "z-depth-2"
+      - else
+        = image_tag 'default.jpg', id: :user_prev, size: '100x100', class: "z-depth-2"
+      br
+      = f.label :image, 'プロフィール画像'
+      br
+      = f.file_field :image, id: :user_image, class: "input-file"
+    .user-info.z-depth-2
+      = render 'shared/error_messages', model: @user
+      .input-field
+        = f.label :name
+        = f.text_field :name
+      .input-field
+        = f.label :email
+        = f.email_field :email
+      .input-field
+        = f.label :status
+        br
+        = f.select :status, User.status.options
+      .input-field
+        = f.label :introduction
+        = f.text_area :introduction
+      .action
+        = f.button '更新', type: "submit", class: 'waves-effect waves-light btn-flat success_btn'
+
+javascript:
+	$(function() {
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+		$('#user_prev').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#user_image").change(function(){
+			readURL(this);
+		});
+	});
