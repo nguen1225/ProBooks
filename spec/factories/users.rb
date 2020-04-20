@@ -29,7 +29,7 @@
 #
 FactoryBot.define do
   factory :user do
-    name { 'テスト' }
+    sequence(:name) { |n| "テスト#{n}ユーザ" }
     sequence(:email) { |n| "tester#{n}@example.com" }
     status { 'engineer' }
     introduction { 'テストユーザーの自己紹介' }

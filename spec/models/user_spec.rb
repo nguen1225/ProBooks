@@ -30,80 +30,80 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it '全項目が正しく入力されていれば有効な状態' do
-    user = User.new(
-      name: 'テスト',
-      email: 'test@example.com',
-      introduction: 'テストです',
-      status: 'engineer',
-      password: 'hogehoge',
-      password_confirmation: 'hogehoge'
-    )
-    expect(user).to be_valid
-  end
+  describe 'バリデーション' do
+    it '全項目が正しく入力されていれば有効な状態' do
+      user = User.new(
+        name: 'テスト',
+        email: 'test@example.com',
+        introduction: 'テストです',
+        status: 'engineer',
+        password: 'hogehoge',
+        password_confirmation: 'hogehoge'
+      )
+      expect(user).to be_valid
+    end
 
-  it '名前な未入力であれば無効' do
-    user = User.new(name: nil)
-    user.valid?
-    expect(user.errors[:name]).to include("を入力してください")
-  end
+    it '名前な未入力であれば無効' do
+      user = User.new(name: nil)
+      user.valid?
+      expect(user.errors[:name]).to include("を入力してください")
+    end
 
+    it '名前の文字数が1文字以下であれば無効' do
+      user = User.new(name: "a")
+      user.valid?
+      expect(user.errors[:name]).to include("は2文字以上で入力してください")
+    end
 
-  it '名前の文字数が1文字以下であれば無効' do
-    user = User.new(name: "a")
-    user.valid?
-    expect(user.errors[:name]).to include("は2文字以上で入力してください")
-  end
+    it '重複したメールアドレスであれば無効' do
+      User.create!(
+        name: 'テスト',
+        email: 'test@example.com',
+        introduction: 'テストです',
+        status: 'engineer',
+        password: 'hogehoge',
+        password_confirmation: 'hogehoge'
+      )
+      user = User.new(
+        name: 'テスター',
+        email: 'test@example.com',
+        introduction: 'テストです',
+        status: 'engineer',
+        password: 'hogehoge',
+        password_confirmation: 'hogehoge'
+      )
+      user.valid?
+      expect(user.errors[:email]).to include("はすでに存在します")
+    end
 
-  it '重複したメールアドレスであれば無効' do
-    User.create!(
-      name: 'テスト',
-      email: 'test@example.com',
-      introduction: 'テストです',
-      status: 'engineer',
-      password: 'hogehoge',
-      password_confirmation: 'hogehoge'
-    )
-    user = User.new(
-      name: 'テスター',
-      email: 'test@example.com',
-      introduction: 'テストです',
-      status: 'engineer',
-      password: 'hogehoge',
-      password_confirmation: 'hogehoge'
-    )
-    user.valid?
-    expect(user.errors[:email]).to include("すでに使用されています")
-  end
+    it 'メールアドレスが未入力であれば無効' do
+      user = User.new(email: nil)
+      user.valid?
+      expect(user.errors[:email]).to include("を入力してください")
+    end
 
+    it 'パスワードが未入力であれば無効' do
+      user = User.new(password: nil)
+      user.valid?
+      expect(user.errors[:password]).to include("を入力してください")
+    end
 
-  it 'メールアドレスが未入力であれば無効' do
-    user = User.new(email: nil)
-    user.valid?
-    expect(user.errors[:email]).to include("を入力してください")
-  end
+    it '確認用パスワードが未入力であれば無効' do
+      user = User.new(password_confirmation: nil)
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("を入力してください")
+    end
 
-  it 'パスワードが未入力であれば無効' do
-    user = User.new(password: nil)
-    user.valid?
-    expect(user.errors[:password]).to include("を入力してください")
-  end
+    it '名前にNGワードが含まれていれば無効' do
+      user = User.new(name: 'うんこ')
+      user.valid?
+      expect(user.errors[:name]).to include('のうんこはNGワードです')
+    end
 
-  it '確認用パスワードが未入力であれば無効' do
-    user = User.new(password_confirmation: nil)
-    user.valid?
-    expect(user.errors[:password_confirmation]).to include("を入力してください")
-  end
-
-  it '名前にNGワードが含まれていれば無効' do
-    user = User.new(name: 'うんこ')
-    user.valid?
-    expect(user.errors[:name]).to include('のうんこはNGワードです')
-  end
-
-  it '自己紹介文にNGワードが含まれている' do
-    user = User.new(introduction: 'うんこ')
-    user.valid?
-    expect(user.errors[:introduction]).to include('のうんこはNGワードです')
+    it '自己紹介文にNGワードが含まれている' do
+      user = User.new(introduction: 'うんこ')
+      user.valid?
+      expect(user.errors[:introduction]).to include('のうんこはNGワードです')
+    end
   end
 end

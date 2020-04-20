@@ -9,7 +9,6 @@
 #
 FactoryBot.define do
   factory :category do
-    name { 'html&css' }
-    book
+    name { "html&css" }
   end
 end

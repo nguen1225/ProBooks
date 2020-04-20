@@ -21,8 +21,5 @@ FactoryBot.define do
   factory :book do
     title { 'テスト' }
     content { 'テストコンテント' }
-    category_id { "1" }
-    user
-    category
   end
 end
