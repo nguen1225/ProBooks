@@ -1,4 +1,6 @@
-p.notice
-	= notice
-p
-	= alert
+- if flash.notice
+	p.notice
+		= notice
+- elsif flash.alert
+	p.alert
+		= alert

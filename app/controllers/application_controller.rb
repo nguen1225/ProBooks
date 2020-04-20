@@ -3,10 +3,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
-      root_path
+      user_path(resource)
     elsif resource.is_a?(Admin)
       admins_root_path
     end
+  end
+  
+  def after_sign_up_path(resource)
+    user_path(resource)
   end
 
   #管理者権限

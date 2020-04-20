@@ -15,7 +15,7 @@ RSpec.describe '書籍CRUD', type: :system do
     visit new_book_path
     fill_in 'Title', with: 'テスト'
     fill_in 'Content', with: 'テストしました'
-    attach_file 'book[image]', 'app/assets/images/rails.png'
+    attach_file 'book[image]', 'app/assets/images/default.jpg'
     click_on 'Create Book'
 
     expect(page).to have_content 'テスト'
