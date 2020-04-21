@@ -24,13 +24,15 @@ RSpec.describe '書籍CRUD', type: :system do
       find("li", text: "Hard").click
       all('.input-text input')[3].click
       find('li', text: "Medium").click
+      fill_in 'タグ', with: '#テストタグ'
       attach_file 'book[image]', 'app/assets/images/default.jpg'
       click_on '登録'
-    }.to change(Book.count).by(1)
+    }.to change{Book.count}.by(1)
 
     #登録後詳細ページへ遷移
     expect(page).to have_content 'テスト'
     expect(page).to have_content 'テストしました'
+    expect(page).to have_content '#テストタグ'
     expect(page).to have_selector("img[src$='default.jpg']")
     expect(page).to have_content 'hard'
     expect(page).to have_content 'medium'
@@ -72,5 +74,5 @@ RSpec.describe '書籍CRUD', type: :system do
     #   accept_confirm { click_link '削除' }
 
     #   expect(page).to have_content('削除しました')
-    # end
+    # en
 end
