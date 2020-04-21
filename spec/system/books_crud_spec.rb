@@ -63,7 +63,7 @@ RSpec.describe '書籍CRUD', type: :system do
     end
 
     #jsダイアログの表示がうまくいかない
-    # it '書籍の削除ができる',js: true, must: true do
+    # it '書籍の削除ができる',js: true do
     #   book = FactoryBot.create(:book, user_id: @user.id, category_id: @category_first.id)
     #   visit book_path(book)
 
