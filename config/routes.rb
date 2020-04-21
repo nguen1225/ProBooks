@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show edit update)
   resources :notifications, only: %i(index)
   resources :books do
-    resources :favorites, only: %i(create destroy)
+    resource :favorites, only: %i(create destroy)
     resources :reviews, only: %i(edit update create destroy) do
-        resources :claps, only: %i(create destroy)
+        resource :claps, only: %i(create destroy)
     end
   end
   get 'tags/:tag', to: 'books#index', as: :tag

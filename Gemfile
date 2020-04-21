@@ -24,14 +24,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
   gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'faker'
   gem 'rspec-rails', '~> 3.7'
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -41,6 +41,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener_web', '~> 1.0'
   gem 'pry-byebug'
   gem 'rack-mini-profiler', require: false
   gem 'rubocop', require: false
@@ -48,7 +49,6 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
@@ -66,6 +66,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'carrierwave', '~> 1.0'
+gem 'chartkick'
 gem 'csv'
 gem 'devise'
 gem 'devise-i18n'
@@ -73,6 +74,7 @@ gem 'devise-i18n-views'
 gem 'dotenv-rails'
 gem 'enumerize'
 gem 'gretel'
+gem 'groupdate'
 gem 'hashid-rails', '~> 1.0'
 gem 'html2slim'
 gem 'jquery-rails'
@@ -82,8 +84,6 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'paranoia'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'chartkick'
-gem 'groupdate'
-gem 'paranoia'
