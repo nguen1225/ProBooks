@@ -32,7 +32,7 @@
 				tr
 					th
 						| タグ
-					td = raw(@book.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
+					td = raw(@book.tag_list.map { |t| link_to t, tag_path(t), class: "tag-style" }.join(', '))
 
 			- if current_user == @book.user
 				.btn-wrap

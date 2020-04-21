@@ -43,6 +43,12 @@ $danger_color: #e64a19;
 	font-weight: bold;
 	text-align: center;
 }
+@mixin tag_style {
+	padding: 4px;
+    background:#bdbdbd;
+	border-radius: 5px;
+	color: $base_white;
+}
 
 
 body {
@@ -62,7 +68,6 @@ body {
 		margin: 0;
 	}
 }
-
 header, main, footer {
 	padding-left: 240px;
 }
@@ -71,6 +76,15 @@ header, main, footer {
 	  padding-left: 0;
 	}
 }
+
+.tag-style {
+	@include tag_style;
+}
+.css4 {
+	@include tag_style;
+	margin-left: 4px;
+}
+
 header {
 	.sidenav {
 		width: 240px;

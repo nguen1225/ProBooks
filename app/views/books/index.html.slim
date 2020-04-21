@@ -71,16 +71,12 @@
 						| Git/GitHub
 
 	.book_stock-area
-		p.book_section-title
-			| 書籍一覧
+		p
 		.book_section-cards
 			- @books.each do |book|
 				.card.hoverable
 					.card-image.waves-effect.waves-block.waves-light
-						- if book.image.present?
-							= image_tag book.image.url, class: "activator"
-						- else
-							= image_tag 'notebook.jpg', class: "activator"
+						= image_tag(book.image.url, :class => 'activator')
 					.card-content
 						span.card-title.activator.grey-text.text-darken-4
 							= book.title
@@ -99,6 +95,7 @@
 						- else
 							= book.reviews.count
 							p id="star-avg"
+		= paginate @books
 				//評価平均
 				javascript:
 					$('#star-avg').raty({

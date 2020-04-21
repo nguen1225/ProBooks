@@ -31,6 +31,7 @@ class Book < ApplicationRecord
   validates  :content,      presence: true, ng_word: true, length: { maximum: 255 }
   validates  :category_id,  presence: true
   validates  :user_id,      presence: true
+  paginates_per 8
 
   mount_uploader :image, ImagesUploader
 

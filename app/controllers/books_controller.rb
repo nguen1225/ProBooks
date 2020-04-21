@@ -6,11 +6,11 @@ class BooksController < ApplicationController
     @categories = Category.all
     @tags = Book.tag_counts_on(:tags).order('count  DESC')
     @books = if params[:tag]
-               Book.tagged_with(params[:tag])
+               Book.tagged_with(params[:tag]).page(params[:page])
              elsif params[:search]
-               Book.search(@search_params)
+               Book.search(@search_params).page(params[:page])
              else
-               Book.all
+               Book.all.page(params[:page])
              end
   end
 
