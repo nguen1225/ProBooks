@@ -24,7 +24,7 @@
         = f.label :email
         = f.email_field :email
       .input-field
-        = f.label :status
+        = f.label :status, 'ステータス'
         br
         = f.select :status, User.status.options
       .input-field

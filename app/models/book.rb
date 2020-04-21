@@ -66,8 +66,8 @@ class Book < ApplicationRecord
   end
 
   def favorite_by?(user)
-		favorites.where(user_id: user.id).exists?
-	end
+    favorites.where(user_id: user.id).exists?
+  end
 
   def save_notification_review!(current_user, review_id, visited_id)
     notification = current_user.active_notifications.new(

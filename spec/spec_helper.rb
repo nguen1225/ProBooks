@@ -5,7 +5,7 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
 
-  #database_cleaner
+  # database_cleaner
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end

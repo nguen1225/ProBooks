@@ -1,5 +1,5 @@
 class ClapsController < ApplicationController
-  after_action :level_up, only: [:create]
+  # after_action :level_up, only: [:create]
 
   def create
     @review = Review.find(params[:review_id])
@@ -31,10 +31,10 @@ class ClapsController < ApplicationController
     @user.experience_point = totalExp
     @user.update(experience_point: totalExp)
 
-    level = LevelStandard.find_by(level: @user.level+1)
+    level = LevelStandard.find_by(level: @user.level + 1)
 
     if level.threshould <= @user.experience_point
-      @user.level = @user.level+1
+      @user.level = @user.level + 1
       @user.update(level: @user.level)
     end
   end
