@@ -37,7 +37,7 @@
 					= f.text_field :tag_list
 				= f.hidden_field :user_id, :value => current_user.id
 				.action
-					= f.button :submit, class: "waves-effect waves-light btn-flet success_btn"
+					= f.button '更新', type: "submit", class: "waves-effect waves-light btn-flet success_btn"
 
 javascript:
 	$(function() {

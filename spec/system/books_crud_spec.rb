@@ -7,58 +7,70 @@ RSpec.describe '書籍CRUD', type: :system do
   # let(:image) { Rack::Test::Uploaded.new(image_path)}
 
   before do
-    user = FactoryBot.create(:user)
-    sign_in_as user
+    @user = FactoryBot.create(:user)
+    @category_first = FactoryBot.create(:category, name: "html&css")
+    sign_in_as @user
   end
 
   it '書籍を登録することができる', js: true do
     visit new_book_path
-    fill_in 'Title', with: 'テスト'
-    fill_in 'Content', with: 'テストしました'
-    attach_file 'book[image]', 'app/assets/images/default.jpg'
-    click_on 'Create Book'
 
+    expect{
+      fill_in 'タイトル', with: 'テスト'
+      fill_in '内容', with: 'テストしました'
+      all('.input-text input')[1].click
+      find("li", text: "html&css").click
+      all('.input-text input')[2].click
+      find("li", text: "Hard").click
+      all('.input-text input')[3].click
+      find('li', text: "Medium").click
+      attach_file 'book[image]', 'app/assets/images/default.jpg'
+      click_on '登録'
+    }.to change(Book.count).by(1)
+
+    #登録後詳細ページへ遷移
     expect(page).to have_content 'テスト'
     expect(page).to have_content 'テストしました'
-    expect(page).to have_selector("img[src$='rails.png']")
-    expect(page).to have_content 'html'
+    expect(page).to have_selector("img[src$='default.jpg']")
+    expect(page).to have_content 'hard'
+    expect(page).to have_content 'medium'
+    expect(page).to have_content "1"
   end
 
-  #   it '書籍の編集ができる' do
-  #     # 書籍の登録
-  #     visit new_book_path
-  #     fill_in 'Title', with: 'テスト'
-  #     fill_in 'Content', with: 'テスト'
-  #     attach_file 'book[image]', 'app/assets/images/rails.png'
-  #     select 'Html', from: 'Category'
-  #     click_on 'Create Book'
+  it '書籍の編集ができる', js: true do
+      book = FactoryBot.create(:book, user_id: @user.id, category_id: @category_first.id)
+      category_second = FactoryBot.create(:category, name: "ruby")
+      visit edit_book_path(book)
 
-  #     expect(page).to have_link '編集'
-  #     click_link '編集'
-  #     # 編集項目入力
-  #     fill_in 'Title', with: '変更'
-  #     fill_in 'Content', with: '変更しました'
-  #     attach_file 'book[image]', 'app/assets/images/forest.jpg'
-  #     select 'Ruby', from: 'Category'
-  #     click_on 'Update Book'
+      fill_in 'タイトル', with: '変更'
+      fill_in '内容', with: '変更しました'
+      all('.input-text input')[1].click
+      find("li", text: "ruby").click
+      all('.input-text input')[2].click
+      find("li", text: "Normal").click
+      all('.input-text input')[3].click
+      find('li', text: "Many").click
+      attach_file 'book[image]', 'app/assets/images/clap.jpg'
+      click_on '更新'
 
-  #     expect(page).to have_content '変更'
-  #     expect(page).to have_content '変更しました'
-  #     expect(page).to have_selector("img[src$='forest.jpg']")
-  #     expect(page).to have_content 'ruby'
-  #   end
+      #編集後詳細ページへ遷移
+      expect(page).to have_content '変更'
+      expect(page).to have_content '変更しました'
+      expect(page).to have_selector("img[src$='clap.jpg']")
+      expect(page).to have_content 'normal'
+      expect(page).to have_content 'many'
+      expect(page).to have_content "2"
+    end
 
-  #   it '書籍の削除ができる' do
-  #     visit new_book_path
-  #     fill_in 'Title', with: 'テスト'
-  #     fill_in 'Content', with: 'テスト'
-  #     attach_file 'book[image]', 'app/assets/images/rails.png'
-  #     select 'Html', from: 'Category'
-  #     click_on 'Create Book'
+    #jsダイアログの表示がうまくいかない
+    # it '書籍の削除ができる',js: true, must: true do
+    #   book = FactoryBot.create(:book, user_id: @user.id, category_id: @category_first.id)
+    #   visit book_path(book)
 
-  #     expect(page).to have_link '削除'
-  #     click_link '削除'
+    #   expect(page).to have_link '削除'
+    #   click_link '削除'
+    #   accept_confirm { click_link '削除' }
 
-  #     expect(page).to have_content('削除しました')
-  #   end
+    #   expect(page).to have_content('削除しました')
+    # end
 end
