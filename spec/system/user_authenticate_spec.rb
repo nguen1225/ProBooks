@@ -11,12 +11,13 @@ RSpec.describe 'User認証機能', type: :system do
       it '新規登録できる' do
         click_on 'Sign Up'
         expect(current_path).to eq new_user_registration_path
-
-        fill_in  '名前', with: 'テスト'
-        fill_in  'メールアドレス', with: 'test@example.com'
-        fill_in  'パスワード', with: 'foobar'
-        fill_in  'パスワード（確認用）', with: 'foobar'
-        click_on '登録'
+        expect {
+          fill_in  '名前', with: 'テスト'
+          fill_in  'メールアドレス', with: 'test@example.com'
+          fill_in  'パスワード', with: 'foobar'
+          fill_in  'パスワード（確認用）', with: 'foobar'
+          click_on '登録'
+        }.to change{User.count}.by(1)
 
         expect(page).to have_content 'アカウント登録が完了しました'
         expect(page).to have_content 'テスト'
