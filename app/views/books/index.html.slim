@@ -7,35 +7,33 @@
 			ul.tabs
 				li.tab
 					a href="#search"
-						| 詳細検索
+						| キーワード検索
 				li.tab
 					a href="#tag_search"
-						| キーワード検索
+						| タグ検索
 			#search
-				p　詳細検索
 				.book_search-form.z-depth-1
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
 						.field
-							= f.label :title
+							= f.label :title, 'タイトル'
 							= f.text_field :title, value: @search_params[:title]
 						.field
-							= f.label :category_id
+							= f.label :category_id, 'カテゴリ'
 							= f.collection_select :category_id, @categories, :id, :name,
 									include_blank: ('選択してください'),
 									:selected => @search_params[:category]
 						.field
-							= f.label :volume
+							= f.label :volume, 'ボリューム'
 							= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
 									:selected => @search_params[:volume]
 						.field
-							= f.label :lebel
+							= f.label :lebel, '難易度'
 							= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
 									:selected => @search_params[:level]
 						.action
 							= f.button '検索', type: "submit", class: "success_btn waves-effect waves-light btn-flat"
 
 			#tag_search
-				p キーワード検索
 				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
 					= link_to tag.name, tag_path(tag.name), :class => css_class
 		.category-search
@@ -69,7 +67,6 @@
 					strong.language-text
 						i.fab.fa-github
 						| Git/GitHub
-
 	.book_stock-area
 		p
 		.book_section-cards

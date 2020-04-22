@@ -69,7 +69,7 @@ class BooksController < ApplicationController
   def book_search_params
     params.fetch(:search, {}).permit(:title,
                                      :category_id,
-                                     :few,
+                                     :level,
                                      :volume)
   end
 

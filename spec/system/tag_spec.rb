@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Book Tag UI', type: :system do
+RSpec.describe 'タグ機能', type: :system do
   before do
     user = FactoryBot.create(:user)
     first_category = FactoryBot.create(:category, name: "html&css")

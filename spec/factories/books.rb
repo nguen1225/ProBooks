@@ -19,7 +19,9 @@
 #
 FactoryBot.define do
   factory :book do
-    title { 'テスト' }
-    content { 'テストコンテント' }
+    sequence(:title) { |n| "テスト駆動開発#{n}" }
+    sequence(:content) { |n| "テストは最初に書こう#{n}" }
+    user
+    category
   end
 end

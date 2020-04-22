@@ -5,16 +5,17 @@ RSpec.describe '書籍CRUD', type: :system do
 
   # let(:image_path) { File.join(Rails.root, 'spec/fixtures/default.jpg') }
   # let(:image) { Rack::Test::Uploaded.new(image_path)}
+  let(:category_html) { FactoryBot.create(:category, name: "html&css") }
+  let(:user) { FactoryBot.create(:user) }
+  let!(:book) { FactoryBot.create(:book, user: user, category: category_html) }
 
   before do
-    @user = FactoryBot.create(:user)
-    @category_first = FactoryBot.create(:category, name: "html&css")
-    sign_in_as @user
+    FactoryBot.create(:category, name: "ruby")
+    sign_in_as user
   end
 
   it '書籍を登録することができる', js: true do
     visit new_book_path
-
     expect{
       fill_in 'タイトル', with: 'テスト'
       fill_in '内容', with: 'テストしました'
@@ -40,8 +41,6 @@ RSpec.describe '書籍CRUD', type: :system do
   end
 
   it '書籍の編集ができる', js: true do
-      book = FactoryBot.create(:book, user_id: @user.id, category_id: @category_first.id)
-      category_second = FactoryBot.create(:category, name: "ruby")
       visit edit_book_path(book)
 
       fill_in 'タイトル', with: '変更'
