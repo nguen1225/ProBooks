@@ -24,4 +24,15 @@ FactoryBot.define do
     user
     category
   end
+
+  factory :book_c, class: Book do
+    title { 'EverydayRails' }
+    content { 'write some test code!!' }
+    user_id { 1 }
+    category_id { 1 }
+
+    trait :invalid do
+      title { nil }
+    end
+  end
 end
