@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'User認証機能', type: :system do
+RSpec.describe 'User認証機能', type: :system, js: true do
   include LoginSupport
+  let(:user_a) { FactoryBot.create(:user) }
+  let(:user_b) { FactoryBot.create(:user) }
+
   describe 'Function' do
     before do
       visit root_path
@@ -26,12 +29,11 @@ RSpec.describe 'User認証機能', type: :system do
 
     describe '編集/更新' do
       before do
-        @user = FactoryBot.create(:user)
-        sign_in_as @user
+        sign_in_as user_a
       end
 
-      it 'ユーザー情報を更新できる', js: true do
-        visit edit_user_path(@user)
+      it 'ユーザー情報を更新できる' do
+        visit edit_user_path(user_a)
         fill_in '名前', with: '更新太郎'
         fill_in 'メールアドレス', with: 'update@example.com'
         fill_in '自己紹介', with: 'よろしくお願いします'
@@ -39,42 +41,40 @@ RSpec.describe 'User認証機能', type: :system do
         find("li", text: "Begineer").click
         click_on '更新'
 
-        expect(current_path).to eq user_path(@user)
+        expect(current_path).to eq user_path(user_a)
         expect(page).to have_content '更新しました'
         expect(page).to have_content '更新太郎'
         expect(page).to have_content 'よろしくお願いします'
         expect(page).to have_content 'begineer'
       end
 
-      it '他のユーザーの情報を更新できない', js: true do
-        user_b = FactoryBot.create(:user)
+      it '他のユーザーの情報を更新できない' do
         visit root_path
         find('.sidenav-trigger').click
         click_on 'ログアウト'
         # 二人目のユーザーでログイン
         sign_in_as user_b
         # 一人目のユーザー詳細ページへ
-        visit user_path(@user)
+        visit user_path(user_a)
         # 編集リンクが表示されないことを確認
         expect(page).to have_no_link '編集'
       end
     end
 
-    describe 'ログイン機能' do
+    describe 'ログイン機能'  do
       #ユーザー作成
       before do
-        @user = FactoryBot.create(:user)
         visit new_user_session_path
-        fill_in  'メールアドレス', with: @user.email
-        fill_in  'パスワード', with: @user.password
+        fill_in  'メールアドレス', with: user_a.email
+        fill_in  'パスワード', with: user_a.password
         click_on 'Log In'
       end
 
-      it 'ログインができる', js: true do
+      it 'ログインができる' do
         expect(page).to have_content 'ログインしました'
       end
 
-      it 'ヘッダーレイアウトが変更',js: true do
+      it 'ヘッダーレイアウトが変更' do
         find('.sidenav-trigger').click
         expect(page).to have_content '書籍の投稿'
         expect(page).to have_content '書籍を探す'

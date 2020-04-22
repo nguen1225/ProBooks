@@ -1,35 +1,41 @@
 require 'rails_helper'
 
-RSpec.describe '参考になったボタン機能', type: :system do
+RSpec.describe '参考になったボタン機能', type: :system, js: true do
   include LoginSupport
 
-  before do
-    @user = FactoryBot.create(:user)
-    category = FactoryBot.create(:category)
-    @book = FactoryBot.create(:book, user_id: @user.id, category_id: category.id )
-    @review = FactoryBot.create(:review, user_id: @user.id, book_id: @book.id)
-  end
+  let(:user) { FactoryBot.create(:user) }
+  let(:category) { FactoryBot.create(:category) }
+  let(:book) { FactoryBot.create(:book, user: user, category: category) }
+  let!(:review) { FactoryBot.create(:review, user: user, book: book) }
 
   describe 'ログインしたユーザー' do
     # ログインして書籍詳細ページへ遷移
     before do
-      sign_in_as @user
-      visit book_path(@book)
+      sign_in_as user
+      visit book_path(book)
     end
 
     context '拍手アイコンをクリックした場合' do
-      it 'カウントが１増える', js: true do
-        find('#clap-1').click
-        expect(page).to have_content "1"
+      it 'カウントが１増える' do
+        expect {
+          find(".clapping").click
+          sleep 1.0
+          expect(page).to have_content "1"
+        }.to change{ Clap.count }.by(1)
       end
     end
 
     context '取り消すボタンをクリックした場合' do
-      it 'カウントが１減る', js: true do
-        find('#clap-1').click
-        expect(page).to have_content "1"
-        find('#clap-1').click
-        expect(page).to have_content "0"
+      it 'カウントが１減る' do
+        expect {
+          find('.clapping').click
+          sleep 0.5
+        }.to change{ Clap.count }.by(1)
+        expect {
+          find('.not-clapping').click
+          expect(page).to have_content "0"
+          sleep 0.5
+        }.to change{ Clap.count }.by(-1)
       end
     end
   end

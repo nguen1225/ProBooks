@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'タグ機能', type: :system do
+  include LoginSupport
+  let(:user) { FactoryBot.create(:user) }
+  let!(:first_category) { FactoryBot.create(:category, name: "html&css") }
+  let!(:second_category) { FactoryBot.create(:category, name: "ruby") }
+
   before do
-    user = FactoryBot.create(:user)
-    first_category = FactoryBot.create(:category, name: "html&css")
-    second_category = FactoryBot.create(:category, name: "ruby")
-    visit new_user_session_path
-    fill_in  'メールアドレス', with: user.email
-    fill_in  'パスワード', with: user.password
-    click_on 'Log In'
+    sign_in_as user
   end
 
   it '同じタグの書籍が複数表示される', js: true, must: true do
