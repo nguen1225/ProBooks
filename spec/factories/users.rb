@@ -37,5 +37,27 @@ FactoryBot.define do
     password_confirmation { 'foobar' }
     sequence(:uid) { |n| "#{n}12345" }
     provider { 'github' }
+
+    trait :invalid do
+      name { nil }
+    end
+  end
+
+  factory :user_a, class: User do
+    name { "Sato" }
+    email { "sato@example.com" }
+    status { 'engineer' }
+    introduction { 'テストユーザーの自己紹介' }
+    password { 'foobar' }
+    password_confirmation { 'foobar' }
+    uid { "101010" }
+    provider { 'github' }
+  end
+
+  factory :user_b, class: User do
+    name { "Suzuki" }
+    email { "suzuki@example.com" }
+    status { 'begineer' }
+    introduction { 'テストユーザーの自己紹介' }
   end
 end
