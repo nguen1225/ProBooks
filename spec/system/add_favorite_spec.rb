@@ -18,11 +18,19 @@ RSpec.describe 'お気に入り機能', type: :system, js: true do
 		expect(page).to have_content 'お気に入りから外す'
 	end
 
-	it 'お気に入り登録後マイページに追加されている' do
-		visit book_path(book_first)
-		click_on 'お気に入りに追加'
-		visit book_path(book_second)
-		click_on 'お気に入りに追加'
+	it 'お気に入り登録後マイページに追加されている', must: true do
+		expect {
+			visit book_path(book_first)
+			click_on 'お気に入りに追加'
+			sleep 1.0
+		}.to change{ Favorite.count }.by(1)
+
+		expect {
+			visit book_path(book_second)
+			click_on 'お気に入りに追加'
+			sleep 1.0
+		}.to change{ Favorite.count }.by(1)
+
 		find('.sidenav-trigger').click
 		click_on 'マイページ'
 		expect(page).to have_content 'テスト駆動開発1'
@@ -30,15 +38,25 @@ RSpec.describe 'お気に入り機能', type: :system, js: true do
 	end
 
 	it 'お気に入りから外すことができる' do
-		visit book_path(book_first)
-		click_on 'お気に入りに追加'
+
+		expect {
+			visit book_path(book_first)
+			click_on 'お気に入りに追加'
+			sleep 1.0
+		}.to change{ Favorite.count }.by(1)
+
 		expect(page).to have_content 'お気に入りから外す'
 		#マイページ移動
 		find('.sidenav-trigger').click
 		click_on 'マイページ'
 		expect(page).to have_content 'テスト駆動開発1'
 		click_link '詳細'
-		click_on 'お気に入りから外す'
+
+		expect {
+			click_on 'お気に入りから外す'
+			sleep 0.5
+		}.to change{ Favorite.count }.by(-1)
+
 		expect(page).to have_content 'お気に入りに追加'
 		#マイページ移動
 		find('.sidenav-trigger').click

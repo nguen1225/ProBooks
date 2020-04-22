@@ -1,5 +1,5 @@
 class ClapsController < ApplicationController
-  # after_action :level_up, only: [:create]
+  after_action :level_up, only: [:create]
 
   def create
     @review = Review.find(params[:review_id])
