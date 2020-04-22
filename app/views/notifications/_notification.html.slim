@@ -12,7 +12,7 @@
 		- case notification.action
 		- when 'review' then
 			- if notification.book.user_id == visited.id
-				= link_to 'あなたの登録した技術書', notification.book
+				= link_to 'あなたの登録した書籍', notification.book
 				| にレビューしました
 		- when 'clap' then
 			= link_to 'あなたのレビュー', notification.book

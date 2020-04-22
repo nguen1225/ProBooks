@@ -10,7 +10,7 @@
 #
 FactoryBot.define do
   factory :clap do
-    user { nil }
-    review { nil }
+    user
+    review
   end
 end
