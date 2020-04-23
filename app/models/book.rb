@@ -31,10 +31,11 @@ class Book < ApplicationRecord
   validates  :content,      presence: true, ng_word: true, length: { maximum: 255 }
   validates  :category_id,  presence: true
   validates  :user_id,      presence: true
+  paginates_per 8
 
   mount_uploader :image, ImagesUploader
 
-  # enum category_id: { html: 1, javascript: 2, php: 3 ,ruby: 4, aws: 5, git: 6 }
+  enum category_id: { HTMLCSS: 1, javascript: 2, Ruby: 3 ,PHP: 4 ,AWS: 5, GitHub: 6 }
   extend Enumerize
   enumerize :level, in: %i[easy normal hard]
   enumerize :volume, in: %i[few medium many]
@@ -66,8 +67,8 @@ class Book < ApplicationRecord
   end
 
   def favorite_by?(user)
-		favorites.where(user_id: user.id).exists?
-	end
+    favorites.where(user_id: user.id).exists?
+  end
 
   def save_notification_review!(current_user, review_id, visited_id)
     notification = current_user.active_notifications.new(
@@ -96,7 +97,7 @@ class Book < ApplicationRecord
                      }
   scope :category_id_is, lambda { |category|
                            where(category_id: category) if category.present?
-                         }
-  scope :level_is, ->(level) { where(level: level) if level.present? }
+                     }
   scope :volume_is, ->(volume) { where(volume: volume) if volume.present? }
+  scope :level_is, ->(level) { where(level: level) if level.present? }
 end

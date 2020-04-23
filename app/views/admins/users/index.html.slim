@@ -18,10 +18,11 @@
 			 | 〜
 			 = f.date_field :created_at_to, type: "text", class: "datepicker",
 			 				value: @search_params[:created_at_to]
-		.action
-			= f.submit '検索', class: "btn"
-		.action
-			= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
+		.search-btn-wrap
+			.action
+				= f.submit '検索', class: "btn"
+			.action
+				= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
 	h4
 		| ユーザー一覧
 	table.users-table.z-depth-1
@@ -55,7 +56,11 @@
 					td = user.provider
 					td = l(user.created_at)
 					td = l(user.updated_at)
-					td = user.deleted_at || "有効"
+					td
+						- if user.deleted_at.present?
+							= l(user.deleted_at, formats: :short)
+						- else
+							| 有効
 					td.btn-wrap
 						= link_to '詳細', user_path(user), class: "success_btn"
 					td.btn-wrap

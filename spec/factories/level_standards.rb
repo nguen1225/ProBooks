@@ -10,7 +10,7 @@
 #
 FactoryBot.define do
   factory :level_standard do
-    level { 1 }
-    threshould { 1 }
+    level { 2 }
+    threshould { 3 }
   end
 end

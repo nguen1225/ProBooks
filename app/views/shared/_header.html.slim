@@ -1,6 +1,6 @@
 header
 	nav
-		.nav-wrapper
+		.nav-wrapper.z-depth-2
 			= link_to 'ProBooks', root_path, class: 'bland-logo'
 			ul#nav-mobile.right.hide-on-med-and-down
 			= link_to "#", class: "sidenav-trigger" ,data: { target: "side-out" } do
@@ -13,7 +13,7 @@ header
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
 						.field
 							= f.text_field :title, class: "search_field", placeholder: "検索"
-							= f.button type: "submit", class: "search-icon" do
+							= f.button type: "submit", class: "search-icon flat-btn circle" do
 								i.material-icons search
 			li
 				.user-view
@@ -22,7 +22,7 @@ header
 						= image_tag login_user.image.to_s, class: "circle"
 					- else
 						= image_tag "human.jpg", class: "circle"
-					span = login_user.email
+					span = login_user.name
 			li.user-level
 				span
 					| ユーザーレベル
@@ -54,13 +54,13 @@ header
  				| ログアウト
  		- elsif current_admin.present?
  			li = link_to admins_users_path do
- 				i.material-icons transfer_within_a_station
+ 				i.material-icons account_circle
  				| 会員一覧
  			li = link_to admins_books_path do
- 				i.material-icons transfer_within_a_station
+ 				i.material-icons book
  				| 書籍一覧
  			li = link_to admins_root_path do
- 				i.material-icons transfer_within_a_station
+ 				i.material-icons apps
  				| ダッシュボード
 			li = link_to categories_path do
  				i.material-icons content_paste

@@ -23,7 +23,7 @@ RSpec.describe Review, type: :model do
     book_user = FactoryBot.create(:user)
     category = FactoryBot.create(:category)
     @user = FactoryBot.create(:user)
-    @book = FactoryBot.create(:book, user_id: book_user.id, category_id: category.id )
+    @book = FactoryBot.create(:book, user_id: book_user.id, category_id: category.id)
   end
 
   describe 'バリデーション' do
@@ -61,51 +61,51 @@ RSpec.describe Review, type: :model do
       it 'タイトルが入力されていない' do
         review = Review.new(title: nil)
         review.valid?
-        expect(review.errors[:title]).to include("を入力してください")
+        expect(review.errors[:title]).to include('を入力してください')
       end
-    
+
       it 'Bodyが入力されていない' do
         review = Review.new(body: nil)
         review.valid?
-        expect(review.errors[:body]).to include("を入力してください")
+        expect(review.errors[:body]).to include('を入力してください')
       end
-    
+
       it 'rateが入力されていない' do
         review = Review.new(rate: nil)
         review.valid?
-        expect(review.errors[:rate]).to include("を入力してください")
+        expect(review.errors[:rate]).to include('を入力してください')
       end
-    
+
       it 'user_idが入力されていない' do
         review = Review.new(user_id: nil)
         review.valid?
-        expect(review.errors[:user_id]).to include("を入力してください")
+        expect(review.errors[:user_id]).to include('を入力してください')
       end
-    
+
       it 'book_idが入力されていない' do
         review = Review.new(book_id: nil)
         review.valid?
-        expect(review.errors[:book_id]).to include("を入力してください")
+        expect(review.errors[:book_id]).to include('を入力してください')
       end
-    
+
       it 'タイトルが55文字以上' do
         review = Review.new(title: 'a' * 56)
         review.valid?
         expect(review.errors[:title]).to include('は55文字以内で入力してください')
       end
-    
+
       it '内容が255文字以上' do
         review = Review.new(body: 'a' * 256)
         review.valid?
         expect(review.errors[:body]).to include('は255文字以内で入力してください')
       end
-    
+
       it 'レビュータイトルNGワードが含まれている' do
         review = Review.new(title: 'うんこ')
         review.valid?
         expect(review.errors[:title]).to include('のうんこはNGワードです')
       end
-    
+
       it '投稿内容にNGワードが含まれている' do
         review = Review.new(body: 'うんこ')
         review.valid?

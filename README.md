@@ -27,11 +27,42 @@
 ### 主な利用シーン
 - プログラミング書籍の購入を検討時
 
-## 設計書
-
-
+### 使用技術
+### front-end
+- html&css
+- scss
+- slim-rails
+- materilze-sass
+- jquery
+### back-end
+- ruby
+- ruby on rails
+### テスト
+- Rspec
+- FactoryBot-rails
+- headeless_chrome
+## その他
+- vagrant
+- vartial_box
+- AWS
+- capistrano
+- enginx
+- mysql2
+- SSL証明/HTTPS
 ### 機能一覧
-- ユーザーCRUD
-- 書籍CRUD
-- GitHub認証
+- 通知機能(自分の投稿に対してアクションが起こると通知登録される)
+- お問い合わせフォーム
+- ユーザーのレベルアップ機能（3回拍手を貰うと１レベル上がります)
+- 管理ユーザー機能
+- chartkickを使用した、アプリ登録者推移、レビュー数、書籍登録（カテゴリ別）グラフを出力
+- ユーザー一覧、書籍一覧からcsvエクスポート機能
+- 検索結果に応じたCSVエクスポート機能
 - レビュー投稿機能
+- レビューに対するいいね機能(非同期通信)
+- 書籍に対するお気に入り機能 (非同期通信)
+- 書籍検索機能
+- サイドバーの検索窓からの書籍検索
+- タグ検索機能
+- github認証
+- gentleを用いたパンくずリスト
+- NGワード制限機能

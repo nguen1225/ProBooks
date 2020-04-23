@@ -21,5 +21,6 @@ FactoryBot.define do
     title { 'テストレビュー' }
     body { 'レビューしました' }
     rate { 1.5 }
+    book
   end
 end

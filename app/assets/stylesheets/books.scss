@@ -30,10 +30,7 @@
 			margin: 16px;
 			padding: 16px;
 			.success_btn {
-				width: 100%;
-				border-radius: 2px;
-				text-align: center;
-				font-weight: bold;
+				@include success_btn
 			}
 		}
 	}
@@ -52,15 +49,7 @@
 				background: $paper-color;
 				padding: 16px;
 				.success_btn {
-					display: inline-block;
-					width: 100%;
-					padding: 8px;
-					margin: 8px;
-					background: $strong_color;
-					color: $base_white;
-					border-radius: 5px;
-					text-align: center;
-					font-weight: bold;
+					@include success_btn
 				}
 			}
 		}
@@ -124,7 +113,6 @@
 	}
 	.book_stock-area {
 		.book_section-title {
-	
 		}
 		.book_section-cards {
 			display: flex;
@@ -183,22 +171,12 @@
 				.edit-btn {
 					display: inline-block;
 					width: 40%;
-					padding: 8px;
-					border: 1px solid $strong-color;
-					color: $strong-color;
-					border-radius: 2px;
-					text-align: center;
-					font-weight: bold;
+					@include success_btn
 				}
 				.delete-btn {
 					display: inline-block;
 					width: 40%;
-					padding: 8px;
-					border: 1px solid #e64a19;
-					color: #e64a19;
-					border-radius: 2px;
-					text-align: center;
-					font-weight: bold;
+					@include danger_btn
 				}
 			}
 			.favorite-wrap {
@@ -230,11 +208,14 @@
 			margin: 0 auto;
 			.review-users {
 				width: 16%;
-				padding-top: 8%;
+				padding-top: 2%;
 				align-items: center;
 				.user_avater {
 					width: 100%;
 					text-align: center;
+					img {
+						width: 80%;
+					}
 				}
 				.user_name {
 					width: 100%;
@@ -260,20 +241,15 @@
 					border: 15px solid transparent;
 					border-left: 15px solid #e0edff;
 				}
-				.success_btn {
-					width: 40%;
-					margin: 8px;
-					border-radius: 2px;
-					text-align: center;
-					font-weight: bold;
-				}
-				.danger_btn {
-					width: 40%;
-					margin: 8px;
-					border-radius: 2px;
-					text-align: center;
-					font-weight: bold;
-					background: $danger_color;
+				.btn-wrap {
+					display: inline-flex;
+					.success_btn {
+						@include success_btn;
+						margin-right: 8px;
+					}
+					.danger_btn {
+						@include danger_btn;
+					}
 				}
 			}
 		}

@@ -6,12 +6,12 @@ RSpec.describe 'TopPage', type: :system do
   end
 
   it '新規登録リンクをクリックするとリンクへ遷移する' do
-    click_link '新規登録'
+    click_link 'SIGN UP'
     expect(current_path).to eq new_user_registration_path
   end
 
   it 'ログインリンクをクリックするとログインページ遷移' do
-    click_link 'ログイン'
+    click_link 'LOG IN'
     expect(current_path).to eq new_user_session_path
   end
 end

@@ -6,11 +6,11 @@ class BooksController < ApplicationController
     @categories = Category.all
     @tags = Book.tag_counts_on(:tags).order('count  DESC')
     @books = if params[:tag]
-               Book.tagged_with(params[:tag])
+               Book.tagged_with(params[:tag]).page(params[:page])
              elsif params[:search]
-               Book.search(@search_params)
+               Book.search(@search_params).page(params[:page])
              else
-               Book.all
+               Book.all.page(params[:page])
              end
   end
 
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
       flash[:notice] = '登録しました'
       redirect_to book_path(@book)
     else
-      @categories = Categories.all
+      @categories = Category.all
       render :new
     end
   end
@@ -69,7 +69,7 @@ class BooksController < ApplicationController
   def book_search_params
     params.fetch(:search, {}).permit(:title,
                                      :category_id,
-                                     :few,
+                                     :level,
                                      :volume)
   end
 

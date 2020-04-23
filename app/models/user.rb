@@ -19,6 +19,14 @@
 #  uid                    :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_deleted_at            (deleted_at)
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_provider_and_uid      (provider,uid) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -30,7 +38,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImagesUploader
   validates :email,                 presence: true
   validates :name,                  presence: true, ng_word: true, length: { minimum: 2 }
-  validates :introduction,                          ng_word:  true,length: { maximum: 255 }
+  validates :introduction,                          ng_word: true, length: { maximum: 255 }
 
   has_many  :books,     dependent: :destroy
   has_many  :reviews,   dependent: :destroy
@@ -38,8 +46,8 @@ class User < ApplicationRecord
   has_many  :favorites, dependent: :destroy
   has_many  :active_notifications, class_name: 'Notification',
                                    foreign_key: 'visitor_id', dependent: :destroy
-  has_many  :passive_notifications,class_name: 'Notification',
-                                   foreign_key: 'visited_id', dependent: :destroy
+  has_many  :passive_notifications, class_name: 'Notification',
+                                    foreign_key: 'visited_id', dependent: :destroy
 
   def self.csv_attributes
     %w[id name email status created_at updated_at]
@@ -68,7 +76,7 @@ class User < ApplicationRecord
                       name: auth.info.name,
                       email: auth.info.email(auth),
                       password: Devise.friendly_token[0, 20])
-    user.save(:validate => false)
+    user.save(validate: false)
     user
   end
 
@@ -85,13 +93,15 @@ class User < ApplicationRecord
       .created_at_to(search_params[:created_at_to])
   }
   scope :name_like, lambda { |name|
-                       where('name LIKE ?', "%#{name}%") if name.present?
-                     }
-  scope :status_is, -> (status) { where(status: status) if status.present? }
-  scope :created_at_from, -> (from) { where('? <= created_at', from ) if from.present? }
-  scope :created_at_to, -> (to) { where('created_at <= ?', to) if to.present?  }
+                      where('name LIKE ?', "%#{name}%") if name.present?
+                    }
+  scope :status_is, ->(status) { where(status: status) if status.present? }
+  scope :created_at_from, lambda { |from|
+                            where('? <= created_at', from) if from.present?
+                          }
+  scope :created_at_to, ->(to) { where('created_at <= ?', to) if to.present? }
 
-  #ユーザー情報更新
+  # ユーザー情報更新
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
@@ -100,7 +110,7 @@ class User < ApplicationRecord
       params.delete(:password_confirmation)
     end
 
-    result = update_attributes(params, *options)
+    result = update(params, *options)
     clean_up_passwords
     result
   end

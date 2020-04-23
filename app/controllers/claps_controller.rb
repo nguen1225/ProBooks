@@ -31,10 +31,10 @@ class ClapsController < ApplicationController
     @user.experience_point = totalExp
     @user.update(experience_point: totalExp)
 
-    level = LevelStandard.find_by(level: @user.level+1)
+    level = LevelStandard.find_by(level: @user.level + 1)
 
     if level.threshould <= @user.experience_point
-      @user.level = @user.level+1
+      @user.level = @user.level + 1
       @user.update(level: @user.level)
     end
   end

@@ -13,11 +13,9 @@ class ApplicationController < ActionController::Base
     user_path(resource)
   end
 
-  #管理者権限
+  # 管理者権限
   def admin_user
-    unless current_user.admin == true
-      redirect_to root_path, notice: "権限がありません"
-    end
+    redirect_to root_path, notice: '権限がありません' unless current_user.admin == true
   end
 
   protected

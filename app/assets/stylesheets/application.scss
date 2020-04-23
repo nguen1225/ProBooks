@@ -35,6 +35,20 @@ $danger_color: #e64a19;
 	font-weight: bold;
 	text-align: center;
 }
+@mixin danger_btn {
+	width: 100%;
+	border: 1px solid $danger_color;
+	border-radius: 2px;
+	color: $danger_color;
+	font-weight: bold;
+	text-align: center;
+}
+@mixin tag_style {
+	padding: 4px;
+    background:#bdbdbd;
+	border-radius: 5px;
+	color: $base_white;
+}
 
 
 body {
@@ -54,7 +68,6 @@ body {
 		margin: 0;
 	}
 }
-
 header, main, footer {
 	padding-left: 240px;
 }
@@ -63,6 +76,15 @@ header, main, footer {
 	  padding-left: 0;
 	}
 }
+
+.tag-style {
+	@include tag_style;
+}
+.css4 {
+	@include tag_style;
+	margin: 4px;
+}
+
 header {
 	.sidenav {
 		width: 240px;
@@ -158,8 +180,16 @@ header {
 .all-users {
 	width: 90%;
 	margin: 8px auto;
+	.search-btn-wrap {
+		display: inline-flex;
+		.btn {
+			margin-right: 8px;
+		}
+	}
 	.users-table {
 		padding: 16px;
+		font-size: 9px;
+    	letter-spacing: -0.9px;
 		.table-header {
 			background: #e1f5fe;
 		}
@@ -240,7 +270,8 @@ header {
 }
 //ダッシュボード
 .graph-wrap {
-	width: 100%;
+	width: 90%;
+	margin: 16px auto;
 	flex-direction: column;
 	.graph-text {
 		font-weight: bold;
@@ -252,12 +283,14 @@ header {
 	.under-wrap {
 		display: flex;
 		width: 100%;
+		margin-top: 16px;
 		.books-graph {
-			width: 50%;
-			padding: 24px;
+			width: 49%;
+			margin-right: auto;
+			padding:24px;
 		}
 		.reviews-graph {
-			width: 50%;
+			width: 49%;
 			padding: 24px;
 		}
 	}
