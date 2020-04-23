@@ -44,10 +44,12 @@
 		display: flex;
 		.description-search {
 			width: 40%;
+			margin-top: 16px;
 			margin: 0 auto;
 			.book_search-form {
 				background: $paper-color;
 				padding: 16px;
+				margin-top: 28px;
 				.success_btn {
 					@include success_btn
 				}

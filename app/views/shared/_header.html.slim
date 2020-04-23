@@ -6,7 +6,7 @@ header
 			= link_to "#", class: "sidenav-trigger" ,data: { target: "side-out" } do
 				i.material-icons menu
 
-	ul#side-out.sidenav.sidenav-fixed
+	ul#side-out.sidenav.sidenav-fixed.z-depth-3
 		- if current_user.present?
  			li.search
 			 	.search-wrapper
@@ -23,6 +23,7 @@ header
 					- else
 						= image_tag "human.jpg", class: "circle"
 					span = login_user.name
+					| さん
 			li.user-level
 				span
 					| ユーザーレベル

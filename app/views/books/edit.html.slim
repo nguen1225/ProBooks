@@ -12,7 +12,8 @@
 			.image-label
 				= f.label :image
 				br
-				= f.file_field :image, id: :book_image
+				= f.file_field :image, id: :book_image,
+							   accept: @book.image.accept_extensions
 		.input-text.z-depth-2
 				.input-field
 					= f.label :title
