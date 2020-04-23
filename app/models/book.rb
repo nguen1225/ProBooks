@@ -35,7 +35,7 @@ class Book < ApplicationRecord
 
   mount_uploader :image, ImagesUploader
 
-  # enum category_id: { html: 1, javascript: 2, php: 3 ,ruby: 4, aws: 5, git: 6 }
+  enum category_id: { HTMLCSS: 1, javascript: 2, Ruby: 3 ,PHP: 4 ,AWS: 5, GitHub: 6 }
   extend Enumerize
   enumerize :level, in: %i[easy normal hard]
   enumerize :volume, in: %i[few medium many]

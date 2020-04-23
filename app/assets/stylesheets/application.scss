@@ -180,8 +180,16 @@ header {
 .all-users {
 	width: 90%;
 	margin: 8px auto;
+	.search-btn-wrap {
+		display: inline-flex;
+		.btn {
+			margin-right: 8px;
+		}
+	}
 	.users-table {
 		padding: 16px;
+		font-size: 9px;
+    	letter-spacing: -0.9px;
 		.table-header {
 			background: #e1f5fe;
 		}
