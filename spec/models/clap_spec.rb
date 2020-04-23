@@ -8,7 +8,6 @@
 #  review_id  :integer
 #  user_id    :integer
 #
-# require 'rails_helper'
 
 # RSpec.describe Clap, type: :model do
 #   before do
