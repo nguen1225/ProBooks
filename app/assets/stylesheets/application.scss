@@ -262,7 +262,8 @@ header {
 }
 //ダッシュボード
 .graph-wrap {
-	width: 100%;
+	width: 90%;
+	margin: 16px auto;
 	flex-direction: column;
 	.graph-text {
 		font-weight: bold;
@@ -274,12 +275,14 @@ header {
 	.under-wrap {
 		display: flex;
 		width: 100%;
+		margin-top: 16px;
 		.books-graph {
-			width: 50%;
-			padding: 24px;
+			width: 49%;
+			margin-right: auto;
+			padding:24px;
 		}
 		.reviews-graph {
-			width: 50%;
+			width: 49%;
 			padding: 24px;
 		}
 	}
