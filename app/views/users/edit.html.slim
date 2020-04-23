@@ -4,7 +4,6 @@
 .user_edit-page
   h4.page_title
     | 会員情報編集
-
   = form_with model: @user, local: true do |f|
     .user-avater
       - if @user.image.present?
@@ -14,7 +13,8 @@
       br
       = f.label :image, 'プロフィール画像'
       br
-      = f.file_field :image, id: :user_image, class: "input-file"
+      = f.file_field :image, id: :user_image, class: "input-file",
+                     accept: @user.image.accept_extensions
     .user-info.z-depth-2
       = render 'shared/error_messages', model: @user
       .input-field

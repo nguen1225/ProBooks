@@ -38,10 +38,9 @@
 				.btn-wrap
 					= link_to '編集', edit_book_path(@book), class: "edit-btn waves-effect waves-light btn-flat"
 					= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当に削除しますか？" },class: "delete-btn waves-effect waves-light btn-flat"
-			- if current_user
-				.favorite-wrap
-					p id="book-favorite-#{@book.id}"
-						= render 'favorites/favorites', book: @book
+			.favorite-wrap
+				p id="book-favorite-#{@book.id}"
+					= render 'favorites/favorites', book: @book
 
 
 	// 評価一覧

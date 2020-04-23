@@ -1,7 +1,7 @@
 - provide(:title, 'Top')
 
 .top_main-sec
-	.authenticate-area.z-depth-3
+	.authenticate-area.z-depth-2
 		.authenticate-link
 			h5
 			  | 会員登録|ログイン
@@ -20,7 +20,7 @@
 			| ABOUT
 		.top_about-box
 			p.about-image
-				= image_tag "default.jpg"
+				= image_tag "default.jpg", class: "z-depth-1"
 			.about-content-ri
 				h5.content-title
 					| 学びたい本がすぐに見つかる！
@@ -28,7 +28,7 @@
 					| キーワードやタグ、言語ごと検索することが
 			        | でき、目的にあった技術書を見つけることができます
 					| また豊富なレビューから書籍の情報を得ることができます
-				= link_to '書籍を探してみる', books_path, class: 'btn'
+				= link_to '書籍を探す', books_path, class: 'btn'
 		.top_about-box
 			.about-content-le
 				h5.content-title
@@ -39,47 +39,47 @@
 					| 会員登録してたくさんレビューを書いてたくさんレベルをあげよう！
 				= link_to '登録してみる', new_user_registration_path, class: 'btn'
 			p.about-image
-				= image_tag "default.jpg"
+				= image_tag "default.jpg", class: "z-depth-1"
 	#top_flow
 		h3.top_section-title
 			| FLOW
 		.top_flow-boxies
 			.flow-box
 				p.flow-image
-					= image_tag 'signup.jpg', class: 'circle'
+					= image_tag 'signup.jpg', class: 'circle z-depth-1'
 				.flow-content
 					h5
-						| SignUp!
+						| SignUp！
 					p.flow-content-text
 						| はじめに会員登録をしましょう
 						| この登録作業がエンジニアへの道の始まりです
 			i.material-icons arrow_forward
 			.flow-box
 				p.flow-image
-					= image_tag 'search.jpg', class: 'circle'
+					= image_tag 'search.jpg', class: 'circle z-depth-1'
 				.flow-content
 					h5
-						| Search!
+						| Search！
 					p.flow-content-text
 						| 興味のある言語の技術書を検索してみましょう。
 						| きっとすぐにあなたの求めている技術書に出会えます。
 			i.material-icons arrow_forward
 			.flow-box
 				p.flow-image
-					= image_tag 'clap.jpg', class: 'circle'
+					= image_tag 'clap.jpg', class: 'circle z-depth-1'
 				.flow-content
 					h5
-						|　Clap!
+						|　Clap！
 					p.flow-content-text
 						| 参考になったレビューには拍手を送りましょう。
 						| きっとレビューをされた相手は喜びます
 			i.material-icons arrow_forward
 			.flow-box
 				p.flow-image
-					= image_tag 'review.jpg', class: 'circle'
+					= image_tag 'review.jpg', class: 'circle z-depth-1'
 				.flow-content
 					h5
-						|　Review!
+						|　Review！
 					p.flow-content-text
 						| あなたはもう立派なエンジニアです
 						| 後輩エンジニアのためにおすすめ書籍のレビューを
