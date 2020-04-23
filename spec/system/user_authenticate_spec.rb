@@ -91,7 +91,7 @@ RSpec.describe 'User認証機能', type: :system, js: true do
       visit new_user_registration_path
     end
 
-    it '新規登録後ヘッダー画面が変更' do
+    it '新規登録後ヘッダー画面が変更すること' do
       fill_in '名前', with: 'テスト'
       fill_in  'メールアドレス', with: 'test@example.com'
       fill_in  'パスワード', with: 'foobar'
@@ -99,6 +99,19 @@ RSpec.describe 'User認証機能', type: :system, js: true do
       click_on '登録'
 
       expect(page).to have_content 'アカウント登録が完了しました'
+
+      find('.sidenav-trigger').click
+      expect(page).to have_content '書籍の投稿'
+      expect(page).to have_content '書籍を探す'
+      expect(page).to have_content 'マイページ'
+      expect(page).to have_content '通知'
+      expect(page).to have_content 'ユーザーレベル'
+      expect(page).to have_content 'ログアウト'
+    end
+
+    it 'ログイン後ヘッダーレイアウトが変更すること' do
+      sign_in_as user_a
+      expect(page).to have_content 'ログインしました'
 
       find('.sidenav-trigger').click
       expect(page).to have_content '書籍の投稿'
