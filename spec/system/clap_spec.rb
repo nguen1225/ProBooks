@@ -7,6 +7,7 @@ RSpec.describe '参考になったボタン機能', type: :system, js: true do
   let(:category) { FactoryBot.create(:category) }
   let(:book) { FactoryBot.create(:book, user: user, category: category) }
   let!(:review) { FactoryBot.create(:review, user: user, book: book) }
+  let!(:level_standard) { FactoryBot.create(:level_standard)}
 
   describe 'ログインしたユーザー' do
     # ログインして書籍詳細ページへ遷移
