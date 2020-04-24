@@ -89,12 +89,23 @@ header {
 			width: 100%;
 			.bland-logo {
 				color: $primary-color;
-				margin-left: 24px;
+				margin-left: 16px;
+			}
+			.menu-icon {
+				color: $primary-color;
+			}
+			.mail-icon-wrap {
+				position: absolute;
+				right: 28%;
+				top: 0;
+				.mail-icon {
+					color: $primary-color;
+				}
 			}
 			form {
 				display: inline-flex;
 				position: absolute;
-				right: 80px;
+				right: 0;
 				width: 24%;
 				.field {
 					position: relative;
