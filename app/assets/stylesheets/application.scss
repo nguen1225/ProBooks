@@ -77,15 +77,43 @@ header, main, footer {
 	}
 }
 
-.tag-style {
-	@include tag_style;
-}
 .css4 {
-	@include tag_style;
 	margin: 4px;
 }
 
 header {
+	nav {
+		background: $base_white;
+		.nav-wrapper {
+			display: inline-flex;
+			width: 100%;
+			.bland-logo {
+				color: $primary-color;
+				margin-left: 24px;
+			}
+			form {
+				display: inline-flex;
+				position: absolute;
+				right: 80px;
+				width: 24%;
+				.field {
+					position: relative;
+					.search-icon {
+						position: absolute;
+						border-radius: 100%;
+						background: $primary-color;
+						top: 13px;
+						right: 0px;
+						.material-icons {
+							position: absolute;
+							top: -13px;
+							right: 3px;
+						}
+					}
+				}
+			}
+		}
+	}
 	.sidenav {
 		width: 240px;
 		background: #e1f5fe;
@@ -104,13 +132,6 @@ header {
 				top: -4px;
     			left: 90px;
 			}
-		}
-		.search-icon {
-			position: absolute;
-			top: 10px;
-			right: 20px;
-			cursor: pointer;
-			background: #e1f5fe;
 		}
 		.n-circle {
 			position: absolute;

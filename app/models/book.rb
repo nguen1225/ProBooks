@@ -34,7 +34,6 @@ class Book < ApplicationRecord
   paginates_per 8
 
   mount_uploader :image, ImagesUploader
-
   extend Enumerize
   enumerize :level, in: %i[easy normal hard]
   enumerize :volume, in: %i[few medium many]

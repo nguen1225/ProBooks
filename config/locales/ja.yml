@@ -1,4 +1,14 @@
 ja:
+  enumerize:
+    book:
+      level:
+          easy: "やさしい"
+          normal: "ふつう"
+          hard: "むずかしい"
+      volume:
+          few: "すくない"
+          medium: "ふつう"
+          many: "おおい"
   activerecord:
     errors:
       messages:
@@ -27,14 +37,9 @@ ja:
             level: "難易度"
             category: "カテゴリ"
             volume: "ボリューム"
+            level: "難易度"
             tag_list: "タグ"
             image: "画像"
-            few: "少ない"
-            medium: "普通"
-            many: "多い"
-            easy: "優しい"
-            normal: "普通"
-            hard: "難しい"
             created_at: "登録日"
             updated_at: ”更新日"
         category:

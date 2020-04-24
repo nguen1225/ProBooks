@@ -6,14 +6,6 @@ module LoginSupport
     fill_in 'パスワード', with: user.password
     click_on 'Log In'
   end
-
-  def request_login(user)
-    @user = user
-  end
-
-  def logout
-    @user = nil
-  end
 end
 
 RSpec.configure do |config|
