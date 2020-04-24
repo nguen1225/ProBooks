@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit destroy update]
+  before_action :authenticate_user!, only: %i[new edit]
 
   def index
     @search_params = book_search_params

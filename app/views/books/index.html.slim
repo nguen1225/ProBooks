@@ -91,6 +91,7 @@
 								| まだレビューがありません
 						- else
 							= book.reviews.count
+							| 件のレビューが投稿されています
 							p id="star-avg"
 		= paginate @books
 				//評価平均

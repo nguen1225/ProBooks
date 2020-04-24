@@ -40,6 +40,12 @@ ja:
             level: "難易度"
             tag_list: "タグ"
             image: "画像"
+            easy: "やさしい"
+            normal: "ふつう"
+            hard: "むずかしい"
+            few: "すくない"
+            medium: "ふつう"
+            many: "おおい"
             created_at: "登録日"
             updated_at: ”更新日"
         category:

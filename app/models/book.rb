@@ -35,8 +35,8 @@ class Book < ApplicationRecord
 
   mount_uploader :image, ImagesUploader
   extend Enumerize
-  enumerize :level, in: %i[easy normal hard]
-  enumerize :volume, in: %i[few medium many]
+  enumerize :level, in: %i[easy normal hard], scope: true
+  enumerize :volume, in: %i[few medium many], scope: true
 
   # 出力する属性、順番を定義
   def self.csv_attributes
