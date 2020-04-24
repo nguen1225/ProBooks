@@ -38,6 +38,11 @@
 			width: 100%;
 			padding: 0 24px 8px 24px;
 			border-radius: 3px;
+			.level-text {
+				color: $strong_color;
+				font-size: 24px;
+				font-weight: bold;
+			}
 			.success_btn {
 				@include success_btn
 			}
