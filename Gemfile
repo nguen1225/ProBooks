@@ -41,6 +41,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'brakeman'
   gem 'letter_opener_web', '~> 1.0'
   gem 'pry-byebug'
   gem 'rack-mini-profiler', require: false
@@ -49,7 +50,6 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'brakeman'
 end
 
 group :test do

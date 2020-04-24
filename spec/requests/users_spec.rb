@@ -5,13 +5,13 @@ RSpec.describe UsersController, type: :request do
 
   describe 'GET #show' do
     context 'ユーザが存在する場合' do
-      it "正常なレスポンスを返すこと" do
+      it '正常なレスポンスを返すこと' do
         get user_url user_a
         expect(response.status).to eq 200
       end
       it 'ユーザー名が表示されていること' do
         get user_url user_a
-        expect(response.body).to include "Sato"
+        expect(response.body).to include 'Sato'
       end
     end
 
@@ -72,9 +72,9 @@ RSpec.describe UsersController, type: :request do
         expect(response.status).to eq 200
       end
       it 'ユーザー名が更新されない', must: true do
-        expect {
+        expect do
           put user_url user_a, params: { user: FactoryBot.attributes_for(:user, :invalid) }
-        }.to_not change(User.find(user_a.id), :name)
+        end.to_not change(User.find(user_a.id), :name)
       end
       it 'エラーが表示されること', must: true do
         put user_url user_a, params: { user: FactoryBot.attributes_for(:user, :invalid) }

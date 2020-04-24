@@ -95,7 +95,7 @@ class Book < ApplicationRecord
                      }
   scope :category_id_is, lambda { |category|
                            where(category_id: category) if category.present?
-                     }
+                         }
   scope :volume_is, ->(volume) { where(volume: volume) if volume.present? }
   scope :level_is, ->(level) { where(level: level) if level.present? }
 end

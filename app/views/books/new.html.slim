@@ -5,15 +5,13 @@
 	h4.page_title 技術書の登録
 	= form_with model: @book, local: true do |f|
 		.side-image-field
-			- if @book.image.present?
-				= image_tag @book.image.url, id: :book_prev, size: '200x200'
-			- else
-				= image_tag 'notebook.jpg', id: :book_prev, size: '200x200'
-			.image-label
-				= f.label :image
-				br
-				= f.file_field :image, id: :book_image,
-							   accept: @book.image.accept_extensions
+			p.book-image
+				= image_tag @book.image.url, id: :book_prev
+			.file-field.input-field
+				.btn
+					= f.label :image
+					= f.file_field :image, id: :book_image,
+								accept: @book.image.accept_extensions
 		.input-text.z-depth-2
 			= render 'shared/error_messages', model: @book
 			.input-field

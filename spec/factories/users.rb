@@ -44,19 +44,19 @@ FactoryBot.define do
   end
 
   factory :user_a, class: User do
-    name { "Sato" }
-    email { "sato@example.com" }
+    name { 'Sato' }
+    email { 'sato@example.com' }
     status { 'engineer' }
     introduction { 'テストユーザーの自己紹介' }
     password { 'foobar' }
     password_confirmation { 'foobar' }
-    uid { "101010" }
+    uid { '101010' }
     provider { 'github' }
   end
 
   factory :user_b, class: User do
-    name { "Suzuki" }
-    email { "suzuki@example.com" }
+    name { 'Suzuki' }
+    email { 'suzuki@example.com' }
     status { 'begineer' }
     introduction { 'テストユーザーの自己紹介' }
   end

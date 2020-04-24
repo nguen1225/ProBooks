@@ -59,7 +59,7 @@
 					.review-body
 						= simple_format(review.body)
 					/拍手ボタン
-					- if current_user =! review.user
+					- if current_user
 						p id="clap-#{review.id}"
 							= render 'claps/claps', { review: review, book: review.book, login_user: current_user }
 
