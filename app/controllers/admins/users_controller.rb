@@ -2,7 +2,8 @@ class Admins::UsersController < Admins::ApplicationController
   def index
     @search_params = user_search_params
     @users = if params[:search]
-               User.with_deleted.search(@search_params).page(params[:page])
+               User.with_deleted.search(@search_params)
+                                .page(params[:page])
              else
                User.with_deleted.page(params[:page])
          end
