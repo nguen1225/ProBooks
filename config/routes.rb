@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     root "dashboards#index"
     resources :users, only: %i(index destroy)
     resources :books, only: %i(index destroy) do
+      post :import, on: :collection
     end
   end
   devise_for :users,
@@ -29,5 +30,4 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'books#index', as: :tag
   get 'tag/tag_name', to: 'books#index'
   get 'reviews', to: 'reviews#index'
-  post "csv_books_import", to: "admins/books#import"
 end

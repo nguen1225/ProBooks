@@ -40,7 +40,7 @@ class Book < ApplicationRecord
 
   # 出力する属性、順番を定義
   def self.csv_attributes
-    %w[title content category_id created_at updated_at]
+    %w[id title content category_id level volume created_at updated_at user_id]
   end
 
   # csvエクスポート
@@ -50,6 +50,15 @@ class Book < ApplicationRecord
       all.find_each do |book|
         csv << csv_attributes.map { |attr| book.send(attr) }
       end
+    end
+  end
+
+  #CSVインポート
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      book = Book.find_by(id: row["id"]) || new
+      book.attributes = row.to_hash.slice(*csv_attributes)
+      book.save!
     end
   end
 

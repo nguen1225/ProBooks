@@ -6,13 +6,18 @@ class Admins::BooksController < Admins::ApplicationController
                Book.search(@search_params)
              else
                Book.all.includes([:category])
-         end
+             end
     if params[:export_csv]
       send_data @books.generate_csv,
                 filename: "登録書籍一覧-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
     else
       render :index
     end
+  end
+
+  def import
+    Book.import(params[:file])
+    redirect_to admins_books_path, notice: "書籍を追加しました"
   end
 
   private
