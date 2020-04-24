@@ -4,7 +4,7 @@
 .user_profile-page
 	.user-profile.z-depth-1
 		p.user-image
-			= image_tag(@user.image.url.to_s || 'human.jpg')
+			= image_tag(@user.image.to_s)
 		.user-info
 			p
 				= @user.name
@@ -12,8 +12,9 @@
 					pre
 					= @user.status
 			p
-				| あなたの現在のレベルは
-				= @user.level
+				| ユーザーレベル
+				span.level-text
+					= @user.level
 			p
 				= simple_format(@user.introduction)
 			- if current_user == @user

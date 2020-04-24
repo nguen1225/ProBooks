@@ -94,15 +94,19 @@
 							| 件のレビューが投稿されています
 							p id="star-avg"
 		= paginate @books
-				//評価平均
-				javascript:
-					$('#star-avg').raty({
-						size: 36,
-						starOff: "#{asset_path('star-off.png')}",
-						starOn: "#{asset_path('star-on.png')}",
-						starHalf: "#{asset_path('star-half.png')}",
-						scoreName: 'review[rate]',
-						half: true,
-						readOnly: true,
-						score: "#{book.reviews.average(:rate).to_f.round(1)}",
-					})
+			//評価平均
+			javascript:
+				$('#star-avg').raty({
+					size: 36,
+					starOff: "#{asset_path('star-off.png')}",
+					starOn: "#{asset_path('star-on.png')}",
+					starHalf: "#{asset_path('star-half.png')}",
+					scoreName: 'review[rate]',
+					half: true,
+					readOnly: true,
+					score: "#{book.reviews.average(:rate).to_f.round(1)}",
+				})
+javascript:
+	$(document).ready(function(){
+		$('.tabs').tabs();
+	});
