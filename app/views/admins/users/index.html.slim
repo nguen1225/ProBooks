@@ -58,7 +58,7 @@
 					td = l(user.updated_at)
 					td
 						- if user.deleted_at.present?
-							= l(user.deleted_at, formats: :short)
+							| 無効
 						- else
 							| 有効
 					td.btn-wrap
