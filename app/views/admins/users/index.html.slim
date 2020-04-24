@@ -18,9 +18,8 @@
 			 | 〜
 			 = f.date_field :created_at_to, type: "text", class: "datepicker",
 			 				value: @search_params[:created_at_to]
-		.action
+		.search-btn-wrap
 			= f.submit '検索', class: "btn"
-		.action
 			= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
 	h4
 		| ユーザー一覧
@@ -51,13 +50,14 @@
 					td = user.id
 					td = user.name
 					td = user.email
-					td = user.status || "登録してません"
-					td = user.provider
+					td = user.status.presence || "未登録"
+					td = user.provider.presence || "未登録"
 					td = l(user.created_at)
 					td = l(user.updated_at)
-					td = user.deleted_at
+					td = user.deleted_at.presence || "有効"
 					td.btn-wrap
 						= link_to '詳細', user_path(user), class: "success_btn"
 					td.btn-wrap
 						= link_to '削除', admins_user_path(user), method: :delete,
 																 confirm: { data: "本当に削除しますか？" }, class: "danger_btn"
+		= paginate @users

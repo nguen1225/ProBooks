@@ -48,6 +48,7 @@ class User < ApplicationRecord
                                    foreign_key: 'visitor_id', dependent: :destroy
   has_many  :passive_notifications, class_name: 'Notification',
                                     foreign_key: 'visited_id', dependent: :destroy
+  paginates_per 15
 
   def self.csv_attributes
     %w[id name email status created_at updated_at]
