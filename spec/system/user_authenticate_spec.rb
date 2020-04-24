@@ -63,6 +63,17 @@ RSpec.describe 'User認証機能', type: :system, js: true do
   end
 
   describe 'レイアウトの変更' do
+    shared_examples_for 'ヘッダーリストの変更' do
+      it {
+        find('.sidenav-trigger').click
+        expect(page).to have_content '書籍の投稿'
+        expect(page).to have_content '書籍を探す'
+        expect(page).to have_content 'マイページ'
+        expect(page).to have_content '通知'
+        expect(page).to have_content 'ユーザーレベル'
+        expect(page).to have_content 'ログアウト'
+      }
+    end
     context '新規登録した場合' do
       before do
         visit new_user_registration_path
@@ -72,23 +83,13 @@ RSpec.describe 'User認証機能', type: :system, js: true do
         fill_in  'パスワード（確認用）', with: 'foobar'
         click_on '登録'
       end
-      shared_example_for 'ヘッダーリストの変更' do
-        it {
-          find('.sidenav-trigger').click
-          expect(page).to have_content '書籍の投稿'
-          expect(page).to have_content '書籍を探す'
-          expect(page).to have_content 'マイページ'
-          expect(page).to have_content '通知'
-          expect(page).to have_content 'ユーザーレベル'
-          expect(page).to have_content 'ログアウト'
-        }
-      end
+      it_behaves_like 'ヘッダーリストの変更'
     end
     context 'ログインした場合' do
       before do
         sign_in_as user_a
       end
-      it_haves_like 'ヘッダーリストが変更される' do
+      it_behaves_like 'ヘッダーリストの変更'
     end
   end
 end

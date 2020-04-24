@@ -4,9 +4,13 @@
 .book_show-page
 	h3.page_title
 		= @book.title
+	span
+		= image_tag @book.image.to_s, size: "50x50"
+		= @book.user.name
+		| さんが投稿
 	.book_description-area.z-depth-1
 		p.image-size
-			= image_tag(@book.image.to_s || "notebook.jpg" )
+			= image_tag(@book.image.to_s)
 		.book_description
 			table.book_table
 				tr
@@ -32,14 +36,15 @@
 				tr
 					th
 						| タグ
-					td = @book.tag_list.map { |t| link_to t, tag_path(t), class: "tag-style" }.join(', ')
+					td = raw(@book.tag_list.map { |t| link_to t, tag_path(t), class: "tag-style" }.join(', '))
 			- if current_user == @book.user
 				.btn-wrap
 					= link_to '編集', edit_book_path(@book), class: "edit-btn waves-effect waves-light btn-flat"
 					= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当に削除しますか？" },class: "delete-btn waves-effect waves-light btn-flat"
-			.favorite-wrap
-				p id="book-favorite-#{@book.id}"
-					= render 'favorites/favorites', book: @book
+			- if current_user
+				.favorite-wrap
+					p id="book-favorite-#{@book.id}"
+						= render 'favorites/favorites', book: @book
 
 
 	// 評価一覧
@@ -54,11 +59,11 @@
 					.review-body
 						= simple_format(review.body)
 					/拍手ボタン
-					- if current_user
+					- if current_user =! review.user
 						p id="clap-#{review.id}"
 							= render 'claps/claps', { review: review, book: review.book, login_user: current_user }
 
-					- if login_user == review.user
+					- if current_user == review.user
 						.btn-wrap
 							= link_to '編集する', edit_book_review_path(@book, review), class: "success_btn waves-effect waves-teal btn-flat"
 							= link_to '削除する', book_review_path(@book, review), method: :delete, class: "danger_btn waves-effect waves-teal btn-flat"
@@ -82,37 +87,38 @@
 		.reviews_pagination
 			= paginate @reviews
 
-	= link_to '#modal1', data: { position:"top", tooltip: "レビューを書く" }, class: "modal-trigger waves-effect review_float-btn z-depth-3 tooltipped" do
-		i.material-icons border_color
+	- if current_user
+		= link_to '#modal1', data: { position:"top", tooltip: "レビューを書く" }, class: "modal-trigger waves-effect review_float-btn z-depth-3 tooltipped" do
+			i.material-icons border_color
 
-	//評価投稿フォーム
-	#modal1.modal.bottom-sheet
-		.modal-content
-			= form_with model: @review, url: book_reviews_path(@book),local: true do |f|
-				= render 'shared/error_messages', model: @review
-				.field#star
-					= f.label :rate, '評価'
-					= f.hidden_field :rate, id: :review_star
-				.field
-					= f.label :title, 'タイトル'
-					= f.text_field :title
-				.field
-					= f.label :body, '内容'
-					= f.text_area :body
+		//評価投稿フォーム
+		#modal1.modal.bottom-sheet
+			.modal-content
+				= form_with model: @review, url: book_reviews_path(@book),local: true do |f|
+					= render 'shared/error_messages', model: @review
+					.field#star
+						= f.label :rate, '評価'
+						= f.hidden_field :rate, id: :review_star
+					.field
+						= f.label :title, 'タイトル'
+						= f.text_field :title
+					.field
+						= f.label :body, '内容'
+						= f.text_area :body
 
-				= f.hidden_field :user_id, value: current_user.id
-				= f.hidden_field :book_id, value: @book.id
+					= f.hidden_field :user_id, value: current_user.id
+					= f.hidden_field :book_id, value: @book.id
 
-				= f.submit '評価する', class: "btn"
-				javascript:
-					$('#star').raty({
-						size: 48,
-						starOff: "#{asset_path('star-off.png')}",
-						starOn: "#{asset_path('star-on.png')}",
-						starHalf: "#{asset_path('star-half.png')}",
-						scoreName: 'review[rate]',
-						half: true
-					});
+					= f.submit '評価する', class: "btn"
+					javascript:
+						$('#star').raty({
+							size: 48,
+							starOff: "#{asset_path('star-off.png')}",
+							starOn: "#{asset_path('star-on.png')}",
+							starHalf: "#{asset_path('star-half.png')}",
+							scoreName: 'review[rate]',
+							half: true
+						});
 
 / 評価平均の表示
 javascript:
