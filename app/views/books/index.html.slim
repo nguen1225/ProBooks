@@ -24,18 +24,18 @@
 									:selected => @search_params[:category]
 						.field
 							= f.label :volume, 'ボリューム'
-							= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
+							= f.select :volume, Book.volume.options, { include_blank:'選択してください' },
 									:selected => @search_params[:volume]
 						.field
 							= f.label :lebel, '難易度'
-							= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
+							= f.select :level, Book.level.options, { include_blank:'選択してください' },
 									:selected => @search_params[:level]
 						.action
 							= f.button '検索', type: "submit", class: "success_btn waves-effect waves-light btn-flat"
 
 			#tag_search
 				- tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
-					= link_to tag.name, tag_path(tag.name), :class => css_class
+					= link_to tag.name, tag_path(tag.name), :class => "css_class chip"
 		.category-search
 			.language-wrap.lang-markup.z-depth-1.hoverable
 				= link_to books_path(search:{category_id: 1}), class: "language-search-link" do

@@ -21,8 +21,14 @@ FactoryBot.define do
   factory :book do
     sequence(:title) { |n| "テスト駆動開発#{n}" }
     sequence(:content) { |n| "テストは最初に書こう#{n}" }
+    level { 'easy' }
+    volume { 'few' }
     user
     category
+
+    trait :invalid do
+      title { nil }
+    end
   end
 
   factory :book_c, class: Book do
@@ -30,9 +36,5 @@ FactoryBot.define do
     content { 'write some test code!!' }
     user_id { 1 }
     category_id { 1 }
-
-    trait :invalid do
-      title { nil }
-    end
   end
 end

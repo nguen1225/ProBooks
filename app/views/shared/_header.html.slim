@@ -1,20 +1,20 @@
 header
 	nav
-		.nav-wrapper.z-depth-2
-			= link_to 'ProBooks', root_path, class: 'bland-logo'
+		.nav-wrapper
+			= link_to 'ProBooks', root_path, class: 'bland-logo left'
+			span.search
+			 	.search-wrapper
+					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
+						.field
+							= f.text_field :title, class: "search_field", placeholder: "検索"
+							= f.button type: "submit", class: "search-icon btn" do
+								i.material-icons search
 			ul#nav-mobile.right.hide-on-med-and-down
 			= link_to "#", class: "sidenav-trigger" ,data: { target: "side-out" } do
 				i.material-icons menu
 
 	ul#side-out.sidenav.sidenav-fixed.z-depth-3
 		- if current_user.present?
- 			li.search
-			 	.search-wrapper
-					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
-						.field
-							= f.text_field :title, class: "search_field", placeholder: "検索"
-							= f.button type: "submit", class: "search-icon flat-btn circle" do
-								i.material-icons search
 			li
 				.user-view
 					.background

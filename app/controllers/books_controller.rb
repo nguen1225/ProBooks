@@ -8,9 +8,9 @@ class BooksController < ApplicationController
     @books = if params[:tag]
                Book.tagged_with(params[:tag]).page(params[:page])
              elsif params[:search]
-               Book.search(@search_params).page(params[:page])
+               Book.search(@search_params).includes(:reviews).page(params[:page])
              else
-               Book.all.page(params[:page])
+               Book.all.includes(:reviews).page(params[:page])
              end
   end
 
@@ -39,7 +39,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @books = Book.all
     @categories = Category.all
   end
 

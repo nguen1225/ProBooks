@@ -42,6 +42,11 @@ RSpec.describe UsersController, type: :request do
       get edit_user_url user_a
       expect(response.body).to include 'テストユーザーの自己紹介'
     end
+
+    context 'ユーザーが存在しない場合', must: true do
+      subject { -> { get user_url 1 } }
+      it { is_expected.to raise_error ActiveRecord::RecordNotFound }
+    end
   end
 
   describe 'PUT #update' do
