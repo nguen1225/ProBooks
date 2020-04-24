@@ -132,9 +132,3 @@ javascript:
 		readOnly: true,
 		score: "#{@book.reviews.average(:rate).to_f.round(1)}",
 	})
-	//ツールチップ
-	//レビューモーダル
-	$(document).ready(function(){
-		$('.tooltipped').tooltip();
-		$('.modal').modal();
-	});
