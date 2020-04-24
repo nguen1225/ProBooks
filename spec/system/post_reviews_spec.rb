@@ -15,13 +15,13 @@ RSpec.describe 'レビュー機能', type: :system, js: true do
     visit book_path(book)
     find('.modal-trigger').click
 
-    expect {
+    expect do
       page.all('#star img')[1].click
       fill_in 'タイトル', with: '評価１'
       fill_in '内容', with: 'テスト内容'
       click_on '評価する'
       sleep 0.5
-    }.to change(book.reviews, :count).by(1)
+    end.to change(book.reviews, :count).by(1)
 
     # 投稿した内容が表示される
     expect(page).to have_content '投稿しました'
@@ -37,13 +37,13 @@ RSpec.describe 'レビュー機能', type: :system, js: true do
     visit book_path(book)
     find('.modal-trigger').click
 
-    expect {
+    expect do
       page.all('#star img')[1].click
       fill_in 'タイトル', with: '評価１'
       fill_in '内容', with: 'テスト内容'
       click_on '評価する'
       sleep 0.5
-    }.to change(book.reviews, :count).by(1)
+    end.to change(book.reviews, :count).by(1)
 
     find('.sidenav-trigger').click
     click_link 'ログアウト'
@@ -51,7 +51,7 @@ RSpec.describe 'レビュー機能', type: :system, js: true do
     # ログイン(二人目)
     sign_in_as user_b
     visit book_path(book)
-    #削除リンクが表示されない
+    # 削除リンクが表示されない
     expect(page).to have_no_link '削除する'
   end
 

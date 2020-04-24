@@ -13,11 +13,11 @@
 					:selected => @search_params[:category]
 		.field
 			= f.label :volume
-			= f.select :volume, ['few', 'medium', 'many'], include_blank: ('選択してください'),
+			= f.select :volume,  Book.volume.options, include_blank: ('選択してください'),
 					:selected => @search_params[:volume]
 		.field
 			= f.label :lebel
-			= f.select :level, ['easy', 'normal', 'hard'], include_blank: ('選択してください'),
+			= f.select :level,  Book.level.options, include_blank: ('選択してください'),
 					:selected => @search_params[:level]
 		.search-btn-wrap
 			.action
@@ -54,8 +54,8 @@
 					td = book.title
 					td = simple_format(book.content)
 					td = book.category.name
-					td = book.level
-					td = book.volume
+					td = book.level.text
+					td = book.volume.text
 					td = l(book.created_at)
 					td = l(book.updated_at)
 					td.btn-wrap

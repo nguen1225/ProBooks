@@ -7,7 +7,7 @@ RSpec.describe '参考になったボタン機能', type: :system, js: true do
   let(:category) { FactoryBot.create(:category) }
   let(:book) { FactoryBot.create(:book, user: user, category: category) }
   let!(:review) { FactoryBot.create(:review, user: user, book: book) }
-  let!(:level_standard) { FactoryBot.create(:level_standard)}
+  let!(:level_standard) { FactoryBot.create(:level_standard) }
 
   describe 'ログインしたユーザー' do
     # ログインして書籍詳細ページへ遷移
@@ -18,25 +18,25 @@ RSpec.describe '参考になったボタン機能', type: :system, js: true do
 
     context '拍手アイコンをクリックした場合' do
       it 'カウントが１増える' do
-        expect {
-          find(".clapping").click
+        expect do
+          find('.clapping').click
           sleep 1.0
-          expect(page).to have_content "1"
-        }.to change{ Clap.count }.by(1)
+          expect(page).to have_content '1'
+        end.to change { Clap.count }.by(1)
       end
     end
 
     context '取り消すボタンをクリックした場合' do
       it 'カウントが１減る' do
-        expect {
+        expect do
           find('.clapping').click
           sleep 0.5
-        }.to change{ Clap.count }.by(1)
-        expect {
+        end.to change { Clap.count }.by(1)
+        expect do
           find('.not-clapping').click
-          expect(page).to have_content "0"
+          expect(page).to have_content '0'
           sleep 0.5
-        }.to change{ Clap.count }.by(-1)
+        end.to change { Clap.count }.by(-1)
       end
     end
   end

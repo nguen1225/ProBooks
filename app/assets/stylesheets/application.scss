@@ -76,7 +76,16 @@ header, main, footer {
 	  padding-left: 0;
 	}
 }
-
+//画像インプット
+.file-field {
+	.btn {
+		width: 100%;
+		label {
+			color: $base_white;
+			font-size: 16px;
+		}
+	}
+}
 .css4 {
 	margin: 4px;
 }

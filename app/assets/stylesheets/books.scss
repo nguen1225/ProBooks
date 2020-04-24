@@ -17,12 +17,13 @@
 		display: flex;
 		border-radius: 3px;
 		.side-image-field {
-			width: 100%;
-			height: 80%;
+			width: 50%;
 			text-align: center;
-			.file_btn {
-				width: 70%;
-				margin: 0 auto;
+			.book-image {
+				width: 100%;
+				img {
+					width: 100%;
+				}
 			}
 		}
 		.input-text {

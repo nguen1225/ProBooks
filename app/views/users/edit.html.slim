@@ -5,16 +5,14 @@
   h4.page_title
     | 会員情報編集
   = form_with model: @user, local: true do |f|
-    .user-avater
-      - if @user.image.present?
-        = image_tag @user.image.url, id: :user_prev, size: '100x100', class: "z-depth-2"
-      - else
-        = image_tag 'default.jpg', id: :user_prev, size: '100x100', class: "z-depth-2"
-      br
-      = f.label :image, 'プロフィール画像'
-      br
-      = f.file_field :image, id: :user_image, class: "input-file",
-                     accept: @user.image.accept_extensions
+    .user-image-wrap
+      p.user-avater
+          = image_tag @user.image.url, id: :user_prev
+      .file-field.input-field
+        .btn
+          = f.label :image, 'プロフィール画像'
+          = f.file_field :image, id: :user_image,
+                          accept: @user.image.accept_extensions
     .user-info.z-depth-2
       = render 'shared/error_messages', model: @user
       .input-field

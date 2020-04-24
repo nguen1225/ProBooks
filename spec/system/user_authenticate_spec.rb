@@ -14,13 +14,13 @@ RSpec.describe 'User認証機能', type: :system, js: true do
       it '新規登録できる' do
         click_on 'Sign Up'
         expect(current_path).to eq new_user_registration_path
-        expect {
+        expect do
           fill_in  '名前', with: 'テスト'
           fill_in  'メールアドレス', with: 'test@example.com'
           fill_in  'パスワード', with: 'foobar'
           fill_in  'パスワード（確認用）', with: 'foobar'
           click_on '登録'
-        }.to change{User.count}.by(1)
+        end.to change { User.count }.by(1)
 
         expect(page).to have_content 'アカウント登録が完了しました'
         expect(page).to have_content 'テスト'
@@ -37,8 +37,8 @@ RSpec.describe 'User認証機能', type: :system, js: true do
         fill_in '名前', with: '更新太郎'
         fill_in 'メールアドレス', with: 'update@example.com'
         fill_in '自己紹介', with: 'よろしくお願いします'
-        find(".dropdown-trigger").click
-        find("li", text: "Begineer").click
+        find('.dropdown-trigger').click
+        find('li', text: 'Begineer').click
         click_on '更新'
 
         expect(current_path).to eq user_path(user_a)
