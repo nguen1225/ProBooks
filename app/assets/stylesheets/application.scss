@@ -89,84 +89,6 @@ header, main, footer {
 .css4 {
 	margin: 4px;
 }
-
-header {
-	nav {
-		background: $base_white;
-		.nav-wrapper {
-			display: inline-flex;
-			width: 100%;
-			.bland-logo {
-				color: $primary-color;
-				margin-left: 16px;
-			}
-			.menu-icon {
-				color: $primary-color;
-			}
-			.mail-icon-wrap {
-				position: absolute;
-				right: 28%;
-				top: 0;
-				.mail-icon {
-					color: $primary-color;
-				}
-			}
-			form {
-				display: inline-flex;
-				position: absolute;
-				right: 0;
-				width: 24%;
-				.field {
-					position: relative;
-					.search-icon {
-						position: absolute;
-						border-radius: 100%;
-						background: $primary-color;
-						top: 13px;
-						right: 0px;
-						.material-icons {
-							position: absolute;
-							top: -13px;
-							right: 3px;
-						}
-					}
-				}
-			}
-		}
-	}
-	.sidenav {
-		width: 240px;
-		background: #e1f5fe;
-		.user-level {
-			text-align: center;
-			.level {
-				font-size: 24px;
-				font-weight: bold;
-				color: $strong_color;
-			}
-		}
-		.notification-header-line {
-			position: relative;
-			.notification-inner-text {
-				position: absolute;
-				top: -4px;
-    			left: 90px;
-			}
-		}
-		.n-circle {
-			position: absolute;
-			padding-left: 1rem;
-			padding-top: 0rem;
-			color: #efa04c;
-		}
-	}
-	.nav-wrapper {
-		text-align: center;
-		.bland-logo {
-			font-size: 24px;
-		}
-	}
-}
 //パンくずリスト
 .breadcrumbs {
 	.breadcrumb {
@@ -268,10 +190,13 @@ header {
 .all-books {
 	width: 90%;
 	margin: 8px auto;
-	.search-btn-wrap {
-		display: inline-flex;
-		.btn {
-			margin-right: 8px;
+	form {
+		margin: 16px auto;
+		.search-btn-wrap {
+			display: inline-flex;
+			.btn {
+				margin-right: 8px;
+			}
 		}
 	}
 	.books-table {
@@ -333,6 +258,87 @@ header {
 		.reviews-graph {
 			width: 49%;
 			padding: 24px;
+		}
+	}
+}
+
+//モバイル
+@media screen and (max-width : 670px) {
+	header {
+		nav {
+			.nav-wrapper {
+				.mail-icon-wrap {
+					top: 3px;
+					right: 38%;
+				}
+				form {
+					width: 34%;
+					.field {
+						.search-icon {
+							top: 8px;
+							right: 8px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//トップページ
+@media screen and (max-width : 670px) {
+	.top_main-sec{
+		.authenticate-area {
+			width: 80%;
+			margin: 0 auto;
+		}
+	}
+	.top_section {
+		.top_section-title {
+			width: 40%;
+		}
+		#top_about {
+			.top_about-box {
+				.content-title {
+					font-size: 20px;
+				}
+				.about-content-ri {
+					font-size: 12px;
+					.btn {
+						width: 100%;
+						bottom: 12px;
+						right: 0;
+					}
+				}
+				.about-content-le {
+					font-size: 12px;
+					.btn {
+						width: 100%;
+						bottom: 12px;
+						left: 0;
+					}
+				}
+			}
+		}
+		#top_flow {
+			.top_flow-boxies {
+				display: block;
+				.material-icons {
+					display: none;
+				}
+				.flow-box {
+					width: 100%;
+					.flow-content {
+						width: 50%;
+						margin: 16px auto;
+					}
+				}
+			}
+		}
+		#top_contact {
+			.top_contact-box {
+				width: 100%;
+			}
 		}
 	}
 }
