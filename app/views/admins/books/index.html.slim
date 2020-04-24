@@ -25,8 +25,8 @@
 			.action
 				= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
 	= form_tag import_admins_books_path, multipart: true
+		= submit_tag "csvインポート", class: "btn green lighten-3"
 		= file_field_tag :file
-		= submit_tag "csvインポート"
 	h4
 		| 登録書籍一覧
 	table.books-table.z-depth-1

@@ -4,6 +4,84 @@
 
 @import 'application';
 
+//header
+header {
+	nav {
+		background: $base_white;
+		.nav-wrapper {
+			display: inline-flex;
+			width: 100%;
+			.bland-logo {
+				color: $primary-color;
+				margin-left: 16px;
+			}
+			.menu-icon {
+				color: $primary-color;
+			}
+			.mail-icon-wrap {
+				position: absolute;
+				right: 28%;
+				top: 0;
+				.mail-icon {
+					color: $primary-color;
+				}
+			}
+			form {
+				display: inline-flex;
+				position: absolute;
+				right: 0;
+				width: 24%;
+				.field {
+					position: relative;
+					.search-icon {
+						position: absolute;
+						border-radius: 100%;
+						background: $primary-color;
+						top: 13px;
+						right: 0px;
+						.material-icons {
+							position: absolute;
+							top: -13px;
+							right: 3px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.sidenav {
+		width: 240px;
+		background: #e1f5fe;
+		.user-level {
+			text-align: center;
+			.level {
+				font-size: 24px;
+				font-weight: bold;
+				color: $strong_color;
+			}
+		}
+		.notification-header-line {
+			position: relative;
+			.notification-inner-text {
+				position: absolute;
+				top: -4px;
+    			left: 90px;
+			}
+		}
+		.n-circle {
+			position: absolute;
+			padding-left: 1rem;
+			padding-top: 0rem;
+			color: #efa04c;
+		}
+	}
+	.nav-wrapper {
+		text-align: center;
+		.bland-logo {
+			font-size: 24px;
+		}
+	}
+}
 //top_page
 .top_main-sec {
 	position: relative;
