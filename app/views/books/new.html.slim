@@ -25,15 +25,18 @@
 			.input-field
 				= f.label :category_id, "カテゴリ"
 				br
-				= f.collection_select :category_id, @categories, :id, :name
+				= f.collection_select :category_id, @categories, :id, :name,
+									  { include_blank: '選択してくだい' }
 			.input-field
 				= f.label  :level
 				br
-				= f.select :level, Book.level.options
+				= f.select :level, Book.level.options,
+						   { include_blank: '選択してください' }
 			.input-field
 				= f.label  :volume
 				br
-				= f.select :volume, Book.volume.options
+				= f.select :volume, Book.volume.options,
+						   { include_blank: '選択してください' }
 			.input-field
 				= f.label :tag_list
 				= f.text_field :tag_list

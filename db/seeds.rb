@@ -1,89 +1,104 @@
-# User.create!(
-# 	name: "owner",
-# 	email: "hogehoge@example.com",
-# 	password: "foobar",
-# 	uid: "123456",
-# )
+User.create!(
+	name: "owner",
+	email: "hogehoge@example.com",
+	password: "foobar",
+	uid: "123456",
+)
 
+15.times do |n|
+	name  = Faker::Name.name
+	email = "hogehoge-#{n+1}@example.org"
+	password = "password"
+	uid = "#{n+1}"
+	User.create!(name:  name,
+				email: email,
+				password:              password,
+				password_confirmation: password,
+				uid: uid )
 
+end
 
-# # #categoryデータ
-# Category.create!(
-# 	name: "HTML&CSS"
-# )
-# Category.create!(
-# 	name: "Javascript"
-# )
-# Category.create!(
-# 	name: "Ruby"
-# )
-# Category.create!(
-# 	name: "RubyOnRails"
-# )
-# Category.create!(
-# 	name: "AWS"
-# )
-# Category.create!(
-# 	name: "Git/Github"
-# )
+# #categoryデータ
+Category.create!(
+	id:1,
+	name: "HTML&CSS"
+)
+Category.create!(
+	id:2,
+	name: "Javascript"
+)
+Category.create!(
+	id: 3,
+	name: "Ruby"
+)
+Category.create!(
+	id:4,
+	name: "RubyOnRails"
+)
+Category.create!(
+	id:5,
+	name: "AWS"
+)
+Category.create!(
+	id: 6,
+	name: "Git/Github"
+)
 
-# #Bookデータ
-# Book.create!(
-# 	title: 'よくわかるHTML',
-# 	content: 'ホゲホゲホゲホゲ',
-# 	level: 'hard',
-# 	volume: 'few',
-# 	category_id: 1,
-# 	user_id: 2
-# )
-# Book.create!(
-# 	title: 'よくわかるruby',
-# 	content: 'ホゲホゲホゲホゲ',
-# 	level: 'hard',
-# 	volume: 'few',
-# 	category_id: 2,
-# 	user_id: 1
-# )
-# Book.create!(
-# 	title: 'よくわかるrubyonrails',
-# 	content: 'ホゲホゲホゲホゲ',
-# 	level: 'hard',
-# 	volume: 'few',
-# 	category_id: 3,
-# 	user_id: 3
-# )
-# Book.create!(
-# 	title: 'よくわかるruby',
-# 	content: 'ホゲホゲホゲホゲ',
-# 	level: 'hard',
-# 	volume: 'few',
-# 	category_id: 4,
-# 	user_id: 1
-# )
-# Book.create!(
-# 	title: 'よくわかるGIT',
-# 	content: 'ホゲホゲホゲホゲ',
-# 	level: 'hard',
-# 	volume: 'few',
-# 	category_id: 5,
-# 	user_id: 3
-# )
-# Book.create!(
-# 	title: 'よくわかるAWS',
-# 	content: 'ホゲホゲホゲホゲ',
-# 	level: 'hard',
-# 	volume: 'few',
-# 	category_id: 6,
-# 	user_id: 4
-# )
-
-
+#Bookデータ
+Book.create!(
+	title: 'よくわかるHTML',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 1,
+	user_id: 2
+)
+Book.create!(
+	title: 'よくわかるruby',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 2,
+	user_id: 1
+)
+Book.create!(
+	title: 'よくわかるrubyonrails',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 3,
+	user_id: 3
+)
+Book.create!(
+	title: 'よくわかるruby',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 1,
+	user_id: 1
+)
+Book.create!(
+	title: 'よくわかるGIT',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 1,
+	user_id: 3
+)
+Book.create!(
+	title: 'よくわかるAWS',
+	content: 'ホゲホゲホゲホゲ',
+	level: 'hard',
+	volume: 'few',
+	category_id: 1,
+	user_id: 4
+)
 
 #レビューデータ
 10.times do |n|
 	title = "わかりやすい"
 	body = Faker::Lorem.sentence
-	rate = 4
+	rate = 1..5
 	book_id = 1
 	user_id = 1
 	Review.create!(

@@ -37,7 +37,7 @@ RSpec.describe '書籍CRUD', type: :system do
     expect(page).to have_selector("img[src$='default.jpg']")
     expect(page).to have_content 'hard'
     expect(page).to have_content 'medium'
-    expect(page).to have_content "1"
+    expect(page).to have_content "html&css"
   end
 
   it '書籍の編集ができる', js: true do
@@ -60,7 +60,7 @@ RSpec.describe '書籍CRUD', type: :system do
       expect(page).to have_selector("img[src$='clap.jpg']")
       expect(page).to have_content 'normal'
       expect(page).to have_content 'many'
-      expect(page).to have_content "2"
+      expect(page).to have_content "ruby"
     end
 
     #jsダイアログの表示がうまくいかない

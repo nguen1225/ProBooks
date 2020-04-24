@@ -7,12 +7,12 @@
 	.users-graph.z-depth-2
 		p.graph-text
 			| 日別ユーザー登録者数遷移
-		= line_chart @users, download: true, class: "z-depth-2"
+		= area_chart @users, download: true
 	.under-wrap
 		.books-graph.z-depth-2
 			p.graph-text
 				| カテゴリ別登録書籍
-			= pie_chart @books, download: true
+			= pie_chart @categories, download: true
 		.reviews-graph.z-depth-2
 			p.graph-text
 				| 日別レビュー投稿数
