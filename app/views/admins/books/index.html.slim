@@ -24,6 +24,9 @@
 				= f.submit '検索', class: "btn"
 			.action
 				= f.button 'csvエクスポート', class: 'btn', name: "export_csv"
+	= form_tag import_admins_books_path, multipart: true
+		= file_field_tag :file
+		= submit_tag "csvインポート"
 	h4
 		| 登録書籍一覧
 	table.books-table.z-depth-1

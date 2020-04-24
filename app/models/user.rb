@@ -51,7 +51,7 @@ class User < ApplicationRecord
   paginates_per 15
 
   def self.csv_attributes
-    %w[id name email status created_at updated_at]
+    %w[id name email status created_at updated_at deleted_at uid provider]
   end
 
   # csvエクスポート
@@ -63,6 +63,7 @@ class User < ApplicationRecord
       end
     end
   end
+
 
   # GitHub認証メソッド
   def self.create_unique_string
