@@ -17,7 +17,6 @@ RSpec.describe "AdminBooks", type: :request do
         get admins_books_url
         expect(response.body).to include book_a.title
       end
-      end
       it '難易度が表示されていること' do
         get admins_books_url
         expect(response.body).to include book_a.level
