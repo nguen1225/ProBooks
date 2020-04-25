@@ -16,14 +16,14 @@ RSpec.describe '検索機能', type: :system, js: true do
   end
 
   context 'キーワード検索' do
-    it '入力したタイトルの書籍のみが表示される' do
-      fill_in 'タイトル', with: 'テスト駆動開発1'
+	it '入力したタイトルの書籍のみが表示される' do
+      fill_in 'タイトル', with: 'テスト駆動開発1', match: :first
       click_button '検索'
       expect(page).to have_content 'テスト駆動開発1'
       expect(page).to have_no_content 'テスト駆動開発2'
     end
     it '選択したカテゴリの書籍のみが表示される' do
-      all('form input')[1].click
+      all('form input')[2].click
       find('li', text: 'ruby').click
       click_on '検索'
 
@@ -31,16 +31,16 @@ RSpec.describe '検索機能', type: :system, js: true do
       expect(page).to have_no_content 'テスト駆動開発2'
     end
     it '選択したボリュームの書籍のみが表示される' do
-      all('form input')[2].click
-      find('li', text: 'many').click
+      all('form input')[3].click
+      find('li', text: 'おおい').click
       click_on '検索'
 
       expect(page).to have_content 'テスト駆動開発3'
       expect(page).to have_no_content 'テスト駆動開発2'
     end
     it '選択した難易度の書籍のみが表示される' do
-      all('form input')[3].click
-      find('li', text: 'easy').click
+      all('form input')[4].click
+      find('li', text: 'やさしい').click
       click_on '検索'
       expect(page).to have_content 'テスト駆動開発1'
       expect(page).to have_no_content 'テスト駆動開発2'

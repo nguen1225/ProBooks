@@ -19,11 +19,11 @@ RSpec.describe 'タグ機能', type: :system do
       all('.input-text input')[1].click
       find('li', text: 'html&css').click
       all('.input-text input')[2].click
-      find('li', text: 'Hard').click
+      find('li', text: 'むずかしい').click
       all('.input-text input')[3].click
-      find('li', text: 'Medium').click
+      find('li', text: 'ふつう').click
       fill_in 'タグ', with: '#テストタグ'
-      attach_file 'book[image]', 'app/assets/images/default.jpg'
+      # attach_file 'book[image]', 'app/assets/images/default.jpg'
       click_on '登録'
     end.to change { Book.count }.by(1)
 
@@ -39,11 +39,11 @@ RSpec.describe 'タグ機能', type: :system do
       all('.input-text input')[1].click
       find('li', text: 'ruby').click
       all('.input-text input')[2].click
-      find('li', text: 'Normal').click
+      find('li', text: 'ふつう').click
       all('.input-text input')[3].click
-      find('li', text: 'Few').click
+      find('li', text: 'すくない').click
       fill_in 'タグ', with: '#テストタグ'
-      attach_file 'book[image]', 'app/assets/images/default.jpg'
+      # attach_file 'book[image]', 'app/assets/images/default.jpg'
       click_on '登録'
     end.to change { Book.count }.by(1)
 

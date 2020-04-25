@@ -22,11 +22,11 @@ RSpec.describe '書籍CRUD', type: :system do
       all('.input-text input')[1].click
       find('li', text: 'html&css').click
       all('.input-text input')[2].click
-      find('li', text: 'Hard').click
+      find('li', text: 'むずかしい').click
       all('.input-text input')[3].click
-      find('li', text: 'Medium').click
+      find('li', text: 'ふつう').click
       fill_in 'タグ', with: '#テストタグ'
-      attach_file 'book[image]', 'app/assets/images/default.jpg'
+      # attach_file 'book[image]', 'app/assets/images/default.jpg'
       click_on '登録'
     end.to change { Book.count }.by(1)
 
@@ -34,9 +34,9 @@ RSpec.describe '書籍CRUD', type: :system do
     expect(page).to have_content 'テスト'
     expect(page).to have_content 'テストしました'
     expect(page).to have_content '#テストタグ'
-    expect(page).to have_selector("img[src$='default.jpg']")
-    expect(page).to have_content 'hard'
-    expect(page).to have_content 'medium'
+    # expect(page).to have_selector("img[src$='default.jpg']")
+    expect(page).to have_content 'むずかしい'
+    expect(page).to have_content 'ふつう'
     expect(page).to have_content 'html&css'
   end
 
@@ -48,18 +48,18 @@ RSpec.describe '書籍CRUD', type: :system do
     all('.input-text input')[1].click
     find('li', text: 'ruby').click
     all('.input-text input')[2].click
-    find('li', text: 'Normal').click
+    find('li', text: 'ふつう').click
     all('.input-text input')[3].click
-    find('li', text: 'Many').click
-    attach_file 'book[image]', 'app/assets/images/clap.jpg'
+    find('li', text: 'おおい').click
+    # attach_file 'book[image]', 'app/assets/images/clap.jpg'
     click_on '更新'
 
     # 編集後詳細ページへ遷移
     expect(page).to have_content '変更'
     expect(page).to have_content '変更しました'
-    expect(page).to have_selector("img[src$='clap.jpg']")
-    expect(page).to have_content 'normal'
-    expect(page).to have_content 'many'
+    # expect(page).to have_selector("img[src$='clap.jpg']")
+    expect(page).to have_content 'ふつう'
+    expect(page).to have_content 'おおい'
     expect(page).to have_content 'ruby'
   end
 

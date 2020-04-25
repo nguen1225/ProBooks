@@ -3,6 +3,7 @@ require 'capybara/rspec'
 RSpec.configure do |config|
   config.before(:each, type: :system) do
     driven_by :selenium_chrome_headless
+    page.driver.browser.download_path = DownloadHelper::PATH
   end
 
   # database_cleaner

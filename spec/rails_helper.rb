@@ -50,10 +50,10 @@ RSpec.configure do |config|
   config.before(:suite) { Dir.mkdir(DownloadHelper::PATH) unless Dir.exist?(DownloadHelper::PATH) }
   config.after(:example, type: :system, js: true) { clear_downloads }
   # Chrome mode
-  config.before(:each, type: :system, js: true) do
-    driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
-    page.driver.browser.download_path = DownloadHelper::PATH
-  end
+  # config.before(:each, type: :system, js: true) do
+  #   driven_by :selenium, using: :headless_chrome
+  #   page.driver.browser.download_path = DownloadHelper::PATH
+  # end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
