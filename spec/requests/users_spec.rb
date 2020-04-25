@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :request do
-  let(:user_a) { FactoryBot.create :user_a }
+  let!(:user_a) { FactoryBot.create :user_a }
 
   describe 'GET #show' do
     context 'ユーザが存在する場合' do
+      before do
+        sign_in user_a
+      end
       it '正常なレスポンスを返すこと' do
         get user_url user_a
         expect(response.status).to eq 200

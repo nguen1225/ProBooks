@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '検索機能', type: :system do
+RSpec.describe '検索機能', type: :system, js: true do
   include LoginSupport
   let(:user) { FactoryBot.create(:user) }
   let(:category_html) { FactoryBot.create(:category, name: 'html&css') }
@@ -15,7 +15,7 @@ RSpec.describe '検索機能', type: :system do
     visit books_path
   end
 
-  context 'キーワード検索', js: true do
+  context 'キーワード検索' do
     it '入力したタイトルの書籍のみが表示される' do
       fill_in 'タイトル', with: 'テスト駆動開発1'
       click_button '検索'
@@ -47,7 +47,7 @@ RSpec.describe '検索機能', type: :system do
     end
   end
 
-  context 'タグ検索', js: true do
+  context 'タグ検索' do
     before do
       visit new_book_path
       fill_in 'タイトル', with: 'タグテスト'
@@ -67,7 +67,7 @@ RSpec.describe '検索機能', type: :system do
     end
   end
 
-  context '言語検索', js: true do
+  context '言語検索' do
     it 'HTMLの書籍が表示される' do
       click_on 'HTML&CSS'
       expect(page).to have_content 'テスト駆動開発1'
