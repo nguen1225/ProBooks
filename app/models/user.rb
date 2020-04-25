@@ -103,7 +103,7 @@ class User < ApplicationRecord
                           }
   scope :created_at_to, ->(to) { where('created_at <= ?', to) if to.present? }
 
-  # ユーザー情報更新
+  #ユーザー情報更新
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 

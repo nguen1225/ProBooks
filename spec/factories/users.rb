@@ -59,5 +59,9 @@ FactoryBot.define do
     email { 'suzuki@example.com' }
     status { 'begineer' }
     introduction { 'テストユーザーの自己紹介' }
+    trait :invalid do
+      email { nil }
+      password { nil }
+    end
   end
 end

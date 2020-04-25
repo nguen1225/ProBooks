@@ -88,9 +88,8 @@ header {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	// background-image: image-url('book.jpg');
-	background-position: left;
-	background-repeat: no-repeat;
+	background-image: image-url('background_book.jpg');
+	background-position: center;
 	background-size: contain;
 	height: 480px;
 	.authenticate-area {
