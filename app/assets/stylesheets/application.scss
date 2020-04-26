@@ -285,6 +285,16 @@ header, main, footer {
 	}
 }
 
+@mixin res_about_content_box() {
+	font-size: 12px;
+	width: 100%;
+	margin: 0 auto;
+	@content;
+	.btn {
+		width: 100%;
+		position: static;
+	}
+}
 //トップページ
 @media screen and (max-width : 670px) {
 	.top_main-sec{
@@ -298,25 +308,21 @@ header, main, footer {
 			width: 40%;
 		}
 		#top_about {
+			width: auto;
+			height: 140vh;
 			.top_about-box {
+				display: block;
+				.about-image {
+					width: 100%;
+				}
 				.content-title {
 					font-size: 20px;
 				}
 				.about-content-ri {
-					font-size: 12px;
-					.btn {
-						width: 100%;
-						bottom: 12px;
-						right: 0;
-					}
+					@include res_about_content_box();
 				}
 				.about-content-le {
-					font-size: 12px;
-					.btn {
-						width: 100%;
-						bottom: 12px;
-						left: 0;
-					}
+					@include res_about_content_box();
 				}
 			}
 		}
