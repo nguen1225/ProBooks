@@ -13,7 +13,6 @@ CarrierWave.configure do |config|
       region: ENV['AWS_REGION']
 	}
 	config.fog_directory  = 'probooksbucket'
-	config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/probooksbucket'
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
