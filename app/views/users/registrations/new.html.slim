@@ -27,6 +27,6 @@
         = f.label :password_confirmation, 'パスワード（確認用）'
         = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
-        = f.submit "登録", class: "waves-effect waves-light btn success_btn"
+        = f.button "登録", type:"submit", class: "waves-effect waves-light btn success_btn"
 
         = render "users/shared/links"

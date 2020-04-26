@@ -110,18 +110,16 @@
 					= f.hidden_field :book_id, value: @book.id
 
 					= f.submit '評価する', class: "btn"
-					javascript:
-						$('#star').raty({
-							size: 48,
-							starOff: "#{asset_path('star-off.png')}",
-							starOn: "#{asset_path('star-on.png')}",
-							starHalf: "#{asset_path('star-half.png')}",
-							scoreName: 'review[rate]',
-							half: true
-						});
 
-/ 評価平均の表示
 javascript:
+	$('#star').raty({
+		size: 48,
+		starOff: "#{asset_path('star-off.png')}",
+		starOn: "#{asset_path('star-on.png')}",
+		starHalf: "#{asset_path('star-half.png')}",
+		scoreName: 'review[rate]',
+		half: true
+	});
 	$('#star-avg').raty({
 		size: 40,
 		starOff: "#{asset_path('star-off.png')}",

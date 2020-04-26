@@ -19,6 +19,5 @@
           = f.check_box :remember_me, type: "checkbox"
           = f.label :remember_me
       .actions
-        = f.submit "Log In", class: "waves-effect waves-light btn success_btn" do
-          i.material-icons done
+        = f.button 'Log In', type: 'submit', class: "waves-effect waves-light btn success_btn"
     = render "users/shared/links"
