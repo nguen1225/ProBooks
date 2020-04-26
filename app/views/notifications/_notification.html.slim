@@ -15,8 +15,9 @@
 				= link_to 'あなたの登録した書籍', notification.book
 				| にレビューしました
 		- when 'clap' then
-			= link_to 'あなたのレビュー', notification.book
-			| に拍手しました
+			- if notification.review.user_id == visited.id
+				= link_to 'あなたのレビュー', notification.book
+				| に拍手しました
 	.notification-time
 		 = time_ago_in_words(notification.created_at).upcase
 		 | 前

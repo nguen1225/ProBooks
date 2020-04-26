@@ -70,17 +70,6 @@ class Book < ApplicationRecord
     end
   end
 
-  # レビュー投稿通知作成メソッド
-  def create_notification_review!(current_user, review_id)
-    temp_ids = Review.select(:user_id).where(book_id: id).where.not(user_id: current_user.id).distinct
-    temp_ids.each do |temp_id|
-      save_notification_review!(current_user, review_id, temp_id['user_id'])
-    end
-    if temp_ids.blank?
-      save_notification_review!(current_user, review_id, user_id)
-    end
-  end
-
   def favorite_by?(user)
     favorites.where(user_id: user.id).exists?
   end

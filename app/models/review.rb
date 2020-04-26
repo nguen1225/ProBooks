@@ -37,7 +37,13 @@ class Review < ApplicationRecord
   # 通知作成メソッド
   def create_notification_clap!(current_user)
     # いいねの検索
-    temp = Notification.where(['visitor_id = ? and visited_id = ? and review_id = ? and action = ?', current_user.id, user_id, id, 'clap'])
+    temp = Notification.where(['visitor_id = ?
+                                and visited_id = ?
+                                and review_id = ?
+                                and action = ?',
+                                current_user.id, user_id, id,
+                                'clap'
+                              ])
     # いいねされていない場合,通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
