@@ -16,45 +16,59 @@
 //= require Chart.bundle
 //= require materialize
 //= require activestorage
+//= require turbolinks
 //= require_tree .
 
-//ほぼ全て
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
 	$('select').formSelect();
-});
-
-//app all
-$(document).ready(function(){
 	$('.sidenav').sidenav();
-});
-
-//book index tabs
-$(document).ready(function(){
 	$('.tabs').tabs();
-});
+	$('.tooltipped').tooltip();
+	$('.modal').modal();
+ });
 
-// // top_page image
-$(document).ready(function(){
-	$('.materialboxed').materialbox();
-});
-
-
-//user index admin
-$(document).ready(function(){
+ $(document).on('turbolinks:load', function(){
 	$('.datepicker').datepicker({
 		i18n:{
 			months:["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
 			weekdays: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
-        },
-        format: "yyyy-mm-dd"
+		},
+		format: "yyyy-mm-dd"
 	});
-});
+ })
+// //ほぼ全て
+// $(document).ready(function(){
+// 	$('select').formSelect();
+// });
+
+// //app all
+// $(document).ready(function(){
+// 	$('.sidenav').sidenav();
+// });
+
+// //book index tabs
+// $(document).ready(function(){
+// 	$('.tabs').tabs();
+// });
 
 
-//ツールチップ
-//レビューモーダル
-$(document).ready(function(){
-	$('.tooltipped').tooltip();
-	$('.modal').modal();
-});
+
+// //user index admin
+// $(document).ready(function(){
+// 	$('.datepicker').datepicker({
+// 		i18n:{
+// 			months:["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+// 			weekdays: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
+//         },
+//         format: "yyyy-mm-dd"
+// 	});
+// });
+
+
+// //ツールチップ
+// //レビューモーダル
+// $(document).ready(function(){
+// 	$('.tooltipped').tooltip();
+// 	$('.modal').modal();
+// });
 

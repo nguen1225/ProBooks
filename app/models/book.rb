@@ -40,7 +40,15 @@ class Book < ApplicationRecord
 
   # 出力する属性、順番を定義
   def self.csv_attributes
-    %w[id title content category_id level volume created_at updated_at user_id]
+    %w[ id
+        title
+        content
+        category_id
+        level volume
+        created_at
+        updated_at
+        user_id
+      ]
   end
 
   # csvエクスポート
