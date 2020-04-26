@@ -41,24 +41,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-#--------画像追加のために追加したコード
-namespace :deploy do
-	task :restart do
-		invoke 'unicorn:restart'
-	end
-
-	desc 'upload master.key'
-	task :upload do
-		on roles(:app) do |host|
-		if test "[ ! -d #{shared_path}/config ]"
-			execute "mkdir -p #{shared_path}/config"
-		end
-		upload!('config/master.key', "#{shared_path}/config/master.key")
-		end
-	end
-	before :starting, 'deploy:upload'
-	after :finishing, 'deploy:cleanup'
-end
+#--------画像追加のために追加したコー
 
 # 必要に応じて/環境変数をcapistranoでの自動デプロイで利用
 set :default_env, {

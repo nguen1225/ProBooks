@@ -5,7 +5,7 @@
 	h3.page_title
 		= @book.title
 	span
-		= image_tag @book.user.image.url, size: "50x50"
+		= image_tag @book.user.image.to_s, size: "50x50"
 		= @book.user.name
 		| さんが投稿
 	.book_description-area.z-depth-1
