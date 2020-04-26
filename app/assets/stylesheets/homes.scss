@@ -84,17 +84,19 @@ header {
 }
 //top_page
 .top_main-sec {
+	width: 100%;
+	min-height: 91vh;
 	position: relative;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	background-image: image-url('background_book.jpg');
 	background-position: center;
-	background-size: contain;
-	height: 480px;
+	background-size: cover;
+    background-repeat: no-repeat;
 	.authenticate-area {
 		width: 40%;
-		height: 80%;
+		min-height: 400px;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
@@ -126,6 +128,8 @@ header {
 	}
 	//各タブcss
 	#top_about {
+		width:100px;
+		min-height: 680px;
 		.top_about-box {
 			display: flex;
 			margin: 32px 0;
@@ -168,6 +172,7 @@ header {
 	}
 	#top_flow {
 		margin: 16px 0;
+		min-height: 68vh;
 		.top_flow-boxies {
 			display: flex;
 			align-items: center;
@@ -194,6 +199,7 @@ header {
 	}
 	#top_contact {
 		margin: 16px 0;
+		min-height: 88vh;
 		.top_contact-box {
 			width: 50%;
 			margin:  auto;

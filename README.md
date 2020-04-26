@@ -25,15 +25,14 @@ ProBooks
 - html&css
 - javascript
 ### バックエンド
-- Ruby v2.5
-- Ruby on Rails v5.2
+- Ruby
+- Ruby on Rails
 ### テスト
-- RSpec v3.7（model/system/request）
+- RSpec （model/system/request）
 ### 環境
 - 開発環境（vagrant,virtual_box）
-- 本番環境・デプロイ（AWS EC2,capistrano,nginx,mysql2）
-- 画像アップロード（carrierwave）
-
+- 本番環境・デプロイ（AWS EC2,capistrano,nginx,mysql）
+- 画像アップロード（carrierwave/AWS S3）
 
 ## 主な機能一覧
 ### 書籍検索機能
@@ -50,7 +49,7 @@ ProBooks
 - レビュー投稿機能（スターでの評価）
 - 通知機能(自分の投稿に対してアクションが起こると通知登録される)
 - お問い合わせフォーム
-- ユーザーのレベルアップ機能（3回拍手を貰うと１レベルアップ）
+- ユーザーのレベルアップ機能
 - レビューに対する拍手機能(非同期通信)
 - 書籍に対するお気に入り機能 (非同期通信)
 - githubアカウント認証
