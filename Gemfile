@@ -67,6 +67,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
 gem 'chartkick'
 gem 'csv'
 gem 'devise'
