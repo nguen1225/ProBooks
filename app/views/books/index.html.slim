@@ -48,7 +48,7 @@
 						i.fab.fa-js
 						| Javascript
 			.language-wrap.lang-ruby.z-depth-1.hoverable
-				= link_to books_path(search:{category_id: 3}), class: "language-search-link" do
+				= link_to books_path(search:{category_id: 2}), class: "language-search-link" do
 					strong.language-text
 						i.fas.fa-gem
 						| Ruby
@@ -70,7 +70,7 @@
 	.book_stock-area
 		p
 		.book_section-cards
-			- @books.each do |book|
+			- @books.preload(:reviews).each do |book|
 				.card.hoverable
 					.card-image.waves-effect.waves-block.waves-light
 						= image_tag(book.image.url, :class => 'activator')

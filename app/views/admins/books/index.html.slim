@@ -51,7 +51,7 @@
 				th
 				th
 		tbody
-			- @books.each do |book|
+			- @books.preload(:category).each do |book|
 				tr
 					td = book.id
 					td = book.title

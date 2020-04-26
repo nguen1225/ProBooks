@@ -9,11 +9,9 @@ class BooksController < ApplicationController
     @books = if params[:tag]
                Book.tagged_with(params[:tag]).page(params[:page])
              elsif params[:search]
-               Book.search(@search_params)
-                   .includes(:reviews)
-                   .page(params[:page])
+               Book.search(@search_params).page(params[:page])
              else
-               Book.all.includes(:reviews).page(params[:page])
+               Book.all.page(params[:page])
              end
   end
 
@@ -36,9 +34,7 @@ class BooksController < ApplicationController
   def show
     @clap = Clap.new
     @review = Review.new
-    @reviews = Review.includes(:book)
-                     .where(book_id: params[:id])
-                     .includes(:user)
+    @reviews = Review.where(book_id: params[:id])
                      .page(params[:page])
                      .order(created_at: :desc)
   end
