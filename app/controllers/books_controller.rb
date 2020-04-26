@@ -26,8 +26,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = '登録しました'
-      redirect_to book_path(@book)
+      redirect_to book_path(@book), notice: '登録しました'
     else
       @categories = Category.all
       render :new
@@ -39,10 +38,9 @@ class BooksController < ApplicationController
     @review = Review.new
     @reviews = Review.includes(:book)
                      .where(book_id: params[:id])
-                     .includes(:user, :claps)
+                     .includes(:user)
                      .page(params[:page])
                      .order(created_at: :desc)
-    @books = Book.where(category: @book.category)
   end
 
   def edit

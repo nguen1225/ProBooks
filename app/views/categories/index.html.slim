@@ -16,6 +16,7 @@
 		- @categories.each do |category|
 			tbody
 				tr
+					td = category.id
 					td = category.name
 					td = l(category.created_at)
 					td = l(category.updated_at)
