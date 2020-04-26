@@ -39,6 +39,6 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    redirect_to new_user_session_path if current_user =! @user
+    redirect_to new_user_session_path if current_user = !@user
   end
 end

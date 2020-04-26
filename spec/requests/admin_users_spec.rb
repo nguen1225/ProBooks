@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "AdminUsers", type: :request do
-  describe "GET #index" do
+RSpec.describe 'AdminUsers', type: :request do
+  describe 'GET #index' do
     let(:admin_user) { FactoryBot.create :admin }
-    let!(:user_a) { FactoryBot.create :user}
+    let!(:user_a) { FactoryBot.create :user }
     context '管理者である場合' do
       before do
         sign_in admin_user

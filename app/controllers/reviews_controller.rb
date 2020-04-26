@@ -11,11 +11,14 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       redirect_to book_path(@book), notice: '投稿しました'
-      @book.save_notification_review!(current_user, @review.id, @book.user.id)
+      @book.save_notification_review!(current_user,
+                                      @review.id,
+                                      @book.user.id)
     else
       @clap = Clap.new
       @books = Book.where(category: params[:category])
-      @reviews = Review.where(book_id: params[:id]).page(params[:page])
+      @reviews = Review.where(book_id: params[:id])
+                       .page(params[:page])
       render template: 'books/show'
     end
   end

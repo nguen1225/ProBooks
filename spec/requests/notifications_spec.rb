@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Notifications", type: :request do
+RSpec.describe 'Notifications', type: :request do
   let(:user_a) { FactoryBot.create :user }
-  describe "GET #index" do
+  describe 'GET #index' do
     context '正しいユーザーの場合' do
       before do
         sign_in user_a

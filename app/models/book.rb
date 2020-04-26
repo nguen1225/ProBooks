@@ -47,8 +47,7 @@ class Book < ApplicationRecord
         level volume
         created_at
         updated_at
-        user_id
-      ]
+        user_id]
   end
 
   # csvエクスポート
@@ -61,10 +60,10 @@ class Book < ApplicationRecord
     end
   end
 
-  #CSVインポート
+  # CSVインポート
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      book = Book.find_by(id: row["id"]) || new
+      book = Book.find_by(id: row['id']) || new
       book.attributes = row.to_hash.slice(*csv_attributes)
       book.save!
     end

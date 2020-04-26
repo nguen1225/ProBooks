@@ -3,13 +3,13 @@ class Admins::UsersController < Admins::ApplicationController
     @search_params = user_search_params
     @users = if params[:search]
                User.with_deleted.search(@search_params)
-                                .page(params[:page])
+                   .page(params[:page])
              else
                User.with_deleted.page(params[:page])
-         end
+             end
     if params[:export_csv]
       send_data @users.generate_csv,
-                filename: "登録会員一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
+        filename: "登録会員一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
     else
       render :index
     end

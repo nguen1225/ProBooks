@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "AdminDashboards", type: :request do
-  let(:admin_user) { FactoryBot.create :admin}
-  describe "GET #index" do
+RSpec.describe 'AdminDashboards', type: :request do
+  let(:admin_user) { FactoryBot.create :admin }
+  describe 'GET #index' do
     context '管理者である場合' do
       before do
         sign_in admin_user

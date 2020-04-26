@@ -47,7 +47,9 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.include DownloadHelper, type: :system, js: true
-  config.before(:suite) { Dir.mkdir(DownloadHelper::PATH) unless Dir.exist?(DownloadHelper::PATH) }
+  config.before(:suite) do
+    Dir.mkdir(DownloadHelper::PATH) unless Dir.exist?(DownloadHelper::PATH)
+  end
   config.after(:example, type: :system, js: true) { clear_downloads }
   # Chrome mode
   # config.before(:each, type: :system, js: true) do

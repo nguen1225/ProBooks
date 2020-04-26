@@ -59,8 +59,7 @@ class User < ApplicationRecord
         updated_at
         deleted_at
         uid
-        provider
-      ]
+        provider]
   end
 
   # csvエクスポート
@@ -72,7 +71,6 @@ class User < ApplicationRecord
       end
     end
   end
-
 
   # GitHub認証メソッド
   def self.create_unique_string
@@ -112,7 +110,7 @@ class User < ApplicationRecord
                           }
   scope :created_at_to, ->(to) { where('created_at <= ?', to) if to.present? }
 
-  #ユーザー情報更新
+  # ユーザー情報更新
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 

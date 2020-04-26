@@ -41,9 +41,8 @@ class Review < ApplicationRecord
                                 and visited_id = ?
                                 and review_id = ?
                                 and action = ?',
-                                current_user.id, user_id, id,
-                                'clap'
-                              ])
+                               current_user.id, user_id, id,
+                               'clap'])
     # いいねされていない場合,通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(

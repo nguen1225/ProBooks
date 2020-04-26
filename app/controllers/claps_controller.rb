@@ -25,11 +25,11 @@ class ClapsController < ApplicationController
     @user = @review.user
     clap_count = 1
 
-    totalExp = @user.experience_point
-    totalExp += clap_count
+    total_exp = @user.experience_point
+    total_exp += clap_count
 
-    @user.experience_point = totalExp
-    @user.update(experience_point: totalExp)
+    @user.experience_point = total_exp
+    @user.update(experience_point: total_exp)
 
     level = LevelStandard.find_by(level: @user.level + 1)
 
