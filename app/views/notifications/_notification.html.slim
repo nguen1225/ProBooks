@@ -11,13 +11,11 @@
 			| さんが
 		- case notification.action
 		- when 'review' then
-			- if notification.book.user_id == visited.id
-				= link_to 'あなたの登録した書籍', notification.book
-				| にレビューしました
+			= link_to 'あなたの登録した書籍', notification.book
+			| にレビューしました
 		- when 'clap' then
-			- if notification.review.user_id == visited.id
-				= link_to 'あなたのレビュー', notification.book
-				| に拍手しました
+			= link_to 'あなたのレビュー', notification.review.book
+			| に拍手しました
 	.notification-time
 		 = time_ago_in_words(notification.created_at).upcase
 		 | 前

@@ -5,7 +5,7 @@ class Admins::BooksController < Admins::ApplicationController
     @books = if params[:search]
                Book.search(@search_params)
              else
-               Book.all.includes([:category])
+               Book.all
              end
     if params[:export_csv]
       send_data @books.generate_csv,
