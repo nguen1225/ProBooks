@@ -6,7 +6,7 @@
 	= form_with model: @book, local: true do |f|
 		.side-image-field
 			p.book-image
-				= image_tag @book.image.url, id: :book_prev
+				= image_tag(@book.image.url, id: :book_prev)
 			.file-field.input-field
 				.btn
 					= f.label :image
@@ -46,11 +46,11 @@ javascript:
 	$(function() {
 		function readURL(input) {
 			if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function (e) {
-		$('#book_prev').attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
+				var reader = new FileReader();
+				reader.onload = function (e) {
+						$('#book_prev').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
 			}
 		}
 		$("#book_image").change(function(){

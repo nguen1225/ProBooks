@@ -49,7 +49,7 @@
 
 	// 評価一覧
 	#reviews_area
-		- @reviews.preload(:book, :user).each do |review|
+		- @reviews.each do |review|
 			.book_review
 				.review-content
 					= review.title
