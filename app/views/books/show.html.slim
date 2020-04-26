@@ -2,12 +2,13 @@
 - breadcrumb :book_page, @book
 
 .book_show-page
-	h3.page_title
-		= @book.title
-	span
-		= image_tag @book.user.image.to_s, size: "50x50"
-		= @book.user.name
-		| さんが投稿
+	.page-title-wrap
+		h3.page_title
+			= @book.title
+		span
+			= image_tag @book.user.image.to_s, size: "50x50"
+			= @book.user.name
+			| さんが投稿
 	.book_description-area.z-depth-1
 		p.image-size
 			= image_tag(@book.image.to_s)
@@ -49,7 +50,7 @@
 
 	// 評価一覧
 	#reviews_area
-		- @reviews.each do |review|
+		- @reviews.preload(:user).each do |review|
 			.book_review
 				.review-content
 					= review.title
@@ -65,8 +66,10 @@
 
 					- if current_user == review.user
 						.btn-wrap
-							= link_to '編集する', edit_book_review_path(@book, review), class: "success_btn waves-effect waves-teal btn-flat"
-							= link_to '削除する', book_review_path(@book, review), method: :delete, class: "danger_btn waves-effect waves-teal btn-flat"
+							= link_to '編集する', edit_book_review_path(@book, review),
+												 class: "success_btn waves-effect waves-teal btn-flat"
+							= link_to '削除する', book_review_path(@book, review), method: :delete,
+												 class: "danger_btn waves-effect waves-teal btn-flat"
 				.review-users
 					p.user_avater
 						= image_tag(review.user.image.to_s, :class => 'circle')
@@ -88,7 +91,8 @@
 			= paginate @reviews
 
 	- if current_user
-		= link_to '#modal1', data: { position:"top", tooltip: "レビューを書く" }, class: "modal-trigger waves-effect review_float-btn z-depth-3 tooltipped" do
+		= link_to '#modal1', data: { position:"top", tooltip: "レビューを書く" },
+							 class: "modal-trigger waves-effect review_float-btn z-depth-3 tooltipped" do
 			i.material-icons border_color
 
 		//評価投稿フォーム

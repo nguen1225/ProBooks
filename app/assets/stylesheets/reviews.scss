@@ -9,8 +9,10 @@
 	margin: 24px auto;
 	form {
 		margin: 16px;
+		padding: 16px;
 		.success_btn {
-			@include success_btn;
+			@include success_btn();
+			margin: 16px 0;
 		}
 	}
 }

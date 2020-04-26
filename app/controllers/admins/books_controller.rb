@@ -9,7 +9,7 @@ class Admins::BooksController < Admins::ApplicationController
              end
     if params[:export_csv]
       send_data @books.generate_csv,
-                filename: "登録書籍一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
+        filename: "登録書籍一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
     else
       render :index
     end
@@ -17,7 +17,7 @@ class Admins::BooksController < Admins::ApplicationController
 
   def import
     Book.import(params[:file])
-    redirect_to admins_books_path, notice: "書籍を追加しました"
+    redirect_to admins_books_path, notice: '書籍を追加しました'
   end
 
   private

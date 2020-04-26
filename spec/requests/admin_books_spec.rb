@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "AdminBooks", type: :request do
-  describe "GET #index" do
-    let(:admin_user) { FactoryBot.create :admin}
+RSpec.describe 'AdminBooks', type: :request do
+  describe 'GET #index' do
+    let(:admin_user) { FactoryBot.create :admin }
     let!(:book_a) { FactoryBot.create :book }
 
     context '管理者である場合' do
       before do
-          sign_in admin_user
+        sign_in admin_user
       end
       it 'リクエストが成功すること' do
         get admins_books_url
@@ -23,7 +23,7 @@ RSpec.describe "AdminBooks", type: :request do
       end
     end
     context '管理者でない場合' do
-      it "リダイレクトすること" do
+      it 'リダイレクトすること' do
         get admins_books_url
         expect(response).to redirect_to new_admin_session_path
       end

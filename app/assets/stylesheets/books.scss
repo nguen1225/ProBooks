@@ -145,6 +145,13 @@
 .book_show-page {
 	width: 90%;
 	margin: 0 auto;
+	.page-title-wrap {
+		display: flex;
+		align-items: center;
+		span {
+			margin-left: 40px;
+		}
+	}
 	.book_description-area {
 		padding: 8px;
 		margin: 16px 0;
@@ -174,12 +181,12 @@
 				.edit-btn {
 					display: inline-block;
 					width: 40%;
-					@include success_btn
+					@include success_btn();
 				}
 				.delete-btn {
 					display: inline-block;
 					width: 40%;
-					@include danger_btn
+					@include danger_btn();
 				}
 			}
 			.favorite-wrap {

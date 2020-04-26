@@ -28,9 +28,9 @@ RSpec.describe BooksController, type: :request do
       it '書籍が登録されること' do
         book_params = FactoryBot.attributes_for(:book_c)
         sign_in user_a
-        expect {
+        expect do
           post books_url, params: { book: book_params }
-        }.to change(Book, :count).by(1)
+        end.to change(Book, :count).by(1)
       end
       it 'リダイレクトすること' do
         post books_url, params: { book: FactoryBot.attributes_for(:book_c) }
