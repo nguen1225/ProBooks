@@ -2,13 +2,11 @@ class ImagesUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  process resize_to_fit: [300, 300]
 
-  version :retina do
-    process resize_to_fit: [200, 200]
-  end
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.development? || Rails.env.test? 
+  if Rails.env.development? || Rails.env.test?
     storage :file
   else
     storage :fog
