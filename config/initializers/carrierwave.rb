@@ -10,11 +10,14 @@ CarrierWave.configure do |config|
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      region: ENV['AWS_REGION']
+	  region: ENV['AWS_REGION']
+	  path_style: true
 	}
 	config.fog_directory  = 'probooksbucket'
+	config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/probooksbucket'
   else
     config.storage :file
     config.enable_processing = false if Rails.env.test?
   end
 end
+CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
