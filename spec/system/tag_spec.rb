@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'タグ機能', type: :system do
   include LoginSupport
-  let(:user) { FactoryBot.create(:user) }
-  let!(:first_category) { FactoryBot.create(:category, name: 'html&css') }
-  let!(:second_category) { FactoryBot.create(:category, name: 'ruby') }
+  let(:user) { create(:user) }
+  let!(:first_category) { create(:category, name: 'html&css') }
+  let!(:second_category) { create(:category, name: 'ruby') }
 
   before do
     sign_in_as user
@@ -23,7 +23,6 @@ RSpec.describe 'タグ機能', type: :system do
       all('.input-text input')[3].click
       find('li', text: 'ふつう').click
       fill_in 'タグ', with: '#テストタグ'
-      # attach_file 'book[image]', 'app/assets/images/default.jpg'
       click_on '登録'
     end.to change { Book.count }.by(1)
 
@@ -43,7 +42,6 @@ RSpec.describe 'タグ機能', type: :system do
       all('.input-text input')[3].click
       find('li', text: 'すくない').click
       fill_in 'タグ', with: '#テストタグ'
-      # attach_file 'book[image]', 'app/assets/images/default.jpg'
       click_on '登録'
     end.to change { Book.count }.by(1)
 
@@ -51,7 +49,7 @@ RSpec.describe 'タグ機能', type: :system do
     click_link '#テストタグ'
 
     # 　同じタグの書籍が表示されている
-    expect(page).to have_content 'テスト'
-    expect(page).to have_content '２回目の投稿'
+    expect(page).to have_link 'テスト'
+    expect(page).to have_link '２回目の投稿'
   end
 end
