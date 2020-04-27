@@ -3,16 +3,17 @@ require 'rails_helper'
 RSpec.describe '参考になったボタン機能', type: :system, js: true do
   include LoginSupport
 
-  let(:user) { create(:user) }
+  let(:user_a) { create(:user) } #いいね押す側
+  let(:user_b) { create(:user) } #レビューをする側
   let(:category) { create(:category) }
-  let(:book) { create(:book, user: user, category: category) }
-  let!(:review) { create(:review, user: user, book: book) }
+  let(:book) { create(:book, user: user_a, category: category) }
+  let!(:review) { create(:review, user: user_b, book: book) }
   let!(:level_standard) { create(:level_standard) }
 
   describe 'ログインしたユーザー' do
     # ログインして書籍詳細ページへ遷移
     before do
-      sign_in_as user
+      sign_in_as(user_a)
       visit book_path(book)
     end
 

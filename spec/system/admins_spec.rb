@@ -27,7 +27,7 @@ RSpec.describe '管理者機能', type: :system, js: true do
     context '不正なユーザーである場合' do
       let(:user) { create :user }
       before do
-        sign_in_as user
+        sign_in_as(user)
         visit admins_root_path
       end
       it 'ログインページへリダイレクトする' do

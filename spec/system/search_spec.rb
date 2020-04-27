@@ -89,7 +89,7 @@ RSpec.describe '検索機能', type: :system, js: true do
     it 'Javascriptの書籍のみが表示される' do
       click_on 'Javascript'
       expect(page).to have_content(book_third.title)
-      expect(page).to have_link '詳細', href: book_third(book_third)
+      expect(page).to have_link '詳細', href: book_path(book_third)
     end
 
     it 'Rubyの書籍が表示のみがされる' do
