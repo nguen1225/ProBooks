@@ -7,7 +7,7 @@
 			= @book.title
 		span
 			= image_tag @book.user.image.to_s, size: "50x50"
-			= @book.user.name
+			= link_to @book.user.name, user_path(@book.user)
 			| さんが投稿
 	.book_description-area.z-depth-1
 		p.image-size

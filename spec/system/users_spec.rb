@@ -18,9 +18,6 @@ RSpec.describe 'ユーザー管理機能', type: :system, js: true do
 			it '自己紹介が正しく表示されている' do
 				expect(page).to have_field "user[introduction]", with: user_a.introduction
 			end
-			it 'ステータスが正しく表示されている' do
-				expect(page).to have_content(user_a.status)
-			end
 		end
 		context 'ログインしてない場合' do
 			it 'ログインページへリダイレクトする' do
