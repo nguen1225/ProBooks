@@ -4,11 +4,11 @@ RSpec.describe '通知機能', type: :system, js: true do
   include LoginSupport
 
   # レビュー及び拍手される側
-  let(:user_a) { FactoryBot.create(:user, name: '送られるユーザ') }
+  let(:user_a) { create(:user, name: '送られるユーザ') }
   # レビュー及び拍手をする側
-  let(:user_b) { FactoryBot.create(:user, name: '送るユーザ') }
-  let(:category_html) { FactoryBot.create(:category, name: 'html&css') }
-  let!(:book) { FactoryBot.create(:book, user: user_a, category: category_html) }
+  let(:user_b) { create(:user, name: '送るユーザ') }
+  let(:category_html) { create(:category, name: 'html&css') }
+  let!(:book) { create(:book, user: user_a, category: category_html) }
 
   describe 'レビューの通知' do
     before do

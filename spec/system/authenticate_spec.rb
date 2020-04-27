@@ -7,7 +7,7 @@ RSpec.describe 'User認証機能', type: :system, js: true do
 
   describe 'Function' do
     before do
-      visit root_path
+      visit(root_path)
     end
 
     describe '登録' do
@@ -29,7 +29,7 @@ RSpec.describe 'User認証機能', type: :system, js: true do
 
     describe '編集/更新' do
       before do
-        sign_in_as user_a
+        sign_in_as(user_a)
       end
 
       it 'ユーザー情報を更新できる' do
@@ -57,21 +57,21 @@ RSpec.describe 'User認証機能', type: :system, js: true do
         # 一人目のユーザー詳細ページへ
         visit user_path(user_a)
         # 編集リンクが表示されないことを確認
-        expect(page).to have_no_link '編集'
+        expect(page).to have_no_link '編集', href: user_path(user_a)
       end
     end
   end
 
-  describe 'レイアウトの変更' do
+  describe 'レイアウトの変更', must: true do
     shared_examples_for 'ヘッダーリストの変更' do
       it {
         find('.sidenav-trigger').click
-        expect(page).to have_content '書籍の投稿'
-        expect(page).to have_content '書籍を探す'
-        expect(page).to have_content 'マイページ'
-        expect(page).to have_content '通知'
+        expect(page).to have_link '書籍の投稿', href: new_book_path
+        expect(page).to have_link '書籍を探す', href: books_path
+        expect(page).to have_link 'マイページ'
+        expect(page).to have_link '通知', href: notifications_path
         expect(page).to have_content 'ユーザーレベル'
-        expect(page).to have_content 'ログアウト'
+        expect(page).to have_link 'ログアウト', href: destroy_user_session_path
       }
     end
     context '新規登録した場合' do

@@ -59,12 +59,12 @@
 					p id="star-rate-#{review.id}"
 					.review-body
 						= simple_format(review.body)
-					/拍手ボタン
-					- if current_user
+					/拍手ボタン　ログインユーザであるかつレビューしていないユーザに表示させたい
+					- if current_user && (review.user =! current_user)
 						p id="clap-#{review.id}"
 							= render 'claps/claps', { review: review, book: review.book, login_user: current_user }
 
-					- if current_user == review.user
+					- if review.user == current_user
 						.btn-wrap
 							= link_to '編集する', edit_book_review_path(@book, review),
 												 class: "success_btn waves-effect waves-teal btn-flat"
@@ -90,7 +90,7 @@
 		.reviews_pagination
 			= paginate @reviews
 
-	- if current_user
+	- if current_user.present?
 		= link_to '#modal1', data: { position:"top", tooltip: "レビューを書く" },
 							 class: "modal-trigger waves-effect review_float-btn z-depth-3 tooltipped" do
 			i.material-icons border_color

@@ -34,6 +34,7 @@ FactoryBot.define do
     status { 'engineer' }
     introduction { 'テストユーザーの自己紹介' }
     level { 1 }
+    image { nil }
     password { 'foobar' }
     password_confirmation { 'foobar' }
     sequence(:uid) { |n| "#{n}12345" }
