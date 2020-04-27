@@ -22,11 +22,11 @@ RSpec.describe 'ユーザー管理機能', type: :system, js: true do
 		context 'ログインしてない場合' do
 			it 'ログインページへリダイレクトする' do
 				visit edit_user_path(user_a)
-				expect(current_path).to eq new_user_session_path
+				expect(current_path).to eq root_path
 			end
 			it 'フラッシュメッセージが表示される' do
 				visit edit_user_path(user_a)
-				expect(page).to have_content 'ログインしてください。'
+				expect(page).to have_content '正しいユーザではありません'
 			end
 		end
 		context '一致しないユーザである場合' do
@@ -35,10 +35,10 @@ RSpec.describe 'ユーザー管理機能', type: :system, js: true do
 				visit edit_user_path(user_a)
 			end
 			it 'リダイレクトする' do
-				expect(current_path).to eq user_path(user_b)
+				expect(current_path).to eq root_path
 			end
 			it 'フラッシュメッセージが表示される' do
-				expect(page).to have_content 'すでにログインしています'
+				expect(page).to have_content '正しいユーザではありません'
 			end
 		end
 	end

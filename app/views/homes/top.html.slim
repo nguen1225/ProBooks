@@ -18,7 +18,7 @@
 	#top_about
 		h3.top_section-title
 			| ABOUT
-		.top_about-box
+		.top_about-box.slide-left
 			p.about-image
 				= image_tag "about1.jpg", class: "z-depth-2"
 			.about-content-ri
@@ -29,7 +29,7 @@
 			        | でき、目的にあった技術書を見つけることができます。
 					| また豊富なレビューから書籍の情報を得ることができます
 				= link_to '書籍を探す', books_path, class: 'btn'
-		.top_about-box
+		.top_about-box.slide-right
 			.about-content-le
 				h5.content-title
 					| レビューを書いてレベルアップ！
@@ -44,7 +44,7 @@
 		h3.top_section-title
 			| FLOW
 		.top_flow-boxies
-			.flow-box
+			.flow-box.slide-top
 				p.flow-image
 					= image_tag 'signup.jpg', class: 'circle z-depth-1'
 				.flow-content
@@ -54,7 +54,7 @@
 						| はじめに会員登録をしましょう
 						| この登録作業がエンジニアへの道の始まりです
 			i.material-icons arrow_forward
-			.flow-box
+			.flow-box.slide-bottom
 				p.flow-image
 					= image_tag 'search.jpg', class: 'circle z-depth-1'
 				.flow-content
@@ -64,7 +64,7 @@
 						| 興味のある言語の技術書を検索してみましょう。
 						| きっとすぐにあなたの求めている技術書に出会えます。
 			i.material-icons arrow_forward
-			.flow-box
+			.flow-box.slide-top
 				p.flow-image
 					= image_tag 'clap.jpg', class: 'circle z-depth-1'
 				.flow-content
@@ -74,7 +74,7 @@
 						| 参考になったレビューには拍手を送りましょう。
 						| きっとレビューをされた相手は喜びます
 			i.material-icons arrow_forward
-			.flow-box
+			.flow-box.slide-bottom
 				p.flow-image
 					= image_tag 'review.jpg', class: 'circle z-depth-1'
 				.flow-content
@@ -112,3 +112,5 @@
 						= f.button class: "btn waves-effect waves-light send-btn", type: "submit" do
 							| 送信
 							i.material-icons send
+javascript:
+	$(window).fadeThis({speed: 1000});

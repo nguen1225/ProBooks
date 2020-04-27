@@ -5,6 +5,8 @@
   .form-wrap
     h3
       | Sign In
+    span
+      | テストユーザ　Email: test1@example.com/Password: foobar
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         = f.label :email, 'メールアドレス'
@@ -17,7 +19,9 @@
       - if devise_mapping.rememberable?
         .field
           = f.check_box :remember_me, type: "checkbox"
-          = f.label :remember_me
+          span
+            = f.label :remember_me
       .actions
         = f.button 'Log In', type: 'submit', class: "waves-effect waves-light btn success_btn"
     = render "users/shared/links"
+    = link_to 'Admin?', new_admin_session_path

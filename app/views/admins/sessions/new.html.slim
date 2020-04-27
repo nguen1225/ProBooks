@@ -3,20 +3,22 @@
 
 .authenticate-wrap
   .form-wrap
-    h2
-      | Log in
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    h3
+      | Admin Sign In
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
-        = f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }
+        = f.label :email, 'メールアドレス'
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email"
       .field
-        = f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" }
-        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-      .action
-        = f.submit "Log In", class: "waves-effect waves-light btn success_btn" do
-            i.material-icons done
+        = f.label :password, 'パスワード'
+        br
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me, type: "checkbox"
+          span
+            = f.label :remember_me
+      .actions
+        = f.button 'Log In', type: 'submit', class: "waves-effect waves-light btn success_btn"
     = render "admins/shared/links"

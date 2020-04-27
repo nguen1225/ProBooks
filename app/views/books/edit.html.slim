@@ -5,15 +5,13 @@
 	h4.page_title 技術書の編集
 	= form_with model: @book, local: true do |f|
 		.side-image-field
-			- if @book.image.present?
-				= image_tag @book.image.url, id: :book_prev, size: '200x200'
-			- else
-				= image_tag 'notebook.jpg', id: :book_prev, size: '200x200'
-			.image-label
-				= f.label :image
-				br
-				= f.file_field :image, id: :book_image,
-							   accept: @book.image.accept_extensions
+			p.book-image
+				= image_tag(@book.image.url, id: :book_prev)
+			.file-field.input-field
+				.btn
+					= f.label :image
+					= f.file_field :image, id: :book_image,
+								accept: @book.image.accept_extensions
 		.input-text.z-depth-2
 				.input-field
 					= f.label :title
@@ -38,7 +36,7 @@
 					= f.text_field :tag_list
 				= f.hidden_field :user_id, :value => current_user.id
 				.action
-					= f.button '更新', type: "submit", class: "waves-effect waves-light btn-flet success_btn"
+					= f.button '更新', type: "submit", class: "waves-effect waves-light btn-flat success_btn"
 
 javascript:
 	$(function() {

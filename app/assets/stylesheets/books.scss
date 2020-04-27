@@ -181,12 +181,20 @@
 				.edit-btn {
 					display: inline-block;
 					width: 40%;
-					@include success_btn();
+					border: 1px solid $strong_color;
+					border-radius: 24px;
+					color: $strong_color;
+					font-weight: bold;
+					text-align: center;
 				}
 				.delete-btn {
 					display: inline-block;
 					width: 40%;
-					@include danger_btn();
+					border: 1px solid $danger_color;
+					border-radius: 24px;
+					color: $danger_color;
+					font-weight: bold;
+					text-align: center;
 				}
 			}
 			.favorite-wrap {
