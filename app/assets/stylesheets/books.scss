@@ -31,7 +31,7 @@
 			margin: 16px;
 			padding: 16px;
 			.success_btn {
-				@include success_btn
+				@include success_btn();
 			}
 		}
 	}
@@ -52,7 +52,7 @@
 				padding: 16px;
 				margin-top: 28px;
 				.success_btn {
-					@include success_btn
+					@include success_btn();
 				}
 			}
 		}
@@ -163,7 +163,7 @@
     		margin-left: 16px;
 			img {
 				width: 100%;
-				height: 70%;
+				height: 100%;
 			}
 		}
 		.book_description {

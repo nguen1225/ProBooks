@@ -31,14 +31,14 @@ RSpec.describe 'ユーザー管理機能', type: :system, js: true do
 		end
 		context '一致しないユーザである場合' do
 			before do
-				sign_in_as user_b
+				sign_in_as(user_b)
 				visit edit_user_path(user_a)
 			end
 			it 'リダイレクトする' do
-				expect(current_path).to eq new_user_session_path
+				expect(current_path).to eq user_path(user_b)
 			end
 			it 'フラッシュメッセージが表示される' do
-				expect(page).to have_content '正しいユーザではありません'
+				expect(page).to have_content 'すでにログインしています'
 			end
 		end
 	end

@@ -24,7 +24,7 @@ RSpec.describe '通知機能', type: :system, js: true do
           fill_in 'タイトル', with: '評価1'
           fill_in '内容', with: 'テスト内容'
           click_on '評価する'
-          sleep 0.5
+          sleep 1.0
         end.to change { Review.count }.by(1)
 
         expect(page).to have_content '評価1'

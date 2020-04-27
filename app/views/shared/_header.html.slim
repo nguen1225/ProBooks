@@ -6,7 +6,8 @@ header
 				i.material-icons.menu-icon menu
 			= link_to 'ProBooks', root_path, class: 'bland-logo left'
 			span.mail-icon-wrap.circle
-				i.material-icons.mail-icon.right mail_outline
+				= link_to "/#top_contact" do
+					i.material-icons.mail-icon.right mail_outline
 			span.search
 			 	.search-wrapper
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|

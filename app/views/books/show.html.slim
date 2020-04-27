@@ -6,7 +6,7 @@
 		h3.page_title
 			= @book.title
 		span
-			= image_tag @book.user.image.to_s, size: "50x50"
+			= image_tag @book.user.image.to_s, size: "50x50", class: "circle"
 			= link_to @book.user.name, user_path(@book.user)
 			| さんが投稿
 	.book_description-area.z-depth-1
@@ -42,7 +42,7 @@
 				.btn-wrap
 					= link_to '編集', edit_book_path(@book), class: "edit-btn waves-effect waves-light btn-flat"
 					= link_to '削除', book_path(@book), method: :delete, data: { confirm: "本当に削除しますか？" },class: "delete-btn waves-effect waves-light btn-flat"
-			- if current_user
+			- if current_user.present?
 				.favorite-wrap
 					p id="book-favorite-#{@book.id}"
 						= render 'favorites/favorites', book: @book
@@ -59,8 +59,8 @@
 					p id="star-rate-#{review.id}"
 					.review-body
 						= simple_format(review.body)
-					/拍手ボタン　ログインユーザであるかつレビューしていないユーザに表示させたい
-					- if current_user && (review.user =! current_user)
+					/拍手ボタン
+					- if (current_user.present?) && !(current_user == review.user)
 						p id="clap-#{review.id}"
 							= render 'claps/claps', { review: review, book: review.book, login_user: current_user }
 
@@ -72,7 +72,7 @@
 												 class: "danger_btn waves-effect waves-teal btn-flat"
 				.review-users
 					p.user_avater
-						= image_tag(review.user.image.to_s, :class => 'circle')
+						= image_tag(review.user.image.url, :class => 'circle')
 					.user_name
 						= link_to review.user.name, user_path(review.user), class: "review-user"
 				/ スターの表示
