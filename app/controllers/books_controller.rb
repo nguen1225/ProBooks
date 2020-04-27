@@ -79,7 +79,9 @@ class BooksController < ApplicationController
   end
 
   def correct_user
-    flash[:alert] = "投稿でないと編集できません"
-    redirect_to root_path unless current_user == @book.user_id
+    unless current_user.id == @book.user_id
+      redirect_to root_path
+      flash[:alert] = "投稿者でないと編集できません"
+    end
   end
 end
