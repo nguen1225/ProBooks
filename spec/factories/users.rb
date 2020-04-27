@@ -33,6 +33,7 @@ FactoryBot.define do
     sequence(:email) { |n| "tester#{n}@example.com" }
     status { 'engineer' }
     introduction { 'テストユーザーの自己紹介' }
+    level { 1 }
     password { 'foobar' }
     password_confirmation { 'foobar' }
     sequence(:uid) { |n| "#{n}12345" }

@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe '参考になったボタン機能', type: :system, js: true do
   include LoginSupport
 
-  let(:user) { FactoryBot.create(:user) }
-  let(:category) { FactoryBot.create(:category) }
-  let(:book) { FactoryBot.create(:book, user: user, category: category) }
-  let!(:review) { FactoryBot.create(:review, user: user, book: book) }
-  let!(:level_standard) { FactoryBot.create(:level_standard) }
+  let(:user) { create(:user) }
+  let(:category) { create(:category) }
+  let(:book) { create(:book, user: user, category: category) }
+  let!(:review) { create(:review, user: user, book: book) }
+  let!(:level_standard) { create(:level_standard) }
 
   describe 'ログインしたユーザー' do
     # ログインして書籍詳細ページへ遷移

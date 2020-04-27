@@ -39,7 +39,8 @@ class UsersController < ApplicationController
   end
 
   def correct_user
+    @user = User.find(params[:id])
     flash[:notice] = "正しいユーザではありません"
-    redirect_to root_path if current_user = !@user
+    redirect_to new_user_session_path unless current_user == @user
   end
 end

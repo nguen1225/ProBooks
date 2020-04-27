@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'User認証機能', type: :system, js: true do
   include LoginSupport
-  let(:user_a) { FactoryBot.create(:user) }
-  let(:user_b) { FactoryBot.create(:user) }
+  let(:user_a) { create(:user) }
+  let(:user_b) { create(:user) }
 
   describe 'Function' do
     before do
