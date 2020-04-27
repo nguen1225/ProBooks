@@ -27,6 +27,7 @@
 	= form_tag import_admins_books_path, multipart: true
 		= submit_tag "csvインポート", class: "btn green lighten-3"
 		= file_field_tag :file
+	= paginate @books
 	h4
 		| 登録書籍一覧
 	table.books-table.z-depth-1
@@ -64,4 +65,6 @@
 					td.btn-wrap
 						= link_to '詳細', book_path(book), class: "success_btn"
 					td.btn-wrap
-						= link_to '削除', book_path(book), method: :delete, confirm: { data: "本当に削除しますか？" }, class: "danger_btn"
+						= link_to '削除', book_path(book), method: :delete,
+										                  confirm: { data: "本当に削除しますか？" },
+														  class: "danger_btn"

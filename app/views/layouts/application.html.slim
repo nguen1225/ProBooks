@@ -3,11 +3,12 @@ html
   head
     title
       = yield(:title)
-      | |ProBooks
+      | | ProBooks
     = csrf_meta_tags
     = csp_meta_tag
     meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" rel="stylesheet"
+    = favicon_link_tag("favicon-16x16.png")
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag "//www.google.com/jsapi", "chartkick"

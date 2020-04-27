@@ -51,7 +51,8 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_path, notice: '削除しました'
+    flash[:notice] = "削除しました"
+    redirect_back(fallback_location: root_path)
   end
 
   private

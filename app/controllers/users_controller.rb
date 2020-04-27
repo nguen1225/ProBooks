@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
-  before_action :authenticate_user!, only: %i[edit]
   before_action :correct_user, only: %i[edit]
 
   def edit; end
@@ -40,7 +39,9 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    flash[:notice] = "正しいユーザではありません"
-    redirect_to new_user_session_path unless current_user == @user
+    if !(current_user == @user)
+      flash[:notice] = "正しいユーザではありません"
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

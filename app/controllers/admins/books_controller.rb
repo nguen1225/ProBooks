@@ -3,9 +3,10 @@ class Admins::BooksController < Admins::ApplicationController
     @categories = Category.all
     @search_params = book_search_params
     @books = if params[:search]
-               Book.search(@search_params)
+                Book.search(@search_params)
+                    .page(params[:page])
              else
-               Book.all
+                Book.all.page(params[:page])
              end
     if params[:export_csv]
       send_data @books.generate_csv,
