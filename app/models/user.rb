@@ -31,7 +31,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
-  # include Hashid::Rails
   acts_as_paranoid
   extend Enumerize
   enumerize :status, in: %i[engineer begineer]

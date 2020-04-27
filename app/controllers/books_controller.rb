@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit destroy update]
   before_action :authenticate_user!, only: %i[new edit]
+  before_action :correct_user, only: %i[edit]
 
   def index
     @search_params = book_search_params
@@ -75,5 +76,10 @@ class BooksController < ApplicationController
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def correct_user
+    flash[:alert] = "投稿でないと編集できません"
+    redirect_to root_path unless current_user == @book.user_id
   end
 end
