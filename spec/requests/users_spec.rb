@@ -18,39 +18,39 @@ RSpec.describe UsersController, type: :request do
       end
     end
 
-    context 'ユーザーが存在しない場合' do
-      subject { -> { get user_url 1 } }
-      it { is_expected.to raise_error ActiveRecord::RecordNotFound }
-    end
+    # context 'ユーザーが存在しない場合' do
+    #   subject { -> { get user_url 1 } }
+    #   it { is_expected.to raise_error ActiveRecord::RecordNotFound }
+    # end
   end
 
-  describe 'GET #edit' do
-    it '正常なレスポンスを返すこと' do
-      get edit_user_url user_a
-      expect(response.status).to eq 200
-    end
-    it 'ユーザ名が表示されていること' do
-      get edit_user_url user_a
-      expect(response.body).to include 'Sato'
-    end
-    it 'メールアドレスが表示されていること' do
-      get edit_user_url user_a
-      expect(response.body).to include 'sato@example.com'
-    end
-    it 'ステータスが表示されていること' do
-      get edit_user_url user_a
-      expect(response.body).to include 'engineer'
-    end
-    it '自己紹介文が表示されていること' do
-      get edit_user_url user_a
-      expect(response.body).to include 'テストユーザーの自己紹介'
-    end
+  # describe 'GET #edit' do
+  #   it '正常なレスポンスを返すこと' do
+  #     get edit_user_url user_a
+  #     expect(response.status).to eq 200
+  #   end
+  #   it 'ユーザ名が表示されていること' do
+  #     get edit_user_url user_a
+  #     expect(response.body).to include 'Sato'
+  #   end
+  #   it 'メールアドレスが表示されていること' do
+  #     get edit_user_url user_a
+  #     expect(response.body).to include 'sato@example.com'
+  #   end
+  #   it 'ステータスが表示されていること' do
+  #     get edit_user_url user_a
+  #     expect(response.body).to include 'engineer'
+  #   end
+  #   it '自己紹介文が表示されていること' do
+  #     get edit_user_url user_a
+  #     expect(response.body).to include 'テストユーザーの自己紹介'
+  #   end
 
-    context 'ユーザーが存在しない場合', must: true do
-      subject { -> { get user_url 1 } }
-      it { is_expected.to raise_error ActiveRecord::RecordNotFound }
-    end
-  end
+  #   context 'ユーザーが存在しない場合', must: true do
+  #     subject { -> { get user_url 1 } }
+  #     it { is_expected.to raise_error ActiveRecord::RecordNotFound }
+  #   end
+  # end
 
   describe 'PUT #update' do
     context '正常なパラメータの場合' do

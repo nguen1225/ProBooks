@@ -16,7 +16,7 @@
 					= form_with scope: :search, url: books_path, method: :get, local: true do |f|
 						.field
 							= f.label :title, 'タイトル'
-							= f.text_field :title, value: @search_params[:title]
+							= f.text_field :title, value: @search_params[:title], id: :search_spec
 						.field
 							= f.label :category_id, 'カテゴリ'
 							= f.collection_select :category_id, @categories, :id, :name,

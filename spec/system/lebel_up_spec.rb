@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe 'レベルアップ機能', type: :system, js: true do
   include LoginSupport
   # 拍手をされてレベルアップする側
-  let!(:level_standard) { FactoryBot.create(:level_standard) }
-  let(:category) { FactoryBot.create(:category) }
-  let(:user_a) { FactoryBot.create(:user) }
-  let!(:book) { FactoryBot.create(:book, category: category, user: user_a) }
-  let!(:review) { FactoryBot.create(:review, book: book, user: user_a) }
+  let!(:level_standard) { create(:level_standard) }
+  let(:category) { create(:category) }
+  let(:user_a) { create(:user) }
+  let!(:book) { create(:book, category: category, user: user_a) }
+  let!(:review) { create(:review, book: book, user: user_a) }
   # 拍手を送る側ユーザーら
-  let(:user_b) { FactoryBot.create(:user) }
-  let(:user_c) { FactoryBot.create(:user) }
-  let(:user_d) { FactoryBot.create(:user) }
+  let(:user_b) { create(:user) }
+  let(:user_c) { create(:user) }
+  let(:user_d) { create(:user) }
 
   it '拍手を３回もらうとレベルが１上がる' do
     # ユーザーレベルの確認
