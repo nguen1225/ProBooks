@@ -6,12 +6,12 @@
 		p.user-image
 			= image_tag(@user.image.to_s)
 		.user-info
-			p
+			span
 				= @user.name
 				span
 					pre
 					= @user.status
-			p
+			span
 				| ユーザーレベル
 				span.level-text
 					= @user.level

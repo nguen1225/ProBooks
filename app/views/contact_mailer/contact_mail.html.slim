@@ -4,6 +4,7 @@ h2
 h3
 	| お問い合わせ内容の確認
 span
+	| #{@contact.name}さまのご連絡先
 	= @contact.email
 p
 	= simple_format(@contact.body)
