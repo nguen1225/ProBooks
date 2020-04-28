@@ -1,6 +1,7 @@
 class Admins::BooksController < Admins::ApplicationController
+  include AllCategories
+  before_action :all_categories, only: %i[index]
   def index
-    @categories = Category.all
     @search_params = book_search_params
     @books = if params[:search]
                Book.search(@search_params)

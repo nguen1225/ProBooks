@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  include CurrentBook
+  before_action :set_book_id, only: [:edit, :update, :create]
   before_action :load_resource
 
   def create
@@ -44,14 +46,10 @@ class ReviewsController < ApplicationController
 
   def load_resource
     case params[:action].to_sym
-    when :edit, :update
+    when :edit, :update, :destroy
       @review = Review.find(params[:id])
-      @book = Book.find(params[:book_id])
     when :create
       @review = Review.new(review_params)
-      @book = Book.find(params[:book_id])
-    when :destroy
-      @review = Review.find(params[:id])
     end
   end
 end
