@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
+  include AllCategories
+  before_action :all_categories, only: %i[index new edit]
   before_action :set_book, only: %i[show edit destroy update]
   before_action :authenticate_user!, only: %i[new edit]
   before_action :correct_user, only: %i[edit]
 
   def index
     @search_params = book_search_params
-    @categories = Category.all
     @tags = Book.tag_counts_on(:tags).order('count  DESC')
     @books = if params[:tag]
                Book.tagged_with(params[:tag]).page(params[:page])
@@ -19,7 +20,6 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
     @books = Book.all
-    @categories = Category.all
   end
 
   def create
@@ -41,7 +41,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
   end
 
   def update

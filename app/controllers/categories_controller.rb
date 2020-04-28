@@ -1,7 +1,9 @@
 class CategoriesController < ApplicationController
+  include AllCategories
+  before_action :all_categories, only: %i[index]
+
   def index
     @category = Category.new
-    @categories = Category.all
   end
 
   def create

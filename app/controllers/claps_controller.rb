@@ -1,5 +1,7 @@
 class ClapsController < ApplicationController
-  before_action :set_params
+  include CurrentBook
+  before_action :set_book_id
+  before_action :set_review
   after_action :level_up, only: [:create]
 
   def create
@@ -18,9 +20,8 @@ class ClapsController < ApplicationController
     params.permit(:review_id)
   end
 
-  def set_params
+  def set_review
     @review = Review.find(params[:review_id])
-    @book = Book.find(params[:book_id])
   end
 
   def level_up
