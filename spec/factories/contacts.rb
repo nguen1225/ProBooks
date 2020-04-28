@@ -11,8 +11,8 @@
 #
 FactoryBot.define do
   factory :contact do
-    name { 'MyString' }
-    email { 'MyString' }
-    body { 'MyText' }
+    name { 'メールユーザ' }
+    email { 'hogehoge@email.com.com' }
+    body { 'メール届いていますか？' }
   end
 end
