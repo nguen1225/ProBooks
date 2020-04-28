@@ -1,7 +1,7 @@
 - provide(:title, 'Top')
 
 .top_main-sec
-	.authenticate-area.z-depth-2
+	.authenticate-area.z-depth-2.slide-right
 		.authenticate-link
 			h5
 			  | 会員登録|ログイン
@@ -87,7 +87,7 @@
 	#top_contact
 		h3.top_section-title
 			| Contact
-		.top_contact-box
+		.top_contact-box.slide-bottom
 			p
 				| 管理者へのお問い合わせはこちらから
 			= link_to("https://twitter.com/imaeda_hikaru") do
@@ -112,5 +112,6 @@
 						= f.button class: "btn waves-effect waves-light send-btn", type: "submit" do
 							| 送信
 							i.material-icons send
+
 javascript:
 	$(window).fadeThis({speed: 1000});
