@@ -3,14 +3,14 @@ class Admins::BooksController < Admins::ApplicationController
     @categories = Category.all
     @search_params = book_search_params
     @books = if params[:search]
-                Book.search(@search_params)
-                    .page(params[:page])
+               Book.search(@search_params)
+                   .page(params[:page])
              else
-                Book.all.page(params[:page])
+               Book.all.page(params[:page])
              end
     if params[:export_csv]
       send_data @books.generate_csv,
-        filename: "登録書籍一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
+                filename: "登録書籍一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
     else
       render :index
     end

@@ -21,8 +21,7 @@ RSpec.describe 'レビュー機能', type: :system, js: true do
       fill_in 'review[body]', with: 'テスト内容'
       click_on '評価する'
       sleep 1.0
-    end.to change{ Review.count}.by(1)
-
+    end.to change { Review.count }.by(1)
 
     # 投稿した内容が表示される
     expect(page).to have_content '投稿しました'
@@ -44,7 +43,7 @@ RSpec.describe 'レビュー機能', type: :system, js: true do
       fill_in 'review[body]', with: 'テスト内容'
       click_on '評価する'
       sleep 1.0
-    end.to change{ Review.count }.by(1)
+    end.to change { Review.count }.by(1)
 
     find('.sidenav-trigger').click
     click_link 'ログアウト'

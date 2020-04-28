@@ -52,6 +52,9 @@ header {
 	.sidenav {
 		width: 240px;
 		background: #e1f5fe;
+		.user.view {
+			background: $primary-color;
+		}
 		.user-level {
 			text-align: center;
 			.level {

@@ -22,8 +22,9 @@ ProBooks
 
 ## 使用技術
 ### フロントエンド
-- html&css
-- javascript
+- HTML&CSS
+- Javascript
+- jQuery
 ### バックエンド
 - Ruby
 - Ruby on Rails
@@ -33,6 +34,7 @@ ProBooks
 - 開発環境（vagrant,virtual_box）
 - 本番環境・デプロイ（AWS EC2,capistrano,nginx,mysql）
 - 画像アップロード（carrierwave/AWS S3）
+- SSL認証、HTTPS化
 
 ## 主な機能一覧
 ### 書籍検索機能
@@ -47,7 +49,7 @@ ProBooks
 - 書籍一括登録のためのcsvインポート機能
 ### その他機能
 - お問い合わせフォーム（AWS SES）
-- レビュー投稿機能（スターでの評価）
+- レビュー投稿機能（raty.jsを使用した評価）
 - 通知機能（自分の投稿に対してアクションが起こると通知登録される）
 - ユーザーのレベルアップ機能
 - レビューに対する拍手機能（非同期通信）
@@ -57,5 +59,3 @@ ProBooks
 - acts-as-taggable-onを用いたタグ機能
 - NGワード制限機能
 - pagination機能
-
-## デモ

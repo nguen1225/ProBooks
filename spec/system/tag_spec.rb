@@ -28,7 +28,7 @@ RSpec.describe 'タグ機能', type: :system, js: true do
 
     expect(page).to have_content '#テストタグ'
 
-    #サイドナビから書籍新規投稿へ
+    # サイドナビから書籍新規投稿へ
     find('.sidenav-trigger').click
     click_link '書籍の投稿'
 
@@ -49,8 +49,8 @@ RSpec.describe 'タグ機能', type: :system, js: true do
     expect(page).to have_content '#テストタグ'
     click_link '#テストタグ'
 
-    #同じタグの書籍が表示されている
-    expect(page).to have_content "１回目の投稿"
-    expect(page).to have_content "２回目の投稿"
+    # 同じタグの書籍が表示されている
+    expect(page).to have_content '１回目の投稿'
+    expect(page).to have_content '２回目の投稿'
   end
 end
