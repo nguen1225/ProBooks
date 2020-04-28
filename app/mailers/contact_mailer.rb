@@ -1,5 +1,5 @@
 class ContactMailer < ApplicationMailer
-  default from: "probooks<noreply@probooks.work>"
+  default from: 'probooks<noreply@probooks.work>'
 
   def contact_mail(contact)
     @contact = contact

@@ -66,6 +66,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
+gem 'aws-ses', '~> 0.6'
 gem 'carrierwave', '~> 1.0'
 gem 'chartkick'
 gem 'csv'
@@ -89,4 +90,3 @@ gem 'omniauth-github'
 gem 'paranoia'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'aws-ses', '~> 0.6'

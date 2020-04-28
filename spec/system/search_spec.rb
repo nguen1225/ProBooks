@@ -6,7 +6,7 @@ RSpec.describe '検索機能', type: :system, js: true do
   let(:category_html) { create(:category, name: 'html&css') }
   let(:category_javascript) { create(:category, name: 'javascript') }
   let(:category_ruby) { create(:category, name: 'ruby') }
-  let!(:book_first) { create(:book, level: 'easy', volume: 'few', category: category_html, user: user )}
+  let!(:book_first) { create(:book, level: 'easy', volume: 'few', category: category_html, user: user) }
   let!(:book_second) { create(:book, level: 'normal', volume: 'medium', category: category_javascript, user: user) }
   let!(:book_third) { create(:book, level: 'hard', volume: 'many', category: category_ruby, user: user) }
 
@@ -54,7 +54,7 @@ RSpec.describe '検索機能', type: :system, js: true do
     before do
       sign_in_as(user)
       visit new_book_path
-      fill_in "book[title]", with: 'タグテスト'
+      fill_in 'book[title]', with: 'タグテスト'
       fill_in 'book[content]', with: 'テストしました'
       all('.input-text input')[1].click
       find('li', text: 'html&css').click
@@ -62,7 +62,7 @@ RSpec.describe '検索機能', type: :system, js: true do
       find('li', text: 'むずかしい').click
       all('.input-text input')[3].click
       find('li', text: 'おおい').click
-      fill_in "book[tag_list]", with: '#テストタグ'
+      fill_in 'book[tag_list]', with: '#テストタグ'
       click_on '登録'
     end
 

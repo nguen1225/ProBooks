@@ -28,6 +28,7 @@ $(document).ready(function(){
 	$('.sidenav').sidenav();
 });
 
+
 //book index tabs
 $(document).ready(function(){
 	$('.tabs').tabs();

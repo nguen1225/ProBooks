@@ -38,7 +38,7 @@ RSpec.describe '書籍管理機能', type: :system, js: true do
     context 'ログインしていない場合' do
       it '編集リンクが表示されない' do
         visit book_path(book_a)
-        expect(page).to have_no_link "編集", href: edit_book_path(book_a)
+        expect(page).to have_no_link '編集', href: edit_book_path(book_a)
       end
       it '削除リンクが表示されない' do
         visit book_path(book_a)
@@ -65,10 +65,10 @@ RSpec.describe '書籍管理機能', type: :system, js: true do
         visit edit_book_path(book_a)
       end
       it 'タイトルが表示されている' do
-        expect(page).to have_field "book[title]", with: book_a.title
+        expect(page).to have_field 'book[title]', with: book_a.title
       end
       it '内容が表示されている' do
-        expect(page).to have_field "book[content]", with: book_a.content
+        expect(page).to have_field 'book[content]', with: book_a.content
       end
       it 'カテゴリが選択されている' do
         expect(all('.input-text input')[1].value).to eq category.name
@@ -87,7 +87,7 @@ RSpec.describe '書籍管理機能', type: :system, js: true do
       end
       it 'フラッシュメッセージが表示される' do
         visit edit_book_path(book_a)
-        expect(page).to have_content "アカウント登録もしくはログインしてください。"
+        expect(page).to have_content 'アカウント登録もしくはログインしてください。'
       end
     end
     context '管理者の場合' do

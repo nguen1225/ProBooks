@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
-  before_action :correct_user, only: %i[edit]
+  before_action :load_resource
 
   def edit; end
 
@@ -33,15 +32,16 @@ class UsersController < ApplicationController
                                  :image)
   end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def correct_user
-    @user = User.find(params[:id])
-    if !(current_user == @user)
-      flash[:notice] = "正しいユーザではありません"
-      redirect_back(fallback_location: root_path)
+  def load_resource
+    case params[:action].to_sym
+    when :edit
+      @user = User.find(params[:id])
+      if current_user != @user
+        flash[:notice] = '正しいユーザではありません'
+        redirect_back(fallback_location: root_path)
+      end
+    when :update, :show
+      @user = User.find(params[:id])
     end
   end
 end

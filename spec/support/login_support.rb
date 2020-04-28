@@ -9,8 +9,8 @@ module LoginSupport
 
   def sign_in_as_admin(admin)
     visit new_admin_session_path
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
+    fill_in 'メールアドレス', with: admin.email
+    fill_in 'パスワード', with: admin.password
     click_on 'Log In'
   end
 end

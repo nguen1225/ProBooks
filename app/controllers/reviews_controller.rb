@@ -1,13 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[edit update destroy]
-  before_action :set_book, only: %i[edit update create]
-
-  def index
-    @reviews = Review.all
-  end
+  before_action :load_resource
 
   def create
-    @review = Review.new(review_params)
     if @review.save
       redirect_to book_path(@book), notice: '投稿しました'
       @book.save_notification_review!(current_user,
@@ -22,8 +16,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @review.update(review_params)
@@ -49,11 +42,16 @@ class ReviewsController < ApplicationController
                                    :book_id)
   end
 
-  def set_review
-    @review = Review.find(params[:id])
-  end
-
-  def set_book
-    @book = Book.find(params[:book_id])
+  def load_resource
+    case params[:action].to_sym
+    when :edit, :update
+      @review = Review.find(params[:id])
+      @book = Book.find(params[:book_id])
+    when :create
+      @review = Review.new(review_params)
+      @book = Book.find(params[:book_id])
+    when :destroy
+      @review = Review.find(params[:id])
+    end
   end
 end

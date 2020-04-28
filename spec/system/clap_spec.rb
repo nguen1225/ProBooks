@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe '参考になったボタン機能', type: :system, js: true do
   include LoginSupport
 
-  let(:user_a) { create(:user) } #いいね押す側
-  let(:user_b) { create(:user) } #レビューをする側
+  let(:user_a) { create(:user) } # いいね押す側
+  let(:user_b) { create(:user) } # レビューをする側
   let(:category) { create(:category) }
   let(:book) { create(:book, user: user_a, category: category) }
   let!(:review) { create(:review, user: user_b, book: book) }

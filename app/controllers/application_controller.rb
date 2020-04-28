@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   def admin_user
     redirect_to root_path, notice: '権限がありません' unless current_user.admin == true
   end
+
   protected
 
   def configure_permitted_parameters

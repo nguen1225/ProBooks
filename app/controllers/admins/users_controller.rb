@@ -9,7 +9,7 @@ class Admins::UsersController < Admins::ApplicationController
              end
     if params[:export_csv]
       send_data @users.generate_csv,
-        filename: "登録会員一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
+                filename: "登録会員一覧-#{Time.zone.now.strftime('%Y%m%d')}.csv"
     else
       render :index
     end

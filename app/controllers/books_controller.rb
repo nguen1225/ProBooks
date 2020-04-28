@@ -51,7 +51,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    flash[:notice] = "削除しました"
+    flash[:notice] = '削除しました'
     redirect_back(fallback_location: root_path)
   end
 
@@ -82,7 +82,7 @@ class BooksController < ApplicationController
   def correct_user
     unless current_user.id == @book.user_id
       redirect_to root_path
-      flash[:alert] = "投稿者でないと編集できません"
+      flash[:alert] = '投稿者でないと編集できません'
     end
   end
 end

@@ -1,16 +1,13 @@
 class ClapsController < ApplicationController
+  before_action :set_params
   after_action :level_up, only: [:create]
 
   def create
-    @review = Review.find(params[:review_id])
-    @book = Book.find(params[:book_id])
     @clap = current_user.claps.create(clap_params)
     @review.create_notification_clap!(current_user)
   end
 
   def destroy
-    @review = Review.find(params[:review_id])
-    @book = Book.find(params[:book_id])
     @clap = current_user.claps.find_by(clap_params)
     @clap.destroy
   end
@@ -19,6 +16,11 @@ class ClapsController < ApplicationController
 
   def clap_params
     params.permit(:review_id)
+  end
+
+  def set_params
+    @review = Review.find(params[:review_id])
+    @book = Book.find(params[:book_id])
   end
 
   def level_up
