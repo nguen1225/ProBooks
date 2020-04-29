@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :request do
-  let!(:user_a) { FactoryBot.create :user_a }
+  let!(:user_a) { create :user_a }
 
   describe 'GET #show' do
     context 'ユーザが存在する場合' do
@@ -50,16 +50,16 @@ RSpec.describe UsersController, type: :request do
   describe 'PUT #update' do
     context '正常なパラメータの場合' do
       it 'リクエストが成功すること' do
-        put user_url user_a, params: { user: FactoryBot.attributes_for(:user_b) }
+        put user_url user_a, params: { user: attributes_for(:user_b) }
         expect(response.status).to eq 302
       end
       it 'ユーザー名が更新されること' do
         expect do
-          put user_url user_a, params: { user: FactoryBot.attributes_for(:user_b) }
+          put user_url user_a, params: { user: attributes_for(:user_b) }
         end.to change { User.find(user_a.id).name }.from('Sato').to('Suzuki')
       end
       it 'リダイレクトすること' do
-        put user_url user_a, params: { user: FactoryBot.attributes_for(:user_b) }
+        put user_url user_a, params: { user: attributes_for(:user_b) }
         expect(response).to redirect_to User.last
       end
     end

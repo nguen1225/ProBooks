@@ -15,15 +15,15 @@ RSpec.describe 'TopPage', type: :system do
     expect(current_path).to eq new_user_session_path
   end
 
-  context 'About' do
-    it '登録してみるリンクが正常であること' do
-      click_link '登録してみる'
-      expect(current_path).to eq new_user_registration_path
-    end
+  # context 'About' do
+  #   it '登録してみるリンクが正常であること' do
+  #     click_link '登録してみる'
+  #     expect(current_path).to eq new_user_registration_path
+  #   end
 
-    it '書籍を探すリンクが正常であること' do
-      click_link '書籍を探す'
-      expect(current_path).to eq books_path
-    end
-  end
+  #   it '書籍を探すリンクが正常であること' do
+  #     click_link '書籍を探す'
+  #     expect(current_path).to eq books_path
+  #   end
+  # end
 end
