@@ -25,10 +25,6 @@ FactoryBot.define do
     volume { 'few' }
     user
     category
-
-    trait :invalid do
-      title { nil }
-    end
   end
 
   factory :book_c, class: Book do

@@ -6,14 +6,26 @@
 		| Admin Dashboard
 	.users-graph.z-depth-2
 		p.graph-text
+			| 現在の登録者数
+			span
+				= "#{@all_users}名"
+		p.graph-text
 			| 日別ユーザー登録者数遷移
 		= area_chart @users, download: true
 	.under-wrap
 		.books-graph.z-depth-2
 			p.graph-text
+				| 現在の登録書籍数
+				span
+					= "#{@all_books}冊"
+			p.graph-text
 				| カテゴリ別登録書籍
 			= pie_chart @categories, download: true
 		.reviews-graph.z-depth-2
+			p.graph-text
+				| 現在のレビュー総数
+				span
+					= "#{@all_reviews}個"
 			p.graph-text
 				| 日別レビュー投稿数
 			= column_chart @reviews, download: true
