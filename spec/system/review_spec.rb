@@ -21,8 +21,8 @@ RSpec.describe 'レビュー画面機能', type: :system, js: true do
       it '削除リンクが表示される' do
         expect(page).to have_link '削除', href: book_review_path(review, book)
       end
-      it '拍手ボタンが表示されない' do
-        expect(page).to have_no_css '.fa-sign-language'
+      it '拍手ボタンが表示される' do
+        expect(page).to have_css '.fa-sign-language'
       end
     end
     context 'ログインしているユーザの場合' do

@@ -88,10 +88,6 @@ class User < ApplicationRecord
     user
   end
 
-  # def self.dummy_email(auth)
-  #   "#{auth.uid}-#{auth.provider}@example.com"
-  # end
-
   scope :search, lambda { |search_params|
     return if search_params.blank?
 
@@ -108,18 +104,4 @@ class User < ApplicationRecord
                             where('? <= created_at', from) if from.present?
                           }
   scope :created_at_to, ->(to) { where('created_at <= ?', to) if to.present? }
-
-  # ユーザー情報更新
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
-
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation)
-    end
-
-    result = update(params, *options)
-    clean_up_passwords
-    result
-  end
 end

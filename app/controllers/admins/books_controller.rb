@@ -1,5 +1,5 @@
 class Admins::BooksController < Admins::ApplicationController
-  include AllCategories
+  include SetInstance
   before_action :all_categories, only: %i[index]
   def index
     @search_params = book_search_params

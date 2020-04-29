@@ -50,7 +50,7 @@
 
 	// 評価一覧
 	#reviews_area
-		- @reviews.preload(:user).each do |review|
+		- @reviews.preload(:user, :book).each do |review|
 			.book_review
 				.review-content
 					= review.title
@@ -60,7 +60,7 @@
 					.review-body
 						= simple_format(review.body)
 					/拍手ボタン
-					- if (current_user.present?) && !(current_user == review.user)
+					- if current_user.present?
 						p id="clap-#{review.id}"
 							= render 'claps/claps', { review: review, book: review.book, login_user: current_user }
 

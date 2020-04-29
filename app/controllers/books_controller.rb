@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  include AllCategories
+  include SetInstance
   before_action :all_categories, only: %i[index new edit]
   before_action :set_book, only: %i[show edit destroy update]
   before_action :authenticate_user!, only: %i[new edit]
