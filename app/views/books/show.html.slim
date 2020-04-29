@@ -51,7 +51,7 @@
 	// 評価一覧
 	#reviews_area
 		- @reviews.preload(:user, :book).each do |review|
-			.book_review
+			.book_review id="review-#{review.id}"
 				.review-content
 					= review.title
 					hr
@@ -99,21 +99,7 @@
 		#modal1.modal.bottom-sheet
 			.modal-content
 				= form_with model: @review, url: book_reviews_path(@book),local: true do |f|
-					= render 'shared/error_messages', model: @review
-					.field#star
-						= f.label :rate, '評価'
-						= f.hidden_field :rate, id: :review_star
-					.field
-						= f.label :title, 'タイトル'
-						= f.text_field :title
-					.field
-						= f.label :body, '内容'
-						= f.text_area :body
-
-					= f.hidden_field :user_id, value: current_user.id
-					= f.hidden_field :book_id, value: @book.id
-
-					= f.submit '評価する', class: "btn"
+					= render "shared/review_fields", { review: @review, book: @book, f: f }
 
 javascript:
 	$('#star').raty({

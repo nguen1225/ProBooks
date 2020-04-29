@@ -34,7 +34,6 @@
 				.input-field
 					= f.label :tag_list
 					= f.text_field :tag_list
-				= f.hidden_field :user_id, :value => current_user.id
 				.action
 					= f.button '更新', type: "submit", class: "waves-effect waves-light btn-flat success_btn"
 
