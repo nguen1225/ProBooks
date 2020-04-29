@@ -39,9 +39,9 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title,
                                    :body,
-                                   :rate,
-                                   :user_id,
-                                   :book_id)
+                                   :rate )
+                           .merge( user_id: current_user.id,
+                                   book_id: @book.id )
   end
 
   def load_resource

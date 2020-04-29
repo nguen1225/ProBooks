@@ -62,9 +62,9 @@ class BooksController < ApplicationController
                                  :volume,
                                  :level,
                                  :image,
-                                 :user_id,
                                  :category_id,
                                  :tag_list)
+                          .merge(user_id: current_user.id)
   end
 
   def book_search_params
