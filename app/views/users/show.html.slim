@@ -42,11 +42,12 @@
 			h6.bookmark-heading
 				| #{@user.name}さんがお気に入りに追加した技術書
 			.bookmark-books
-				- @user.favorites.preload(:book).each do |favorite|
+				- @favorites.preload(:book).each do |favorite|
 					.bookmark-book
 						p.bookmark-book-image
-							= image_tag(favorite.book.image.to_s || 'notebook.jpg')
+							= image_tag(favorite.book.image.to_s)
 						.bookmark-book-title
 							= favorite.book.title
 						span.bookmark-link
 							= link_to "詳細へ", book_path(favorite.book), class: "waves-effect waves-teal btn-flat success_btn"
+			= paginate @favorites

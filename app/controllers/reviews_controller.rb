@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  include CurrentBook
+  include SetInstance
   before_action :set_book_id, only: [:edit, :update, :create]
   before_action :load_resource
 

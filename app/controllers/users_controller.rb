@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   before_action :load_resource
 
-  def edit; end
+  def edit
+    if current_user != @user
+      flash[:notice] = '正しいユーザではありません'
+      redirect_back(fallback_location: root_path)
+    end
+  end
 
   def update
     if @user.update(user_params)
@@ -36,12 +41,13 @@ class UsersController < ApplicationController
     case params[:action].to_sym
     when :edit
       @user = User.find(params[:id])
-      if current_user != @user
-        flash[:notice] = '正しいユーザではありません'
-        redirect_back(fallback_location: root_path)
-      end
-    when :update, :show
+    when :update
       @user = User.find(params[:id])
+    when :show
+      @user = User.find(params[:id])
+      @favorites = @user.favorites.all
+                        .page(params[:page])
+                        .per(3)
     end
   end
 end

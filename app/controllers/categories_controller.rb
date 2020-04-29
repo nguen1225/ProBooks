@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  include AllCategories
+  include SetInstance
   before_action :all_categories, only: %i[index]
 
   def index
