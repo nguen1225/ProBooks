@@ -46,7 +46,8 @@ class Book < ApplicationRecord
         level volume
         created_at
         updated_at
-        user_id]
+        user_id
+      ]
   end
 
   # csvエクスポート

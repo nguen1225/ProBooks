@@ -90,7 +90,10 @@
 							p id="star-average"
 							= book.reviews.count
 							| 件のレビューが投稿されています
-							javascript:
+						- else
+							span
+								| まだレビューがありません
+						javascript:
 								$('#star-average').raty({
 									size: 36,
 									starOff: "#{asset_path('star-off.png')}",
@@ -101,7 +104,4 @@
 									readOnly: true,
 									score: "#{book.reviews.average(:rate).to_f.round(1)}",
 								});
-						- else
-							span
-								| まだレビューがありません
 			= paginate @books
