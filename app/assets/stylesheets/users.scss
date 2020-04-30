@@ -15,6 +15,14 @@
 	}
 }
 
+@media screen and (max-width : 670px) {
+	.authenticate-wrap {
+		.form-wrap {
+			width: 100%;
+		}
+	}
+}
+
 //ユーザー詳細画面
 .user_profile-page {
 	width: 80%;
@@ -117,6 +125,26 @@
 			margin: 0 0 24px 16px;
 			.success_btn {
 				@include success_btn
+			}
+		}
+	}
+}
+@media screen and (max-width : 670px) {
+	.user_edit-page {
+		width: 100%;
+		form {
+			display: block;
+			.user-image-wrap {
+				width: 50%;
+				margin: 0 auto;
+			}
+			.file-field {
+				.btn {
+					width: 100%;
+				}
+			}
+			.user-info {
+				margin: 100px auto;
 			}
 		}
 	}
