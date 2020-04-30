@@ -5,6 +5,8 @@
   .form-wrap
     h3
       | Admin Sign In
+    p
+      | 管理者 Email: admin@email.com/Password: foobar
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         = f.label :email, 'メールアドレス'
