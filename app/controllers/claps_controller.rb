@@ -3,6 +3,7 @@ class ClapsController < ApplicationController
   before_action :set_book_id
   before_action :set_review
   after_action :level_up, only: [:create]
+  after_action :level_down, only: [:destroy]
 
   def create
     @clap = current_user.claps.create(clap_params)
@@ -34,6 +35,25 @@ class ClapsController < ApplicationController
 
     if level.threshould <= @user.experience_point
       @user.level = @user.level + 1
+      @user.update(level: @user.level)
+    end
+  end
+
+  def level_down
+    @user = @review.user
+    clap_count = (-1)
+    total_exp = @user.experience_point
+    total_exp += clap_count
+
+    @user.experience_point = total_exp
+    @user.update(experience_point: total_exp)
+
+    level = LevelStandard.find_by(level: @user.level)
+
+    if level.threshould >= @user.experience_point
+       unless @user.level == 1
+        @user.level = @user.level - 1
+       end
       @user.update(level: @user.level)
     end
   end
