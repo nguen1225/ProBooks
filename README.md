@@ -59,3 +59,4 @@ ProBooks
 - acts-as-taggable-onを用いたタグ機能
 - NGワード制限機能
 - pagination機能
+- NGワード制限機能
