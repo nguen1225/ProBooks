@@ -17,14 +17,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    # レビューをした回数
-    @user_reviews_count = Review.where(user_id: @user.id).size
-    # 拍手をもらった回数
-    @user_craps_count = Clap.where(review_id: @user.reviews.ids).size
-    # 拍手を送った回数
-    @user_post_claps = Clap.where(user_id: @user.id).count
-    # 書籍の投稿数
-    @user_post_books = @user.books.size
+      @user_reviews_count = Review.where(user_id: @user.id).size
+      @user_craps_count = Clap.where(review_id: @user.reviews.ids).size
+      @user_post_claps = Clap.where(user_id: @user.id).count
+      @user_post_books = @user.books.size
   end
 
   private
@@ -39,9 +35,7 @@ class UsersController < ApplicationController
 
   def load_resource
     case params[:action].to_sym
-    when :edit
-      @user = User.find(params[:id])
-    when :update
+    when :edit, :update
       @user = User.find(params[:id])
     when :show
       @user = User.find(params[:id])
