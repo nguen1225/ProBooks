@@ -37,6 +37,7 @@ ProBooks
 - SSL認証、HTTPS化
 
 ## 主な機能一覧
+https://docs.google.com/spreadsheets/d/1HuIg7pLMXl5IcsuYqOy9CNmTUf6uta6L1528xJ72y1w/edit#gid=0
 ### 書籍検索機能
 - どこでも検索ができるヘッダーの検索窓
 - キーワード、カテゴリ、本ボリューム、レベルでの絞り込みの検索
