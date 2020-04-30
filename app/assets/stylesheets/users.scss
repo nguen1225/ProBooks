@@ -148,4 +148,23 @@
 			}
 		}
 	}
+	.user_profile-page {
+		width: 100%;
+		display: block;
+		.user-profile {
+			width: 68%;
+			margin: 0 auto;
+			.user-image {
+				width: 80%;
+				margin: 24px auto;
+				img {
+					width: 100%;
+				}
+			}
+		}
+		.user-left {
+			width: 90%;
+			margin: 0 auto;
+		}
+	}
 }

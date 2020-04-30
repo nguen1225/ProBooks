@@ -86,23 +86,22 @@
 								i.material-icons.right close
 						p
 							| みんなの評価
-						p id="star-avg"
 						- if book.reviews.present?
+							p id="star-average"
 							= book.reviews.count
 							| 件のレビューが投稿されています
+							javascript:
+								$('#star-average').raty({
+									size: 36,
+									starOff: "#{asset_path('star-off.png')}",
+									starOn: "#{asset_path('star-on.png')}",
+									starHalf: "#{asset_path('star-half.png')}",
+									scoreName: 'review[rate]',
+									half: true,
+									readOnly: true,
+									score: "#{book.reviews.average(:rate).to_f.round(1)}",
+								});
 						- else
 							span
 								| まだレビューがありません
-						//評価平均
-						javascript:
-							$('#star-avg').raty({
-								size: 36,
-								starOff: "#{asset_path('star-off.png')}",
-								starOn: "#{asset_path('star-on.png')}",
-								starHalf: "#{asset_path('star-half.png')}",
-								scoreName: 'review[rate]',
-								half: true,
-								readOnly: true,
-								score: "#{book.reviews.average(:rate).to_f.round(1)}",
-							})
 			= paginate @books
