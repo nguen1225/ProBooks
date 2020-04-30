@@ -27,12 +27,9 @@ header
 						= image_tag "human.jpg", class: "circle"
 					span = login_user.name
 					| さん
-			li.user-level
-				span
-					| ユーザーレベル
-				span
-					|　Lv.
-				span.level = login_user.level
+					span.user-level
+						|　Lv.
+						span.level = login_user.level
  			li = link_to new_book_path do
  				i.material-icons content_paste
  				| 書籍の投稿

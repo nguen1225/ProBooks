@@ -48,7 +48,7 @@
 				font-weight: bold;
 			}
 			.success_btn {
-				@include success_btn
+				@include success_btn;
 			}
 		}
 	}
