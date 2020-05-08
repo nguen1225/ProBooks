@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactMailer, type: :mailer do
-  describe "お問い合わせメール送信機能" do
+  describe 'お問い合わせメール送信機能' do
     let(:contact) { create :contact }
     let(:mail) { ContactMailer.contact_mail(contact) }
 
@@ -15,7 +15,7 @@ RSpec.describe ContactMailer, type: :mailer do
       expect(mail.subject).to eq 'お問い合わせいただきありがとうございます'
     end
     it 'メールのドメインが正しいこと' do
-      expect(mail.from).to eq ["noreply@probooks.work"]
+      expect(mail.from).to eq ['noreply@probooks.work']
     end
   end
 end

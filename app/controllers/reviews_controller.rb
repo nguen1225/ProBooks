@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   include SetInstance
-  before_action :set_book_id, only: [:edit, :update, :create]
+  before_action :set_book_id, only: %i[edit update create]
   before_action :load_resource
 
   def create
@@ -39,9 +39,9 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title,
                                    :body,
-                                   :rate )
-                           .merge( user_id: current_user.id,
-                                   book_id: @book.id )
+                                   :rate)
+          .merge(user_id: current_user.id,
+                 book_id: @book.id)
   end
 
   def load_resource

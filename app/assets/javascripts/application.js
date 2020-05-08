@@ -18,30 +18,13 @@
 //= require activestorage
 //= require_tree .
 
-//ほぼ全て
+
 $(document).ready(function(){
 	$('select').formSelect();
-});
-
-//app all
-$(document).ready(function(){
 	$('.sidenav').sidenav();
-});
-
-
-//book index tabs
-$(document).ready(function(){
 	$('.tabs').tabs();
-});
-
-// // top_page image
-$(document).ready(function(){
-	$('.materialboxed').materialbox();
-});
-
-
-//user index admin
-$(document).ready(function(){
+	$('.tooltipped').tooltip();
+	$('.modal').modal();
 	$('.datepicker').datepicker({
 		i18n:{
 			months:["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
@@ -50,12 +33,3 @@ $(document).ready(function(){
         format: "yyyy-mm-dd"
 	});
 });
-
-
-//ツールチップ
-//レビューモーダル
-$(document).ready(function(){
-	$('.tooltipped').tooltip();
-	$('.modal').modal();
-});
-

@@ -40,8 +40,7 @@ class BooksController < ApplicationController
                      .order(created_at: :desc)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @book.update(book_params)
@@ -64,7 +63,7 @@ class BooksController < ApplicationController
                                  :image,
                                  :category_id,
                                  :tag_list)
-                          .merge(user: current_user)
+          .merge(user: current_user)
   end
 
   def book_search_params

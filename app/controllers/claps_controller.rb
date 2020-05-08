@@ -41,7 +41,7 @@ class ClapsController < ApplicationController
 
   def level_down
     @user = @review.user
-    clap_count = (-1)
+    clap_count = -1
     total_exp = @user.experience_point
     total_exp += clap_count
 
@@ -51,9 +51,7 @@ class ClapsController < ApplicationController
     level = LevelStandard.find_by(level: @user.level)
 
     if level.threshould >= @user.experience_point
-       unless @user.level == 1
-        @user.level = @user.level - 1
-       end
+      @user.level = @user.level - 1 unless @user.level == 1
       @user.update(level: @user.level)
     end
   end

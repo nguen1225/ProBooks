@@ -2,7 +2,7 @@
 
 
 .graph-wrap
-	h3.page-title
+    h3.page-title
 		| Admin Dashboard
 	.users-graph.z-depth-2
 		p.graph-text
@@ -11,7 +11,7 @@
 				= "#{@all_users}名"
 		p.graph-text
 			| 日別ユーザー登録者数遷移
-		= area_chart @users, download: true
+		= area_chart @users_count, download: true
 	.under-wrap
 		.books-graph.z-depth-2
 			p.graph-text
@@ -28,4 +28,4 @@
 					= "#{@all_reviews}個"
 			p.graph-text
 				| 日別レビュー投稿数
-			= column_chart @reviews, download: true
+			= column_chart @reviews_count, download: true
