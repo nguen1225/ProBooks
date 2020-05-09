@@ -17,7 +17,7 @@ ProBooks
 ## サイトURL
 https://probooks.work
 ## ターゲットユーザー
-- 書籍の購入を検討しているプログラミング初学者（自分含め）
+- 書籍の購入を検討しているプログラミング初学者
 
 ## 主な利用シーン
 - プログラミング書籍の購入を検討時
@@ -26,16 +26,16 @@ https://probooks.work
 ### フロントエンド
 - HTML&CSS
 - Javascript
-- jQuery
 ### バックエンド
 - Ruby
 - Ruby on Rails
 ### テスト
 - RSpec （model/system/request）
-### 環境
+### その他
 - 開発環境（vagrant,virtual_box）
 - 本番環境・デプロイ（AWS EC2,capistrano,Nginx,mysql）
 - 画像アップロード（carrierwave/AWS S3）
+- メール送信機能（AWS SES）
 - SSL認証、HTTPS
 
 ## 主な機能一覧
